@@ -9,14 +9,14 @@ const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
 const { hello } = require('./queries')
 
 // setting up
-const RootType = new GraphQLObjectType({
-	name: 'RootType',
-	description: 'Root Type query',
+const QueryType = new GraphQLObjectType({
+	name: 'QueryType',
+	description: 'Root query type',
 	fields: {
 		hello,
 	},
 })
 
 module.exports = new GraphQLSchema({
-	query: RootType,
+	query: QueryType,
 })
