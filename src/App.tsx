@@ -1,4 +1,4 @@
-import Login from "./sections/Login"
+import Login from "./sections/Login/Login"
 
 function App() {
 

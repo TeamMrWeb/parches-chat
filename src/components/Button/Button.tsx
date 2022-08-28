@@ -1,5 +1,10 @@
-export default function Button({text, callback}: {text: string, callback?: Function}) {
+export default function Button({text, callback, size}: {text: string, callback?: Function, size: string}) {
   return (
-    <button className="button" onClick={() => callback} >{text}</button>
+  
+    size === "big" 
+    ?
+    <button className="button" onClick={() => callback} style={{width: "100%"}} >{text}</button>
+    :
+      <button className="button" onClick={() => callback} style={{width: "max-content", padding: "10px", fontSize: "12px"}} >{text}</button>
   )
 }

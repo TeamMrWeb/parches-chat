@@ -7,12 +7,19 @@ export default function Form() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
+    <div className="form-group">
       <label className="form__label" htmlFor="email">Correo electrónico</label>
-      <input type="text" name="email" placeholder="example@gmail.com" />
+      <input className="form__input" type="email" name="email" id="email" placeholder="example@gmail.com" required />
+    </div>
+    <div className="form-group">
       <label className="form__label" htmlFor="password">Contraseña</label>
-      <input type="password" name="password" placeholder="example719" />
-      <p className="form__register-text">¿No estas registrado? <Button text="Registro"/></p>
-      <input type="submit" value="Ingresar" />
+      <input className="form__input" type="password" name="password" id="password" placeholder="example719" required minLength={4} maxLength={15} />
+    </div>
+    <div className="not-registered">
+      <p className="form__register-text">¿No estas registrado? </p>
+      <Button text="Registro" size="small" />
+    </div>
+      <input className="form__submit" type="submit" value="Ingresar" />
     </form>
   )
 }
