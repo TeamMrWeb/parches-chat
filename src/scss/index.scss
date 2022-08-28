@@ -1,0 +1,33 @@
+@import "./fonts";
+@import "./variables";
+
+html {
+  box-sizing: border-box;
+  height: 100vh;
+  &*,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100%;
+    font-family: $fontFamily;
+    font-weight: 300;
+    font-size: 14px;
+    font-style: normal;
+    #root {
+      height: 100%;
+      .App {
+        & * p,
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

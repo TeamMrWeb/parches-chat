@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Medium.woff2") format("woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+html {
+  box-sizing: border-box;
+  height: 100vh;
+}
+html*,
+html *::before,
+html *::after {
+  box-sizing: inherit;
+}
+html body {
+  margin: 0;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100%;
+  font-family: "Inter";
+  font-weight: 300;
+  font-size: 14px;
+  font-style: normal;
+}
+html body #root {
+  height: 100%;
+}
+html body #root .App * p,
+html body #root .App ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}/*# sourceMappingURL=index.css.map */
