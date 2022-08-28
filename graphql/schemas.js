@@ -3,10 +3,11 @@
  */
 
 // required modules
-const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
+const { GraphQLSchema, GraphQLObjectType } = require('graphql')
 
 // required queries
 const { hello } = require('./queries')
+const { register } = require('./mutations')
 
 // setting up
 const QueryType = new GraphQLObjectType({
@@ -17,6 +18,15 @@ const QueryType = new GraphQLObjectType({
 	},
 })
 
+const MutationType = new GraphQLObjectType({
+	name: 'MutationType',
+	description: 'Root mutation type',
+	fields: {
+		register,
+	},
+})
+
 module.exports = new GraphQLSchema({
 	query: QueryType,
+	mutation: MutationType,
 })
