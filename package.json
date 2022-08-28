@@ -1,0 +1,34 @@
+{
+  "name": "parches-chat",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamParches/parches-chat.git"
+  },
+  "keywords": [
+    "parches",
+    "parches-chat"
+  ],
+  "author": "Manuel Cabral",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TeamParches/parches-chat/issues"
+  },
+  "homepage": "https://github.com/TeamParches/parches-chat#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.6.0",
+    "mongoose": "^6.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
