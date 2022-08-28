@@ -9,7 +9,10 @@ const graphqlHTTP = require('express-graphql').graphqlHTTP
 // setting up
 const app = express()
 const schema = require('./graphql/schemas')
+const connectDatabase = require('./database')
 const port = 3000 || process.env.PORT
+
+connectDatabase()
 
 // express routes
 app.use(
