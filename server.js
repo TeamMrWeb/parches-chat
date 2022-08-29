@@ -7,7 +7,7 @@
 // required modules
 const express = require('express')
 const graphqlHTTP = require('express-graphql').graphqlHTTP
-const { authenticate } = require('./middlewares/auth')
+const authenticate = require('./middlewares/auth')
 
 // setting up
 const app = express()

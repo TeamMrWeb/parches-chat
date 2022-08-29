@@ -1,7 +1,7 @@
 /**
- * @file Contains all middlewares.
+ * @file Contains authentification middleware.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -24,6 +24,4 @@ const authenticate = (req, res, next) => {
 	next()
 }
 
-module.exports = {
-	authenticate,
-}
+module.exports = authenticate
