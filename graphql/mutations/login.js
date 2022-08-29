@@ -15,7 +15,7 @@ const args = {
 }
 
 const resolve = async (_, args) => {
-	const user = await findOne(args, true)
+	const user = await findOne(args)
 	if (!user || args.password !== user.password)
 		throw new Error('Invalid credentials')
 	return createToken({
