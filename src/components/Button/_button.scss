@@ -15,5 +15,6 @@
   background-color: $purpleColor;
   &:hover {
     background-position: -200px;
+    box-shadow: 0 5px 20px 0 $purpleColor;
   }
 }

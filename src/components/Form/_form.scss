@@ -1,13 +1,14 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
   .form-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
     .form__label {
+      @include fluid-type(font-size, 600px, 1200px, 12px, 14px);
     }
     .form__input {
       height: 30px;
@@ -25,8 +26,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    .form__register-text {
+    gap: 10px;
+    .form__register-anchor {
+      text-decoration: none;
+      color: $pinkColor;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .form__submit {
@@ -45,8 +51,10 @@
     background-repeat: no-repeat;
     background-color: $purpleColor;
     width: 100%;
+    margin-top: 15px;
     &:hover {
       background-position: -200px;
+      box-shadow: 0 0px 15px 2px $purpleColor;
     }
   }
 }

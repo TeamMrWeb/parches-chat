@@ -75,7 +75,7 @@ html body #root .App ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   color: #ffffff;
   width: 100%;
   max-width: 300px;
@@ -83,18 +83,19 @@ html body #root .App ul {
   height: -moz-max-content;
   height: max-content;
 }
-.login .content .content__image {
-  width: 100%;
-  max-width: 200px;
-  height: 100%;
-}
 .login .content .header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 20px;
+  gap: 10px;
+}
+.login .content .header .content__image {
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  margin-bottom: 20px;
 }
 .login .content .header .content__title {
   color: #e7ecf7;
@@ -102,10 +103,32 @@ html body #root .App ul {
   letter-spacing: 0.5px;
   font-size: 30px;
   font-weight: 900;
-  line-height: 1;
+  line-height: 2;
+  margin: 0;
+}
+@media screen and (min-width: 600px) {
+  .login .content .header .content__title {
+    font-size: calc(30px + 10 * (100vw - 600px) / 600);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .login .content .header .content__title {
+    font-size: 40px;
+  }
 }
 .login .content .header .content__description {
   text-align: center;
+  font-size: 14px;
+}
+@media screen and (min-width: 600px) {
+  .login .content .header .content__description {
+    font-size: calc(14px + 2 * (100vw - 600px) / 600);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .login .content .header .content__description {
+    font-size: 16px;
+  }
 }
 .login .content__repository {
   position: relative;
@@ -139,18 +162,32 @@ html body #root .App ul {
 }
 .button:hover {
   background-position: -200px;
+  box-shadow: 0 5px 20px 0 #8d4fc9;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
 }
 .form .form-group {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+.form .form-group .form__label {
+  font-size: 12px;
+}
+@media screen and (min-width: 600px) {
+  .form .form-group .form__label {
+    font-size: calc(12px + 2 * (100vw - 600px) / 600);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .form .form-group .form__label {
+    font-size: 14px;
+  }
 }
 .form .form-group .form__input {
   height: 30px;
@@ -167,7 +204,14 @@ html body #root .App ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
+}
+.form .not-registered .form__register-anchor {
+  text-decoration: none;
+  color: #dd4ec6;
+}
+.form .not-registered .form__register-anchor:hover {
+  text-decoration: underline;
 }
 .form .form__submit {
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
@@ -185,7 +229,9 @@ html body #root .App ul {
   background-repeat: no-repeat;
   background-color: #8d4fc9;
   width: 100%;
+  margin-top: 15px;
 }
 .form .form__submit:hover {
   background-position: -200px;
+  box-shadow: 0 0px 15px 2px #8d4fc9;
 }/*# sourceMappingURL=index.css.map */
