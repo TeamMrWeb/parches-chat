@@ -1,0 +1,116 @@
+schema {
+  query: QueryType
+  mutation: MutationType
+}
+
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+type ChatType {
+  """The id of the chat."""
+  id: ID
+
+  """The name of the chat."""
+  name: String
+
+  """The users of the chat."""
+  users: [UserType]
+
+  """The messages of the chat."""
+  messages: [MessageType]
+
+  """The date of the last update."""
+  updatedAt: String
+
+  """The date of the creation."""
+  createdAt: String
+}
+
+type MessageType {
+  """The id of the message."""
+  id: ID
+
+  """The text of the message."""
+  text: String
+
+  """The image of the message."""
+  image: String
+
+  """The author of the message."""
+  author: UserType
+
+  """The users that have seen the message."""
+  seen: [UserType]
+
+  """The date of the last update."""
+  updatedAt: String
+
+  """The date of the creation."""
+  createdAt: String
+}
+
+"""Root mutation type"""
+type MutationType {
+  """Register a new user"""
+  register(username: String, email: String, password: String): String
+
+  """Login a user"""
+  login(email: String, password: String): String
+
+  """Create a new chat"""
+  newChat(name: String, users: [ID]): ChatType
+
+  """Create a new message"""
+  newMessage(chatId: String, text: String, image: String): MessageType
+}
+
+"""Root query type"""
+type QueryType {
+  """Hello World!"""
+  hello: String
+
+  """List of all users"""
+  users: [UserType]
+
+  """Get a user by id, email or username"""
+  user(
+    """Value to search for"""
+    value: ID
+
+    """Field to search through"""
+    through: ID
+  ): UserType
+
+  """Get a chat by id, name or users"""
+  chat(
+    """Field to search through"""
+    through: String
+
+    """Values to search for"""
+    values: [ID]
+  ): ChatType
+
+  """List of all chats"""
+  chats: [ChatType]
+}
+
+type UserType {
+  """The id of the user."""
+  id: ID
+
+  """The username of the user."""
+  username: String
+
+  """The email of the user."""
+  email: String
+
+  """The date of the last update."""
+  updatedAt: String
+
+  """The date of the creation."""
+  createdAt: String
+}
+
