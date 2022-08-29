@@ -1,7 +1,7 @@
 /**
  * @file Contains all backend things for parches-chat application.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.3
  */
 
 // required modules
@@ -26,7 +26,6 @@ app.use(
 		graphiql: true,
 	})
 )
-app.use('/users', require('./routes/users'))
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`)
