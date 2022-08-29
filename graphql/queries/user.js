@@ -1,7 +1,7 @@
 /**
  * @file Contains user query.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -22,14 +22,14 @@ const args = {
 
 const resolve = async (_, args) => {
 	const { value, through } = args
-	return await findOne({ through: value })
+	return await findOne(args)
 }
 
-const users = {
+const user = {
 	type: UserType,
 	description: 'Get a user by id, email or username',
 	args,
 	resolve,
 }
 
-module.exports = users
+module.exports = user
