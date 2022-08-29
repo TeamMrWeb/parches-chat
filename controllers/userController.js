@@ -6,6 +6,7 @@
 
 // required modules
 const { User } = require('../models')
+const { ObjectId } = require('mongoose').Types
 
 /**
  * Create a new user in the database.
@@ -34,8 +35,19 @@ const findOne = async (data, secure = true) =>
  */
 const findAll = async () => await User.find()
 
+/**
+ * Find many users by their ids.
+ * @param {Array} ids - The ids of the users to find.
+ * @returns {Array} The users found.
+ */
+const findMany = async (ids) => {
+	const mapIds = ids.map((id) => ObjectId(id))
+	return await User.find({ _id: { $in: mapIds } })
+}
+
 module.exports = {
 	createUser,
 	findOne,
 	findAll,
+	findMany,
 }
