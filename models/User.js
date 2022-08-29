@@ -1,7 +1,7 @@
 /**
  * @file Contains the user model.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -31,6 +31,24 @@ const userSchema = new Schema(
 				'Please a valid email address',
 			],
 		},
+		friends: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'User',
+			},
+		],
+		pendingFriends: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'User',
+			},
+		],
+		blockedUsers: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'User',
+			},
+		],
 	},
 	{
 		timestamps: true,
