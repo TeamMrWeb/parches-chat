@@ -1,5 +1,7 @@
-/*
- * Contains all backend things for parches-chat application.
+/**
+ * @file Contains all backend things for parches-chat application.
+ * @author Manuel Cabral
+ * @version 0.0.1
  */
 
 // required modules

@@ -1,14 +1,16 @@
-/*
- * Contains all JWT related functions.
+/**
+ * @file Contains all JWT related functions.
+ * @author Manuel Cabral
+ * @version 0.0.1
  */
 
 // required modules
 const jwt = require('jsonwebtoken')
 
-const createAToken = (user) => {
-	jwt.sign({ user }, 'parches123', { expiresIn: '1h' })
+const createToken = (user) => {
+	return jwt.sign({ user }, 'parches123', { expiresIn: '1h' })
 }
 
 module.exports = {
-	createAToken,
+	createToken,
 }

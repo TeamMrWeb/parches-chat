@@ -1,11 +1,12 @@
-/*
- *   Contains all database schemas and models.
+/**
+ * @file Contains the user model.
+ * @author Manuel Cabral
+ * @version 0.0.1
  */
 
 // required modules
 const { Schema, model } = require('mongoose')
 
-// setting up
 const userSchema = new Schema(
 	{
 		username: {

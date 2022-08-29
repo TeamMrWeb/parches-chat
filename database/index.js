@@ -1,5 +1,7 @@
-/*
- * Contains all database connection settings.
+/**
+ * @file Contains all database things.
+ * @author Manuel Cabral
+ * @version 0.0.1
  */
 
 // required modules
