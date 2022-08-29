@@ -1,11 +1,11 @@
 /**
  * @file Contains all GraphQL object types.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
-const { GraphQLObjectType, GraphQLID } = require('graphql')
+const { GraphQLObjectType, GraphQLID, GraphQLString } = require('graphql')
 
 // defining types
 const UserType = new GraphQLObjectType({
@@ -22,10 +22,6 @@ const UserType = new GraphQLObjectType({
 		email: {
 			type: GraphQLString,
 			description: 'The email of the user.',
-		},
-		password: {
-			type: GraphQLString,
-			description: 'The password of the user.',
 		},
 	},
 })
