@@ -144,6 +144,76 @@ html body #root .App ul {
   color: #dd4ec6;
 }
 
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+  background-color: #1c1d22;
+}
+.register .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  color: #ffffff;
+  width: 100%;
+  max-width: 300px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+.register .content .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+.register .content .header .content__image {
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  margin-bottom: 20px;
+}
+.register .content .header .content__title {
+  color: #e7ecf7;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 2;
+  margin: 0;
+}
+@media screen and (min-width: 600px) {
+  .register .content .header .content__title {
+    font-size: calc(30px + 10 * (100vw - 600px) / 600);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .register .content .header .content__title {
+    font-size: 40px;
+  }
+}
+.register .content .header .content__description {
+  text-align: center;
+  font-size: 14px;
+}
+@media screen and (min-width: 600px) {
+  .register .content .header .content__description {
+    font-size: calc(14px + 2 * (100vw - 600px) / 600);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .register .content .header .content__description {
+    font-size: 16px;
+  }
+}
 .not-found {
   display: flex;
   flex-direction: column;
@@ -155,15 +225,34 @@ html body #root .App ul {
   color: #ffffff;
 }
 
-.not-found {
+.form-group {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  background-color: #1c1d22;
-  color: #ffffff;
+  gap: 5px;
+}
+.form-group .form__label {
+  font-size: 12px;
+}
+@media screen and (min-width: 600px) {
+  .form-group .form__label {
+    font-size: calc(12px + 2 * (100vw - 600px) / 600);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .form-group .form__label {
+    font-size: 14px;
+  }
+}
+.form-group .form__input {
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #323346;
+  color: #8e9297;
+  padding: 10px 15px 10px;
+}
+.form-group .form__input:focus {
+  outline: 1px solid #dd4ec6;
 }
 
 .button {
@@ -256,4 +345,18 @@ html body #root .App ul {
 .form .form__submit:hover {
   background-position: -200px;
   box-shadow: 0 0px 15px 2px #8d4fc9;
+}
+
+.account-question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.account-question .account-question__link {
+  text-decoration: none;
+  color: #dd4ec6;
+}
+.account-question .account-question__link:hover {
+  text-decoration: underline;
 }/*# sourceMappingURL=index.css.map */

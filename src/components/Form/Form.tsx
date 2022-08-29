@@ -1,39 +1,16 @@
 import { useForm } from "./useForm"
-import Button from "../Button/Button"
+import FormGroupInput from "../FormGroupInput/FormGroupInput"
+import AccountQuestion from "../AccountQuestion/AccountQuestion"
 
 export default function Form() {
   const { handleSubmit } = useForm()
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label className="form__label" htmlFor="email">
-          Correo electrónico
-        </label>
-        <input className="form__input" type="email" name="email" id="email" placeholder="example@gmail.com" required />
-      </div>
-      <div className="form-group">
-        <label className="form__label" htmlFor="password">
-          Contraseña
-        </label>
-        <input
-          className="form__input"
-          type="password"
-          name="password"
-          id="password"
-          placeholder="example719"
-          required
-          minLength={4}
-          maxLength={15}
-        />
-      </div>
+      <FormGroupInput type="email" label="Correo electrónico" placeholder="example@gmail.com" required={true} />
+      <FormGroupInput type="password" label="Contraseña" placeholder="example196" minLength={4} maxLength={15} required={true} />
       <input className="form__submit" type="submit" value="Ingresar" />
-      <div className="not-registered">
-        <p className="form__register-text">¿No estas registrado? </p>
-        <a className="form__register-anchor" href="#/">
-          Registro
-        </a>
-      </div>
+      <AccountQuestion question="¿No estas registrado?" href="http://localhost:3000/accounts/register" hrefText="Registrarse" />
     </form>
   )
 }
