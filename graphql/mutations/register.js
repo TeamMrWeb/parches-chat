@@ -1,11 +1,13 @@
-/*
- * Contains register mutation.
+/**
+ * @file Contains register mutation.
+ * @author Manuel Cabral
+ * @version 0.0.2
  */
 
 // required modules
-const { createAToken } = require('../../utils/auth')
+const { createUser } = require('../../controllers/userController')
+const { createToken } = require('../../utils/auth')
 const { GraphQLString } = require('graphql')
-const { User } = require('../../models')
 
 const args = {
 	username: { type: GraphQLString },
@@ -14,18 +16,12 @@ const args = {
 }
 
 const resolve = async (_, args) => {
-	const { username, email, password } = args
-
-	const newUser = new User({ username, email, password })
-	await newUser.save()
-
-	const token = createAToken({
+	const newUser = await createUser(args, true)
+	const token = createToken({
 		id: newUser._id,
 		username: newUser.username,
 		email: newUser.email,
 	})
-
-	console.log('New user created')
 	return token
 }
 
