@@ -1,7 +1,7 @@
 /**
  * @file Contains login mutation.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -15,7 +15,7 @@ const args = {
 }
 
 const resolve = async (_, args) => {
-	const user = await findOne(args)
+	const user = await findOne(args, false)
 	if (!user || args.password !== user.password)
 		throw new Error('Invalid credentials')
 	return createToken({
