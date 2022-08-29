@@ -7,4 +7,6 @@
 module.exports = {
 	register: require('./mutations/register'),
 	login: require('./mutations/login'),
+	newMessage: require('./mutations/newMessage'),
+	newChat: require('./mutations/newChat'),
 }
