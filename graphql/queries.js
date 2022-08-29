@@ -7,4 +7,5 @@
 module.exports = {
 	hello: require('./queries/hello'),
 	users: require('./queries/users'),
+	user: require('./queries/user'),
 }
