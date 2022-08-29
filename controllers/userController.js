@@ -1,7 +1,7 @@
 /**
  * @file Contains user model functions.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -25,11 +25,17 @@ const createUser = async (data, save = true) => {
  * @param {Boolean} selectPassword - If true, the password will be selected.
  * @returns {Object} The user found.
  */
-const findOne = async (data, selectPassword = false) => {
-	return await User.findOne(data).select(selectPassword ? '+password' : '')
-}
+const findOne = async (data, selectPassword = false) =>
+	await User.findOne(data).select(selectPassword ? '+password' : '')
+
+/**
+ * Find all users.
+ * @returns {Array} The users found.
+ */
+const findAll = async () => await User.find()
 
 module.exports = {
 	createUser,
 	findOne,
+	findAll,
 }
