@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL object types.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -22,6 +22,14 @@ const UserType = new GraphQLObjectType({
 		email: {
 			type: GraphQLString,
 			description: 'The email of the user.',
+		},
+		updatedAt: {
+			type: GraphQLString,
+			description: 'The date of the last update.',
+		},
+		createdAt: {
+			type: GraphQLString,
+			description: 'The date of the creation.',
 		},
 	},
 })
