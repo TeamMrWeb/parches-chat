@@ -1,7 +1,7 @@
 /**
  * @file Contains chat model.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -19,6 +19,13 @@ const chatSchema = new Schema(
 				type: Schema.Types.ObjectId,
 				unique: true,
 				ref: 'Message',
+			},
+		],
+		admins: [
+			{
+				type: Schema.Types.ObjectId,
+				unique: true,
+				ref: 'User',
 			},
 		],
 		users: [
