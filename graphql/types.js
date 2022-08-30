@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL object types.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
@@ -83,6 +83,10 @@ const ChatType = new GraphQLObjectType({
 		name: {
 			type: GraphQLString,
 			description: 'The name of the chat.',
+		},
+		admins: {
+			type: new GraphQLList(UserType),
+			description: 'The admins of the chat.',
 		},
 		users: {
 			type: new GraphQLList(UserType),
