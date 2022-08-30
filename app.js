@@ -20,7 +20,7 @@ app.use(authenticate)
 
 // routes
 app.get('/', (_, res) => {
-	res.send('Hello World!')
+	res.send('Hello World')
 })
 
 app.use(
