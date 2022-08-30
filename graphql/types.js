@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL object types.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -10,6 +10,7 @@ const {
 	GraphQLID,
 	GraphQLString,
 	GraphQLList,
+	GraphQLBoolean,
 } = require('graphql')
 
 // defining types
@@ -87,6 +88,10 @@ const ChatType = new GraphQLObjectType({
 		admins: {
 			type: new GraphQLList(UserType),
 			description: 'The admins of the chat.',
+		},
+		isGroup: {
+			type: GraphQLBoolean,
+			description: 'If the chat is a group or not.',
 		},
 		users: {
 			type: new GraphQLList(UserType),

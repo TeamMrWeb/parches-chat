@@ -1,7 +1,7 @@
 /**
  * @file Contains chat model.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -12,7 +12,6 @@ const chatSchema = new Schema(
 		name: {
 			type: String,
 			required: true,
-			unique: true,
 		},
 		messages: [
 			{
@@ -21,6 +20,10 @@ const chatSchema = new Schema(
 				ref: 'Message',
 			},
 		],
+		isGroup: {
+			type: Boolean,
+			required: true,
+		},
 		admins: [
 			{
 				type: Schema.Types.ObjectId,
