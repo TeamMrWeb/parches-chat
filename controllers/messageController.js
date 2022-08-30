@@ -6,7 +6,7 @@
 
 // required modules
 const { Message } = require('../models')
-const { ToObjectId } = require('../utils/cast')
+const { ObjectId } = require('mongoose').Types
 
 /**
  * Creates a new message.
@@ -28,7 +28,32 @@ const createMessage = async (data, save = true) => {
  */
 const findOne = async (data) => await Message.findOne(data).populate('author')
 
+/**
+ * Find a message by its id.
+ * @param {String} id - The id of the message to find.
+ * @returns {Object} The message found, or null if not found.
+ */
+const findById = async (id) => {
+	if (!ObjectId.isValid(id)) return null
+	return await Message.findById(id)
+}
+
+/**
+ * Find many messages by their ids.
+ * @param {Array} ids - The ids of the messages to find.
+ * @returns {Array} The messages found, or null if not found an id.
+ */
+const findMany = async (ids, limit, skip) => {
+	for (const id of ids) if (!ObjectId.isValid(id)) return null
+	const mapIds = ids.map((id) => ObjectId(id))
+	return await Message.find({ _id: { $in: mapIds } })
+		.skip(skip)
+		.limit(limit)
+}
+
 module.exports = {
 	createMessage,
 	findOne,
+	findMany,
+	findById,
 }
