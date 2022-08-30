@@ -7,14 +7,23 @@
 // required modules
 const { MessageType } = require('../types')
 const { createMessage } = require('../../controllers/messageController')
-const { findOne, addMessage } = require('../../controllers/chatController')
+const { findById, addMessage } = require('../../controllers/chatController')
 const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql')
 
 // mutation object
 const args = {
-	chatId: { type: new GraphQLNonNull(GraphQLID) },
-	text: { type: new GraphQLNonNull(GraphQLString) },
-	image: { type: new GraphQLNonNull(GraphQLString) },
+	chatId: {
+		type: new GraphQLNonNull(GraphQLID),
+		description: 'The id of the chat.',
+	},
+	text: {
+		type: new GraphQLNonNull(GraphQLString),
+		description: 'The text of the message.',
+	},
+	image: {
+		type: new GraphQLNonNull(GraphQLString),
+		description: 'The image of the message.',
+	},
 }
 
 /**
@@ -27,11 +36,15 @@ const args = {
 const resolve = async (_, args, context) => {
 	const { user } = context
 	if (!user) throw new Error('You are not logged in')
-	if (!(await findOne({ through: 'id', values: [args.chatId] })))
-		throw new Error('Chat not found')
-	args['author'] = user.id
-	const newMessage = await createMessage(args)
-	await addMessage(args.chatId, newMessage.id)
+	const chat = await findById(args.chatId)
+	if (!chat) throw new Error('Chat not found')
+	const newMessage = await createMessage({
+		text: args.text,
+		image: args.image,
+		author: user.id,
+		seen: [],
+	})
+	await addMessage(args.chatId, newMessage._id)
 	return newMessage
 }
 
