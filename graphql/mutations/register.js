@@ -18,18 +18,17 @@ const args = {
 
 /**
  * Resolve a a new user.
- * @param {Object} _ - parent object, not used in this case.
- * @param {Object} args - arguments passed to the mutation.
- * @returns {String} - a token.
+ * @param {Object} _ - Parent object, not used in this case.
+ * @param {Object} args - Arguments passed to the mutation.
+ * @returns {String} - A token.
  */
 const resolve = async (_, args) => {
 	const newUser = await createUser(args, true)
-	const token = createToken({
+	return createToken({
 		id: newUser._id,
 		username: newUser.username,
-		email: newUser.email,
+		email: newUs,
 	})
-	return token
 }
 
 // mutation object
