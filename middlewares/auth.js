@@ -11,11 +11,11 @@ const { SECRET } = require('../config').JWT
 /**
  * Authenticate token though auth header.
  * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
+ * @param {Object} _ - Express response object, not used.
  * @param {Function} next - Express next function.
  * @returns {void} Nothing.
  */
-const authenticate = (req, res, next) => {
+const authenticate = (req, _, next) => {
 	const token = req.headers.auth
 	if (!token) token = ''
 	try {
