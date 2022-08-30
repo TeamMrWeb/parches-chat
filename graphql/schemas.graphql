@@ -16,6 +16,12 @@ type ChatType {
   """The name of the chat."""
   name: String
 
+  """The admins of the chat."""
+  admins: [UserType]
+
+  """If the chat is a group or not."""
+  isGroup: Boolean
+
   """The users of the chat."""
   users: [UserType]
 
@@ -39,10 +45,13 @@ type MessageType {
   """The image of the message."""
   image: String
 
-  """The author of the message."""
+  """Get the author of the message."""
   author: UserType
 
-  """The users that have seen the message."""
+  """If the message has been edited."""
+  edited: Boolean
+
+  """Get the users that have seen the message."""
   seen: [UserType]
 
   """The date of the last update."""
@@ -55,16 +64,31 @@ type MessageType {
 """Root mutation type"""
 type MutationType {
   """Register a new user"""
-  register(username: String, email: String, password: String): String
+  register(username: String!, email: String!, password: String!): String
 
   """Login a user"""
-  login(email: String, password: String): String
+  login(email: String!, password: String!): String
 
   """Create a new chat"""
-  newChat(name: String, users: [ID]): ChatType
+  newChat(
+    """The name of the chat."""
+    name: String!
+
+    """The id of the users of the chat."""
+    usersId: [ID]!
+  ): ChatType
 
   """Create a new message"""
-  newMessage(chatId: String, text: String, image: String): MessageType
+  newMessage(
+    """The id of the chat."""
+    chatId: ID!
+
+    """The text of the message."""
+    text: String!
+
+    """The image of the message."""
+    image: String!
+  ): MessageType
 }
 
 """Root query type"""
