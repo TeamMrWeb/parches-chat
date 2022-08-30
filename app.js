@@ -15,8 +15,8 @@ const schema = require('./graphql/schemas')
 const app = express()
 
 // middlewares
-app.use(authenticate)
 app.use(cors())
+app.use(authenticate)
 
 // routes
 app.get('/', (_, res) => {
