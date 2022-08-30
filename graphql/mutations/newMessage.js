@@ -21,11 +21,11 @@ const args = {
  * Resolve a new message.
  * @param {Object} _ - Parent object, not used in this case.
  * @param {Object} args - Arguments passed to the mutation.
- * @param {Object} req - Context object of the request.
+ * @param {Object} context - Context object of the request.
  * @returns {Object} - A message object type.
  */
-const resolve = async (_, args, req) => {
-	const { user } = req
+const resolve = async (_, args, context) => {
+	const { user } = context
 	if (!user) throw new Error('You are not logged in')
 	if (!(await findOne({ through: 'id', values: [args.chatId] })))
 		throw new Error('Chat not found')
