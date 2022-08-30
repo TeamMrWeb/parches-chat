@@ -3,38 +3,7 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    .form__label {
-      @include fluid-type(font-size, 600px, 1200px, 12px, 14px);
-    }
-    .form__input {
-      height: 30px;
-      border-radius: 10px;
-      border: none;
-      background-color: $secundaryColorHover;
-      color: $textGrayColor;
-      padding: 10px 15px 10px;
-      &:focus {
-        outline: 1px solid $pinkColor;
-      }
-    }
-  }
-  .not-registered {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    .form__register-anchor {
-      text-decoration: none;
-      color: $pinkColor;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
+
   .form__submit {
     background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
     background-size: 100%;

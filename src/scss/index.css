@@ -282,48 +282,6 @@ html body #root .App ul {
   gap: 10px;
   width: 100%;
 }
-.form .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.form .form-group .form__label {
-  font-size: 12px;
-}
-@media screen and (min-width: 600px) {
-  .form .form-group .form__label {
-    font-size: calc(12px + 2 * (100vw - 600px) / 600);
-  }
-}
-@media screen and (min-width: 1200px) {
-  .form .form-group .form__label {
-    font-size: 14px;
-  }
-}
-.form .form-group .form__input {
-  height: 30px;
-  border-radius: 10px;
-  border: none;
-  background-color: #323346;
-  color: #8e9297;
-  padding: 10px 15px 10px;
-}
-.form .form-group .form__input:focus {
-  outline: 1px solid #dd4ec6;
-}
-.form .not-registered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-.form .not-registered .form__register-anchor {
-  text-decoration: none;
-  color: #dd4ec6;
-}
-.form .not-registered .form__register-anchor:hover {
-  text-decoration: underline;
-}
 .form .form__submit {
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
