@@ -1,7 +1,7 @@
 /**
  * @file Contains environment variables and some configuration.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 const config = require('dotenv').config
@@ -16,7 +16,7 @@ module.exports = {
 
 	// database connection
 	DB: {
-		URI: process.env.MONGODB_URI || 'mongodb://localhost/parches-chat',
+		URL: process.env.MONGODB_URI || 'mongodb://localhost/parches-chat',
 		OPTIONS: {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
