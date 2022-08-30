@@ -57,11 +57,15 @@ const MessageType = new GraphQLObjectType({
 		},
 		author: {
 			type: UserType,
-			description: 'The author of the message.',
+			description: 'Get the author of the message.',
+		},
+		edited: {
+			type: GraphQLBoolean,
+			description: 'If the message has been edited.',
 		},
 		seen: {
 			type: new GraphQLList(UserType),
-			description: 'The users that have seen the message.',
+			description: 'Get the users that have seen the message.',
 		},
 		updatedAt: {
 			type: GraphQLString,

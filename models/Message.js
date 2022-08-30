@@ -1,7 +1,7 @@
 /**
  * @file Contains message model.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -22,6 +22,10 @@ const messageSchema = new Schema(
 				ref: 'User',
 			},
 		],
+		edited: {
+			type: Boolean,
+			default: false,
+		},
 		author: {
 			type: Schema.Types.ObjectId,
 			ref: 'User',
