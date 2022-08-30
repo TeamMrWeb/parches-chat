@@ -16,7 +16,7 @@ module.exports = {
 
 	// database connection
 	DB: {
-		URL: process.env.MONGODB_URI || 'mongodb://localhost/parches-chat',
+		URL: process.env.MONGODB_URL || 'mongodb://localhost/parches-chat',
 		OPTIONS: {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
