@@ -1,12 +1,12 @@
 /**
  * @file Contains authentification middleware.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
 const jwt = require('jsonwebtoken')
-const { SECRET, EXPIRES_IN } = require('../config').JWT
+const { SECRET } = require('../config').JWT
 
 /**
  * Authenticate token though auth header.
@@ -17,7 +17,7 @@ const { SECRET, EXPIRES_IN } = require('../config').JWT
  */
 const authenticate = (req, res, next) => {
 	const token = req.headers.auth
-	//if (!token) return res.status(401).json({ error: 'No token provided.' })
+	if (!token) token = ''
 	try {
 		const decoded = jwt.verify(token, SECRET)
 		req.user = decoded.user
