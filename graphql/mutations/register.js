@@ -27,7 +27,7 @@ const resolve = async (_, args) => {
 	return createToken({
 		id: newUser._id,
 		username: newUser.username,
-		email: newUs,
+		email: newUser.email,
 	})
 }
 
