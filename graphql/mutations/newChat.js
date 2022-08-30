@@ -1,17 +1,22 @@
 /**
  * @file Contains chat create mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
 const { createChat } = require('../../controllers/chatController')
 const { findMany } = require('../../controllers/userController')
 const { ChatType } = require('../types')
-const { GraphQLString, GraphQLID, GraphQLList } = require('graphql')
+const {
+	GraphQLNonNull,
+	GraphQLString,
+	GraphQLID,
+	GraphQLList,
+} = require('graphql')
 
 const args = {
-	name: { type: GraphQLString },
+	name: { type: GraphQLNonNull(GraphQLString) },
 	users: { type: new GraphQLList(GraphQLID) },
 }
 

@@ -1,17 +1,17 @@
 /**
  * @file Contains login mutation.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
-const { GraphQLString } = require('graphql')
+const { GraphQLNonNull, GraphQLString } = require('graphql')
 const { findOne } = require('../../controllers/userController')
 const { createToken } = require('../../utils/auth')
 
 const args = {
-	email: { type: GraphQLString },
-	password: { type: GraphQLString },
+	email: { type: GraphQLNonNull(GraphQLString) },
+	password: { type: GraphQLNonNull(GraphQLString) },
 }
 
 const resolve = async (_, args) => {

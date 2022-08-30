@@ -1,19 +1,19 @@
 /**
  * @file Contains chat mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.3
  */
 
 // required modules
 const { createMessage } = require('../../controllers/messageController')
 const { findOne, addMessage } = require('../../controllers/chatController')
 const { MessageType } = require('../types')
-const { GraphQLString, GraphQLID } = require('graphql')
+const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql')
 
 const args = {
-	chatId: { type: GraphQLString },
-	text: { type: GraphQLString },
-	image: { type: GraphQLString },
+	chatId: { type: GraphQLNonNull(GraphQLID) },
+	text: { type: GraphQLNonNull(GraphQLString) },
+	image: { type: GraphQLNonNull(GraphQLString) },
 }
 
 const resolve = async (_, args, req) => {
