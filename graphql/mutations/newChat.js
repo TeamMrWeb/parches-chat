@@ -1,7 +1,7 @@
 /**
  * @file Contains chat create mutation.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -16,7 +16,7 @@ const {
 } = require('graphql')
 
 const args = {
-	name: { type: GraphQLNonNull(GraphQLString) },
+	name: { type: new GraphQLNonNull(GraphQLString) },
 	users: { type: new GraphQLList(GraphQLID) },
 }
 

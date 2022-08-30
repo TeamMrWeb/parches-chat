@@ -1,7 +1,7 @@
 /**
  * @file Contains chat mutation.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
@@ -11,9 +11,9 @@ const { MessageType } = require('../types')
 const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql')
 
 const args = {
-	chatId: { type: GraphQLNonNull(GraphQLID) },
-	text: { type: GraphQLNonNull(GraphQLString) },
-	image: { type: GraphQLNonNull(GraphQLString) },
+	chatId: { type: new GraphQLNonNull(GraphQLID) },
+	text: { type: new GraphQLNonNull(GraphQLString) },
+	image: { type: new GraphQLNonNull(GraphQLString) },
 }
 
 const resolve = async (_, args, req) => {

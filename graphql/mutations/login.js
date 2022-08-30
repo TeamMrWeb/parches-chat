@@ -1,7 +1,7 @@
 /**
  * @file Contains login mutation.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -10,8 +10,8 @@ const { findOne } = require('../../controllers/userController')
 const { createToken } = require('../../utils/auth')
 
 const args = {
-	email: { type: GraphQLNonNull(GraphQLString) },
-	password: { type: GraphQLNonNull(GraphQLString) },
+	email: { type: new GraphQLNonNull(GraphQLString) },
+	password: { type: new GraphQLNonNull(GraphQLString) },
 }
 
 const resolve = async (_, args) => {
