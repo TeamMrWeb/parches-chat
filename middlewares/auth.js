@@ -1,7 +1,7 @@
 /**
  * @file Contains authentification middleware.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -17,13 +17,12 @@ const { SECRET } = require('../config').JWT
  */
 const authenticate = (req, _, next) => {
 	const token = req.headers.auth
-	if (!token) token = ''
 	try {
 		const decoded = jwt.verify(token, SECRET)
 		req.user = decoded.user
 		next()
 	} catch (err) {
-		console.error(err)
+		console.error(`${err.message} in ${req.originalUrl} from ${req.ip}`)
 		next()
 	}
 }
