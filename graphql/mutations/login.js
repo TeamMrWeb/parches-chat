@@ -1,7 +1,7 @@
 /**
  * @file Contains login mutation.
  * @author Manuel Cabral
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -16,7 +16,7 @@ const args = {
 }
 
 /**
- *
+ * Resolve a user login.
  * @param {Object} _ - Parent object, not used in this case.
  * @param {Object} args - Arguments passed to the mutation.
  * @returns {String} - A token.
@@ -32,6 +32,7 @@ const resolve = async (_, args) => {
 	})
 }
 
+// mutation object
 const login = {
 	type: GraphQLString,
 	description: 'Login a user',

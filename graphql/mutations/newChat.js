@@ -1,7 +1,7 @@
 /**
  * @file Contains chat create mutation.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
@@ -15,11 +15,18 @@ const {
 	GraphQLList,
 } = require('graphql')
 
+// arguments object
 const args = {
 	name: { type: new GraphQLNonNull(GraphQLString) },
 	users: { type: new GraphQLList(GraphQLID) },
 }
 
+/**
+ * Resolve a new chat.
+ * @param {Object} _ - Parent object, not used in this case.
+ * @param {Object} args - Arguments passed to the mutation.
+ * @returns {Object} - A chat object type.
+ */
 const resolve = async (_, args) => {
 	const users = await findMany(args.users)
 	if (!users) throw new Error('Invalid users')
@@ -27,6 +34,7 @@ const resolve = async (_, args) => {
 	return await createChat(args)
 }
 
+// mutation object
 const newChat = {
 	type: ChatType,
 	description: 'Create a new chat',
