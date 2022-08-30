@@ -8,6 +8,7 @@ module.exports = {
 	hello: require('./queries/hello'),
 	users: require('./queries/users'),
 	user: require('./queries/user'),
+	findMessages: require('./queries/findMessages'),
 	chat: require('./queries/chat'),
 	chats: require('./queries/chats'),
 }
