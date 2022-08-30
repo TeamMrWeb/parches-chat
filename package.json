@@ -24,11 +24,12 @@
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-        "/node_modules/"
+      "/node_modules/"
     ]
   },
   "homepage": "https://github.com/TeamParches/parches-chat#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-graphql": "^0.12.0",

@@ -1,10 +1,11 @@
 /**
  * @file Contains all backend things for parches-chat application.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
+const cors = require('cors')
 const express = require('express')
 const graphqlHTTP = require('express-graphql').graphqlHTTP
 const authenticate = require('./middlewares/auth')
@@ -15,6 +16,7 @@ const app = express()
 
 // middlewares
 app.use(authenticate)
+app.use(cors())
 
 // routes
 app.get('/', (_, res) => {
