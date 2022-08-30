@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -17,7 +17,7 @@ const { ToObjectId } = require('../utils/cast')
 const createChat = async (data, save = true) => {
 	const newChat = new Chat(data)
 	if (save) await newChat.save()
-	return (await newChat.populate('users')).populate('messages')
+	return newChat
 }
 
 /**
