@@ -22,7 +22,7 @@ const authenticate = (req, _, next) => {
 		req.user = decoded.user
 		next()
 	} catch (err) {
-		console.error(`${err.message} in ${req.originalUrl} from ${req.ip}`)
+		console.log(`${err.message} in ${req.originalUrl} from ${req.ip}`)
 		next()
 	}
 }
