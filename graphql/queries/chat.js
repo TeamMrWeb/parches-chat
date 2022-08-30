@@ -7,26 +7,30 @@
 // required modules
 const { GraphQLID, GraphQLString, GraphQLList } = require('graphql')
 const { ChatType } = require('../types')
-const { findOne } = require('../../controllers/chatController')
+const { findById } = require('../../controllers/chatController')
 
 const args = {
-	through: {
-		type: GraphQLString,
-		description: 'Field to search through',
-	},
-	values: {
-		type: new GraphQLList(GraphQLID),
-		description: 'Values to search for',
+	id: {
+		type: GraphQLID,
+		description: 'The id of the chat.',
 	},
 }
 
+/**
+ * Find a chat by id.
+ * @param {Object} _ - The parent object. Not used.
+ * @param {Object} args - The arguments passed to the query.
+ * @returns {Object} The chat object.
+ */
 const resolve = async (_, args) => {
-	return await findOne(args)
+	const chat = await findById(args.id)
+	if (!chat) throw new Error('Chat not found.')
+	return chat
 }
 
 const chat = {
 	type: ChatType,
-	description: 'Get a chat by id, name or users',
+	description: 'Get a chat by id',
 	args,
 	resolve,
 }
