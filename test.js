@@ -10,7 +10,7 @@ const requestWithSupertest = supertest(app)
 describe('GET GraphQL/query/hello', () => {
 	it('should return a Hello World!', async () => {
 		const response = await requestWithSupertest.get('/graphql?query={hello}')
-		expect(response.body.data.hello).toBe('Hello World!')
+		expect(response.body.data.hello).toBe('Hello World')
 	})
 })
 
