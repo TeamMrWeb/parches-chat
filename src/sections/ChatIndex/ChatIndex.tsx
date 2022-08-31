@@ -1,8 +1,8 @@
 import { useRef } from "react"
-import Chat from "../../components/Chat/Chat"
+import { useSwipe } from "../../hooks/useSwipe"
 import Friends from "../../components/Friends/Friends"
 import Groups from "../../components/Groups/Groups"
-import { useSwipe } from "../../hooks/useSwipe"
+import Chat from "../../components/Chat/Chat"
 
 export default function ChatIndex() {
   const chatContainer = useRef()
@@ -10,14 +10,9 @@ export default function ChatIndex() {
 
   return (
     <section className="chat-index" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-      {/* <div className="cosa" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}> */}
       <Groups />
       <Friends />
-      {/* </div> */}
-      {/* <div className="cosa" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}> */}
-
       <Chat chatContainer={chatContainer} />
-      {/* </div> */}
     </section>
   )
 }
