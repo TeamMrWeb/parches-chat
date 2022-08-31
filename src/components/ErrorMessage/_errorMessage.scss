@@ -1,0 +1,42 @@
+.error {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 300px;
+  height: max-content;
+  padding: 20px;
+  box-sizing: border-box;
+  color: $whiteColor;
+  border: 2px solid $primaryColorLight;
+  border-radius: 10px;
+  .error__icon {
+    width: 30px;
+    height: 30px;
+  }
+  .error__icon--danger {
+  }
+  .error-message {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    max-width: 170px;
+    height: 100%;
+    .error-message__title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .error-message__description {
+      word-wrap: break-word;
+    }
+  }
+  .error__icon--close {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    &:hover {
+    }
+  }
+}

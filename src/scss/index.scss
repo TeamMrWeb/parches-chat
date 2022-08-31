@@ -21,6 +21,7 @@ html {
     #root {
       height: 100%;
       .App {
+        position: relative;
         & * p,
         ul {
           list-style: none;
@@ -39,3 +40,4 @@ html {
 @import "../components/Button/button";
 @import "../components/Form/form";
 @import "../components/AccountQuestion/accountQuestion";
+@import "../components/ErrorMessage/errorMessage";

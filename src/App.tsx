@@ -1,12 +1,17 @@
+import { useState } from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage"
 
 import Login from "./sections/Login/Login"
 import NotFound from "./sections/NotFound/NotFound"
 import Register from "./sections/Register/Register"
 
 function App() {
+  const [error, setError] = useState(false)
+
   return (
     <div className="App">
+      {error && <ErrorMessage setError={setError} />}
       <BrowserRouter>
         <Routes>
           <Route path="/accounts/*">

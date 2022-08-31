@@ -53,6 +53,9 @@ html body {
 html body #root {
   height: 100%;
 }
+html body #root .App {
+  position: relative;
+}
 html body #root .App * p,
 html body #root .App ul {
   list-style: none;
@@ -317,4 +320,45 @@ html body #root .App ul {
 }
 .account-question .account-question__link:hover {
   text-decoration: underline;
+}
+
+.error {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 300px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #ffffff;
+  border: 2px solid #333641;
+  border-radius: 10px;
+}
+.error .error__icon {
+  width: 30px;
+  height: 30px;
+}
+.error .error-message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: 170px;
+  height: 100%;
+}
+.error .error-message .error-message__title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.error .error-message .error-message__description {
+  word-wrap: break-word;
+}
+.error .error__icon--close {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
 }/*# sourceMappingURL=index.css.map */
