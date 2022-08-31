@@ -1,4 +1,3 @@
-import Form from "../../components/Form/Form"
 import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
 import FormGroupInput from "../../components/FormGroupInput/FormGroupInput"
 import AccountQuestion from "../../components/AccountQuestion/AccountQuestion"
@@ -20,7 +19,7 @@ export default function Login() {
           <FormGroupInput type="email" label="Correo electrónico" placeholder="example@gmail.com" required={true} />
           <FormGroupInput type="password" label="Contraseña" placeholder="example196" minLength={4} maxLength={15} required={true} />
           <input className="form__submit" type="submit" value="Ingresar" />
-          <AccountQuestion question="¿No estas registrado?" href="http://localhost:3000/accounts/register" hrefText="Registrarse" />
+          <AccountQuestion question="¿No estas registrado?" href="/accounts/register" hrefText="Registrarse" />
         </form>
       </div>
       <ViewRepository />

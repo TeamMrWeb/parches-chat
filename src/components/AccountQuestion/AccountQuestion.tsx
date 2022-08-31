@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 interface AccountQuestion {
   question: string
   href: string
@@ -8,9 +10,9 @@ export default function AccountQuestion({ question, href, hrefText }: AccountQue
   return (
     <div className="account-question">
       <p className="account-question__text">{question}</p>
-      <a className="account-question__link" href={href}>
+      <Link className="account-question__link" to={href}>
         {hrefText}
-      </a>
+      </Link>
     </div>
   )
 }

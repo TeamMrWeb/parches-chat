@@ -2,7 +2,6 @@ import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
 import AccountQuestion from "../../components/AccountQuestion/AccountQuestion"
 import { useSubmitForm } from "../../hooks/useSubmitForm"
 import FormGroupInput from "../../components/FormGroupInput/FormGroupInput"
-import { FormEventHandler } from "react"
 import ViewRepository from "../../components/ViewRepository/ViewRepository"
 
 export default function Register() {
@@ -21,7 +20,7 @@ export default function Register() {
           <FormGroupInput type="email" label="Correo electrónico" placeholder="example@gmail.com" required={true} />
           <FormGroupInput type="password" label="Contraseña" placeholder="example196" minLength={4} maxLength={15} required={true} />
           <input className="form__submit" type="submit" value="Registrar cuenta" />
-          <AccountQuestion question="¿Ya tienes una cuenta?" href="http://localhost:3000/accounts/login" hrefText="Ingresar" />
+          <AccountQuestion question="¿Ya tienes una cuenta?" href="/accounts/login" hrefText="Ingresar" />
         </form>
       </div>
       <ViewRepository />
