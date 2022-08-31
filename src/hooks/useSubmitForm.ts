@@ -38,17 +38,17 @@ export const useSubmitForm = () => {
         })
         .catch(err => {
           console.log(err)
-          dispatch(createError({ title: "Error de registro", description: err.message, visible: true }))
+          dispatch(createError({ title: "Error de Registro", description: err.message, visible: true }))
         })
     } else {
       login({ variables: { email, password } })
         .then(res => {
           const authToken = res.data.login
-          console.log("sosbuenhombre")
           localStorage.setItem("auth", authToken)
         })
         .catch(err => {
-          throw new Error(err)
+          console.log(err)
+          dispatch(createError({ title: "Error de Ingreso", description: err.message, visible: true }))
         })
     }
   }
