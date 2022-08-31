@@ -1,5 +1,4 @@
 import friendImage from "../../assets/icons/friend-image.svg"
-
 export default function Friends() {
   return (
     <section className="friends">

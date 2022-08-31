@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 70px;
+  min-width: 70px;
   background-color: $primaryColorDark;
   padding-top: 10px;
   .groups-list {

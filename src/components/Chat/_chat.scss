@@ -1,6 +1,8 @@
 .chat {
-  width: 100%;
-  max-width: 80px;
+  width: 100vw;
+  max-width: 800px;
+  height: 100%;
   background-color: aqua;
-  display: none;
+  position: relative;
+  z-index: 10;
 }

@@ -67,6 +67,19 @@ html body #root .App ul {
   display: flex;
   width: 100%;
   height: 100vh;
+  position: relative;
+}
+.chat-index .cosa {
+  display: flex;
+}
+.chat-index .chat-container {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  transition: all 2s;
+}
+.chat-index .chat-container.expanded {
+  position: fixed;
 }
 
 .register {
@@ -359,6 +372,7 @@ html body #root .App ul {
 .friends {
   width: 100vw;
   max-width: 340px;
+  min-width: 270px;
   background-color: #2a2c37;
   padding-left: 20px;
   box-sizing: border-box;
@@ -383,7 +397,7 @@ html body #root .App ul {
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 70px;
+  min-width: 70px;
   background-color: #22252c;
   padding-top: 10px;
 }
@@ -419,10 +433,12 @@ html body #root .App ul {
 }
 
 .chat {
-  width: 100%;
-  max-width: 80px;
+  width: 100vw;
+  max-width: 800px;
+  height: 100%;
   background-color: aqua;
-  display: none;
+  position: relative;
+  z-index: 10;
 }
 
 .form {
