@@ -133,19 +133,6 @@ html body #root .App ul {
     font-size: 16px;
   }
 }
-.login .content__repository {
-  position: relative;
-  top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #ffffff;
-}
-.login .content__repository:hover {
-  color: #dd4ec6;
-}
 
 .register {
   display: flex;
@@ -217,6 +204,7 @@ html body #root .App ul {
     font-size: 16px;
   }
 }
+
 .not-found {
   display: flex;
   flex-direction: column;
@@ -361,4 +349,17 @@ html body #root .App ul {
   cursor: pointer;
   width: 20px;
   height: 20px;
+}
+.view-repository {
+  position: relative;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+.view-repository:hover {
+  color: #dd4ec6;
 }/*# sourceMappingURL=index.css.map */

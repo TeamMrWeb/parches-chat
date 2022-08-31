@@ -1,9 +1,9 @@
 import Form from "../../components/Form/Form"
 import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
-import githubIcon from "../../assets/icons/github-icon.svg"
 import FormGroupInput from "../../components/FormGroupInput/FormGroupInput"
 import AccountQuestion from "../../components/AccountQuestion/AccountQuestion"
 import { useSubmitForm } from "../../hooks/useSubmitForm"
+import ViewRepository from "../../components/ViewRepository/ViewRepository"
 
 export default function Login() {
   const { handleSubmit } = useSubmitForm()
@@ -23,9 +23,7 @@ export default function Login() {
           <AccountQuestion question="¿No estas registrado?" href="http://localhost:3000/accounts/register" hrefText="Registrarse" />
         </form>
       </div>
-      <a className="content__repository" href="https://github.com/teamparches/parches-chat" target="_blank">
-        Ver repositorio <img src={githubIcon} alt="Ícono de Github" />
-      </a>
+      <ViewRepository />
     </section>
   )
 }
