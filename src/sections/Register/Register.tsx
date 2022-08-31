@@ -17,7 +17,7 @@ export default function Register() {
           <p className="content__description">Registra tu cuenta</p>
         </header>
         <form className="form" onSubmit={e => handleSubmit(e, "register", "/chat")}>
-          <FormGroupInput type="name" label="Nombre de usuario" placeholder="example" required={true} />
+          <FormGroupInput type="username" label="Nombre de usuario" placeholder="example" required={true} />
           <FormGroupInput type="email" label="Correo electrónico" placeholder="example@gmail.com" required={true} />
           <FormGroupInput type="password" label="Contraseña" placeholder="example196" minLength={4} maxLength={15} required={true} />
           <input className="form__submit" type="submit" value="Registrar cuenta" />

@@ -1,25 +1,54 @@
 import { ApolloClient, gql, useMutation } from "@apollo/client"
+import { addPath } from "graphql/jsutils/Path"
 
 const userRegister = gql`
-  mutation {
-    register(username: "puto", email: "puto@hotmail.com", password: "puto")
+  mutation registerUser($username: String!, $email: String!, $password: String!) {
+    register(username: $username, email: $email, password: $password)
+  }
+`
+
+const userLogin = gql`
+  mutation LoginUser($email: String!, $password: String!) {
+    login(email: $email, password: $password)
   }
 `
 
 export const useSubmitForm = () => {
-  const [RegisterUser] = useMutation(userRegister)
+  const [register] = useMutation(userRegister)
+  const [login] = useMutation(userLogin)
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: string, redirecturl: string) => {
     e.preventDefault()
-    const formArray = Array.from(e.currentTarget.elements as HTMLFormControlsCollection)
-    const inputsValues = formArray.map(element => (element as HTMLInputElement).value).slice(0, -1)
-    const [username, email, password] = inputsValues
-    console.log(username, email, password)
+    const formInputsElements = e.currentTarget.elements as HTMLFormControlsCollection
+    const inputsArray = Object.values(formInputsElements).slice(0, -1)
+    let userData = {}
+    inputsArray.forEach(elem => {
+      Object.assign(userData, { [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value })
+    })
+    const { username, email, password } = userData as any
+    console.log(username, email, password, inputsArray)
 
-    RegisterUser().then(res => console.log(res))
+    if (type === "register") {
+      register({ variables: { username, email, password } })
+        .then(res => {
+          const authToken = res.data.register
+          localStorage.setItem("auth", authToken)
+        })
+        .catch(err => {
+          throw new Error(err)
+        })
+    } else {
+      login({ variables: { email, password } })
+        .then(res => {
+          const authToken = res.data.login
+          console.log("sosbuenhombre")
+          localStorage.setItem("auth", authToken)
+        })
+        .catch(err => {
+          throw new Error(err)
+        })
+    }
 
-    //dependiendo de la id del form, hacer el graphql hacia donde diga
     // setForm({ ...form, email, password })
-    //graphql = "regisstro/manu".then( response ) mostrar la reponse
   }
 
   return { handleSubmit }
