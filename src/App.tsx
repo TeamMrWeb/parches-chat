@@ -4,6 +4,7 @@ import ErrorMessage from "./components/ErrorMessage/ErrorMessage"
 import NotFound from "./sections/NotFound/NotFound"
 import Register from "./sections/Register/Register"
 import Login from "./sections/Login/Login"
+import ChatIndex from "./sections/ChatIndex/ChatIndex"
 
 function App() {
   const errorMessage = useSelector((state: any) => state.errorMessage)
@@ -19,7 +20,7 @@ function App() {
           </Route>
           <Route path="/login" element={<Navigate to="/accounts/login" />} />
           <Route path="/register" element={<Navigate to="/accounts/register" />} />
-          {/* <Route path="/chat" element={<Chat />} /> */}
+          <Route path="/chat" element={<ChatIndex />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

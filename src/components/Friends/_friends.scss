@@ -1,0 +1,26 @@
+.friends {
+  width: 100vw;
+  max-width: 340px;
+  background-color: $secundaryColor;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: $whiteColor;
+  .friends__title {
+  }
+  .friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .friend {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .friend__image {
+      }
+      .friend__username {
+        font-size: 16px;
+        color: $textGrayColor;
+      }
+    }
+  }
+}

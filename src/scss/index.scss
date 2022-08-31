@@ -33,12 +33,19 @@ html {
   }
 }
 
-@import "../sections/Login/login";
+//sections
+@import "../sections/ChatIndex/chatIndex";
 @import "../sections/Register/register";
 @import "../sections/NotFound/notFound";
-@import "../components/FormGroupInput/formGroupInput";
-@import "../components/Button/button";
-@import "../components/Form/form";
+@import "../sections/Login/login";
+
+//components
 @import "../components/AccountQuestion/accountQuestion";
-@import "../components/ErrorMessage/errorMessage";
+@import "../components/FormGroupInput/formGroupInput";
 @import "../components/ViewRepository/viewRepository";
+@import "../components/ErrorMessage/errorMessage";
+@import "../components/Friends/friends";
+@import "../components/Groups/groups";
+@import "../components/Button/button";
+@import "../components/Chat/chat";
+@import "../components/Form/form";
