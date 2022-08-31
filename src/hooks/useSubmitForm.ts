@@ -1,5 +1,4 @@
-import { ApolloClient, gql, useMutation } from "@apollo/client"
-import { addPath } from "graphql/jsutils/Path"
+import { gql, useMutation } from "@apollo/client"
 import { useDispatch } from "react-redux"
 import { createError } from "../slicers/errorMessageSlice"
 
@@ -34,12 +33,11 @@ export const useSubmitForm = () => {
     if (type === "register") {
       register({ variables: { username, email, password } })
         .then(res => {
-          throw new Error("puto")
-          // const authToken = res.data.register
-          // localStorage.setItem("auth", authToken)
+          const authToken = res.data.register
+          localStorage.setItem("auth", authToken)
         })
         .catch(err => {
-          console.log("mamuzca", err)
+          console.log(err)
           dispatch(createError({ title: "Error de registro", description: err.message, visible: true }))
         })
     } else {

@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { closeError } from "../../slicers/errorMessageSlice"
 import closeIcon from "../../assets/icons/close-icon.svg"
 import errorIcon from "../../assets/icons/error-icon.svg"
-import { closeError } from "../../slicers/errorMessageSlice"
 
 export default function ErrorMessage() {
   const errorMessage = useSelector((state: any) => state.errorMessage)
