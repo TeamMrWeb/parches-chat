@@ -2,6 +2,8 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
 import "./scss/index.css"
+import { store } from "./store/store"
+import { Provider } from "react-redux"
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client"
 
 const auth = localStorage.getItem("auth")
@@ -16,9 +18,11 @@ const client = new ApolloClient({
 })
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  // <React.StrictMode>
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </Provider>
+  </React.StrictMode>
 )

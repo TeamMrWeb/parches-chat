@@ -13,7 +13,7 @@ export default function Login() {
         <header className="header">
           <img className="content__image" src={parchesChatIcon} alt="Ícono de Parches Chat" />
           <h1 className="content__title">Parches Chat</h1>
-          <p className="content__description">Agrega a tus amigos, envía mensajes, crea o únete a un grupo, y mucho más!</p>
+          <p className="content__description">¡Ingresa con tu cuenta y comienza a chatear!</p>
         </header>
         <form className="form" onSubmit={e => handleSubmit(e, "login", "/chat")}>
           <FormGroupInput type="email" label="Correo electrónico" placeholder="example@gmail.com" required={true} />

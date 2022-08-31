@@ -1,16 +1,24 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage"
 import Login from "./sections/Login/Login"
 import NotFound from "./sections/NotFound/NotFound"
 import Register from "./sections/Register/Register"
 
-function App() {
-  const [error, setError] = useState(false)
+interface errorMessage {
+  title: string
+  description: string
+  visible: boolean
+}
 
+function App() {
+  // const [error, setError] = useState(false)
+  const errorMessage = useSelector((state: any) => state.errorMessage)
+  console.log(errorMessage)
   return (
     <div className="App">
-      {error && <ErrorMessage setError={setError} />}
+      {errorMessage.visible && <ErrorMessage />}
       <BrowserRouter>
         <Routes>
           <Route path="/accounts/*">

@@ -325,6 +325,8 @@ html body #root .App ul {
   color: #ffffff;
   border: 2px solid #333641;
   border-radius: 10px;
+  -webkit-animation: appear 1s, disappear 1s linear 9.5s;
+          animation: appear 1s, disappear 1s linear 9.5s;
 }
 .error .error__icon {
   width: 30px;
@@ -349,6 +351,40 @@ html body #root .App ul {
   cursor: pointer;
   width: 20px;
   height: 20px;
+}
+
+@-webkit-keyframes appear {
+  0% {
+    right: -1000px;
+  }
+  100% {
+    right: 20px;
+  }
+}
+
+@keyframes appear {
+  0% {
+    right: -1000px;
+  }
+  100% {
+    right: 20px;
+  }
+}
+@-webkit-keyframes disappear {
+  0% {
+    right: 20px;
+  }
+  100% {
+    right: -2000px;
+  }
+}
+@keyframes disappear {
+  0% {
+    right: 20px;
+  }
+  100% {
+    right: -2000px;
+  }
 }
 .view-repository {
   position: relative;

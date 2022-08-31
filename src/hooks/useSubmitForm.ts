@@ -1,5 +1,7 @@
 import { ApolloClient, gql, useMutation } from "@apollo/client"
 import { addPath } from "graphql/jsutils/Path"
+import { useDispatch } from "react-redux"
+import { createError } from "../slicers/errorMessageSlice"
 
 const userRegister = gql`
   mutation registerUser($username: String!, $email: String!, $password: String!) {
@@ -16,6 +18,8 @@ const userLogin = gql`
 export const useSubmitForm = () => {
   const [register] = useMutation(userRegister)
   const [login] = useMutation(userLogin)
+  const dispatch = useDispatch()
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: string, redirecturl: string) => {
     e.preventDefault()
     const formInputsElements = e.currentTarget.elements as HTMLFormControlsCollection
@@ -30,11 +34,13 @@ export const useSubmitForm = () => {
     if (type === "register") {
       register({ variables: { username, email, password } })
         .then(res => {
-          const authToken = res.data.register
-          localStorage.setItem("auth", authToken)
+          throw new Error("puto")
+          // const authToken = res.data.register
+          // localStorage.setItem("auth", authToken)
         })
         .catch(err => {
-          throw new Error(err)
+          console.log("mamuzca", err)
+          dispatch(createError({ title: "Error de registro", description: err.message, visible: true }))
         })
     } else {
       login({ variables: { email, password } })
@@ -47,8 +53,6 @@ export const useSubmitForm = () => {
           throw new Error(err)
         })
     }
-
-    // setForm({ ...form, email, password })
   }
 
   return { handleSubmit }
