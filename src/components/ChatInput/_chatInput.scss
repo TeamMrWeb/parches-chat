@@ -1,24 +1,29 @@
 .chat-input {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  width: 100%;
-  height: 60px;
-  background-color: $secundaryColor;
-  .chat-input__insert-image {
-  }
-  .chat-input__input {
-    margin-right: 70px;
-    outline: none;
-    border: none;
-    background-color: transparent;
-    color: $whiteColor;
-    &::placeholder {
-      color: $textGrayColor;
+  background-color: $primaryColor;
+  height: 100%;
+  padding: 0px 50px;
+  padding-bottom: 10px;
+  max-height: 50px;
+  .chat-input-wrapper {
+    display: grid;
+    grid-template-columns: 40px auto 40px;
+    grid-template-rows: 50px;
+    align-items: center;
+    background-color: $secundaryColor;
+    border-radius: 10px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    .chat-input__tool {
+      cursor: pointer;
     }
-  }
-  .chat-input__emoji-image {
+    .chat-input__input {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      color: $whiteColor;
+      &::placeholder {
+        color: $textGrayColor;
+      }
+    }
   }
 }
