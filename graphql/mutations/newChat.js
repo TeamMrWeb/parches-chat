@@ -1,7 +1,7 @@
 /**
  * @file Contains chat create mutation.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
@@ -13,6 +13,7 @@ const {
 	GraphQLString,
 	GraphQLID,
 	GraphQLList,
+	GraphQLBoolean,
 } = require('graphql')
 
 // arguments object
@@ -25,6 +26,10 @@ const args = {
 		type: new GraphQLNonNull(new GraphQLList(GraphQLID)),
 		description: 'The id of the users of the chat.',
 	},
+	secure: {
+		type: GraphQLBoolean,
+		description: 'If the chat is secure'
+	}
 }
 
 /**
@@ -52,6 +57,8 @@ const resolve = async (_, args, context) => {
 		messages: [],
 		admins: isGroup ? [author.id] : [],
 		users: args.usersId,
+		secure: args.secure,
+		ownerId: args.secure && isGroup ? author.id : null
 	})
 }
 
