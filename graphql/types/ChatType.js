@@ -1,7 +1,7 @@
 /**
  * @file Contains chat type.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
