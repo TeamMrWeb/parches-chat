@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL queries exports.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 module.exports = {
@@ -11,4 +11,5 @@ module.exports = {
 	findMessages: require('./queries/findMessages'),
 	chat: require('./queries/chat'),
 	chats: require('./queries/chats'),
+	getAllChats: require('./queries/getAllChats'),
 }

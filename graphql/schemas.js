@@ -1,15 +1,25 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
 const { GraphQLSchema, GraphQLObjectType } = require('graphql')
 
 // required queries
-const { hello, users, user, chat, chats, findMessages } = require('./queries')
+const {
+	hello,
+	users,
+	user,
+	chat,
+	chats,
+	findMessages,
+	getAllChats,
+} = require('./queries')
+
 const { register, login, newMessage, newChat } = require('./mutations')
+
 // setting up
 const QueryType = new GraphQLObjectType({
 	name: 'QueryType',
@@ -21,6 +31,7 @@ const QueryType = new GraphQLObjectType({
 		findMessages,
 		chat,
 		chats,
+		getAllChats,
 	},
 })
 
