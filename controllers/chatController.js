@@ -43,6 +43,28 @@ const findOne = async (query) => {
 const findAll = async () => await Chat.find()
 
 /**
+ * Find all chats by user id.
+ * @param {String} userId - The id of the user.
+ * @param {Object} options - The options to find the chats.
+ * @returns {Array} The chats found.
+ */
+const findAllChatsByUser = async (userId, options) => {
+	const { limit, skip, after, before, isGroup } = options
+	/**
+	 * @todo
+	 * Finish after and before options. This params depends on the frontend.
+	 */
+	const chats = await Chat.find({
+		users: { $in: [userId] },
+		isGroup,
+		//createdAt: { $gt: after, $lt: before },
+	})
+		.skip(skip)
+		.limit(limit)
+	return chats
+}
+
+/**
  * Find a chat by its id.
  * @param {String} id - The id of the chat to find.
  * @returns {Object} The chat found, or null if not found.
@@ -69,5 +91,6 @@ module.exports = {
 	findById,
 	findOne,
 	findAll,
+	findAllChatsByUser,
 	addMessage,
 }
