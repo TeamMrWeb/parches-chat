@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -15,7 +15,6 @@ const { ObjectId } = require('mongoose').Types
  * @returns
  */
 const createMessage = async (data, save = true) => {
-	data.authorId = ToObjectId(data.authorId)
 	const newMessage = new Message(data)
 	if (save) await newMessage.save()
 	return newMessage
