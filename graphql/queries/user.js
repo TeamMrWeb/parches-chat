@@ -5,7 +5,7 @@
  */
 
 // required modules
-const { GraphQLID, GraphQLString } = require('graphql')
+const { GraphQLID } = require('graphql')
 const { UserType } = require('../types')
 const { findOne } = require('../../controllers/userController')
 
