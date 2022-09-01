@@ -26,3 +26,25 @@ mutation{
     id
   } 
 }
+
+"""
+Gets all chats from a user with all messages
+"""
+query{
+    getAllChats(
+        isGroup:true
+    ) {
+        id
+        name
+        users {
+            id
+            username
+        }
+        messages (
+            skip:0
+            limit:10, 
+        ) {
+            text
+        }
+    }
+}
