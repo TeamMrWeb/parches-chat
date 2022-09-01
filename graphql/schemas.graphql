@@ -9,6 +9,7 @@ directive @specifiedBy(
   url: String!
 ) on SCALAR
 
+"""The chat type."""
 type ChatType {
   """The id of the chat."""
   id: ID
@@ -25,8 +26,17 @@ type ChatType {
   """The users of the chat."""
   users: [UserType]
 
-  """The messages of the chat."""
-  messages: [MessageType]
+  """The messages query."""
+  messages(
+    """The ids of the messages."""
+    ids: [Int]
+
+    """The limit of messages to return."""
+    limit: Int!
+
+    """The number of messages to skip."""
+    skip: Int!
+  ): [MessageType]
 
   """The date of the last update."""
   updatedAt: String
@@ -35,6 +45,7 @@ type ChatType {
   createdAt: String
 }
 
+"""The message type."""
 type MessageType {
   """The id of the message."""
   id: ID
@@ -76,6 +87,9 @@ type MutationType {
 
     """The id of the users of the chat."""
     usersId: [ID]!
+
+    """If the chat is secure"""
+    secure: Boolean
   ): ChatType
 
   """Create a new message"""
@@ -87,7 +101,7 @@ type MutationType {
     text: String!
 
     """The image of the message."""
-    image: String!
+    image: String
   ): MessageType
 }
 
@@ -108,19 +122,50 @@ type QueryType {
     through: ID
   ): UserType
 
-  """Get a chat by id, name or users"""
-  chat(
-    """Field to search through"""
-    through: String
+  """The messages query."""
+  findMessages(
+    """The ids of the messages."""
+    ids: [Int]
 
-    """Values to search for"""
-    values: [ID]
+    """The limit of messages to return."""
+    limit: Int!
+
+    """The number of messages to skip."""
+    skip: Int!
+  ): [MessageType]
+
+  """Get a chat by id"""
+  chat(
+    """The id of the chat."""
+    id: ID
   ): ChatType
 
   """List of all chats"""
   chats: [ChatType]
+
+  """Get all chats, from the current user."""
+  getAllChats(
+    """The id of the user to get the chats from."""
+    userId: ID
+
+    """The limit of chats to return."""
+    limit: Int
+
+    """The number of chats to skip."""
+    skip: Int
+
+    """The date to get the chats before."""
+    before: String
+
+    """The date to get the chats after."""
+    after: String
+
+    """If the chat is a group chat."""
+    isGroup: Boolean
+  ): [ChatType]
 }
 
+"""The user type."""
 type UserType {
   """The id of the user."""
   id: ID
@@ -130,6 +175,9 @@ type UserType {
 
   """The email of the user."""
   email: String
+
+  """The status of the user."""
+  status: Int
 
   """The date of the last update."""
   updatedAt: String
