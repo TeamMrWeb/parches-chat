@@ -1,7 +1,7 @@
 /**
  * @file Contains chat mutation.
  * @author Manuel Cabral
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -38,6 +38,8 @@ const resolve = async (_, args, context) => {
 	if (!user) throw new Error('You are not logged in')
 	const chat = await findById(args.chatId)
 	if (!chat) throw new Error('Chat not found')
+	if (args.text.length > 4500) throw new Error('Message too long')
+	if (args.text.length < 1) throw new Error('Message must have a text')
 	const newMessage = await createMessage({
 		text: args.text,
 		image: args.image,
