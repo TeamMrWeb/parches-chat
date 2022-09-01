@@ -1,22 +1,21 @@
 /**
  * @file Contains chat type.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
 const UserType = require('./userType')
-const MessageType = require('./messageType')
 const findMessages = require('../queries/findMessages')
 const findManyUsers = require('../../controllers/userController').findMany
+const findUserById = require('../../controllers/userController').findById
 
 const {
 	GraphQLObjectType,
 	GraphQLID,
 	GraphQLString,
 	GraphQLList,
-	GraphQLBoolean,
-	GraphQLInt,
+	GraphQLBoolean
 } = require('graphql')
 
 const ChatType = new GraphQLObjectType({
@@ -36,9 +35,18 @@ const ChatType = new GraphQLObjectType({
 			description: 'The admins of the chat.',
 			resolve: async (parent) => findManyUsers(parent.admins),
 		},
+		owner: {
+			type: UserType,
+			description: 'The owner of the chat',
+			resolve: async (parent) => findUserById(parent.ownerId)
+		},
 		isGroup: {
 			type: GraphQLBoolean,
 			description: 'If the chat is a group or not.',
+		},
+		secure: {
+			type: GraphQLBoolean,
+			description: 'If the chat is secure'
 		},
 		users: {
 			type: new GraphQLList(UserType),
