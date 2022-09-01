@@ -1,11 +1,16 @@
 /**
  * @file Contains user type.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
-const { GraphQLObjectType, GraphQLID, GraphQLString } = require('graphql')
+const {
+	GraphQLObjectType,
+	GraphQLID,
+	GraphQLString,
+	GraphQLInt,
+} = require('graphql')
 
 const UserType = new GraphQLObjectType({
 	name: 'UserType',
