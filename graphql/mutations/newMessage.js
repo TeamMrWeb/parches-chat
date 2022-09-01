@@ -1,7 +1,7 @@
 /**
  * @file Contains chat mutation.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
@@ -21,7 +21,7 @@ const args = {
 		description: 'The text of the message.',
 	},
 	image: {
-		type: new GraphQLNonNull(GraphQLString),
+		type: GraphQLString,
 		description: 'The image of the message.',
 	},
 }
