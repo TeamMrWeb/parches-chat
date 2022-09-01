@@ -1,7 +1,7 @@
 /**
  * @file Contains the user model.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -32,7 +32,7 @@ const userSchema = new Schema(
 			],
 		},
 		status: {
-			type: Int,
+			type: Number,
 			default: 0,
 			enum: [0, 1, 2, 3], // 0: active, 1: idle, 2: not disturb, 3: offline
 		},
