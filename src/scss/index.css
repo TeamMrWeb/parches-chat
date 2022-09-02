@@ -449,15 +449,6 @@ html body #root .App ul {
   flex-direction: column;
   gap: 20px;
 }
-.friends .friends-list .friend {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.friends .friends-list .friend .friend__username {
-  font-size: 16px;
-  color: #8e9297;
-}
 
 .groups {
   display: flex;
@@ -599,4 +590,25 @@ html body #root .App ul {
 .group__image {
   width: 50px;
   height: 50px;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.friend:hover {
+  background-color: #323346;
+}
+.friend:hover .friend__username {
+  color: #ffffff !important;
+}
+.friend .friend__image {
+  border: 3px solid;
+  border-radius: 100px;
+}
+.friend .friend__username {
+  font-size: 16px;
+  color: #8e9297;
 }/*# sourceMappingURL=index.css.map */

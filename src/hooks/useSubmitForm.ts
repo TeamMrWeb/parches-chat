@@ -28,11 +28,12 @@ export const useSubmitForm = () => {
       Object.assign(userData, { [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value })
     })
     const { username, email, password } = userData as any
-    console.log(username, email, password, inputsArray)
+    console.log({ username, email, password })
 
     if (type === "register") {
       register({ variables: { username, email, password } })
         .then(res => {
+          console.log(res)
           const authToken = res.data.register
           localStorage.setItem("auth", authToken)
         })
