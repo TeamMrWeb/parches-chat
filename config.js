@@ -1,7 +1,7 @@
 /**
  * @file Contains environment variables and some configuration.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 const config = require('dotenv').config
@@ -31,5 +31,12 @@ module.exports = {
 		EXPIRES_IN: process.env.JWT_EXPIRES_IN || '1d',
 		EMAIL_SECRET: process.env.JWT_EMAIL_SECRET || 'emailsecret',
 		EMAIL_EXPIRES_IN: process.env.JWT_EMAIL_EXPIRES_IN || '3600',
+	},
+
+	// email
+	EMAIL: {
+		USER: process.env.EMAIL_USER || 'wow',
+		PASSWORD: process.env.EMAIL_PASS || 'wow123',
+		ADDRESS: process.env.EMAIL || null,
 	},
 }
