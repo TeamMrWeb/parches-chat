@@ -1,6 +1,7 @@
 /**
  * @file Contains message type.
  * @author Manuel Cabral
+ * @contributor Leo Araya
  * @version 0.0.3
  */
 

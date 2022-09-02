@@ -1,6 +1,7 @@
 /**
  * @file Contains chat create mutation.
  * @author Manuel Cabral
+ * @contributor Leo Araya
  * @version 0.0.6
  */
 
