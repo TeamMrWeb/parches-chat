@@ -1,12 +1,13 @@
 /**
  * @file Contains register mutation.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
-const { createUser } = require('../../controllers/userController')
+const { sendEmail } = require('../../utils/email')
 const { createToken } = require('../../utils/auth')
+const { createUser } = require('../../controllers/userController')
 const { GraphQLNonNull, GraphQLString } = require('graphql')
 
 // arguments object
@@ -23,12 +24,35 @@ const args = {
  * @returns {String} - A token.
  */
 const resolve = async (_, args) => {
-	const newUser = await createUser(args, true)
-	return createToken({
-		id: newUser._id,
-		username: newUser.username,
-		email: newUser.email,
-	})
+	const newUser = await createUser(args, false)
+	const token = createToken(
+		{
+			id: newUser._id,
+			username: newUser.username,
+			email: newUser.email,
+		},
+		{ useEmail: true }
+	)
+	/**
+	 * @todo improve better email template
+	 */
+	const textEmail = `\
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="utf-8">
+                <title>Confirmar email</title>
+            </head>
+            <body>
+                <h1>Confirmación de email</h1>
+                <h2>Hola ${newUser.username}</h2>
+                <p>Gracias por registrarte en Parches Chat. Para confirmar tu email, por favor haz click en el siguiente enlace: </p>
+                <a href="http://localhost:3000/confirm/${token}">Confirmar email</a>
+            </body>
+        </html>
+    `
+	await sendEmail(newUser.email, 'Confirmación de email', textEmail)
+	return 'wow'
 }
 
 // mutation object
