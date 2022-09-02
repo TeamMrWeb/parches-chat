@@ -1,7 +1,7 @@
 /**
  * @file Contains message type.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -13,6 +13,8 @@ const {
 	GraphQLBoolean,
 	GraphQLList,
 } = require('graphql')
+
+const { findById } = require('../../controllers/userController')
 
 const MessageType = new GraphQLObjectType({
 	name: 'MessageType',
@@ -33,6 +35,7 @@ const MessageType = new GraphQLObjectType({
 		author: {
 			type: UserType,
 			description: 'Get the author of the message.',
+			resolve: async (parent) => findById(parent.author)
 		},
 		edited: {
 			type: GraphQLBoolean,
