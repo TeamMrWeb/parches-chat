@@ -1,8 +1,7 @@
+import { useChatInfoHeader } from "./useChatInfoHeader"
 import friendImage from "../../assets/icons/friend-image.svg"
 import dotsIcon from "../../assets/icons/dots-icon.svg"
 import backIcon from "../../assets/icons/back-icon.svg"
-import { useSwipe } from "../../hooks/useSwipe"
-import { useChatInfoHeader } from "./useChatInfoHeader"
 
 export default function ChatInfoHeader() {
   const { showChat, setShowChat } = useChatInfoHeader()
