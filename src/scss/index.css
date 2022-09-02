@@ -437,8 +437,8 @@ html body #root .App ul {
 
 .friends {
   width: 100vw;
-  max-width: 340px;
-  min-width: 270px;
+  max-width: 250px;
+  min-width: 200px;
   background-color: #2a2c37;
   padding-left: 20px;
   box-sizing: border-box;
@@ -547,8 +547,9 @@ html body #root .App ul {
   height: 100%;
   background-color: #1c1d22;
   padding: 20px 50px;
+  padding-right: 33px;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 .messages .messages-wrapper {
   display: flex;
