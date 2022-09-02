@@ -15,6 +15,7 @@ export default function ChatInput() {
           className="chat-input__input"
           value={value}
           onChange={e => setValue(e.target.value)}
+          onFocus={() => setShowEmojisPicker(false)}
           type="text"
           placeholder="Enviar mensaje a erickjq10x"
           maxLength={2000}

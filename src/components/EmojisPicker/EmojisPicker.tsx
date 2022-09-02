@@ -5,5 +5,5 @@ export default function EmojisPicker({ setValue }: { setValue: any }) {
     setValue((value: any) => value + emojiObject.emoji)
   }
 
-  return <Picker onEmojiClick={onEmojiClick} />
+  return <Picker onEmojiClick={onEmojiClick} disableAutoFocus={true} preload={true} />
 }

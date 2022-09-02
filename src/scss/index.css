@@ -404,6 +404,7 @@ html body #root .App ul {
   border-radius: 10px;
   padding: 0px 10px;
   box-sizing: border-box;
+  position: relative;
 }
 .chat-input .chat-input-wrapper .chat-input__tool {
   cursor: pointer;
@@ -607,4 +608,48 @@ html body #root .App ul {
 .friend .friend__username {
   font-size: 16px;
   color: #8e9297;
+}
+
+.emoji-picker-react {
+  position: absolute !important;
+  right: 0px;
+  bottom: 55px;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 10px !important;
+  color: #ffffff !important;
+  background-color: #1c1d22;
+}
+.emoji-picker-react .emoji-group::before {
+  background-color: white;
+}
+.emoji-picker-react .emoji-categories {
+  align-items: center;
+}
+.emoji-picker-react .emoji-categories button {
+  background-color: #dd4ec6;
+  border-radius: 20px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.emoji-picker-react .active-category-indicator-wrapper .active-category-indicator {
+  background-color: #8d4fc9;
+}
+.emoji-picker-react .content-wrapper-epr .emoji-scroll-wrapper {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.emoji-picker-react .content-wrapper-epr .emoji-scroll-wrapper .emoji-group::before {
+  background-color: #333641;
+}
+.emoji-picker-react .content-wrapper-epr .emoji-scroll-wrapper .emoji-group .emoji button:hover {
+  background-color: #dd4ec6;
+}
+.emoji-picker-react .emoji-search {
+  background-color: #333641;
+  color: #ffffff;
+}
+.emoji-picker-react > * {
+  background-color: #333641 !important;
 }/*# sourceMappingURL=index.css.map */
