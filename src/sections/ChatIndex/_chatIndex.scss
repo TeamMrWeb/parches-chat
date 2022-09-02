@@ -3,16 +3,5 @@
   width: 100%;
   height: 100vh;
   position: relative;
-  .cosa {
-    display: flex;
-  }
-  .chat-container {
-    position: relative;
-    width: 100vw;
-    height: 100%;
-    transition: all 2s;
-    &.expanded {
-      position: fixed;
-    }
-  }
+  overflow-x: hidden;
 }

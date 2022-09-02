@@ -68,18 +68,7 @@ html body #root .App ul {
   width: 100%;
   height: 100vh;
   position: relative;
-}
-.chat-index .cosa {
-  display: flex;
-}
-.chat-index .chat-container {
-  position: relative;
-  width: 100vw;
-  height: 100%;
-  transition: all 2s;
-}
-.chat-index .chat-container.expanded {
-  position: fixed;
+  overflow-x: hidden;
 }
 
 .register {
@@ -489,6 +478,13 @@ html body #root .App ul {
 .chat-container {
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  transition: all 2s;
+}
+.chat-container.expanded {
+  position: fixed;
 }
 
 .chat {

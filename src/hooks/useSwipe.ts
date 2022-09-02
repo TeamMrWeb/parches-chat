@@ -17,6 +17,7 @@ export const useSwipe = (chatContainer: any) => {
     const distance = touchStart - touchEnd
     const isLeftSwipe = distance > minSwipeDistance
     const isRightSwipe = distance < -minSwipeDistance
+    console.log({ isLeftSwipe, isRightSwipe })
     if (isLeftSwipe) chatContainer.current.className = "chat-container expanded"
     if (isRightSwipe) chatContainer.current.className = "chat-container"
   }
