@@ -8,6 +8,12 @@
   background-color: $secundaryColor;
   padding: 10px 20px;
   box-sizing: border-box;
+  .header__back {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    cursor: pointer;
+  }
   .header__image {
     width: 30px;
     height: 30px;

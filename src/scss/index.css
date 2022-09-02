@@ -293,6 +293,12 @@ html body #root .App ul {
   padding: 10px 20px;
   box-sizing: border-box;
 }
+.chat-header .header__back {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  cursor: pointer;
+}
 .chat-header .header__image {
   width: 30px;
   height: 30px;
