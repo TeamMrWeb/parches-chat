@@ -15,3 +15,10 @@
     position: relative;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .messages {
+    padding: 20px 20px;
+    padding-bottom: 5px;
+  }
+}

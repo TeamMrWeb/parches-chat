@@ -6,7 +6,7 @@
   max-height: 50px;
   .chat-input-wrapper {
     display: grid;
-    grid-template-columns: 40px auto 40px;
+    grid-template-columns: 30px auto 30px;
     grid-template-rows: 50px;
     align-items: center;
     background-color: $secundaryColor;
@@ -16,6 +16,8 @@
     position: relative;
     .chat-input__tool {
       cursor: pointer;
+      width: 25px;
+      height: 25px;
     }
     .chat-input__input {
       outline: none;
@@ -26,5 +28,12 @@
         color: $textGrayColor;
       }
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .chat-input {
+    padding: 0px 20px;
+    padding-bottom: 5px;
   }
 }

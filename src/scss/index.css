@@ -308,8 +308,8 @@ html body #root .App ul {
   font-size: 16px;
 }
 .chat-header .right .header__options {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .error {
@@ -397,7 +397,7 @@ html body #root .App ul {
 }
 .chat-input .chat-input-wrapper {
   display: grid;
-  grid-template-columns: 40px auto 40px;
+  grid-template-columns: 30px auto 30px;
   grid-template-rows: 50px;
   align-items: center;
   background-color: #2a2c37;
@@ -408,6 +408,8 @@ html body #root .App ul {
 }
 .chat-input .chat-input-wrapper .chat-input__tool {
   cursor: pointer;
+  width: 25px;
+  height: 25px;
 }
 .chat-input .chat-input-wrapper .chat-input__input {
   outline: none;
@@ -425,6 +427,12 @@ html body #root .App ul {
   color: #8e9297;
 }
 
+@media screen and (max-width: 600px) {
+  .chat-input {
+    padding: 0px 20px;
+    padding-bottom: 5px;
+  }
+}
 .friends {
   width: 100vw;
   max-width: 250px;
@@ -546,6 +554,12 @@ html body #root .App ul {
   position: relative;
 }
 
+@media screen and (max-width: 600px) {
+  .messages {
+    padding: 20px 20px;
+    padding-bottom: 5px;
+  }
+}
 .message-container {
   position: relative;
   border-radius: 10px;
@@ -584,6 +598,17 @@ html body #root .App ul {
   bottom: 4px;
 }
 
+@media screen and (max-width: 600px) {
+  .message-container .message {
+    max-width: 70%;
+  }
+  .message-container .message .message__text {
+    font-size: 15px;
+  }
+  .message-container .message .message__hour {
+    font-size: 10px;
+  }
+}
 .group__image {
   width: 50px;
   height: 50px;
