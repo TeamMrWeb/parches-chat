@@ -7,6 +7,15 @@ export default function ChatInput() {
   const [value, setValue] = useState("")
   const [showEmojisPicker, setShowEmojisPicker] = useState(false)
 
+  window.onclick = (event: any) => {
+    if (
+      showEmojisPicker &&
+      !document.getElementsByClassName("emoji-picker-react")[0].contains(event.target) &&
+      event.target.className !== "chat-input__tool chat-input__tool--emoji-picker"
+    )
+      setShowEmojisPicker(false)
+  }
+
   return (
     <section className="chat-input">
       <div className="chat-input-wrapper">
@@ -20,7 +29,12 @@ export default function ChatInput() {
           placeholder="Enviar mensaje a erickjq10x"
           maxLength={2000}
         />
-        <img className="chat-input__tool" src={emojiIcon} alt="Enviar emoji" onClick={() => setShowEmojisPicker(!showEmojisPicker)} />
+        <img
+          className="chat-input__tool chat-input__tool--emoji-picker"
+          src={emojiIcon}
+          alt="Enviar emoji"
+          onClick={() => setShowEmojisPicker(!showEmojisPicker)}
+        />
         {showEmojisPicker && <EmojisPicker setValue={setValue} />}
       </div>
     </section>
