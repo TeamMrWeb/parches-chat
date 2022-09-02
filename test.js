@@ -1,3 +1,9 @@
+/**
+ * @file Contains all basic tests.
+ * @author Manuel Cabral
+ * @version 0.0.4
+ */
+
 // required modules
 const supertest = require('supertest')
 
