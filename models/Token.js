@@ -1,7 +1,7 @@
 /**
  * @file Contains token model.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -14,9 +14,8 @@ const tokenSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		userId: {
-			type: Schema.Types.ObjectId,
-			ref: 'User',
+		email: {
+			type: String,
 			required: true,
 		},
 	},
