@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import { useShowChat } from "../../contexts/ShowChatContext"
 
 export const useChatInfoHeader = () => {
-  const [showChat, setShowChat] = useState(false)
+  const { showChat } = useShowChat()
 
   useEffect(() => {
     const chatContainer = document.querySelector(".chat-container")
@@ -9,5 +10,5 @@ export const useChatInfoHeader = () => {
     else if (showChat && chatContainer) chatContainer.className = "chat-container expanded"
   }, [showChat])
 
-  return { showChat, setShowChat }
+  return { showChat }
 }

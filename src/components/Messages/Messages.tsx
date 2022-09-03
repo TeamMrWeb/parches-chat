@@ -1,6 +1,15 @@
+import { useEffect, useRef } from "react"
+import { useShowChat } from "../../contexts/ShowChatContext"
 import Message from "../Message/Message"
 
 export default function Messages() {
+  const { showChat } = useShowChat()
+  const scrollBottom = useRef<null | HTMLDivElement>(null)
+
+  useEffect(() => {
+    showChat && scrollBottom.current && scrollBottom.current.scrollIntoView()
+  }, [showChat])
+
   return (
     <section className="messages">
       <div className="messages-wrapper">
@@ -17,6 +26,7 @@ export default function Messages() {
         />
         <Message messageText="hola" messageHour="21:29" side="left" />
       </div>
+      <div className="scroll-bottom" ref={scrollBottom}></div>
     </section>
   )
 }
