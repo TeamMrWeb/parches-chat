@@ -20,22 +20,30 @@ type ChatType {
   """The admins of the chat."""
   admins: [UserType]
 
+  """The owner of the chat"""
+  owner: UserType
+
   """If the chat is a group or not."""
   isGroup: Boolean
+
+  """If the chat is secure"""
+  secure: Boolean
 
   """The users of the chat."""
   users: [UserType]
 
-  """The messages query."""
+  """Get messages by ids, if not provided, parent messages will be used."""
   messages(
-    """The ids of the messages."""
-    ids: [Int]
+    """
+    The ids of the messages, if not provided, parent messages will be used.
+    """
+    ids: [ID]
 
     """The limit of messages to return."""
-    limit: Int!
+    limit: Int
 
     """The number of messages to skip."""
-    skip: Int!
+    skip: Int
   ): [MessageType]
 
   """The date of the last update."""
@@ -81,7 +89,7 @@ type MutationType {
   login(email: String!, password: String!): String
 
   """Create a new chat"""
-  newChat(
+  createChat(
     """The name of the chat."""
     name: String!
 
@@ -93,7 +101,7 @@ type MutationType {
   ): ChatType
 
   """Create a new message"""
-  newMessage(
+  createMessage(
     """The id of the chat."""
     chatId: ID!
 
@@ -103,6 +111,21 @@ type MutationType {
     """The image of the message."""
     image: String
   ): MessageType
+
+  """Update a user"""
+  updateUser(
+    """The new name of the user."""
+    username: String
+
+    """The new email of the user."""
+    email: String
+
+    """The new avatar of the user."""
+    avatar: String
+
+    """The new status of the user."""
+    status: String
+  ): UserType
 }
 
 """Root query type"""
@@ -122,16 +145,18 @@ type QueryType {
     through: ID
   ): UserType
 
-  """The messages query."""
-  findMessages(
-    """The ids of the messages."""
-    ids: [Int]
+  """Get messages by ids, if not provided, parent messages will be used."""
+  messages(
+    """
+    The ids of the messages, if not provided, parent messages will be used.
+    """
+    ids: [ID]
 
     """The limit of messages to return."""
-    limit: Int!
+    limit: Int
 
     """The number of messages to skip."""
-    skip: Int!
+    skip: Int
   ): [MessageType]
 
   """Get a chat by id"""
@@ -141,28 +166,30 @@ type QueryType {
   ): ChatType
 
   """List of all chats"""
-  chats: [ChatType]
-
-  """Get all chats, from the current user."""
-  getAllChats(
-    """The id of the user to get the chats from."""
+  chats(
+    """
+    The id of the user to get the chats from. If not provided, logged user will be used.
+    """
     userId: ID
 
-    """The limit of chats to return."""
-    limit: Int
+    """If the chat is a group or not."""
+    isGroup: Boolean
 
     """The number of chats to skip."""
     skip: Int
 
-    """The date to get the chats before."""
-    before: String
-
-    """The date to get the chats after."""
-    after: String
-
-    """If the chat is a group chat."""
-    isGroup: Boolean
+    """The limit of chats to return."""
+    limit: Int
   ): [ChatType]
+
+  """Verify a user by a token"""
+  verify(
+    """Token to verify"""
+    token: String!
+  ): String
+
+  """Send a email verification"""
+  sendEmailVerification(username: String!, email: String!): String
 }
 
 """The user type."""
@@ -178,6 +205,9 @@ type UserType {
 
   """The status of the user."""
   status: Int
+
+  """If the user is verified or not."""
+  verified: Boolean
 
   """The date of the last update."""
   updatedAt: String
