@@ -10,6 +10,7 @@ const {
 	GraphQLID,
 	GraphQLString,
 	GraphQLInt,
+	GraphQLBoolean,
 } = require('graphql')
 
 const UserType = new GraphQLObjectType({
