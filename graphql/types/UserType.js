@@ -1,7 +1,7 @@
 /**
  * @file Contains user type.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
@@ -31,6 +31,10 @@ const UserType = new GraphQLObjectType({
 		status: {
 			type: GraphQLInt,
 			description: 'The status of the user.',
+		},
+		verified: {
+			type: GraphQLBoolean,
+			description: 'If the user is verified or not.',
 		},
 		updatedAt: {
 			type: GraphQLString,
