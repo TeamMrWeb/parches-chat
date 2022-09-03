@@ -1,7 +1,7 @@
 /**
  * @file Contains user model functions.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
@@ -56,10 +56,22 @@ const findMany = async (ids) => {
 	return await User.find({ _id: { $in: mapIds } })
 }
 
+/**
+ * Update a user by its id.
+ * @param {String} id - The id of the user to update.
+ * @param {Object} data - The data to update.
+ * @returns
+ */
+const updateOneUser = async (id, data) => {
+	if (!ObjectId.isValid(id)) return null
+	return await User.findByIdAndUpdate(id, data, { new: true })
+}
+
 module.exports = {
 	createUser,
 	findById,
 	findOne,
 	findAll,
 	findMany,
+	updateOneUser,
 }
