@@ -1,7 +1,7 @@
 /**
  * @file Contains token model.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -17,10 +17,15 @@ const tokenSchema = new Schema(
 		email: {
 			type: String,
 			required: true,
+			unique: true,
+		},
+		createdAt: {
+			type: Date,
+			expires: EMAIL_EXPIRES_IN,
+			default: Date.now,
 		},
 	},
 	{
-		expires: EMAIL_EXPIRES_IN,
 		versionKey: false,
 	}
 )
