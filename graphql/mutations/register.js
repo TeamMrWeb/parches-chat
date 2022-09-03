@@ -6,8 +6,8 @@
 
 // required modules
 const { sendEmail } = require('../../utils/email')
-const { createToken } = require('../../utils/auth')
-const { createUser } = require('../../controllers/userController')
+const { createToken, existsEmailToken } = require('../../utils/auth')
+const { createUser, findOne } = require('../../controllers/userController')
 const { GraphQLNonNull, GraphQLString } = require('graphql')
 
 // arguments object
@@ -25,6 +25,14 @@ const args = {
  */
 const resolve = async (_, args) => {
 	const newUser = await createUser(args, false)
+	const repeatedEmail = await existsEmailToken(args.email)
+	if (repeatedEmail) throw new Error('Please verify your email')
+
+	const user = await findOne({ email: args.email })
+	if (user && !user.verified)
+		throw new Error('User registered but not verified')
+
+	await createUser(args, true)
 	const token = createToken(
 		{
 			id: newUser._id,
@@ -33,6 +41,7 @@ const resolve = async (_, args) => {
 		},
 		{ useEmail: true }
 	)
+
 	/**
 	 * @todo improve better email template
 	 */
@@ -52,7 +61,7 @@ const resolve = async (_, args) => {
         </html>
     `
 	await sendEmail(newUser.email, 'Confirmación de email', textEmail)
-	return 'wow'
+	return token
 }
 
 // mutation object
