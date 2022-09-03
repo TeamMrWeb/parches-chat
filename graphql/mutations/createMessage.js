@@ -1,16 +1,17 @@
 /**
  * @file Contains chat mutation.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
 const { MessageType } = require('../types')
-const { createMessage } = require('../../controllers/messageController')
+const createNewMessage =
+	require('../../controllers/messageController').createMessage
 const { findById, addMessage } = require('../../controllers/chatController')
 const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql')
 
-// mutation object
+// arguments object
 const args = {
 	chatId: {
 		type: new GraphQLNonNull(GraphQLID),
@@ -40,7 +41,7 @@ const resolve = async (_, args, context) => {
 	if (!chat) throw new Error('Chat not found')
 	if (args.text.length > 4500) throw new Error('Message too long')
 	if (args.text.length < 1) throw new Error('Message must have a text')
-	const newMessage = await createMessage({
+	const newMessage = await createNewMessage({
 		text: args.text,
 		image: args.image,
 		author: user.id,
@@ -51,11 +52,11 @@ const resolve = async (_, args, context) => {
 }
 
 // mutation object
-const newMessage = {
+const createMessage = {
 	type: MessageType,
 	description: 'Create a new message',
 	args,
 	resolve,
 }
 
-module.exports = newMessage
+module.exports = createMessage
