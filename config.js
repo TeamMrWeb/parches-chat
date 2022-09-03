@@ -30,7 +30,7 @@ module.exports = {
 		SECRET: process.env.JWT_SECRET || 'supersecret',
 		EXPIRES_IN: process.env.JWT_EXPIRES_IN || '1d',
 		EMAIL_SECRET: process.env.JWT_EMAIL_SECRET || 'emailsecret',
-		EMAIL_EXPIRES_IN: process.env.JWT_EMAIL_EXPIRES_IN || '3600',
+		EMAIL_EXPIRES_IN: process.env.JWT_EMAIL_EXPIRES_IN || '1m',
 	},
 
 	// email
