@@ -38,9 +38,10 @@ const findOne = async (query) => {
 
 /**
  * Find all chats.
+ * @param {Object} options - The options to find the chats.
  * @returns {Array} The chats found.
  */
-const findAll = async () => await Chat.find()
+const findAll = async (options) => await Chat.find(options)
 
 /**
  * Find all chats by user id.

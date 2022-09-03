@@ -5,17 +5,27 @@
  */
 
 // required modules
-const { GraphQLList } = require('graphql')
+const { GraphQLList, GraphQLBoolean } = require('graphql')
 const { ChatType } = require('../types')
 const { findAll } = require('../../controllers/chatController')
 
-const resolve = async () => {
-	return await findAll()
+const args = {
+	isGroup: {
+		type: GraphQLBoolean,
+		description: 'If the chat is a group or not.',
+	},
+}
+
+const resolve = async (_, args) => {
+	const options = args.isGroup === undefined ? {} : { isGroup: args.isGroup }
+	console.log(options)
+	return await findAll(options)
 }
 
 const chats = {
 	type: new GraphQLList(ChatType),
 	description: 'List of all chats',
+	args,
 	resolve,
 }
 
