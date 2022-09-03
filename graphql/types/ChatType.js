@@ -2,7 +2,7 @@
  * @file Contains chat type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
@@ -16,7 +16,7 @@ const {
 	GraphQLID,
 	GraphQLString,
 	GraphQLList,
-	GraphQLBoolean
+	GraphQLBoolean,
 } = require('graphql')
 
 const ChatType = new GraphQLObjectType({
@@ -39,7 +39,7 @@ const ChatType = new GraphQLObjectType({
 		owner: {
 			type: UserType,
 			description: 'The owner of the chat',
-			resolve: async (parent) => findUserById(parent.ownerId)
+			resolve: async (parent) => findUserById(parent.ownerId),
 		},
 		isGroup: {
 			type: GraphQLBoolean,
@@ -47,7 +47,7 @@ const ChatType = new GraphQLObjectType({
 		},
 		secure: {
 			type: GraphQLBoolean,
-			description: 'If the chat is secure'
+			description: 'If the chat is secure',
 		},
 		users: {
 			type: new GraphQLList(UserType),
