@@ -15,7 +15,7 @@ const {
 	chat,
 	chats,
 	verify,
-	findMessages,
+	messages,
 	sendEmailVerification,
 } = require('./queries')
 
@@ -29,7 +29,7 @@ const QueryType = new GraphQLObjectType({
 		hello,
 		users,
 		user,
-		findMessages,
+		messages,
 		chat,
 		chats,
 		verify,

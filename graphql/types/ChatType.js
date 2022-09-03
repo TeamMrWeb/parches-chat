@@ -2,12 +2,12 @@
  * @file Contains chat type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.4
+ * @version 0.0.6
  */
 
 // required modules
 const UserType = require('./userType')
-const findMessages = require('../queries/findMessages')
+const messages = require('../queries/messages')
 const findManyUsers = require('../../controllers/userController').findMany
 const findUserById = require('../../controllers/userController').findById
 
@@ -54,7 +54,7 @@ const ChatType = new GraphQLObjectType({
 			description: 'The users of the chat.',
 			resolve: async (parent) => findManyUsers(parent.users),
 		},
-		messages: findMessages,
+		messages,
 		updatedAt: {
 			type: GraphQLString,
 			description: 'The date of the last update.',
