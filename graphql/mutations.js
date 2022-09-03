@@ -1,12 +1,13 @@
 /**
  * @file Contains all GraphQL mutations exports.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.3
  */
 
 module.exports = {
 	register: require('./mutations/register'),
 	login: require('./mutations/login'),
-	newMessage: require('./mutations/newMessage'),
-	newChat: require('./mutations/newChat'),
+	createMessage: require('./mutations/createMessage'),
+	createChat: require('./mutations/createChat'),
+	updateUser: require('./mutations/updateUser'),
 }
