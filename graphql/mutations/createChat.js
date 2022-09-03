@@ -2,7 +2,7 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -29,8 +29,8 @@ const args = {
 	},
 	secure: {
 		type: GraphQLBoolean,
-		description: 'If the chat is secure'
-	}
+		description: 'If the chat is secure',
+	},
 }
 
 /**
@@ -59,7 +59,7 @@ const resolve = async (_, args, context) => {
 		admins: isGroup ? [author.id] : [],
 		users: args.usersId,
 		secure: args.secure,
-		ownerId: args.secure && isGroup ? author.id : null
+		ownerId: args.secure && isGroup ? author.id : null,
 	})
 }
 
