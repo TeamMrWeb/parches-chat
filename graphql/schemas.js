@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -14,8 +14,10 @@ const {
 	user,
 	chat,
 	chats,
+	verify,
 	findMessages,
 	getAllChats,
+	sendEmailVerification,
 } = require('./queries')
 
 const { register, login, newMessage, newChat } = require('./mutations')
@@ -32,6 +34,8 @@ const QueryType = new GraphQLObjectType({
 		chat,
 		chats,
 		getAllChats,
+		verify,
+		sendEmailVerification,
 	},
 })
 
