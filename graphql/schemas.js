@@ -19,7 +19,13 @@ const {
 	sendEmailVerification,
 } = require('./queries')
 
-const { register, login, newMessage, newChat } = require('./mutations')
+const {
+	register,
+	login,
+	createMessage,
+	createChat,
+	updateUser,
+} = require('./mutations')
 
 // setting up
 const QueryType = new GraphQLObjectType({
@@ -43,8 +49,9 @@ const MutationType = new GraphQLObjectType({
 	fields: {
 		register,
 		login,
-		newChat,
-		newMessage,
+		createChat,
+		createMessage,
+		updateUser,
 	},
 })
 
