@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.5
  */
 
 // required modules
@@ -37,32 +37,23 @@ const findOne = async (query) => {
 }
 
 /**
- * Find all chats.
+ * Find all chats by optional params.
  * @param {Object} options - The options to find the chats.
  * @returns {Array} The chats found.
  */
-const findAll = async (options) => await Chat.find(options)
-
-/**
- * Find all chats by user id.
- * @param {String} userId - The id of the user.
- * @param {Object} options - The options to find the chats.
- * @returns {Array} The chats found.
- */
-const findAllChatsByUser = async (userId, options) => {
-	const { limit, skip, after, before, isGroup } = options
+const findAll = async (options) => {
+	let { userId, isGroup, limit, skip } = options
 	/**
 	 * @todo
 	 * Finish after and before options. This params depends on the frontend.
 	 */
-	const chats = await Chat.find({
+	return await Chat.find({
 		users: { $in: [userId] },
 		isGroup,
 		//createdAt: { $gt: after, $lt: before },
 	})
 		.skip(skip)
 		.limit(limit)
-	return chats
 }
 
 /**
@@ -92,6 +83,5 @@ module.exports = {
 	findById,
 	findOne,
 	findAll,
-	findAllChatsByUser,
 	addMessage,
 }
