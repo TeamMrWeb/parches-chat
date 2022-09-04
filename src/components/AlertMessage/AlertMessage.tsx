@@ -14,7 +14,7 @@ export default function AlertMessage() {
   useEffect(() => {
     setTimeout(() => {
       dispatch(closeAlertMessage())
-    }, 10000)
+    }, 10000000)
   }, [])
 
   const typesIcon: {

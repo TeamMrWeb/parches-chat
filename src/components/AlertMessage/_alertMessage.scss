@@ -16,18 +16,18 @@
     width: 30px;
     height: 30px;
   }
-  .info__message {
+  .info-message {
     display: flex;
     flex-direction: column;
     gap: 5px;
     width: 100%;
     max-width: 170px;
     height: 100%;
-    .ainfo__message__title {
+    .info-message__title {
       font-size: 16px;
       font-weight: 600;
     }
-    .info__message__description {
+    .info-message__description {
       word-wrap: break-word;
     }
   }

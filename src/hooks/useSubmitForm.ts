@@ -41,7 +41,15 @@ export const useSubmitForm = () => {
 
     submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
       .then((res: any) => {
-        console.log(res)
+        dispatch(
+          createAlertMessage({
+            title: `El ${capitalizeFirstLetter(type)} se realizó correctamente`,
+            description: res.data[type],
+            type: "success",
+            visible: true
+          })
+        )
+        console.log(res.data[type])
         const authToken = res.data.register
         localStorage.setItem("auth", authToken)
       })

@@ -394,7 +394,7 @@ html body #root .App ul {
   width: 30px;
   height: 30px;
 }
-.alert-message .info__message {
+.alert-message .info-message {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -402,11 +402,11 @@ html body #root .App ul {
   max-width: 170px;
   height: 100%;
 }
-.alert-message .info__message .ainfo__message__title {
+.alert-message .info-message .info-message__title {
   font-size: 16px;
   font-weight: 600;
 }
-.alert-message .info__message .info__message__description {
+.alert-message .info-message .info-message__description {
   word-wrap: break-word;
 }
 .alert-message .alert-message__icon--close {
