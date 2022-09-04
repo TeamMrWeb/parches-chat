@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit"
-import errorMessageReducer from "../slicers/errorMessageSlice"
+import alertMessageReducer from "../slicers/alertMessageSlice"
 
 export const store = configureStore({
   reducer: {
-    errorMessage: errorMessageReducer
+    alertMessage: alertMessageReducer
   }
 })

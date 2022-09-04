@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client"
 import { useDispatch } from "react-redux"
-import { createError } from "../slicers/errorMessageSlice"
+import { createAlertMessage } from "../slicers/alertMessageSlice"
 
 const userRegister = gql`
   mutation registerUser($username: String!, $email: String!, $password: String!) {
@@ -39,7 +39,7 @@ export const useSubmitForm = () => {
         })
         .catch(err => {
           console.log(err)
-          dispatch(createError({ title: "Error de Registro", description: err.message, visible: true }))
+          dispatch(createAlertMessage({ title: "Error de Registro", description: err.message, type: "warning", visible: true }))
         })
     } else {
       login({ variables: { email, password } })
@@ -49,7 +49,7 @@ export const useSubmitForm = () => {
         })
         .catch(err => {
           console.log(err)
-          dispatch(createError({ title: "Error de Ingreso", description: err.message, visible: true }))
+          dispatch(createAlertMessage({ title: "Error de Ingreso", description: err.message, type: "error", visible: true }))
         })
     }
   }

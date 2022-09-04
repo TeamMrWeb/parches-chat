@@ -1,4 +1,4 @@
-.error {
+.alert-message {
   display: flex;
   gap: 20px;
   position: absolute;
@@ -12,26 +12,26 @@
   border: 2px solid $primaryColorLight;
   border-radius: 10px;
   animation: appear 1s, disappear 1s linear 9.5s;
-  .error__icon {
+  .alert-message__icon {
     width: 30px;
     height: 30px;
   }
-  .error-message {
+  .info__message {
     display: flex;
     flex-direction: column;
     gap: 5px;
     width: 100%;
     max-width: 170px;
     height: 100%;
-    .error-message__title {
+    .ainfo__message__title {
       font-size: 16px;
       font-weight: 600;
     }
-    .error-message__description {
+    .info__message__description {
       word-wrap: break-word;
     }
   }
-  .error__icon--close {
+  .alert-message__icon--close {
     cursor: pointer;
     width: 20px;
     height: 20px;

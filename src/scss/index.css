@@ -372,7 +372,7 @@ html body #root .App ul {
     cursor: pointer;
   }
 }
-.error {
+.alert-message {
   display: flex;
   gap: 20px;
   position: absolute;
@@ -390,11 +390,11 @@ html body #root .App ul {
   -webkit-animation: appear 1s, disappear 1s linear 9.5s;
           animation: appear 1s, disappear 1s linear 9.5s;
 }
-.error .error__icon {
+.alert-message .alert-message__icon {
   width: 30px;
   height: 30px;
 }
-.error .error-message {
+.alert-message .info__message {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -402,14 +402,14 @@ html body #root .App ul {
   max-width: 170px;
   height: 100%;
 }
-.error .error-message .error-message__title {
+.alert-message .info__message .ainfo__message__title {
   font-size: 16px;
   font-weight: 600;
 }
-.error .error-message .error-message__description {
+.alert-message .info__message .info__message__description {
   word-wrap: break-word;
 }
-.error .error__icon--close {
+.alert-message .alert-message__icon--close {
   cursor: pointer;
   width: 20px;
   height: 20px;
