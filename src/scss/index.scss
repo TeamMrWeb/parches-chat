@@ -38,6 +38,7 @@ html {
 @import "../sections/Register/register";
 @import "../sections/NotFound/notFound";
 @import "../sections/Login/login";
+@import "../sections/Home/home";
 
 //components
 @import "../components/AccountQuestion/accountQuestion";
@@ -56,3 +57,4 @@ html {
 @import "../components/Group/group";
 @import "../components/Friend/friend";
 @import "../components/EmojisPicker/emojisPicker";
+@import "../components/GoHome/goHome";

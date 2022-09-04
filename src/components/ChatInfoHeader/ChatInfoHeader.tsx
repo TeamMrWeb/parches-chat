@@ -1,12 +1,12 @@
+import { useShowChat } from "../../contexts/ShowChatContext"
 import { useChatInfoHeader } from "./useChatInfoHeader"
 import friendImage from "../../assets/icons/friend-image.svg"
 import dotsIcon from "../../assets/icons/dots-icon.svg"
 import backIcon from "../../assets/icons/back-icon.svg"
-import { useShowChat } from "../../contexts/ShowChatContext"
 
 export default function ChatInfoHeader() {
-  useChatInfoHeader()
   const { showChat, setShowChat } = useShowChat()
+  useChatInfoHeader()
 
   return (
     <section className="chat-header header">

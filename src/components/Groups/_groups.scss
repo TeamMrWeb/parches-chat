@@ -1,6 +1,8 @@
 .groups {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
   width: 100%;
   max-width: 70px;
   min-width: 70px;
