@@ -14,6 +14,8 @@ const userLogin = gql`
   }
 `
 
+const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
+
 export const useSubmitForm = () => {
   const [register] = useMutation(userRegister)
   const [login] = useMutation(userLogin)
@@ -28,30 +30,27 @@ export const useSubmitForm = () => {
       Object.assign(userData, { [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value })
     })
     const { username, email, password } = userData as any
-    console.log({ username, email, password })
 
-    if (type === "register") {
-      register({ variables: { username, email, password } })
-        .then(res => {
-          console.log(res)
-          const authToken = res.data.register
-          localStorage.setItem("auth", authToken)
-        })
-        .catch(err => {
-          console.log(err)
-          dispatch(createAlertMessage({ title: "Error de Registro", description: err.message, type: "warning", visible: true }))
-        })
-    } else {
-      login({ variables: { email, password } })
-        .then(res => {
-          const authToken = res.data.login
-          localStorage.setItem("auth", authToken)
-        })
-        .catch(err => {
-          console.log(err)
-          dispatch(createAlertMessage({ title: "Error de Ingreso", description: err.message, type: "error", visible: true }))
-        })
+    const submitMethods: {
+      register: any
+      login: any
+    } = {
+      register,
+      login
     }
+
+    submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
+      .then((res: any) => {
+        console.log(res)
+        const authToken = res.data.register
+        localStorage.setItem("auth", authToken)
+      })
+      .catch((err: any) => {
+        console.log(err)
+        dispatch(
+          createAlertMessage({ title: `Error de ${capitalizeFirstLetter(type)}`, description: err.message, type: "error", visible: true })
+        )
+      })
   }
 
   return { handleSubmit }
