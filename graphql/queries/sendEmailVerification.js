@@ -45,7 +45,7 @@ const resolve = async (_, args) => {
         </body>
     </html>
     `
-	await sendEmail(newUser.email, 'Confirmación de email', textEmail)
+	await sendEmail(user.email, 'Confirmación de email', textEmail)
 	return 'Email sent'
 }
 
