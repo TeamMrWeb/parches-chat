@@ -28,6 +28,11 @@ const chatSchema = new Schema(
 			type: Boolean,
 			default: false,
 		},
+		maxUsers: {
+			type: Number,
+			required: true,
+			default: 500
+		},
 		ownerId: {
 			type: Schema.Types.ObjectId,
 			required: false,
