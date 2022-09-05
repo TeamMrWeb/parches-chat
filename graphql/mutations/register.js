@@ -24,7 +24,6 @@ const args = {
  * @returns {String} - A token.
  */
 const resolve = async (_, args) => {
-	const newUser = await createUser(args, false)
 	const repeatedEmail = await existsEmailToken(args.email)
 	if (repeatedEmail) throw new Error('Please verify your email')
 
@@ -32,7 +31,7 @@ const resolve = async (_, args) => {
 	if (user && !user.verified)
 		throw new Error('User registered but not verified')
 
-	await createUser(args, true)
+	const newUser = await createUser(args, true)
 	const token = createToken(
 		{
 			id: newUser._id,
@@ -56,7 +55,7 @@ const resolve = async (_, args) => {
                 <h1>Confirmación de email</h1>
                 <h2>Hola ${newUser.username}</h2>
                 <p>Gracias por registrarte en Parches Chat. Para confirmar tu email, por favor haz click en el siguiente enlace: </p>
-                <a href="http://localhost:3000/confirm/${token}">Confirmar email</a>
+                <a href="http://localhost:3000/account/verify/${token}">Confirmar email</a>
             </body>
         </html>
     `
