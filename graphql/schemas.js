@@ -25,6 +25,7 @@ const {
 	createMessage,
 	createChat,
 	updateUser,
+	addUserToChat,
 } = require('./mutations')
 
 // setting up
@@ -52,6 +53,7 @@ const MutationType = new GraphQLObjectType({
 		createChat,
 		createMessage,
 		updateUser,
+		addUserToChat,
 	},
 })
 
