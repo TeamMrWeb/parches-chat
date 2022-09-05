@@ -2,7 +2,7 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -50,6 +50,7 @@ const resolve = async (_, args, context) => {
 	if (!users) throw new Error('Invalid users id')
 
 	if (users.length < 2) throw new Error('Chat must have at least 2 users')
+	if (args.name < 3) throw new Error('Chat name must have at least 4 characters')
 	const isGroup = users.length > 2
 
 	return await createChat({
