@@ -1,7 +1,7 @@
 /**
  * @file Contains send email verification mutation.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.6
  */
 
 // required modules
