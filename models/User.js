@@ -44,6 +44,7 @@ const userSchema = new Schema(
 			{
 				type: Schema.Types.ObjectId,
 				ref: 'User',
+				limit: 100
 			},
 		],
 		pendingFriends: [
