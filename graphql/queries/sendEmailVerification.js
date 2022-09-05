@@ -1,7 +1,7 @@
 /**
  * @file Contains send email verification mutation.
  * @author Manuel Cabral
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -12,8 +12,10 @@ const { sendEmail } = require('../../utils/email')
 
 // arguments object
 const args = {
-	username: { type: new GraphQLNonNull(GraphQLString) },
-	email: { type: new GraphQLNonNull(GraphQLString) },
+	email: {
+		type: new GraphQLNonNull(GraphQLString),
+		description: 'Email of the user to send the email verification',
+	},
 }
 
 /**
