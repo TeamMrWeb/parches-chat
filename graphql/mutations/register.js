@@ -32,7 +32,7 @@ const resolve = async (_, args) => {
 		throw new Error('User registered but not verified')
 
 	const newUser = await createUser(args, true)
-	const token = createToken(
+	const token = await createToken(
 		{
 			id: newUser._id,
 			username: newUser.username,
