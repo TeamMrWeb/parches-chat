@@ -1,7 +1,7 @@
 /**
  * @file Contains chats query.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -14,6 +14,7 @@ const {
 const { ChatType } = require('../types')
 const { findAll } = require('../../controllers/chatController')
 
+// arguments object
 const args = {
 	userId: {
 		type: GraphQLID,
@@ -34,6 +35,13 @@ const args = {
 	},
 }
 
+/**
+ * Resolve the chats query.
+ * @param {Object} _ - The parent object. Not used.
+ * @param {Object} args - The arguments passed to the query.
+ * @param {Object} context - The context object of the request.
+ * @returns {Object} List of chats object.
+ */
 const resolve = async (_, args, context) => {
 	let userId = args.userId
 	if (!userId) {
@@ -42,7 +50,6 @@ const resolve = async (_, args, context) => {
 			throw new Error('You must be logged in to get chats or provide a userId.')
 		userId = user.id
 	}
-	console.log(userId)
 	return await findAll({
 		userId,
 		skip: args.skip || 0,
@@ -51,6 +58,7 @@ const resolve = async (_, args, context) => {
 	})
 }
 
+// query object
 const chats = {
 	type: new GraphQLList(ChatType),
 	description: 'List of all chats',
