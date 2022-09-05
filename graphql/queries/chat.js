@@ -1,7 +1,7 @@
 /**
  * @file Contains chat query.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -28,6 +28,7 @@ const resolve = async (_, args) => {
 	return chat
 }
 
+// query object
 const chat = {
 	type: ChatType,
 	description: 'Get a chat by id',

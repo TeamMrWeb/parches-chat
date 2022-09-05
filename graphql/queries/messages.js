@@ -1,7 +1,7 @@
 /**
  * @file Contains messages query.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
@@ -9,6 +9,7 @@ const MessageType = require('../types/messageType')
 const { GraphQLList, GraphQLInt, GraphQLID } = require('graphql')
 const { findMany } = require('../../controllers/messageController')
 
+// arguments object
 const args = {
 	ids: {
 		type: new GraphQLList(GraphQLID),
@@ -25,6 +26,12 @@ const args = {
 	},
 }
 
+/**
+ * Resolves the messages query.
+ * @param {Object} parent - The parent object.
+ * @param {Object} args - The arguments passed to the query.
+ * @returns {Object[]} List of messages object.
+ */
 const resolve = async (parent, args) => {
 	let ids = args.ids
 	if (!ids) {
@@ -37,6 +44,7 @@ const resolve = async (parent, args) => {
 	})
 }
 
+// query object
 const messages = {
 	type: new GraphQLList(MessageType),
 	description:

@@ -1,7 +1,7 @@
 /**
  * @file Contains the verify query.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -35,7 +35,7 @@ const resolve = async (_, args) => {
 	return 'Verified'
 }
 
-// export the query
+// query object
 module.exports = {
 	type: GraphQLString,
 	description: 'Verify a user by a token',

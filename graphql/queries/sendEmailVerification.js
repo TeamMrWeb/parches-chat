@@ -1,7 +1,7 @@
 /**
  * @file Contains send email verification mutation.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -51,7 +51,7 @@ const resolve = async (_, args) => {
 	return 'Email sent'
 }
 
-// mutation object
+// query object
 const sendEmailVerification = {
 	type: GraphQLString,
 	description: 'Send a email verification',
