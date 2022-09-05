@@ -28,7 +28,7 @@ const resolve = async (_, args) => {
 	if (!user) throw new Error('User not registered')
 	if (user.verified) throw new Error('User already verified')
 	const tokenDb = await existsEmailToken(email)
-	if (tokenDb) throw new Error('Verification already sent')
+	if (!tokenDb) throw new Error('Verification already sent')
 	const token = await createToken({ email }, { useEmail: true })
 	const textEmail = `\
     <!DOCTYPE html>
