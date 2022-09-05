@@ -1,13 +1,14 @@
 /**
  * @file Contains send email verification mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.3
  */
 
 // required modules
 const { GraphQLString, GraphQLNonNull } = require('graphql')
 const findOneUser = require('../../controllers/userController').findOne
 const { createToken, existsEmailToken } = require('../../utils/auth')
+const { sendEmail } = require('../../utils/email')
 
 // arguments object
 const args = {
