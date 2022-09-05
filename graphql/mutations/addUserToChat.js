@@ -42,6 +42,9 @@ const resolve = async (_, args, context) => {
 		userId = user.id
 	}
 
+	const user = await findUserById(userId)
+	if (!user) throw new Error('Usuario no encontrado.')
+
 	// check if the user is already in the chat
 	const userInChat = chat.users.find((u) => u.id === user.id)
 	if (userInChat) throw new Error('El usuario ya está en el chat.')
