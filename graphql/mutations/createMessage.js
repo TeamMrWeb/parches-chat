@@ -36,11 +36,11 @@ const args = {
  */
 const resolve = async (_, args, context) => {
 	const { user } = context
-	if (!user) throw new Error('You are not logged in')
+	if (!user) throw new Error('Tienes que estar logeado para crear un mensaje.')
 	const chat = await findById(args.chatId)
-	if (!chat) throw new Error('Chat not found')
-	if (args.text.length > 4500) throw new Error('Message too long')
-	if (args.text.length < 1) throw new Error('Message must have a text')
+	if (!chat) throw new Error('Chat no encontrado.')
+	if (args.text.length > 4500) throw new Error('El mensaje es muy largo.')
+	if (args.text.length < 1) throw new Error('El mensaje es muy corto.')
 	const newMessage = await createNewMessage({
 		text: args.text,
 		image: args.image,

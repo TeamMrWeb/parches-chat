@@ -36,9 +36,10 @@ const args = {
  * @returns {Object} - The updated user object.
  */
 const resolve = async (_, args, context) => {
-	if (!args) throw new Error('No arguments provided')
+	if (!args) throw new Error('No se han pasado argumentos.')
 	const { user } = context
-	if (!user) throw new Error('You must be logged in to update your profile.')
+	if (!user)
+		throw new Error('Tienes que estar logeado para actualizar tu cuenta.')
 	return await updateOneUser(user.id, args)
 }
 

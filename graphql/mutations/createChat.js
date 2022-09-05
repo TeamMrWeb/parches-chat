@@ -2,7 +2,7 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.8
+ * @version 0.0.9
  */
 
 // required modules
@@ -42,15 +42,17 @@ const args = {
  */
 const resolve = async (_, args, context) => {
 	const { user } = context
-	if (!user) throw new Error('You must be logged in to create a chat')
+	if (!user) throw new Error('Tienes que estar logeado para crear un chat.')
 
 	const users = await findMany(args.usersId)
 	const author = await findById(user.id)
-	if (!author) throw new Error('Invalid author id')
-	if (!users) throw new Error('Invalid users id')
+	if (!author) throw new Error('Id del autor invalido.')
+	if (!users) throw new Error('Id de usuario invalido.')
 
-	if (users.length < 2) throw new Error('Chat must have at least 2 users')
-	if (args.name < 3) throw new Error('Chat name must have at least 4 characters')
+	if (users.length < 2)
+		throw new Error('El chat debe tener al menos 2 usuarios.')
+	if (args.name < 3)
+		throw new Error('El nombre del chat debe tener al menos 3 caracteres.')
 	const isGroup = users.length > 2
 
 	return await createChat({

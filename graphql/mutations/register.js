@@ -25,11 +25,11 @@ const args = {
  */
 const resolve = async (_, args) => {
 	const repeatedEmail = await existsEmailToken(args.email)
-	if (repeatedEmail) throw new Error('Please verify your email')
+	if (repeatedEmail) throw new Error('Por favor verifica tu cuenta.')
 
 	const user = await findOne({ email: args.email })
 	if (user && !user.verified)
-		throw new Error('User registered but not verified')
+		throw new Error('Usuario ya registrado, por favor verifica tu cuenta.')
 
 	const newUser = await createUser(args, true)
 	const token = await createToken(
@@ -60,7 +60,7 @@ const resolve = async (_, args) => {
         </html>
     `
 	await sendEmail(newUser.email, 'Confirmación de email', textEmail)
-	return token
+	return 'Email enviado, por favor verifica tu cuenta.'
 }
 
 // mutation object

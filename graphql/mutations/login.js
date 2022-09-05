@@ -24,8 +24,9 @@ const args = {
 const resolve = async (_, args) => {
 	const user = await findOne(args, false)
 	if (!user || args.password !== user.password)
-		throw new Error('Invalid credentials')
-	if (!user.verified) throw new Error('User not verified')
+		throw new Error('Creedenciales incorrectas.')
+	if (!user.verified)
+		throw new Error('Usuario no verificado, por favor verifica tu cuenta.')
 	return createToken({
 		id: user._id,
 		username: user.username,
