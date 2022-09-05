@@ -17,6 +17,7 @@ const {
 	GraphQLString,
 	GraphQLList,
 	GraphQLBoolean,
+	GraphQLInt,
 } = require('graphql')
 
 const ChatType = new GraphQLObjectType({
@@ -48,6 +49,10 @@ const ChatType = new GraphQLObjectType({
 		secure: {
 			type: GraphQLBoolean,
 			description: 'If the chat is secure',
+		},
+		maxUsers: {
+			type: GraphQLInt,
+			description: 'Max users in chat',
 		},
 		users: {
 			type: new GraphQLList(UserType),
