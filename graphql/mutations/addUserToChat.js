@@ -1,7 +1,7 @@
 /**
  * @file Contains addUserToChat mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -33,8 +33,14 @@ const args = {
 const resolve = async (_, args, context) => {
 	const chat = await findChatById(args.chatId)
 	if (!chat) throw new Error('Chat no encontrado.')
-	const user = await findUserById(args.userId)
-	if (!user) throw new Error('User not found.')
+
+	let userId = args.userId
+	if (!userId) {
+		const { user } = context
+		if (!user)
+			throw new Error('Tienes que estar logueado para obtener un usuario.')
+		userId = user.id
+	}
 
 	// check if the user is already in the chat
 	const userInChat = chat.users.find((u) => u.id === user.id)
