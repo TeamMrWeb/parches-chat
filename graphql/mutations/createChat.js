@@ -2,7 +2,7 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.9
+ * @version 0.1.0
  */
 
 // required modules
@@ -29,7 +29,8 @@ const args = {
 	},
 	secure: {
 		type: GraphQLBoolean,
-		description: 'If the chat is secure',
+		description:
+			'If the chat is secure or not. If is secure the chat will have a owner.',
 	},
 }
 
@@ -44,19 +45,25 @@ const resolve = async (_, args, context) => {
 	const { user } = context
 	if (!user) throw new Error('Tienes que estar logeado para crear un chat.')
 
-	const users = await findMany(args.usersId)
 	const author = await findById(user.id)
-	if (!author) throw new Error('Id del autor invalido.')
-	if (!users) throw new Error('Id de usuario invalido.')
+	if (!author) throw new Error('Usuario logeado no encontrado')
+
+	// check if any userid is duplicated
+	const anyOneIsDuplicate = args.usersId.some(
+		(id, index) => args.usersId.indexOf(id) !== index
+	)
+	if (anyOneIsDuplicate)
+		throw new Error('No puedes agregar dos veces el mismo usuario.')
+
+	// check if exists the users
+	const users = await findMany(args.usersId)
+	if (!users) throw new Error('Alguno de los usuarios no existe.')
 
 	if (users.length < 2)
 		throw new Error('El chat debe tener al menos 2 usuarios.')
+
 	if (args.name < 3)
 		throw new Error('El nombre del chat debe tener al menos 3 caracteres.')
-	
-	const userInChat = users.find((u) => u.id == user.id)
-	if (userInChat)
-		throw new Error('No puedes agregar a la misma persona')
 
 	const isGroup = users.length > 2
 
