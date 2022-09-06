@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  .form__submit {
+    background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
+    background-size: 100%;
+    background-position: 0;
+    border-radius: 10px;
+    border: none;
+    color: $whiteColor;
+    padding: 15px;
+    font-family: $fontFamily;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 1px 10px 0 $purpleColor;
+    background-repeat: no-repeat;
+    background-color: $purpleColor;
+    width: 100%;
+    margin-top: 15px;
+    &:hover {
+      background-position: -200px;
+      box-shadow: 0 0px 15px 2px $purpleColor;
+    }
+  }
+}
