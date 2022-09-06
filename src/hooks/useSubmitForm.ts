@@ -1,5 +1,6 @@
 import { gql, useMutation } from "@apollo/client"
 import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { createAlertMessage } from "../slicers/alertMessageSlice"
 import { startLoader, stopLoader, completeProgressLoader } from "../slicers/loaderSlice"
 
@@ -21,6 +22,7 @@ export const useSubmitForm = () => {
   const [register, { loading }] = useMutation(userRegister)
   const [login] = useMutation(userLogin)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: string, redirecturl: string) => {
     e.preventDefault()
@@ -52,6 +54,11 @@ export const useSubmitForm = () => {
             visible: true
           })
         )
+        if (type === "login") {
+          const token = res.data.login
+          localStorage.setItem("auth", token)
+          navigate("/chat")
+        }
       })
       .catch((err: any) => {
         dispatch(completeProgressLoader())
