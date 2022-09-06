@@ -766,4 +766,17 @@ html body #root .App ul {
 .go-home .go-home__image {
   width: 30px;
   height: 30px;
+}
+
+.loader {
+  width: 100%;
+  position: absolute;
+  height: 3px;
+}
+.loader .loader__progress {
+  width: 100%;
+  position: relative;
+  height: 2px;
+  background-color: #dd4ec6;
+  transition: all 1s;
 }/*# sourceMappingURL=index.css.map */

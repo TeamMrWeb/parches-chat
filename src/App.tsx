@@ -6,14 +6,17 @@ import ChatIndex from "./sections/ChatIndex/ChatIndex"
 import NotFound from "./sections/NotFound/NotFound"
 import Register from "./sections/Register/Register"
 import Login from "./sections/Login/Login"
+import Loader from "./components/Loader/Loader"
 
 function App() {
   const alertMessage = useSelector((state: any) => state.alertMessage)
+  const loader = useSelector((state: any) => state.loader)
 
   return (
     <div className="App">
       <ShowChatProvider>
         {alertMessage.visible && <AlertMessage />}
+        {loader.status && <Loader progress={loader.progress} />}
         <BrowserRouter>
           <Routes>
             <Route path="/accounts/*">

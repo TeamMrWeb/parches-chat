@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client"
 import { useDispatch } from "react-redux"
 import { createAlertMessage } from "../slicers/alertMessageSlice"
+import { startLoader, stopLoader, completeProgressLoader } from "../slicers/loaderSlice"
 
 const userRegister = gql`
   mutation registerUser($username: String!, $email: String!, $password: String!) {
@@ -17,12 +18,14 @@ const userLogin = gql`
 const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
 export const useSubmitForm = () => {
-  const [register] = useMutation(userRegister)
+  const [register, { loading }] = useMutation(userRegister)
   const [login] = useMutation(userLogin)
   const dispatch = useDispatch()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: string, redirecturl: string) => {
     e.preventDefault()
+    dispatch(startLoader())
+
     const formInputsElements = e.currentTarget.elements as HTMLFormControlsCollection
     const inputsArray = Object.values(formInputsElements).slice(0, -1)
     let userData = {}
@@ -41,6 +44,7 @@ export const useSubmitForm = () => {
 
     submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
       .then((res: any) => {
+        dispatch(completeProgressLoader())
         dispatch(
           createAlertMessage({
             title: `El ${capitalizeFirstLetter(type)} se realizó correctamente`,
@@ -49,14 +53,19 @@ export const useSubmitForm = () => {
             visible: true
           })
         )
-        console.log(res.data[type])
         const authToken = res.data.register
         localStorage.setItem("auth", authToken)
       })
       .catch((err: any) => {
+        dispatch(completeProgressLoader())
         console.log(err)
         dispatch(
-          createAlertMessage({ title: `Error de ${capitalizeFirstLetter(type)}`, description: err.message, type: "error", visible: true })
+          createAlertMessage({
+            title: `Error de ${capitalizeFirstLetter(type)}`,
+            description: err.message,
+            type: "error",
+            visible: true
+          })
         )
       })
   }
