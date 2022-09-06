@@ -22,6 +22,8 @@ export const alertMessageSlice = createSlice({
       Object.assign(state, { ...action.payload })
     },
     closeAlertMessage: state => {
+      state.title = ""
+      state.description = ""
       state.visible = false
     }
   }

@@ -48,7 +48,6 @@ export const useSubmitForm = () => {
         dispatch(
           createAlertMessage({
             title: `El ${capitalizeFirstLetter(type)} se realizó correctamente`,
-            description: res.data[type],
             type: "success",
             visible: true
           })
