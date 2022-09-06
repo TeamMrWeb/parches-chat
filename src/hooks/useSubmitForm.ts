@@ -53,8 +53,6 @@ export const useSubmitForm = () => {
             visible: true
           })
         )
-        const authToken = res.data.register
-        localStorage.setItem("auth", authToken)
       })
       .catch((err: any) => {
         dispatch(completeProgressLoader())
