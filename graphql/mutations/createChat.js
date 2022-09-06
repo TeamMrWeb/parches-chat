@@ -53,6 +53,11 @@ const resolve = async (_, args, context) => {
 		throw new Error('El chat debe tener al menos 2 usuarios.')
 	if (args.name < 3)
 		throw new Error('El nombre del chat debe tener al menos 3 caracteres.')
+	
+	const userInChat = users.find((u) => u.id == user.id)
+	if (userInChat)
+		throw new Error('No puedes agregar a la misma persona')
+
 	const isGroup = users.length > 2
 
 	return await createChat({
