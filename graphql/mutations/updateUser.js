@@ -1,7 +1,7 @@
 /**
  * @file Contains update user mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.3
  */
 
 // required modules
@@ -40,7 +40,13 @@ const resolve = async (_, args, context) => {
 	const { user } = context
 	if (!user)
 		throw new Error('Tienes que estar logeado para actualizar tu cuenta.')
-	return await updateOneUser(user.id, args)
+	const updatedUser = await updateOneUser(user.id, args)
+	const emailHasChanged = args.email !== updatedUser.email
+	if (emailHasChanged) {
+		// TODO: send email to confirm the new email
+		updatedUser.verified = false
+	}
+	return updatedUser
 }
 
 // mutation object
