@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/TeamParches/parches-chat/main/frontend/src/assets/icons/parches-chat-icon.svg?token=GHSAT0AAAAAABYFYRA4WUJK2SFHLF7JJXEOYYWT2IA" title="example">
+<img src="https://github.com/TeamParches/parches-chat/blob/main/frontend/src/assets/icons/parches-chat-icon.svg" title="example">
 </p>
 
 <p align="center">
