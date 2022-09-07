@@ -2,11 +2,11 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.1.1
+ * @version 0.1.2
  */
 
 // required modules
-const { createChat } = require('../../controllers/chatController')
+const { createChat, findOne } = require('../../controllers/chatController')
 const { findMany, findById } = require('../../controllers/userController')
 const { ChatType } = require('../types')
 const {
@@ -72,15 +72,24 @@ const resolve = async (_, args, context) => {
 
 	const isGroup = users.length > 2
 
+	if (args.private) {
+		args.secure = true
+		const existsChat = await findOne({
+			private: args.private,
+			ownerId: author.id,
+		})
+		if (existsChat) throw new Error('El chat ya existe.')
+	}
+
 	return await createChat({
 		name: args.name,
 		isGroup,
 		messages: [],
 		admins: isGroup ? [author.id] : [],
-		users: args.private ? [author.id] : args.usersId,
+		users: args.private ? [] : args.usersId,
 		secure: args.secure,
 		private: args.private,
-		ownerId: args.secure && isGroup ? author.id : null,
+		ownerId: (args.secure && isGroup) || args.private ? author.id : null,
 	})
 }
 
