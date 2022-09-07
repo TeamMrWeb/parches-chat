@@ -2,7 +2,7 @@
  * @file Contains chat model.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
@@ -28,10 +28,14 @@ const chatSchema = new Schema(
 			type: Boolean,
 			default: false,
 		},
+		private: {
+			type: Boolean,
+			default: false,
+		},
 		maxUsers: {
 			type: Number,
 			required: true,
-			default: 500
+			default: 500,
 		},
 		ownerId: {
 			type: Schema.Types.ObjectId,

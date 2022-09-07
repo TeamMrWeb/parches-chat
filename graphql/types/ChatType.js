@@ -2,7 +2,7 @@
  * @file Contains chat type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -49,6 +49,10 @@ const ChatType = new GraphQLObjectType({
 		secure: {
 			type: GraphQLBoolean,
 			description: 'If the chat is secure',
+		},
+		private: {
+			type: GraphQLBoolean,
+			description: 'If the chat is private or not.',
 		},
 		maxUsers: {
 			type: GraphQLInt,

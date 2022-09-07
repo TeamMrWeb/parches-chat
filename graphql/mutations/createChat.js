@@ -2,7 +2,7 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 // required modules
@@ -32,6 +32,10 @@ const args = {
 		description:
 			'If the chat is secure or not. If is secure the chat will have a owner.',
 	},
+	private: {
+		type: GraphQLBoolean,
+		description: 'If the chat is private or not.',
+	},
 }
 
 /**
@@ -48,18 +52,19 @@ const resolve = async (_, args, context) => {
 	const author = await findById(user.id)
 	if (!author) throw new Error('Usuario logeado no encontrado')
 
-	// check if any userid is duplicated
+	// check if any userId is duplicated
 	const anyOneIsDuplicate = args.usersId.some(
 		(id, index) => args.usersId.indexOf(id) !== index
 	)
-	if (anyOneIsDuplicate)
+	if (anyOneIsDuplicate && !args.private)
 		throw new Error('No puedes agregar dos veces el mismo usuario.')
 
 	// check if exists the users
 	const users = await findMany(args.usersId)
-	if (!users) throw new Error('Alguno de los usuarios no existe.')
+	if (!users && !args.private)
+		throw new Error('Alguno de los usuarios no existe.')
 
-	if (users.length < 2)
+	if (users.length < 2 && !args.private)
 		throw new Error('El chat debe tener al menos 2 usuarios.')
 
 	if (args.name < 3)
@@ -72,8 +77,9 @@ const resolve = async (_, args, context) => {
 		isGroup,
 		messages: [],
 		admins: isGroup ? [author.id] : [],
-		users: args.usersId,
+		users: args.private ? [author.id] : args.usersId,
 		secure: args.secure,
+		private: args.private,
 		ownerId: args.secure && isGroup ? author.id : null,
 	})
 }
