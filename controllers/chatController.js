@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
@@ -25,16 +25,7 @@ const createChat = async (data, save = true) => {
  * @param {Object} query - Data to find the chat, usually an id.
  * @returns {Object} The chat found.
  */
-const findOne = async (query) => {
-	if (query.through === 'users')
-		query.values = query.values.map((id) => ToObjectId(id))
-	const { through, values } = query
-	const chats = await Chat.findOne({ through: { $in: values } })
-		.populate('users')
-		// is this line necessary? :D
-		.populate({ path: 'messages', populate: { path: 'author', model: 'User' } })
-	return chats
-}
+const findOne = async (query) => await Chat.findOne(query)
 
 /**
  * Find all chats by optional params.
