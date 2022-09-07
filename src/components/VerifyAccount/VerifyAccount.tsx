@@ -1,16 +1,11 @@
 import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { gql, useQuery } from "@apollo/client"
+import { useQuery } from "@apollo/client"
+import { verifyQuery } from "../../graphql/queries/queries"
 
 export default function VerifyAccount() {
   const { token } = useParams()
   const navigate = useNavigate()
-
-  const verifyQuery = gql`
-    query verifyAccountByToken($token: String!) {
-      verify(token: $token)
-    }
-  `
 
   const { data, error } = useQuery<any>(verifyQuery, {
     variables: { token },

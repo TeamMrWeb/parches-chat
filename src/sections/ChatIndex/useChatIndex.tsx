@@ -1,19 +1,12 @@
-import { gql, useLazyQuery } from "@apollo/client"
+import { useLazyQuery } from "@apollo/client"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setUserLoggedField } from "../../slicers/userLoggedSlice"
 import { createAlertMessage } from "../../slicers/alertMessageSlice"
-
-const UserLoggedId = gql`
-  query {
-    user {
-      id
-    }
-  }
-`
+import { userLoggedId } from "../../graphql/queries/queries"
 
 export const useChatIndex = () => {
-  const [getUserLoggedId, { loading }] = useLazyQuery(UserLoggedId, {
+  const [getUserLoggedId, { loading }] = useLazyQuery(userLoggedId, {
     onCompleted: data => {
       console.log(data)
       dispatch(setUserLoggedField(data.user))

@@ -1,25 +1,14 @@
-import { gql, useMutation } from "@apollo/client"
+import { useMutation } from "@apollo/client"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { createAlertMessage } from "../slicers/alertMessageSlice"
-import { startLoader, stopLoader, completeProgressLoader } from "../slicers/loaderSlice"
-
-const userRegister = gql`
-  mutation registerUser($username: String!, $email: String!, $password: String!) {
-    register(username: $username, email: $email, password: $password)
-  }
-`
-
-const userLogin = gql`
-  mutation LoginUser($email: String!, $password: String!) {
-    login(email: $email, password: $password)
-  }
-`
+import { startLoader, completeProgressLoader } from "../slicers/loaderSlice"
+import { userRegister, userLogin } from "../graphql/mutations/mutations"
 
 const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
 export const useSubmitForm = () => {
-  const [register, { loading }] = useMutation(userRegister)
+  const [register] = useMutation(userRegister)
   const [login] = useMutation(userLogin)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -27,7 +16,6 @@ export const useSubmitForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: string, redirecturl: string) => {
     e.preventDefault()
     dispatch(startLoader())
-
     const formInputsElements = e.currentTarget.elements as HTMLFormControlsCollection
     const inputsArray = Object.values(formInputsElements).slice(0, -1)
     let userData = {}
@@ -35,7 +23,6 @@ export const useSubmitForm = () => {
       Object.assign(userData, { [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value })
     })
     const { username, email, password } = userData as any
-
     const submitMethods: {
       register: any
       login: any
@@ -43,7 +30,6 @@ export const useSubmitForm = () => {
       register,
       login
     }
-
     submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
       .then((res: any) => {
         dispatch(completeProgressLoader())
