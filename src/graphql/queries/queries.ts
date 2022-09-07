@@ -13,7 +13,7 @@ export const verifyQuery = gql`
   }
 `
 
-export const chats = gql`
+export const chatsFromUserLogged = gql`
   query getChatsFromUser($userId: ID!, $isGroup: Boolean) {
     chats(userId: $userId, isGroup: $isGroup) {
       id
