@@ -11,6 +11,7 @@ export default function VerifyAccount() {
       verify(token: $token)
     }
   `
+
   const { data, error } = useQuery<any>(verifyQuery, {
     variables: { token },
     context: {

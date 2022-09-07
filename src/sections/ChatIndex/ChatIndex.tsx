@@ -5,6 +5,7 @@ import Friends from "../../components/Friends/Friends"
 import Groups from "../../components/Groups/Groups"
 import Chat from "../../components/Chat/Chat"
 import Home from "../Home/Home"
+import { useChatIndex } from "./useChatIndex"
 
 export default function ChatIndex() {
   const { showChat } = useShowChat()
@@ -13,7 +14,7 @@ export default function ChatIndex() {
   const maxMobileDeviceWidth = 480
   const notMobile = window.screen.width >= maxMobileDeviceWidth
   const [firstAccess, setFirstAccess] = useState(!notMobile)
-
+  useChatIndex()
   const mobileBehaviour = () => !firstAccess && <Chat chatContainer={chatContainer} />
   const desktopBehaviour = () => (showChat ? <Chat chatContainer={chatContainer} /> : <Home />)
 
