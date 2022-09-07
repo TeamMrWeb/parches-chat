@@ -12,3 +12,11 @@ export const verifyQuery = gql`
     verify(token: $token)
   }
 `
+
+export const chats = gql`
+  query getChatsFromUser($userId: String!, $isGroup: boolean) {
+    chats(userId: $userId) {
+      id
+    }
+  }
+`
