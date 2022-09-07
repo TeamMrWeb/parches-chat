@@ -41,6 +41,7 @@ html {
 @import "../sections/Home/home";
 
 //components
+@import "../components/ChatPreviewImage/chatPreviewImage";
 @import "../components/AccountQuestion/accountQuestion";
 @import "../components/FormGroupInput/formGroupInput";
 @import "../components/ViewRepository/viewRepository";
@@ -59,13 +60,3 @@ html {
 @import "../components/Group/group";
 @import "../components/Chat/chat";
 @import "../components/Form/form";
-<<<<<<< Updated upstream
-=======
-@import "../components/Messages/messages";
-@import "../components/Message/message";
-@import "../components/Group/group";
-@import "../components/Friend/friend";
-@import "../components/EmojisPicker/emojisPicker";
-@import "../components/GoHome/goHome";
-@import "../components/ChatPreviewImage/chatPreviewImage"
->>>>>>> Stashed changes

@@ -4,52 +4,42 @@
   font-weight: 100;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Inter";
   src: url("../assets/fonts/Inter-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Inter";
   src: url("../assets/fonts/Inter-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Inter";
   src: url("../assets/fonts/Inter-Regular.woff2") format("woff2");
   font-weight: 400;
 }
-
 @font-face {
   font-family: "Inter";
   src: url("../assets/fonts/Inter-Medium.woff2") format("woff2");
   font-weight: 500;
 }
-
 @font-face {
   font-family: "Inter";
   src: url("../assets/fonts/Inter-Bold.woff2") format("woff2");
   font-weight: 700;
 }
-
 html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   height: 100vh;
 }
-
 html*,
 html *::before,
 html *::after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
-
 html body {
   margin: 0;
   overflow-x: hidden;
@@ -60,15 +50,12 @@ html body {
   font-size: 14px;
   font-style: normal;
 }
-
 html body #root {
   height: 100%;
 }
-
 html body #root .App {
   position: relative;
 }
-
 html body #root .App * p,
 html body #root .App ul {
   list-style: none;
@@ -77,8 +64,6 @@ html body #root .App ul {
 }
 
 .chat-index {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
   height: 100vh;
@@ -87,38 +72,20 @@ html body #root .App ul {
 }
 
 .register {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
   padding: 20px;
   width: 100%;
   height: 100vh;
   background-color: #1c1d22;
 }
-
 .register .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   gap: 40px;
   color: #ffffff;
   width: 100%;
@@ -127,32 +94,20 @@ html body #root .App ul {
   height: -moz-max-content;
   height: max-content;
 }
-
 .register .content .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   gap: 10px;
 }
-
 .register .content .header .content__image {
   width: 100%;
   max-width: 200px;
   height: 100%;
   margin-bottom: 20px;
 }
-
 .register .content .header .content__title {
   color: #e7ecf7;
   font-weight: 500;
@@ -162,30 +117,25 @@ html body #root .App ul {
   line-height: 2;
   margin: 0;
 }
-
 @media screen and (min-width: 600px) {
   .register .content .header .content__title {
     font-size: calc(30px + 10 * (100vw - 600px) / 600);
   }
 }
-
 @media screen and (min-width: 1200px) {
   .register .content .header .content__title {
     font-size: 40px;
   }
 }
-
 .register .content .header .content__description {
   text-align: center;
   font-size: 14px;
 }
-
 @media screen and (min-width: 600px) {
   .register .content .header .content__description {
     font-size: calc(14px + 2 * (100vw - 600px) / 600);
   }
 }
-
 @media screen and (min-width: 1200px) {
   .register .content .header .content__description {
     font-size: 16px;
@@ -193,19 +143,10 @@ html body #root .App ul {
 }
 
 .not-found {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100vh;
   background-color: #1c1d22;
@@ -213,38 +154,20 @@ html body #root .App ul {
 }
 
 .login {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
   padding: 20px;
   width: 100%;
   height: 100vh;
   background-color: #1c1d22;
 }
-
 .login .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   gap: 40px;
   color: #ffffff;
   width: 100%;
@@ -253,32 +176,20 @@ html body #root .App ul {
   height: -moz-max-content;
   height: max-content;
 }
-
 .login .content .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   gap: 10px;
 }
-
 .login .content .header .content__image {
   width: 100%;
   max-width: 200px;
   height: 100%;
   margin-bottom: 20px;
 }
-
 .login .content .header .content__title {
   color: #e7ecf7;
   font-weight: 500;
@@ -288,30 +199,25 @@ html body #root .App ul {
   line-height: 2;
   margin: 0;
 }
-
 @media screen and (min-width: 600px) {
   .login .content .header .content__title {
     font-size: calc(30px + 10 * (100vw - 600px) / 600);
   }
 }
-
 @media screen and (min-width: 1200px) {
   .login .content .header .content__title {
     font-size: 40px;
   }
 }
-
 .login .content .header .content__description {
   text-align: center;
   font-size: 14px;
 }
-
 @media screen and (min-width: 600px) {
   .login .content .header .content__description {
     font-size: calc(14px + 2 * (100vw - 600px) / 600);
   }
 }
-
 @media screen and (min-width: 1200px) {
   .login .content .header .content__description {
     font-size: 16px;
@@ -319,51 +225,31 @@ html body #root .App ul {
 }
 
 .home {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
   background-color: #1c1d22;
 }
-
 .home .home-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   color: #ffffff;
 }
-
 .home .home-header .home__logo {
   width: 170px;
   height: auto;
 }
-
 .home .home-header .home__title {
   font-size: 40px;
   font-weight: 900;
 }
-
 .home .home-header .home__description {
   font-size: 18px;
 }
-
 .home .view-repository {
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
@@ -375,70 +261,84 @@ html body #root .App ul {
   font-family: "Inter";
   font-size: 16px;
   cursor: pointer;
-  -webkit-transition: all 0.25s;
   transition: all 0.25s;
-  -webkit-box-shadow: 0 1px 10px 0 #8d4fc9;
-          box-shadow: 0 1px 10px 0 #8d4fc9;
+  box-shadow: 0 1px 10px 0 #8d4fc9;
   background-repeat: no-repeat;
   background-color: #8d4fc9;
 }
-
 .home .view-repository:hover {
   background-position: -200px;
-  -webkit-box-shadow: 0 5px 20px 0 #8d4fc9;
-          box-shadow: 0 5px 20px 0 #8d4fc9;
+  box-shadow: 0 5px 20px 0 #8d4fc9;
   color: #ffffff;
 }
 
-.account-question {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.preview-container {
+  height: 300px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 60px;
+  margin-right: 50px;
+  box-sizing: border-box;
+}
+.preview-container .preview-wrapper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0px;
+  margin: 0 50px;
+  background-color: #2a2c37;
+}
+.preview-container .preview-wrapper .preview-image {
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 250px;
+  margin: 20px;
+  width: 200px;
+  background-color: #1c1d22;
+}
+.preview-container .preview-wrapper .preview-image .preview-image__image {
+  height: 200px;
+  width: 100px;
+}
+.preview-container .preview-wrapper .preview-image .preview-image__name {
+  color: white;
 }
 
+.account-question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 .account-question .account-question__link {
   text-decoration: none;
   color: #dd4ec6;
 }
-
 .account-question .account-question__link:hover {
   text-decoration: underline;
 }
 
 .form-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 5px;
 }
-
 .form-group .form__label {
   font-size: 12px;
 }
-
 @media screen and (min-width: 600px) {
   .form-group .form__label {
     font-size: calc(12px + 2 * (100vw - 600px) / 600);
   }
 }
-
 @media screen and (min-width: 1200px) {
   .form-group .form__label {
     font-size: 14px;
   }
 }
-
 .form-group .form__input {
   height: 30px;
   border-radius: 10px;
@@ -447,7 +347,6 @@ html body #root .App ul {
   color: #8e9297;
   padding: 10px 15px 10px;
 }
-
 .form-group .form__input:focus {
   outline: 1px solid #dd4ec6;
 }
@@ -455,68 +354,45 @@ html body #root .App ul {
 .view-repository {
   position: relative;
   top: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   text-decoration: none;
   color: #ffffff;
 }
-
 .view-repository:hover {
   color: #dd4ec6;
 }
 
 .chat-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 10px;
   width: 100%;
   height: 100%;
   max-height: 60px;
   background-color: #2a2c37;
   padding: 10px 20px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 .chat-header .header__back {
   display: none;
 }
-
 .chat-header .header__image {
   width: 30px;
   height: 30px;
 }
-
 .chat-header .right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
-
 .chat-header .right .header__username {
   color: #ffffff;
   font-size: 16px;
 }
-
 .chat-header .right .header__options {
   width: 25px;
   height: 25px;
@@ -531,10 +407,7 @@ html body #root .App ul {
     cursor: pointer;
   }
 }
-
 .alert-message {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 20px;
   position: absolute;
@@ -545,43 +418,32 @@ html body #root .App ul {
   height: -moz-max-content;
   height: max-content;
   padding: 20px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #ffffff;
   border: 2px solid #333641;
   border-radius: 10px;
   -webkit-animation: appear 1s, disappear 1s linear 9.5s;
           animation: appear 1s, disappear 1s linear 9.5s;
 }
-
 .alert-message .alert-message__icon {
   width: 30px;
   height: 30px;
 }
-
 .alert-message .info-message {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 5px;
   width: 100%;
   max-width: 170px;
   height: 100%;
 }
-
 .alert-message .info-message .info-message__title {
   font-size: 16px;
   font-weight: 600;
 }
-
 .alert-message .info-message .info-message__description {
   word-wrap: break-word;
 }
-
 .alert-message .alert-message__icon--close {
   cursor: pointer;
   width: 20px;
@@ -605,7 +467,6 @@ html body #root .App ul {
     right: 20px;
   }
 }
-
 @-webkit-keyframes disappear {
   0% {
     right: 20px;
@@ -614,7 +475,6 @@ html body #root .App ul {
     right: -2000px;
   }
 }
-
 @keyframes disappear {
   0% {
     right: 20px;
@@ -623,7 +483,6 @@ html body #root .App ul {
     right: -2000px;
   }
 }
-<<<<<<< Updated upstream
 .emoji-picker-react {
   position: absolute !important;
   right: 0px;
@@ -667,8 +526,6 @@ html body #root .App ul {
 .emoji-picker-react > * {
   background-color: #333641 !important;
 }
-=======
->>>>>>> Stashed changes
 
 .chat-input {
   background-color: #1c1d22;
@@ -678,54 +535,37 @@ html body #root .App ul {
   max-height: 50px;
   position: relative;
 }
-
 .chat-input .chat-input-wrapper {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 30px auto 30px;
-      grid-template-columns: 30px auto 30px;
-  -ms-grid-rows: 50px;
-      grid-template-rows: 50px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  grid-template-columns: 30px auto 30px;
+  grid-template-rows: 50px;
+  align-items: center;
   background-color: #2a2c37;
   border-radius: 10px;
   padding: 0px 10px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
 }
-
 .chat-input .chat-input-wrapper .chat-input__tool {
   cursor: pointer;
   width: 25px;
   height: 25px;
 }
-
 .chat-input .chat-input-wrapper .chat-input__tool--upload {
   display: none;
 }
-
 .chat-input .chat-input-wrapper .chat-input__input {
   outline: none;
   border: none;
   background-color: transparent;
   color: #ffffff;
 }
-
-.chat-input .chat-input-wrapper .chat-input__input::-webkit-input-placeholder {
+.chat-input .chat-input-wrapper .chat-input__input::-moz-placeholder {
   color: #8e9297;
 }
-
 .chat-input .chat-input-wrapper .chat-input__input:-ms-input-placeholder {
   color: #8e9297;
 }
-
-.chat-input .chat-input-wrapper .chat-input__input::-ms-input-placeholder {
-  color: #8e9297;
-}
-
 .chat-input .chat-input-wrapper .chat-input__input::placeholder {
   color: #8e9297;
 }
@@ -736,180 +576,18 @@ html body #root .App ul {
     padding-bottom: 5px;
   }
 }
-<<<<<<< Updated upstream
-=======
-
-.friends {
-  width: 100vw;
-  max-width: 250px;
-  min-width: 200px;
-  background-color: #2a2c37;
-  padding: 0 20px;
-  padding-top: 10px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: #ffffff;
-}
-
-.friends.extended {
-  max-width: 100vw;
-}
-
-.friends .friends-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 20px;
-}
-
-.groups {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 5px;
-  width: 100%;
-  max-width: 70px;
-  min-width: 70px;
-  background-color: #22252c;
-  padding-top: 10px;
-}
-
-.groups .groups-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 5px;
-}
-
-.button {
-  background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
-  background-size: 100%;
-  background-position: 0;
-  border-radius: 10px;
-  border: none;
-  color: #ffffff;
-  padding: 15px;
-  font-family: "Inter";
-  font-size: 16px;
-  cursor: pointer;
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
-  -webkit-box-shadow: 0 1px 10px 0 #8d4fc9;
-          box-shadow: 0 1px 10px 0 #8d4fc9;
-  background-repeat: no-repeat;
-  background-color: #8d4fc9;
-}
-
-.button:hover {
-  background-position: -200px;
-  -webkit-box-shadow: 0 5px 20px 0 #8d4fc9;
-          box-shadow: 0 5px 20px 0 #8d4fc9;
-}
-
-.chat-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: relative;
-  width: 100vw;
-  height: 100%;
-  -webkit-transition: all 2s;
-  transition: all 2s;
-}
-
-.chat {
-  width: 100%;
-  max-width: 800px;
-  height: 100%;
-  background-color: aqua;
-  position: relative;
-  z-index: 10;
-}
-
-@media screen and (max-width: 480px) {
-  .chat-container.expanded {
-    position: fixed;
-  }
-}
-
-.form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 10px;
-  width: 100%;
-}
-
-.form .form__submit {
-  background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
-  background-size: 100%;
-  background-position: 0;
-  border-radius: 10px;
-  border: none;
-  color: #ffffff;
-  padding: 15px;
-  font-family: "Inter";
-  font-size: 16px;
-  cursor: pointer;
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
-  -webkit-box-shadow: 0 1px 10px 0 #8d4fc9;
-          box-shadow: 0 1px 10px 0 #8d4fc9;
-  background-repeat: no-repeat;
-  background-color: #8d4fc9;
-  width: 100%;
-  margin-top: 15px;
-}
-
-.form .form__submit:hover {
-  background-position: -200px;
-  -webkit-box-shadow: 0 0px 15px 2px #8d4fc9;
-          box-shadow: 0 0px 15px 2px #8d4fc9;
-}
-
->>>>>>> Stashed changes
 .messages {
   width: 100%;
   height: 100%;
   background-color: #1c1d22;
   padding: 20px 50px;
   padding-right: 33px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   overflow-y: scroll;
 }
-
 .messages .messages-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 5px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -917,7 +595,6 @@ html body #root .App ul {
   width: 100%;
   position: relative;
 }
-
 .messages .scroll-bottom {
   width: 100%;
   height: 1px;
@@ -929,31 +606,21 @@ html body #root .App ul {
     padding-bottom: 5px;
   }
 }
-
 .message-container {
   position: relative;
   border-radius: 10px;
   width: 100%;
 }
-
 .message-container.right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
-
 .message-container.right .message {
   background-color: #323346;
 }
-
 .message-container.right .message .message__hour {
   color: #8e9297;
 }
-
 .message-container .message {
   background-color: #333641;
   color: #ffffff;
@@ -966,11 +633,9 @@ html body #root .App ul {
   max-width: 30%;
   border-radius: 10px;
 }
-
 .message-container .message .message__text {
   font-size: 16px;
 }
-
 .message-container .message .message__hour {
   font-size: 10px;
   color: #8e9297;
@@ -990,27 +655,12 @@ html body #root .App ul {
     font-size: 10px;
   }
 }
-<<<<<<< Updated upstream
 .userlogged-chat {
-=======
-
-.group__image {
-  width: 50px;
-  height: 50px;
-}
-
-.friend {
-  display: -webkit-box;
-  display: -ms-flexbox;
->>>>>>> Stashed changes
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 10px;
   cursor: pointer;
 }
-<<<<<<< Updated upstream
 .userlogged-chat:hover {
   background-color: #323346;
 }
@@ -1022,28 +672,10 @@ html body #root .App ul {
   border-radius: 100px;
 }
 .userlogged-chat .userlogged-chat__username {
-=======
-
-.friend:hover {
-  background-color: #323346;
-}
-
-.friend:hover .friend__username {
-  color: #ffffff !important;
-}
-
-.friend .friend__image {
-  border: 3px solid;
-  border-radius: 100px;
-}
-
-.friend .friend__username {
->>>>>>> Stashed changes
   font-size: 16px;
   color: #8e9297;
 }
 
-<<<<<<< Updated upstream
 .groups {
   display: flex;
   flex-direction: column;
@@ -1067,58 +699,6 @@ html body #root .App ul {
   background-position: 0;
   border-radius: 10px;
   border: none;
-=======
-.emoji-picker-react {
-  position: absolute !important;
-  right: 0px;
-  bottom: 55px;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  border: none !important;
-  border-radius: 10px !important;
-  color: #ffffff !important;
-  background-color: #1c1d22;
-}
-
-.emoji-picker-react .emoji-group::before {
-  background-color: white;
-}
-
-.emoji-picker-react .emoji-categories {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.emoji-picker-react .emoji-categories button {
-  background-color: #dd4ec6;
-  border-radius: 20px;
-  height: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.emoji-picker-react .active-category-indicator-wrapper .active-category-indicator {
-  background-color: #8d4fc9;
-}
-
-.emoji-picker-react .content-wrapper-epr .emoji-scroll-wrapper {
-  padding: 0 20px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.emoji-picker-react .content-wrapper-epr .emoji-scroll-wrapper .emoji-group::before {
-  background-color: #333641;
-}
-
-.emoji-picker-react .content-wrapper-epr .emoji-scroll-wrapper .emoji-group .emoji button:hover {
-  background-color: #dd4ec6;
-}
-
-.emoji-picker-react .emoji-search {
-  background-color: #333641;
->>>>>>> Stashed changes
   color: #ffffff;
   padding: 15px;
   font-family: "Inter";
@@ -1129,28 +709,16 @@ html body #root .App ul {
   background-repeat: no-repeat;
   background-color: #8d4fc9;
 }
-<<<<<<< Updated upstream
 .button:hover {
   background-position: -200px;
   box-shadow: 0 5px 20px 0 #8d4fc9;
-=======
-
-.emoji-picker-react > * {
-  background-color: #333641 !important;
->>>>>>> Stashed changes
 }
 
 .go-home {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   gap: 5px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background-color: #323346;
   width: 50px;
   height: 50px;
@@ -1158,13 +726,11 @@ html body #root .App ul {
   cursor: pointer;
   border-radius: 100px;
 }
-
 .go-home .go-home__image {
   width: 30px;
   height: 30px;
 }
 
-<<<<<<< Updated upstream
 .loader {
   width: 100%;
   position: absolute;
@@ -1253,54 +819,3 @@ html body #root .App ul {
   background-position: -200px;
   box-shadow: 0 0px 15px 2px #8d4fc9;
 }/*# sourceMappingURL=index.css.map */
-=======
-.preview-container {
-  height: 300px;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 60px;
-  margin-right: 50px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.preview-container .preview-wrapper {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0px;
-  margin: 0 50px;
-  background-color: #2a2c37;
-}
-
-.preview-container .preview-wrapper .preview-image {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 250px;
-  margin: 20px;
-  width: 200px;
-  background-color: #1c1d22;
-}
-
-.preview-container .preview-wrapper .preview-image .preview-image__image {
-  height: 200px;
-  width: 100px;
-}
-
-.preview-container .preview-wrapper .preview-image .preview-image__name {
-  color: white;
-}
-/*# sourceMappingURL=index.css.map */
->>>>>>> Stashed changes

@@ -1,22 +1,13 @@
-import { useRef, useState } from "react"
-import { useShowChat } from "../../contexts/ShowChatContext"
+import { useRef } from "react"
 import { useSwipe } from "../../hooks/useSwipe"
-import Chats from "../../components/Chats/Chats"
-import Groups from "../../components/Groups/Groups"
-import Chat from "../../components/Chat/Chat"
-import Home from "../Home/Home"
 import { useChatIndex } from "./useChatIndex"
+import Groups from "../../components/Groups/Groups"
+import Chats from "../../components/Chats/Chats"
 
 export default function ChatIndex() {
-  const { showChat } = useShowChat()
   const chatContainer = useRef()
+  const { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile } = useChatIndex(chatContainer)
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe(chatContainer)
-  const maxMobileDeviceWidth = 480
-  const notMobile = window.screen.width >= maxMobileDeviceWidth
-  const [firstAccess, setFirstAccess] = useState(!notMobile)
-  useChatIndex()
-  const mobileBehaviour = () => !firstAccess && <Chat chatContainer={chatContainer} />
-  const desktopBehaviour = () => (showChat ? <Chat chatContainer={chatContainer} /> : <Home />)
 
   return (
     <section className="chat-index" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
