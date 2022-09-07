@@ -1,19 +1,19 @@
-.friend {
+.userlogged-chat {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   &:hover {
     background-color: $secundaryColorHover;
-    .friend__username {
+    .userlogged-chat__username {
       color: $whiteColor !important;
     }
   }
-  .friend__image {
+  .userlogged-chat__image {
     border: 3px solid;
     border-radius: 100px;
   }
-  .friend__username {
+  .userlogged-chat__username {
     font-size: 16px;
     color: $textGrayColor;
   }

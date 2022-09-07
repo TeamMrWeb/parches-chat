@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 
-export const useFriends = () => {
-  const [friends, setFriends] = useState([])
+export const useChats = () => {
+  const [chats, setChats] = useState([])
 
   useEffect(() => {
-    getFriends()
+    // getFriends()
   }, [])
 
   const getFriends = () => {
     //traer amigos
   }
 
-  return { friends }
+  return { chats }
 }

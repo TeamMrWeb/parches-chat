@@ -1,5 +1,5 @@
-import { useShowChat } from "../../contexts/ShowChatContext"
-import friendImage from "../../assets/icons/friend-image.svg"
+import { useShowChat } from "../../../contexts/ShowChatContext"
+import friendImage from "../../../assets/icons/friend-image.svg"
 
 export default function Friend({
   image,
@@ -24,13 +24,18 @@ export default function Friend({
 
   return (
     <li
-      className="friend"
+      className="userlogged-chat"
       onClick={() => {
         setFirstAccess(false), setShowChat && setShowChat(true)
       }}
     >
-      <img className="friend__image" src={friendImage} alt={`Imagén de ${username}`} style={{ borderColor: defineBorderColor() }} />
-      <span className="friend__username">{username}</span>
+      <img
+        className="userlogged-chat__image"
+        src={friendImage}
+        alt={`Imagén de ${username}`}
+        style={{ borderColor: defineBorderColor() }}
+      />
+      <span className="userlogged-chat__username">{username}</span>
     </li>
   )
 }

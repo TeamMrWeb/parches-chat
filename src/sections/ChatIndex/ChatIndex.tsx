@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { useShowChat } from "../../contexts/ShowChatContext"
 import { useSwipe } from "../../hooks/useSwipe"
-import Friends from "../../components/Friends/Friends"
+import Chats from "../../components/Chats/Chats"
 import Groups from "../../components/Groups/Groups"
 import Chat from "../../components/Chat/Chat"
 import Home from "../Home/Home"
@@ -21,7 +21,7 @@ export default function ChatIndex() {
   return (
     <section className="chat-index" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
       <Groups />
-      <Friends firstAccess={firstAccess} setFirstAccess={setFirstAccess} />
+      <Chats firstAccess={firstAccess} setFirstAccess={setFirstAccess} />
       {notMobile ? desktopBehaviour() : mobileBehaviour()}
     </section>
   )
