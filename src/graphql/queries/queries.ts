@@ -14,9 +14,13 @@ export const verifyQuery = gql`
 `
 
 export const chats = gql`
-  query getChatsFromUser($userId: String!, $isGroup: boolean) {
-    chats(userId: $userId) {
+  query getChatsFromUser($userId: ID!, $isGroup: Boolean) {
+    chats(userId: $userId, isGroup: $isGroup) {
       id
+      name
+      isGroup
+      secure
+      private
     }
   }
 `

@@ -7,7 +7,6 @@ export const useLazyQueries = (gqlType: any, setState: any) => {
 
   const [lazyQueryMethod, { loading, error, data }] = useLazyQuery(gqlType, {
     onCompleted: data => {
-      console.log(data)
       dispatch(setState(data))
     },
     onError: error => {
