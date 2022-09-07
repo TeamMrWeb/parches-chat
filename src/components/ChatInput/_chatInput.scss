@@ -4,6 +4,7 @@
   padding: 0px 50px;
   padding-bottom: 10px;
   max-height: 50px;
+  position: relative;
   .chat-input-wrapper {
     display: grid;
     grid-template-columns: 30px auto 30px;
@@ -18,6 +19,10 @@
       cursor: pointer;
       width: 25px;
       height: 25px;
+      
+    }
+    .chat-input__tool--upload{
+      display: none;
     }
     .chat-input__input {
       outline: none;
