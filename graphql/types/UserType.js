@@ -1,7 +1,7 @@
 /**
  * @file Contains user type.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -28,6 +28,10 @@ const UserType = new GraphQLObjectType({
 		email: {
 			type: GraphQLString,
 			description: 'The email of the user.',
+		},
+		avatar: {
+			type: GraphQLString,
+			description: 'The avatar of the user.',
 		},
 		status: {
 			type: GraphQLInt,

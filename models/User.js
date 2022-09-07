@@ -1,7 +1,7 @@
 /**
  * @file Contains the user model.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
@@ -16,6 +16,7 @@ const userSchema = new Schema(
 		},
 		avatar: {
 			type: String,
+			default: 'https://i.imgur.com/0y0Z0X1.png',
 		},
 		verified: {
 			type: Boolean,
@@ -44,7 +45,7 @@ const userSchema = new Schema(
 			{
 				type: Schema.Types.ObjectId,
 				ref: 'User',
-				limit: 100
+				limit: 100,
 			},
 		],
 		pendingFriends: [
