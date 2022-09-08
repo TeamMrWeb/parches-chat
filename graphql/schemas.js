@@ -19,6 +19,7 @@ const {
 	sendEmailVerification,
 } = require('./queries')
 
+// required mutations
 const {
 	register,
 	login,
@@ -29,7 +30,10 @@ const {
 	removeUserFromChat,
 } = require('./mutations')
 
-// setting up
+// required subscriptions
+const { messageAdded } = require('./subscriptions')
+
+// query graphql object
 const QueryType = new GraphQLObjectType({
 	name: 'QueryType',
 	description: 'Root query type',
@@ -45,6 +49,7 @@ const QueryType = new GraphQLObjectType({
 	},
 })
 
+// mutation graphql object
 const MutationType = new GraphQLObjectType({
 	name: 'MutationType',
 	description: 'Root mutation type',
@@ -59,7 +64,17 @@ const MutationType = new GraphQLObjectType({
 	},
 })
 
+// subscription graphql object
+const SubscriptionType = new GraphQLObjectType({
+	name: 'SubscriptionType',
+	description: 'Root subscription type',
+	fields: {
+		messageAdded,
+	},
+})
+
 module.exports = new GraphQLSchema({
 	query: QueryType,
 	mutation: MutationType,
+	subscription: SubscriptionType,
 })

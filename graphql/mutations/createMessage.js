@@ -6,6 +6,7 @@
 
 // required modules
 const { MessageType } = require('../types')
+const { pubsub, events } = require('../pubsub')
 const createNewMessage =
 	require('../../controllers/messageController').createMessage
 const { findById, addMessage } = require('../../controllers/chatController')
@@ -48,6 +49,7 @@ const resolve = async (_, args, context) => {
 		seen: [],
 	})
 	await addMessage(args.chatId, newMessage._id)
+	pubsub.publish(events.MESSAGE_ADDED, { messageAdded: newMessage })
 	return newMessage
 }
 
