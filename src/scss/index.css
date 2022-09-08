@@ -273,40 +273,69 @@ html body #root .App ul {
 }
 
 .preview-container {
-  height: 300px;
+  height: 250px;
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: 60px;
+  bottom: 55px;
   margin-right: 50px;
+  padding: 0 50px;
   box-sizing: border-box;
 }
 .preview-container .preview-wrapper {
-  position: absolute;
   width: 100%;
-  left: 0;
-  bottom: 0px;
-  margin: 0 50px;
+  height: 100%;
   background-color: #2a2c37;
+  padding-top: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 .preview-container .preview-wrapper .preview-image {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   flex-direction: column;
-  height: 250px;
+  height: 200px;
   margin: 20px;
-  width: 200px;
+  width: 100%;
+  min-width: 100px;
+  max-width: 250px;
   background-color: #1c1d22;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .preview-container .preview-wrapper .preview-image .preview-image__image {
-  height: 200px;
-  width: 100px;
+  height: 150px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
 }
 .preview-container .preview-wrapper .preview-image .preview-image__name {
-  color: white;
+  color: #ffffff;
 }
 
+@media screen and (max-width: 600px) {
+  .preview-container {
+    height: 170px;
+    bottom: 40px;
+    padding: 0 20px;
+  }
+  .preview-container .preview-wrapper {
+    padding: 0;
+    padding-top: 5px;
+  }
+  .preview-container .preview-wrapper .preview-image {
+    height: 150px;
+    width: 50px;
+    padding: 0;
+    margin: 0;
+    margin-left: 10px;
+  }
+  .preview-container .preview-wrapper .preview-image .preview-image__name {
+    display: none;
+  }
+}
 .account-question {
   display: flex;
   align-items: center;
