@@ -9,6 +9,7 @@ Required NodeJS v16.x
 - ExpressGraphQL
 - JsonWebToken
 - Nodemailer
+- Websockets
 - Mongoose
 - GraphQL
 
