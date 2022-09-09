@@ -1,11 +1,11 @@
 /**
  * @file Contains update user mutation.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
-const { GraphQLString } = require('graphql')
+const { GraphQLString, GraphQLInt } = require('graphql')
 const { UserType } = require('../types')
 const { updateOneUser } = require('../../controllers/userController')
 
@@ -23,7 +23,7 @@ const args = {
 		description: 'The new avatar of the user.',
 	},
 	status: {
-		type: GraphQLString,
+		type: GraphQLInt,
 		description: 'The new status of the user.',
 	},
 }
