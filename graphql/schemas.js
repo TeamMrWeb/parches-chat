@@ -28,6 +28,7 @@ const {
 	updateUser,
 	addUserToChat,
 	removeUserFromChat,
+	refreshToken,
 } = require('./mutations')
 
 // required subscriptions
@@ -61,6 +62,7 @@ const MutationType = new GraphQLObjectType({
 		updateUser,
 		addUserToChat,
 		removeUserFromChat,
+		refreshToken,
 	},
 })
 

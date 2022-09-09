@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL mutations exports.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 module.exports = {
@@ -12,4 +12,5 @@ module.exports = {
 	updateUser: require('./mutations/updateUser'),
 	addUserToChat: require('./mutations/addUserToChat'),
 	removeUserFromChat: require('./mutations/removeUserFromChat'),
+	refreshToken: require('./mutations/refreshToken'),
 }
