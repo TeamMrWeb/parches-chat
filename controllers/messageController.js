@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -61,10 +61,33 @@ const findMany = async (ids, limit, skip) => {
 		.limit(limit)
 }
 
+/**
+ * Check if a user is the author of a message.
+ * @param {String} messageId - The id of the message to check.
+ * @param {String} userId - The id of the user to check.
+ * @returns {Boolean} True if the user is the author of the message, false otherwise.
+ */
+const isMessageAuthor = async (messageId, userId) => {
+	const message = await Message.findById(messageId)
+	return message.author.toString() === userId
+}
+
+/**
+ * Deletes a message by its id.
+ * @param {String} id - The id of the message to delete.
+ * @returns {void} Nothing.
+ */
+const deleteMessage = async (id) => {
+	if (!ObjectId.isValid(id)) return null
+	return await Message.findByIdAndDelete(id)
+}
+
 module.exports = {
 	createMessage,
 	updateMessage,
+	deleteMessage,
 	findOne,
 	findMany,
 	findById,
+	isMessageAuthor,
 }
