@@ -25,6 +25,7 @@ const {
 	login,
 	createMessage,
 	createChat,
+	deleteChat,
 	updateUser,
 	updateMessage,
 	addUserToChat,
@@ -65,6 +66,7 @@ const MutationType = new GraphQLObjectType({
 		addUserToChat,
 		removeUserFromChat,
 		refreshToken,
+		deleteChat,
 	},
 })
 
