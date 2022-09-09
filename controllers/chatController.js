@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -19,6 +19,13 @@ const createChat = async (data, save = true) => {
 	if (save) await newChat.save()
 	return newChat
 }
+
+/**
+ * Deletes a chat by its id.
+ * @param {String} chatId - The id of the chat to delete.
+ * @returns {void} Nothing.
+ */
+const deleteChat = async (chatId) => await Chat.findByIdAndDelete(chatId)
 
 /**
  * Find a chat by its id, users or name.
@@ -69,10 +76,47 @@ const addMessage = async (chatId, messageId) => {
 	await chat.save()
 }
 
+/**
+ * Check if a user is in a chat.
+ * @param {String} chatId - The id of the chat to check.
+ * @param {String} userId - The id of the user to check in the chat.
+ * @returns {Boolean} True if the user is in the chat, false otherwise.
+ */
+const isUserInChat = async (chatId, userId) => {
+	const chat = await findById(chatId)
+	return chat.users.includes(userId)
+}
+
+/**
+ * Check if a user is admin in a chat.
+ * @param {String} chatId - The id of the chat to check.
+ * @param {String} userId - The id of the user to check if is admin.
+ * @returns {Boolean} True if the user is admin, false otherwise.
+ */
+const isUserAdmin = async (chatId, userId) => {
+	const chat = await findById(chatId)
+	return chat.admins.includes(userId)
+}
+
+/**
+ * Check if a user is the owner of a chat.
+ * @param {String} chatId - The id of the chat to check.
+ * @param {String} userId - The id of the user to check if is owner.
+ * @returns {Boolean} True if the user is owner, false otherwise.
+ */
+const isUserOwner = async (chatId, userId) => {
+	const chat = await findById(chatId)
+	return chat.owner.equals(userId)
+}
+
 module.exports = {
 	createChat,
+	deleteChat,
 	findById,
 	findOne,
 	findAll,
 	addMessage,
+	isUserInChat,
+	isUserAdmin,
+	isUserOwner,
 }
