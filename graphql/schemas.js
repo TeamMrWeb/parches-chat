@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.0.9
  */
 
 // required modules
@@ -26,6 +26,7 @@ const {
 	createMessage,
 	createChat,
 	updateUser,
+	updateMessage,
 	addUserToChat,
 	removeUserFromChat,
 	refreshToken,
@@ -60,6 +61,7 @@ const MutationType = new GraphQLObjectType({
 		createChat,
 		createMessage,
 		updateUser,
+		updateMessage,
 		addUserToChat,
 		removeUserFromChat,
 		refreshToken,
