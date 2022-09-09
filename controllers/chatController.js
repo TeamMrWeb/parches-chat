@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.0.9
  */
 
 // required modules
@@ -77,6 +77,17 @@ const addMessage = async (chatId, messageId) => {
 }
 
 /**
+ * Check if a message belongs to a chat.
+ * @param {String} chatId - The id of the chat to check.
+ * @param {String} messageId - The id of the message to check.
+ * @returns {Boolean} True if the message belongs to the chat, false otherwise.
+ */
+const isMessageInChat = async (chatId, messageId) => {
+	const chat = await findById(chatId)
+	return chat.messages.includes(messageId)
+}
+
+/**
  * Check if a user is in a chat.
  * @param {String} chatId - The id of the chat to check.
  * @param {String} userId - The id of the user to check in the chat.
@@ -117,6 +128,7 @@ module.exports = {
 	findOne,
 	findAll,
 	addMessage,
+	isMessageInChat,
 	isUserInChat,
 	isUserAdmin,
 	isUserOwner,
