@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -106,6 +106,7 @@ const isUserAdmin = async (chatId, userId) => {
  */
 const isUserOwner = async (chatId, userId) => {
 	const chat = await findById(chatId)
+	if (!chat.owner) return true
 	return chat.owner.equals(userId)
 }
 
