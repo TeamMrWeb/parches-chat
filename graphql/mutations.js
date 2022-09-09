@@ -14,6 +14,7 @@ module.exports = {
 	// Messages
 	createMessage: require('./mutations/createMessage'),
 	updateMessage: require('./mutations/updateMessage'),
+	deleteMessage: require('./mutations/deleteMessage'),
 
 	// Chats
 	createChat: require('./mutations/createChat'),
