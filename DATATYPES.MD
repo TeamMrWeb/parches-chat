@@ -11,13 +11,13 @@ Representa un chat
   - Identificación del chat, este es único
 - `name` _String_
   - Nombre del chat asignado, no es único y puede cambiar
-- `users` [_[UserType](https://github.com/TeamParches/parches-chat/new/docs#usertype)_]
+- `users` [_[UserType](https://github.com/TeamParches/parches-chat/blob/docs/DATATYPES.MD#usertype)_]
   - Lista con usuarios que pertenecen al chat, estos son de tipo UserType
-- `admins` [_[UserType](https://github.com/TeamParches/parches-chat/new/docs#usertype)_]
+- `admins` [_[UserType](https://github.com/TeamParches/parches-chat/blob/docs/DATATYPES.MD#usertype)_]
   - Lista con los administradores del chat, estos son de tipo UserType
-- `owner` _[UserType](https://github.com/TeamParches/parches-chat/new/docs#usertype)_
+- `owner` _[UserType](https://github.com/TeamParches/parches-chat/blob/docs/DATATYPES.MD#usertype)_
   - Dueño del chat, solamente si el chat es seguro. Por otro lado es *null*
-- `messages` [_[MesssageType](https://github.com/TeamParches/parches-chat/new/docs#messagetype)_]
+- `messages` [_[MesssageType](https://github.com/TeamParches/parches-chat/blob/docs/DATATYPES.MD#messagetype)_]
   - Lista de mensajes del chat, estos son de tipo MessageType
 - `isGroup` _Boolean_
   - Si el chat es grupo, es grupo cuando hay mas de 2 usuarios
@@ -55,9 +55,9 @@ Representa un mensaje
   - El texto del mensaje
 - `image` _String_
   - Imagen del mensaje, puede ser vacio
-- `author` [UserType](https://github.com/TeamParches/parches-chat/new/docs#usertype)
+- `author` [UserType](https://github.com/TeamParches/parches-chat/blob/docs/DATATYPES.MD#usertype)
   - Creador del mensaje, este es de tipo UserType
-- `seen` [_[UserType](https://github.com/TeamParches/parches-chat/new/docs#usertype)_]
+- `seen` [_[UserType](https://github.com/TeamParches/parches-chat/blob/docs/DATATYPES.MD#usertype)_]
   - Lista de usuarios que vieron el mensaje, este es de tipo UserType
 - `edited` _Boolean_
   - Si el mensaje esta editado
