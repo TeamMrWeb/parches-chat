@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
@@ -19,6 +19,17 @@ const createMessage = async (data, save = true) => {
 	if (save) await newMessage.save()
 	return newMessage
 }
+
+/**
+ * Update a message.
+ * @param {String} id - The id of the message to update.
+ * @param {Object} data - The data to update.
+ * @returns {Object} The updated message.
+ */
+const updateMessage = async (id, data) =>
+	await Message.findOneAndUpdate({ _id: id }, data, {
+		new: true,
+	})
 
 /**
  * Find a message by its id.
@@ -52,6 +63,7 @@ const findMany = async (ids, limit, skip) => {
 
 module.exports = {
 	createMessage,
+	updateMessage,
 	findOne,
 	findMany,
 	findById,
