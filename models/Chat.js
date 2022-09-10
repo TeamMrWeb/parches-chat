@@ -2,7 +2,7 @@
  * @file Contains chat model.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -13,6 +13,10 @@ const chatSchema = new Schema(
 		name: {
 			type: String,
 			required: true,
+		},
+		avatar: {
+			type: String,
+			required: false,
 		},
 		messages: [
 			{

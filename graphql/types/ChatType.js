@@ -2,7 +2,7 @@
  * @file Contains chat type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -31,6 +31,10 @@ const ChatType = new GraphQLObjectType({
 		name: {
 			type: GraphQLString,
 			description: 'The name of the chat.',
+		},
+		avatar: {
+			type: GraphQLString,
+			description: 'The avatar of the chat.',
 		},
 		admins: {
 			type: new GraphQLList(UserType),

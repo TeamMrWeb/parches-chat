@@ -2,7 +2,7 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.1.2
+ * @version 0.1.3
  */
 
 // required modules
@@ -26,6 +26,10 @@ const args = {
 	usersId: {
 		type: new GraphQLNonNull(new GraphQLList(GraphQLID)),
 		description: 'The id of the users of the chat.',
+	},
+	avatar: {
+		type: GraphQLString,
+		description: 'The avatar of the chat.',
 	},
 	secure: {
 		type: GraphQLBoolean,
@@ -87,6 +91,7 @@ const resolve = async (_, args, context) => {
 		messages: [],
 		admins: isGroup ? [author.id] : [],
 		users: args.private ? [] : args.usersId,
+		avatar: args.avatar,
 		secure: args.secure,
 		private: args.private,
 		ownerId: (args.secure && isGroup) || args.private ? author.id : null,
