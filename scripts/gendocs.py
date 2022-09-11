@@ -12,15 +12,12 @@
 import requests
 import markdown
 import os
-import json
 
 # The URL of the GraphQL endpoint
 GRAPHQL_URL = 'http://localhost:4000/graphql'
 
 # Ouput directory for the documentation
-OUTPUT_DIRECTORY = '../docs'
-
-URL_REFERENCE = 'https://raw.githubusercontent.com/TeamParches/parches-chat/main/docs/reference.md'
+OUTPUT_DIRECTORY = 'docs'
 
 INSTROSPECTION_QUERY = """
         query IntrospectionQuery {
@@ -185,7 +182,12 @@ if __name__ == '__main__':
 
     targets = ['queryType', 'mutationType']
 
-    print(f'Connecting to {GRAPHQL_URL} ..')
+    print(f'Checking connection to {GRAPHQL_URL}...')
+    try:
+        response = requests.get(GRAPHQL_URL)
+    except Exception as err:
+        raise SystemExit('Cannot connect to the GraphQL endpoint.')
+
     for target in targets:
 
         print(f'> Generating docs for {target} ..')
