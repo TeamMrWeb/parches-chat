@@ -12,6 +12,7 @@
 import requests
 import markdown
 import os
+import json
 
 # The URL of the GraphQL endpoint
 GRAPHQL_URL = 'http://localhost:4000/graphql'
@@ -19,18 +20,38 @@ GRAPHQL_URL = 'http://localhost:4000/graphql'
 # Ouput directory for the documentation
 OUTPUT_DIRECTORY = '../docs'
 
+URL_REFERENCE = 'https://raw.githubusercontent.com/TeamParches/parches-chat/main/docs/reference.md'
+
 INSTROSPECTION_QUERY = """
         query IntrospectionQuery {
             __schema {
                 TARGET_INSTROSPECTION {
                     name
                     description
-                    fields {
+                    fields {  
                         name
                         description
+                        isDeprecated
+                        deprecationReason
                         args {
                             name
                             description
+                            type {
+                                name
+                                kind
+                                ofType {
+                                    name
+                                }
+                            }
+                        }
+                        type {
+                            name
+                            kind
+                            ofType {
+                                name
+                                description
+                                kind
+                            }
                         }
                     }
                 }
@@ -39,23 +60,68 @@ INSTROSPECTION_QUERY = """
     """
 
 
+def parse_field(field: dict, include_return: bool) -> str:
+    """
+        Parses the instrospection fields to markdown format.
+        Params:
+            instrospection: The instrospection to parse.
+        Returns:
+            The parsed instrospection as markdown.
+    """
+
+    markdown = f"## > {field['name']}\n\n"
+    markdown += f"{field['description']}\n\n"
+
+    # if the field is deprecated
+    if field['isDeprecated']:
+        markdown += f"**Deprecated:** {field['deprecationReason']}\n\n"
+
+    # Arguments
+    if field['args']:
+        markdown += "#### Arguments\n\n"
+        for arg in field['args']:
+            markdown += f"- **{arg['name']}**:"
+
+            if arg['type']['name']:
+                markdown += f" _{arg['type']['name']}_\n"
+            else:
+                if(arg['type']['kind'] == 'NON_NULL'):
+                    markdown += f" _{arg['type']['ofType']['name']}!_\n"
+                else:
+                    markdown += f" _[{arg['type']['ofType']['name']}]_\n"
+
+            markdown += f"   - {arg['description'] if arg['description'] else 'No description provided.'}\n\n"
+    # Returns
+    if include_return:
+        if field['type']['name']:
+            markdown += f"> Returns _**{field['type']['name']}**_\n\n"
+        else:
+            if field['type']['kind'] == 'NON_NULL':
+                markdown += f"> Returns _**{field['type']['ofType']['name']}!**_\n\n"
+            else:
+                markdown += f"> Returns _**[{field['type']['ofType']['name']}]**_\n\n"
+    return markdown
+
+
 def generate_markdown(instrospection: dict, filename: str) -> str:
     """
         Generates the markdown documentation from the instrospection.
+        Not supports Types.
         Params:
             instrospection: The instrospection to generate the documentation.
             filename: The filename to save the documentation.
         Returns:
             The markdown documentation as a string.
     """
-    markdown = ""
+
+    markdown = f"# {instrospection[filename]['name']}\n\n"
+    markdown += f"{instrospection[filename]['description']}\n\n"
+
+    instrospection = instrospection[filename]['fields']
+
     for field in instrospection:
-        markdown += f"## {field['name']}\n"
-        markdown += f"{field['description']}\n"
-        markdown += '### Arguments\n' if field['args'] else ''
-        for arg in field['args']:
-            markdown += f"- {arg['name']}\n"
-            markdown += f"> {arg['description']}\n" if arg['description'] else ""
+        markdown += parse_field(field, include_return=True)
+
     return markdown
 
 
@@ -119,27 +185,20 @@ if __name__ == '__main__':
 
     targets = ['queryType', 'mutationType']
 
+    print(f'Connecting to {GRAPHQL_URL} ..')
     for target in targets:
 
-        print(f'> Generating documentation for {target} ..')
+        print(f'> Generating docs for {target} ..')
         query = generate_query(
             INSTROSPECTION_QUERY, target)
-
-        print('> Getting instrospection ..')
         instrospection = get_instrospection(GRAPHQL_URL, query)
-        # excludes name and description keys
-        instrospection = instrospection[target]['fields']
-
-        print('> Generating markdown ..')
-        markdown = generate_markdown(instrospection, f'{target}.md')
-
-        print('> Saving markdown ..')
-
+        markdown = generate_markdown(instrospection, target)
         filename = f'{OUTPUT_DIRECTORY}/{target}.md'
         try:
             save_file(filename, markdown)
         except FileNotFoundError as err:
             generate_directory(OUTPUT_DIRECTORY)
             save_file(filename, markdown)
+        print(f'- Docs for {target} generated successfully')
 
-        print('Done!')
+    print('Documentation done!')
