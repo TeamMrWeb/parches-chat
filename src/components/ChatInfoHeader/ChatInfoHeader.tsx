@@ -6,6 +6,7 @@ import backIcon from "../../assets/icons/back-icon.svg"
 export default function ChatInfoHeader() {
   const { showChat, setShowChat } = useShowChat()
   const { chatData } = useChatInfoHeader()
+
   return (
     <section className="chat-header header">
       <img className="header__back" src={backIcon} alt="Ícono de volver atrás" onClick={() => setShowChat && setShowChat(!showChat)} />

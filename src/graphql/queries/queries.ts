@@ -43,6 +43,9 @@ export const chatById = gql`
       }
       messages {
         text
+        author {
+          id
+        }
       }
     }
   }

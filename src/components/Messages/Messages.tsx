@@ -1,10 +1,26 @@
 import { useEffect, useRef } from "react"
 import { useShowChat } from "../../contexts/ShowChatContext"
 import Message from "../Message/Message"
+import { useMessages } from "./useMessages"
+
+interface author {
+  id: string
+}
+
+interface Message {
+  id: string
+  text: string
+  seen: Array<any>
+  edited: boolean
+  author: author
+  createdAt: Date
+  updatedAt: Date
+}
 
 export default function Messages() {
   const { showChat } = useShowChat()
   const scrollBottom = useRef<null | HTMLDivElement>(null)
+  const { messages, defineMessageSide } = useMessages()
 
   useEffect(() => {
     showChat && scrollBottom.current && scrollBottom.current.scrollIntoView()
@@ -13,18 +29,9 @@ export default function Messages() {
   return (
     <section className="messages">
       <div className="messages-wrapper">
-        <Message messageText="hola" messageHour="21:29" side="right" />
-        <Message
-          messageText="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum."
-          messageHour="21:29"
-          side="right"
-        />
-        <Message
-          messageText="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima voluptatibus sit iste veniam deleniti vitae nemo aliquam perspiciatis exercitationem molestias. Repellendus iusto id harum. Vero eos itaque beatae iste rerum."
-          messageHour="21:29"
-          side="right"
-        />
-        <Message messageText="hola" messageHour="21:29" side="left" />
+        {messages?.map((message: Message) => (
+          <Message messageText={message.text} messageHour="21:29" side={defineMessageSide(message.author)} />
+        ))}
       </div>
       <div className="scroll-bottom" ref={scrollBottom}></div>
     </section>
