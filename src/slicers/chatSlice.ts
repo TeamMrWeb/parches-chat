@@ -22,7 +22,6 @@ export const chatSlice = createSlice({
   initialState,
   reducers: {
     setChat: (state, action) => {
-      console.log(action.payload)
       Object.assign(state, { ...action.payload.chat })
     }
   }

@@ -39,6 +39,7 @@ export const chatById = gql`
       users {
         id
         username
+        avatar
       }
       messages {
         text
