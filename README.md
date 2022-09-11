@@ -1,7 +1,7 @@
 
 # Parches Backend ⚙️
 
-This branch contains the backend of Parches Chat providing a functional API using GraphQL
+Backend of Parches Chat providing a functional API using GraphQL
 
 Se full documentation [here](https://github.com/TeamParches/parches-chat/tree/docs)
 ## Installation
