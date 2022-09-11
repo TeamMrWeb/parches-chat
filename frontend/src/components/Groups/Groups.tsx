@@ -1,6 +1,5 @@
-import { useGroups } from "./useGroups"
-import GoHome from "../GoHome/GoHome"
 import Group from "../Group/Group"
+import { useGroups } from "./useGroups"
 
 export default function Groups() {
   const { groups } = useGroups()
@@ -14,7 +13,6 @@ export default function Groups() {
 
   return (
     <section className="groups">
-      <GoHome />
       <ul className="groups-list">
         {fakeGroups.map(group => (
           <Group image={group.image} key={group.id} />

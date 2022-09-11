@@ -38,14 +38,13 @@ html {
 @import "../sections/Register/register";
 @import "../sections/NotFound/notFound";
 @import "../sections/Login/login";
-@import "../sections/Home/home";
 
 //components
 @import "../components/AccountQuestion/accountQuestion";
 @import "../components/FormGroupInput/formGroupInput";
 @import "../components/ViewRepository/viewRepository";
 @import "../components/ChatInfoHeader/chatInfoHeader";
-@import "../components/AlertMessage/alertMessage";
+@import "../components/ErrorMessage/errorMessage";
 @import "../components/ChatInput/chatInput";
 @import "../components/Friends/friends";
 @import "../components/Groups/groups";
@@ -57,4 +56,3 @@ html {
 @import "../components/Group/group";
 @import "../components/Friend/friend";
 @import "../components/EmojisPicker/emojisPicker";
-@import "../components/GoHome/goHome";

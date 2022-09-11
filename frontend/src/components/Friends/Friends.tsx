@@ -1,7 +1,7 @@
 import Friend from "../Friend/Friend"
 import { useFriends } from "./useFriends"
 
-export default function Friends({ firstAccess, setFirstAccess }: { firstAccess: boolean; setFirstAccess: any }) {
+export default function Friends() {
   const { friends } = useFriends()
 
   const fakeFriends = [
@@ -14,11 +14,11 @@ export default function Friends({ firstAccess, setFirstAccess }: { firstAccess: 
   ]
 
   return (
-    <section className={`friends ${firstAccess && "extended"}`}>
+    <section className="friends">
       <h3 className="friends__title">Amigos</h3>
       <ul className="friends-list">
         {fakeFriends.map(friend => (
-          <Friend image={friend.image} username={friend.username} status={friend.status} key={friend.id} setFirstAccess={setFirstAccess} />
+          <Friend image={friend.image} username={friend.username} status={friend.status} key={friend.id} />
         ))}
       </ul>
     </section>

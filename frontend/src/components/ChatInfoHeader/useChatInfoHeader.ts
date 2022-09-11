@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useShowChat } from "../../contexts/ShowChatContext"
 
 export const useChatInfoHeader = () => {

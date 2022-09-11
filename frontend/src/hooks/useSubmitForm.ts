@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client"
 import { useDispatch } from "react-redux"
-import { createAlertMessage } from "../slicers/alertMessageSlice"
+import { createError } from "../slicers/errorMessageSlice"
 
 const userRegister = gql`
   mutation registerUser($username: String!, $email: String!, $password: String!) {
@@ -13,8 +13,6 @@ const userLogin = gql`
     login(email: $email, password: $password)
   }
 `
-
-const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
 export const useSubmitForm = () => {
   const [register] = useMutation(userRegister)
@@ -30,35 +28,30 @@ export const useSubmitForm = () => {
       Object.assign(userData, { [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value })
     })
     const { username, email, password } = userData as any
+    console.log({ username, email, password })
 
-    const submitMethods: {
-      register: any
-      login: any
-    } = {
-      register,
-      login
+    if (type === "register") {
+      register({ variables: { username, email, password } })
+        .then(res => {
+          console.log(res)
+          const authToken = res.data.register
+          localStorage.setItem("auth", authToken)
+        })
+        .catch(err => {
+          console.log(err)
+          dispatch(createError({ title: "Error de Registro", description: err.message, visible: true }))
+        })
+    } else {
+      login({ variables: { email, password } })
+        .then(res => {
+          const authToken = res.data.login
+          localStorage.setItem("auth", authToken)
+        })
+        .catch(err => {
+          console.log(err)
+          dispatch(createError({ title: "Error de Ingreso", description: err.message, visible: true }))
+        })
     }
-
-    submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
-      .then((res: any) => {
-        dispatch(
-          createAlertMessage({
-            title: `El ${capitalizeFirstLetter(type)} se realizó correctamente`,
-            description: res.data[type],
-            type: "success",
-            visible: true
-          })
-        )
-        console.log(res.data[type])
-        const authToken = res.data.register
-        localStorage.setItem("auth", authToken)
-      })
-      .catch((err: any) => {
-        console.log(err)
-        dispatch(
-          createAlertMessage({ title: `Error de ${capitalizeFirstLetter(type)}`, description: err.message, type: "error", visible: true })
-        )
-      })
   }
 
   return { handleSubmit }

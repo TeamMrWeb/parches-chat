@@ -9,7 +9,10 @@
   padding: 10px 20px;
   box-sizing: border-box;
   .header__back {
-    display: none;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    cursor: pointer;
   }
   .header__image {
     width: 30px;
@@ -27,18 +30,6 @@
     .header__options {
       width: 25px;
       height: 25px;
-    }
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .chat-header {
-    .header__back {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      margin-right: 15px;
-      cursor: pointer;
     }
   }
 }

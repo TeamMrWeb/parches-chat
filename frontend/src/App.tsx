@@ -1,19 +1,19 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { ShowChatProvider } from "./contexts/ShowChatContext"
 import { useSelector } from "react-redux"
-import AlertMessage from "./components/AlertMessage/AlertMessage"
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage"
 import ChatIndex from "./sections/ChatIndex/ChatIndex"
 import NotFound from "./sections/NotFound/NotFound"
 import Register from "./sections/Register/Register"
 import Login from "./sections/Login/Login"
 
 function App() {
-  const alertMessage = useSelector((state: any) => state.alertMessage)
+  const errorMessage = useSelector((state: any) => state.errorMessage)
 
   return (
     <div className="App">
       <ShowChatProvider>
-        {alertMessage.visible && <AlertMessage />}
+        {errorMessage.visible && <ErrorMessage />}
         <BrowserRouter>
           <Routes>
             <Route path="/accounts/*">

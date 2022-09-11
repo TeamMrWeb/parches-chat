@@ -1,8 +1,8 @@
-import { useSubmitForm } from "../../hooks/useSubmitForm"
+import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
 import AccountQuestion from "../../components/AccountQuestion/AccountQuestion"
+import { useSubmitForm } from "../../hooks/useSubmitForm"
 import FormGroupInput from "../../components/FormGroupInput/FormGroupInput"
 import ViewRepository from "../../components/ViewRepository/ViewRepository"
-import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
 
 export default function Register() {
   const { handleSubmit } = useSubmitForm()
