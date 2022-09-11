@@ -1,11 +1,11 @@
 {
   "name": "parches-chat-backend",
-  "version": "0.0.1",
+  "version": "0.1.7",
   "description": "backend of parches chat application",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=15000"
+    "test": "cross-env NODE_ENV=src/test jest --testTimeout=15000"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "src/node_modules/"
     ]
   },
   "homepage": "https://github.com/TeamParches/parches-chat#readme",
