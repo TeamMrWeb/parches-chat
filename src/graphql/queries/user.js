@@ -39,7 +39,7 @@ const resolve = async (_, args, context) => {
 // query object
 const user = {
 	type: UserType,
-	description: 'Get a user by id, email or username',
+	description: 'Get a user by id.',
 	args,
 	resolve,
 }

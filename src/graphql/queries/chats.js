@@ -1,7 +1,7 @@
 /**
  * @file Contains chats query.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
@@ -61,7 +61,7 @@ const resolve = async (_, args, context) => {
 // query object
 const chats = {
 	type: new GraphQLList(ChatType),
-	description: 'List of all chats',
+	description: 'Get chats from a user by its id.',
 	args,
 	resolve,
 }

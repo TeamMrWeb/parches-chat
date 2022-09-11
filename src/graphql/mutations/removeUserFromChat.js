@@ -1,7 +1,7 @@
 /**
  * @file Contains removeUserFromChat mutation.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -66,7 +66,7 @@ const resolve = async (_, args, context) => {
 // mutation object
 const removeUserFromChat = {
 	type: ChatType,
-	description: 'Remove a user from a chat.',
+	description: 'Remove a user from a chat by id.',
 	args,
 	resolve,
 }

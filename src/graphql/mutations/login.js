@@ -1,7 +1,7 @@
 /**
  * @file Contains login mutation.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -11,8 +11,14 @@ const { GraphQLNonNull, GraphQLString } = require('graphql')
 
 // arguments object
 const args = {
-	email: { type: new GraphQLNonNull(GraphQLString) },
-	password: { type: new GraphQLNonNull(GraphQLString) },
+	email: {
+		type: new GraphQLNonNull(GraphQLString),
+		description: 'The email of the user.',
+	},
+	password: {
+		type: new GraphQLNonNull(GraphQLString),
+		description: 'The password of the user (not hashed).',
+	},
 }
 
 /**
@@ -37,7 +43,7 @@ const resolve = async (_, args) => {
 // mutation object
 const login = {
 	type: GraphQLString,
-	description: 'Login a user',
+	description: 'Login a user and returns a access token.',
 	args,
 	resolve,
 }
