@@ -4,9 +4,9 @@ import os
 import subprocess
 from requests import get
 
-# note: graphql should be disabled
+# note: graphiql should be disabled
 GRAPHQL_ENDPOINT = 'http://localhost:4000/graphql'
-OUTPUT_FOLDER = 'graphql'
+OUTPUT_FOLDER = './addons'
 FILENAME = 'schemas.graphql'
 PACKAGE = 'get-graphql-schema@2.1.2'
 
