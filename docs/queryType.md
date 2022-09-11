@@ -1,22 +1,22 @@
 # QueryType
 
-Root query type
+Parches Chat Root query type, contains all queries provided by the API.
 
 ## > hello
 
-Hello World!
+A simple test query that returns "Hello World!"
 
 > Returns _**String**_
 
 ## > users
 
-List of all users
+Returns all users from the database.
 
 > Returns _**[UserType]**_
 
 ## > user
 
-Get a user by id, email or username
+Get a user by id.
 
 #### Arguments
 
@@ -44,18 +44,18 @@ Get messages by ids, if not provided, parent messages will be used.
 
 ## > chat
 
-Get a chat by id
+Get a chat by id.
 
 #### Arguments
 
-- **id**: _ID_
-   - The id of the chat.
+- **id**: _ID!_
+   - The id of the chat to find.
 
 > Returns _**ChatType**_
 
 ## > chats
 
-List of all chats
+Get chats from a user by its id.
 
 #### Arguments
 
@@ -81,7 +81,7 @@ Verify a user by a token (through headers)
 
 ## > sendEmailVerification
 
-Send a email verification
+Send a email verification to the user.
 
 #### Arguments
 

@@ -1,41 +1,41 @@
 # MutationType
 
-Root mutation type
+Parches Chat Root mutation type, contains all mutations provided by the API.
 
 ## > register
 
-Register a new user
+Register a new user.
 
 #### Arguments
 
 - **username**: _String!_
-   - No description provided.
+   - The username of the user.
 
 - **email**: _String!_
-   - No description provided.
+   - The email of the user.
 
 - **password**: _String!_
-   - No description provided.
+   - The password of the user (not hashed).
 
 > Returns _**String**_
 
 ## > login
 
-Login a user
+Login a user and returns a access token.
 
 #### Arguments
 
 - **email**: _String!_
-   - No description provided.
+   - The email of the user.
 
 - **password**: _String!_
-   - No description provided.
+   - The password of the user (not hashed).
 
 > Returns _**String**_
 
 ## > createChat
 
-Create a new chat
+Create a new chat and returns the chat object.
 
 #### Arguments
 
@@ -58,7 +58,7 @@ Create a new chat
 
 ## > createMessage
 
-Create a new message
+Create a new message in a chat.
 
 #### Arguments
 
@@ -75,7 +75,7 @@ Create a new message
 
 ## > updateUser
 
-Update a user
+Updates a logged user.
 
 #### Arguments
 
@@ -95,7 +95,7 @@ Update a user
 
 ## > updateMessage
 
-Update a message
+Update a message by id.
 
 #### Arguments
 
@@ -109,7 +109,7 @@ Update a message
 
 ## > addUserToChat
 
-Add a user to a chat.
+Add a user to a chat by id.
 
 #### Arguments
 
@@ -123,7 +123,7 @@ Add a user to a chat.
 
 ## > removeUserFromChat
 
-Remove a user from a chat.
+Remove a user from a chat by id.
 
 #### Arguments
 
@@ -137,7 +137,7 @@ Remove a user from a chat.
 
 ## > refreshToken
 
-Refresh a token.
+Refresh a access token of a logged user.
 
 #### Arguments
 
@@ -148,7 +148,7 @@ Refresh a token.
 
 ## > deleteChat
 
-Delete a chat
+Delete a chat by id.
 
 #### Arguments
 
@@ -159,7 +159,7 @@ Delete a chat
 
 ## > deleteMessage
 
-Delete a message
+Delete a message in a chat by id.
 
 #### Arguments
 
