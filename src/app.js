@@ -7,6 +7,7 @@
 // required modules
 const cors = require('cors')
 const express = require('express')
+const compression = require('compression')
 const graphqlHTTP = require('express-graphql').graphqlHTTP
 const authenticate = require('./middlewares/auth')
 const schema = require('./graphql/schemas')
@@ -16,6 +17,7 @@ const app = express()
 
 // middlewares
 app.use(cors())
+app.use(compression())
 app.use(authenticate)
 
 // routes
