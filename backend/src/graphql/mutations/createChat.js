@@ -2,11 +2,11 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.9
+ * @version 0.1.3
  */
 
 // required modules
-const { createChat } = require('../../controllers/chatController')
+const { createChat, findOne } = require('../../controllers/chatController')
 const { findMany, findById } = require('../../controllers/userController')
 const { ChatType } = require('../types')
 const {
@@ -27,9 +27,18 @@ const args = {
 		type: new GraphQLNonNull(new GraphQLList(GraphQLID)),
 		description: 'The id of the users of the chat.',
 	},
+	avatar: {
+		type: GraphQLString,
+		description: 'The avatar of the chat.',
+	},
 	secure: {
 		type: GraphQLBoolean,
-		description: 'If the chat is secure',
+		description:
+			'If the chat is secure or not. If is secure the chat will have a owner.',
+	},
+	private: {
+		type: GraphQLBoolean,
+		description: 'If the chat is private or not.',
 	},
 }
 
@@ -44,25 +53,48 @@ const resolve = async (_, args, context) => {
 	const { user } = context
 	if (!user) throw new Error('Tienes que estar logeado para crear un chat.')
 
-	const users = await findMany(args.usersId)
 	const author = await findById(user.id)
-	if (!author) throw new Error('Id del autor invalido.')
-	if (!users) throw new Error('Id de usuario invalido.')
+	if (!author) throw new Error('Usuario logeado no encontrado')
 
-	if (users.length < 2)
+	// check if any userId is duplicated
+	const anyOneIsDuplicate = args.usersId.some(
+		(id, index) => args.usersId.indexOf(id) !== index
+	)
+	if (anyOneIsDuplicate && !args.private)
+		throw new Error('No puedes agregar dos veces el mismo usuario.')
+
+	// check if exists the users
+	const users = await findMany(args.usersId)
+	if (!users && !args.private)
+		throw new Error('Alguno de los usuarios no existe.')
+
+	if (users.length < 2 && !args.private)
 		throw new Error('El chat debe tener al menos 2 usuarios.')
+
 	if (args.name < 3)
 		throw new Error('El nombre del chat debe tener al menos 3 caracteres.')
+
 	const isGroup = users.length > 2
+
+	if (args.private) {
+		args.secure = true
+		const existsChat = await findOne({
+			private: args.private,
+			ownerId: author.id,
+		})
+		if (existsChat) throw new Error('El chat ya existe.')
+	}
 
 	return await createChat({
 		name: args.name,
 		isGroup,
 		messages: [],
 		admins: isGroup ? [author.id] : [],
-		users: args.usersId,
+		users: args.private ? [] : args.usersId,
+		avatar: args.avatar,
 		secure: args.secure,
-		ownerId: args.secure && isGroup ? author.id : null,
+		private: args.private,
+		ownerId: (args.secure && isGroup) || args.private ? author.id : null,
 	})
 }
 

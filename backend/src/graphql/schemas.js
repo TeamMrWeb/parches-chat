@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.0.9
  */
 
 // required modules
@@ -19,17 +19,25 @@ const {
 	sendEmailVerification,
 } = require('./queries')
 
+// required mutations
 const {
 	register,
 	login,
 	createMessage,
+	deleteMessage,
 	createChat,
+	deleteChat,
 	updateUser,
+	updateMessage,
 	addUserToChat,
 	removeUserFromChat,
+	refreshToken,
 } = require('./mutations')
 
-// setting up
+// required subscriptions
+const { messageAdded } = require('./subscriptions')
+
+// query graphql object
 const QueryType = new GraphQLObjectType({
 	name: 'QueryType',
 	description: 'Root query type',
@@ -45,6 +53,7 @@ const QueryType = new GraphQLObjectType({
 	},
 })
 
+// mutation graphql object
 const MutationType = new GraphQLObjectType({
 	name: 'MutationType',
 	description: 'Root mutation type',
@@ -54,12 +63,26 @@ const MutationType = new GraphQLObjectType({
 		createChat,
 		createMessage,
 		updateUser,
+		updateMessage,
 		addUserToChat,
 		removeUserFromChat,
+		refreshToken,
+		deleteChat,
+		deleteMessage,
+	},
+})
+
+// subscription graphql object
+const SubscriptionType = new GraphQLObjectType({
+	name: 'SubscriptionType',
+	description: 'Root subscription type',
+	fields: {
+		messageAdded,
 	},
 })
 
 module.exports = new GraphQLSchema({
 	query: QueryType,
 	mutation: MutationType,
+	subscription: SubscriptionType,
 })

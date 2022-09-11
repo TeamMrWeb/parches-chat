@@ -1,12 +1,13 @@
 /**
  * @file Contains all backend things for parches-chat application.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.7
  */
 
 // required modules
 const cors = require('cors')
 const express = require('express')
+const compression = require('compression')
 const graphqlHTTP = require('express-graphql').graphqlHTTP
 const authenticate = require('./middlewares/auth')
 const schema = require('./graphql/schemas')
@@ -16,6 +17,7 @@ const app = express()
 
 // middlewares
 app.use(cors())
+app.use(compression())
 app.use(authenticate)
 
 // routes
@@ -27,7 +29,10 @@ app.use(
 	'/graphql',
 	graphqlHTTP({
 		schema: schema,
-		graphiql: true,
+		graphiql: {
+			subscriptionEndpoint: `ws://localhost:4000/subscriptions`,
+			websocketClient: 'v1',
+		},
 	})
 )
 

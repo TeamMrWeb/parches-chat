@@ -2,13 +2,15 @@
 
 import os
 import subprocess
-from requests import get
 
-# note: graphql should be disabled
-GRAPHQL_ENDPOINT = 'http://localhost:3000/graphql'
-OUTPUT_FOLDER = 'graphql'
+GRAPHQL_ENDPOINT = 'http://localhost:4000/graphql'
+OUTPUT_FOLDER = '../addons'
 FILENAME = 'schemas.graphql'
 PACKAGE = 'get-graphql-schema@2.1.2'
+
+
+def checkInternetConnection() -> bool:
+    return checkOutput('ping -n 1 google.com')
 
 
 def checkOutput(command: str) -> bool:
@@ -36,6 +38,10 @@ def checkEndpoint(endpoint: str) -> bool:
 
 
 if __name__ == '__main__':
+    if not checkInternetConnection():
+        print('No internet connection')
+        exit(1)
+
     if not isNPMPackageInstalled(PACKAGE):
         print(f'''
             Not found {PACKAGE}. Please install it.

@@ -1,6 +1,7 @@
 schema {
   query: QueryType
   mutation: MutationType
+  subscription: SubscriptionType
 }
 
 """Exposes a URL that specifies the behavior of this scalar."""
@@ -17,6 +18,9 @@ type ChatType {
   """The name of the chat."""
   name: String
 
+  """The avatar of the chat."""
+  avatar: String
+
   """The admins of the chat."""
   admins: [UserType]
 
@@ -28,6 +32,12 @@ type ChatType {
 
   """If the chat is secure"""
   secure: Boolean
+
+  """If the chat is private or not."""
+  private: Boolean
+
+  """Max users in chat"""
+  maxUsers: Int
 
   """The users of the chat."""
   users: [UserType]
@@ -96,8 +106,14 @@ type MutationType {
     """The id of the users of the chat."""
     usersId: [ID]!
 
-    """If the chat is secure"""
+    """The avatar of the chat."""
+    avatar: String
+
+    """If the chat is secure or not. If is secure the chat will have a owner."""
     secure: Boolean
+
+    """If the chat is private or not."""
+    private: Boolean
   ): ChatType
 
   """Create a new message"""
@@ -124,8 +140,56 @@ type MutationType {
     avatar: String
 
     """The new status of the user."""
-    status: String
+    status: Int
   ): UserType
+
+  """Update a message"""
+  updateMessage(
+    """The id of the message."""
+    messageId: ID!
+
+    """The new text of the message."""
+    text: String
+  ): MessageType
+
+  """Add a user to a chat."""
+  addUserToChat(
+    """The id of the chat."""
+    chatId: ID!
+
+    """The id of the user, if not provided, the current user will be used."""
+    userId: ID
+  ): ChatType
+
+  """Remove a user from a chat."""
+  removeUserFromChat(
+    """The id of the chat."""
+    chatId: ID!
+
+    """The id of the user, if not provided, the current user will be used."""
+    userId: ID
+  ): ChatType
+
+  """Refresh a token."""
+  refreshToken(
+    """The token to refresh (not expired)."""
+    token: String!
+  ): String
+
+  """Delete a chat"""
+  deleteChat(
+    """The id of the chat to delete."""
+    chatId: ID!
+  ): String
+
+  """Delete a message"""
+  deleteMessage(
+    """The id of the chat that contains the message."""
+    chatId: ID!
+
+    """The id of the message to delete."""
+    messageId: ID!
+  ): ID
 }
 
 """Root query type"""
@@ -138,11 +202,8 @@ type QueryType {
 
   """Get a user by id, email or username"""
   user(
-    """Value to search for"""
-    value: ID
-
-    """Field to search through"""
-    through: ID
+    """The id of the user, if not provided, logged user will be used."""
+    userId: ID
   ): UserType
 
   """Get messages by ids, if not provided, parent messages will be used."""
@@ -182,14 +243,20 @@ type QueryType {
     limit: Int
   ): [ChatType]
 
-  """Verify a user by a token"""
-  verify(
-    """Token to verify"""
-    token: String!
-  ): String
+  """Verify a user by a token (through headers)"""
+  verify: String
 
   """Send a email verification"""
-  sendEmailVerification(username: String!, email: String!): String
+  sendEmailVerification(
+    """Email of the user to send the email verification"""
+    email: String!
+  ): String
+}
+
+"""Root subscription type"""
+type SubscriptionType {
+  """Subscription for new messages"""
+  messageAdded: MessageType
 }
 
 """The user type."""
@@ -202,6 +269,9 @@ type UserType {
 
   """The email of the user."""
   email: String
+
+  """The avatar of the user."""
+  avatar: String
 
   """The status of the user."""
   status: Int

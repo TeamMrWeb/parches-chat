@@ -1,7 +1,7 @@
 /**
  * @file Contains removeUserFromChat mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -31,7 +31,7 @@ const args = {
  * @returns {Object} The chat object.
  */
 const resolve = async (_, args, context) => {
-	const chat = await findChatById(args.chatId)
+	let chat = await findChatById(args.chatId)
 	if (!chat) throw new Error('Chat no encontrado.')
 
 	let userId = args.userId
@@ -45,18 +45,20 @@ const resolve = async (_, args, context) => {
 	if (!user) throw new Error('User no encontrado.')
 
 	// check if the user is already in the chat
-	const userInChat = chat.users.find((u) => u.id === user.id)
-	if (!userInChat) throw new Error('El usuario no está en el chat.')
+	const usersInChat = chat.users.map((user) => user._id.toString())
+	if (!usersInChat.includes(userId))
+		throw new Error('El usuario no esta en el chat.')
 
-	chat.users = chat.users.filter((u) => u.id !== user.id)
+	chat.users = chat.users.filter((user) => user._id.toString() !== userId)
 	len = chat.users.length
 	if (len === 0) {
 		await chat.remove()
-		return null
+		return {
+			action: 'remove',
+			description: 'Chat eliminado.',
+		}
 	}
-
 	if (len < 3) chat.isGroup = false
-
 	await chat.save()
 	return chat
 }
