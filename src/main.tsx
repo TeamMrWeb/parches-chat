@@ -1,4 +1,3 @@
-import React from "react"
 import ReactDOM from "react-dom/client"
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client"
 import { Provider } from "react-redux"
@@ -10,7 +9,7 @@ const auth = localStorage.getItem("auth")
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: "http://localhost:3001/graphql",
+    uri: "http://localhost:4000/graphql",
     headers: {
       auth
     }

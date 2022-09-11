@@ -1,31 +1,32 @@
 import { useShowChat } from "../../../contexts/ShowChatContext"
-import friendImage from "../../../assets/icons/friend-image.svg"
 
 const borderColors = ["green", "orange", "red", "gray"]
 
 export default function Friend({
-  image,
+  avatar,
   name,
   status,
-  setFirstAccess
+  setFirstAccess,
+  id,
+  getChatById
 }: {
-  image: string
+  avatar: string
   name: string
   status: number
   setFirstAccess: any
+  id: string
+  getChatById: (chatId: string) => void
 }) {
   const { setShowChat } = useShowChat()
-
-  // la imagen friendImage de arriba solo de prueba, cuando esten los datos reales hay que sacarlo
 
   return (
     <li
       className="userlogged-chat"
       onClick={() => {
-        setFirstAccess(false), setShowChat && setShowChat(true)
+        setFirstAccess(false), setShowChat && setShowChat(true), getChatById(id)
       }}
     >
-      <img className="userlogged-chat__image" src={friendImage} alt={`Imagén de ${name}`} style={{ borderColor: borderColors[status] }} />
+      <img className="userlogged-chat__image" src={avatar} alt={`Imagén de ${name}`} style={{ borderColor: borderColors[status] }} />
       <span className="userlogged-chat__username">{name}</span>
     </li>
   )

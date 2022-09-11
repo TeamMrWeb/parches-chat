@@ -4,6 +4,7 @@ import userLoggedReducer from "../slicers/userLoggedSlice"
 import loaderReducer from "../slicers/loaderSlice"
 import gropsReducer from "../slicers/groupsSlice"
 import chatsReducer from "../slicers/chatsSlice"
+import chatReducer from "../slicers/chatSlice"
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     loader: loaderReducer,
     userLogged: userLoggedReducer,
     groups: gropsReducer,
-    chats: chatsReducer
+    chats: chatsReducer,
+    chat: chatReducer
   }
 })

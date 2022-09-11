@@ -1,7 +1,15 @@
 import { useChats } from "./useChats"
 import Chat from "./Chat/Chat"
 
-export default function Chats({ firstAccess, setFirstAccess }: { firstAccess: boolean; setFirstAccess: any }) {
+export default function Chats({
+  firstAccess,
+  setFirstAccess,
+  getChatById
+}: {
+  firstAccess: boolean
+  setFirstAccess: any
+  getChatById: (chatId: string) => void
+}) {
   const { chats } = useChats()
 
   return (
@@ -9,7 +17,15 @@ export default function Chats({ firstAccess, setFirstAccess }: { firstAccess: bo
       <h3 className="chats__title">Chats</h3>
       <ul className="chats-list">
         {chats.map((chat: any) => (
-          <Chat image={chat.image} name={chat.name} status={chat.status} key={chat.id} setFirstAccess={setFirstAccess} />
+          <Chat
+            avatar={chat.avatar}
+            name={chat.name}
+            status={chat.status}
+            key={chat.id}
+            id={chat.id}
+            setFirstAccess={setFirstAccess}
+            getChatById={getChatById}
+          />
         ))}
       </ul>
     </section>

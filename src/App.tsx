@@ -12,6 +12,7 @@ import Login from "./sections/Login/Login"
 function App() {
   const alertMessage = useSelector((state: any) => state.alertMessage)
   const loader = useSelector((state: any) => state.loader)
+  const authToken = localStorage.auth
 
   return (
     <div className="App">

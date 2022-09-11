@@ -24,3 +24,25 @@ export const chatsFromUserLogged = gql`
     }
   }
 `
+
+export const chatById = gql`
+  query getChatById($id: ID!) {
+    chat(id: $id) {
+      id
+      name
+      owner {
+        username
+      }
+      isGroup
+      secure
+      private
+      users {
+        id
+        username
+      }
+      messages {
+        text
+      }
+    }
+  }
+`

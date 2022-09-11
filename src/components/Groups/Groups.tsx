@@ -2,7 +2,7 @@ import { useGroups } from "./useGroups"
 import GoHome from "../GoHome/GoHome"
 import Group from "../Group/Group"
 
-export default function Groups() {
+export default function Groups({ getChatById }: { getChatById: (chatId: string) => void }) {
   const { groups } = useGroups()
 
   return (
@@ -10,7 +10,7 @@ export default function Groups() {
       <GoHome />
       <ul className="groups-list">
         {groups?.map((group: any) => (
-          <Group image={group.image} key={group.id} />
+          <Group id={group.id} image={group.image} key={group.id} getChatById={getChatById} />
         ))}
       </ul>
     </section>
