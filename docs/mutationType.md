@@ -8,16 +8,29 @@ Register a new user.
 
 #### Arguments
 
-- **username**: _String!_
+- `username` _String_**!**
    - The username of the user.
 
-- **email**: _String!_
+- `email` _String_**!**
    - The email of the user.
 
-- **password**: _String!_
+- `password` _String_**!**
    - The password of the user (not hashed).
 
-> Returns _**String**_
+> Returns **_String_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	register(
+		username: "test"
+		email: "test"
+		password: "test"
+	)
+
+}
+```
 
 ## > login
 
@@ -25,13 +38,25 @@ Login a user and returns a access token.
 
 #### Arguments
 
-- **email**: _String!_
+- `email` _String_**!**
    - The email of the user.
 
-- **password**: _String!_
+- `password` _String_**!**
    - The password of the user (not hashed).
 
-> Returns _**String**_
+> Returns **_String_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	login(
+		email: "test"
+		password: "test"
+	)
+
+}
+```
 
 ## > createChat
 
@@ -39,22 +64,39 @@ Create a new chat and returns the chat object.
 
 #### Arguments
 
-- **name**: _String!_
+- `name` _String_**!**
    - The name of the chat.
 
-- **usersId**: _None!_
+- `usersId` _[ID]_**!**
    - The id of the users of the chat.
 
-- **avatar**: _String_
+- `avatar` _String_
    - The avatar of the chat.
 
-- **secure**: _Boolean_
+- `secure` _Boolean_
    - If the chat is secure or not. If is secure the chat will have a owner.
 
-- **private**: _Boolean_
+- `private` _Boolean_
    - If the chat is private or not.
 
-> Returns _**ChatType**_
+> Returns **_ChatType_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	createChat(
+		name: "test"
+		usersId: ["764aa137694c9b6eda2d7005", "764aa137694c9b6eda2d7005"]
+		avatar: "test"
+		secure: True
+		private: True
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
 
 ## > createMessage
 
@@ -62,16 +104,31 @@ Create a new message in a chat.
 
 #### Arguments
 
-- **chatId**: _ID!_
+- `chatId` _ID_**!**
    - The id of the chat.
 
-- **text**: _String!_
+- `text` _String_**!**
    - The text of the message.
 
-- **image**: _String_
+- `image` _String_
    - The image of the message.
 
-> Returns _**MessageType**_
+> Returns **_MessageType_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	createMessage(
+		chatId: "764aa137694c9b6eda2d7005"
+		text: "test"
+		image: "test"
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
 
 ## > updateUser
 
@@ -79,19 +136,35 @@ Updates a logged user.
 
 #### Arguments
 
-- **username**: _String_
+- `username` _String_
    - The new name of the user.
 
-- **email**: _String_
+- `email` _String_
    - The new email of the user.
 
-- **avatar**: _String_
+- `avatar` _String_
    - The new avatar of the user.
 
-- **status**: _Int_
+- `status` _Int_
    - The new status of the user.
 
-> Returns _**UserType**_
+> Returns **_UserType_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	updateUser(
+		username: "test"
+		email: "test"
+		avatar: "test"
+		status: 0
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
 
 ## > updateMessage
 
@@ -99,13 +172,27 @@ Update a message by id.
 
 #### Arguments
 
-- **messageId**: _ID!_
+- `messageId` _ID_**!**
    - The id of the message.
 
-- **text**: _String_
+- `text` _String_
    - The new text of the message.
 
-> Returns _**MessageType**_
+> Returns **_MessageType_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	updateMessage(
+		messageId: "764aa137694c9b6eda2d7005"
+		text: "test"
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
 
 ## > addUserToChat
 
@@ -113,13 +200,27 @@ Add a user to a chat by id.
 
 #### Arguments
 
-- **chatId**: _ID!_
+- `chatId` _ID_**!**
    - The id of the chat.
 
-- **userId**: _ID_
+- `userId` _ID_
    - The id of the user, if not provided, the current user will be used.
 
-> Returns _**ChatType**_
+> Returns **_ChatType_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	addUserToChat(
+		chatId: "764aa137694c9b6eda2d7005"
+		userId: "764aa137694c9b6eda2d7005"
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
 
 ## > removeUserFromChat
 
@@ -127,13 +228,27 @@ Remove a user from a chat by id.
 
 #### Arguments
 
-- **chatId**: _ID!_
+- `chatId` _ID_**!**
    - The id of the chat.
 
-- **userId**: _ID_
+- `userId` _ID_
    - The id of the user, if not provided, the current user will be used.
 
-> Returns _**ChatType**_
+> Returns **_ChatType_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	removeUserFromChat(
+		chatId: "764aa137694c9b6eda2d7005"
+		userId: "764aa137694c9b6eda2d7005"
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
 
 ## > refreshToken
 
@@ -141,10 +256,21 @@ Refresh a access token of a logged user.
 
 #### Arguments
 
-- **token**: _String!_
+- `token` _String_**!**
    - The token to refresh (not expired).
 
-> Returns _**String**_
+> Returns **_String_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	refreshToken(
+		token: "test"
+	)
+
+}
+```
 
 ## > deleteChat
 
@@ -152,10 +278,21 @@ Delete a chat by id.
 
 #### Arguments
 
-- **chatId**: _ID!_
+- `chatId` _ID_**!**
    - The id of the chat to delete.
 
-> Returns _**String**_
+> Returns **_String_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	deleteChat(
+		chatId: "764aa137694c9b6eda2d7005"
+	)
+
+}
+```
 
 ## > deleteMessage
 
@@ -163,11 +300,25 @@ Delete a message in a chat by id.
 
 #### Arguments
 
-- **chatId**: _ID!_
+- `chatId` _ID_**!**
    - The id of the chat that contains the message.
 
-- **messageId**: _ID!_
+- `messageId` _ID_**!**
    - The id of the message to delete.
 
-> Returns _**ID**_
+> Returns **_ID_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	deleteMessage(
+		chatId: "764aa137694c9b6eda2d7005"
+		messageId: "764aa137694c9b6eda2d7005"
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
 
