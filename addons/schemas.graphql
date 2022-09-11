@@ -18,6 +18,9 @@ type ChatType {
   """The name of the chat."""
   name: String
 
+  """The avatar of the chat."""
+  avatar: String
+
   """The admins of the chat."""
   admins: [UserType]
 
@@ -103,6 +106,9 @@ type MutationType {
     """The id of the users of the chat."""
     usersId: [ID]!
 
+    """The avatar of the chat."""
+    avatar: String
+
     """If the chat is secure or not. If is secure the chat will have a owner."""
     secure: Boolean
 
@@ -134,8 +140,17 @@ type MutationType {
     avatar: String
 
     """The new status of the user."""
-    status: String
+    status: Int
   ): UserType
+
+  """Update a message"""
+  updateMessage(
+    """The id of the message."""
+    messageId: ID!
+
+    """The new text of the message."""
+    text: String
+  ): MessageType
 
   """Add a user to a chat."""
   addUserToChat(
@@ -154,6 +169,27 @@ type MutationType {
     """The id of the user, if not provided, the current user will be used."""
     userId: ID
   ): ChatType
+
+  """Refresh a token."""
+  refreshToken(
+    """The token to refresh (not expired)."""
+    token: String!
+  ): String
+
+  """Delete a chat"""
+  deleteChat(
+    """The id of the chat to delete."""
+    chatId: ID!
+  ): String
+
+  """Delete a message"""
+  deleteMessage(
+    """The id of the chat that contains the message."""
+    chatId: ID!
+
+    """The id of the message to delete."""
+    messageId: ID!
+  ): ID
 }
 
 """Root query type"""
