@@ -13,6 +13,7 @@ const {
 	GraphQLString,
 	GraphQLBoolean,
 	GraphQLList,
+	GraphQLScalarType,
 } = require('graphql')
 
 const { findById } = require('../../controllers/userController')
@@ -36,7 +37,7 @@ const MessageType = new GraphQLObjectType({
 		author: {
 			type: UserType,
 			description: 'Get the author of the message.',
-			resolve: async (parent) => findById(parent.author)
+			resolve: async (parent) => findById(parent.author),
 		},
 		edited: {
 			type: GraphQLBoolean,
@@ -51,7 +52,14 @@ const MessageType = new GraphQLObjectType({
 			description: 'The date of the last update.',
 		},
 		createdAt: {
-			type: GraphQLString,
+			/**
+			 * TODO: Change this to a custom scalar type in another file.
+			 */
+			type: new GraphQLScalarType({
+				name: 'Date',
+				parseValue: (value) => new Date(value),
+				serialize: (value) => value.toISOString(),
+			}),
 			description: 'The date of the creation.',
 		},
 	},
