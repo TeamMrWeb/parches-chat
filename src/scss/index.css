@@ -63,10 +63,6 @@ html body #root .App ul {
   margin: 0;
 }
 
-white-content {
-  background: #e4e4e4;
-}
-
 .chat-index {
   display: flex;
   width: 100%;
@@ -673,7 +669,7 @@ white-content {
   font-size: 10px;
   color: #8e9297;
   position: absolute;
-  right: 10px;
+  right: 8px;
   bottom: 4px;
 }
 

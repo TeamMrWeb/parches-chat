@@ -42,7 +42,9 @@ export const chatById = gql`
         avatar
       }
       messages {
+        id
         text
+        createdAt
         author {
           id
         }

@@ -20,7 +20,7 @@ interface Message {
 export default function Messages() {
   const { showChat } = useShowChat()
   const scrollBottom = useRef<null | HTMLDivElement>(null)
-  const { messages, defineMessageSide } = useMessages()
+  const { messages, defineMessageSide, formatCreatedAtDate } = useMessages()
 
   useEffect(() => {
     showChat && scrollBottom.current && scrollBottom.current.scrollIntoView()
@@ -30,7 +30,12 @@ export default function Messages() {
     <section className="messages">
       <div className="messages-wrapper">
         {messages?.map((message: Message) => (
-          <Message messageText={message.text} messageHour="21:29" side={defineMessageSide(message.author)} />
+          <Message
+            messageText={message.text}
+            messageCreatedAt={formatCreatedAtDate(message.createdAt)}
+            side={defineMessageSide(message.author)}
+            key={message.id}
+          />
         ))}
       </div>
       <div className="scroll-bottom" ref={scrollBottom}></div>
