@@ -5,6 +5,7 @@
  */
 
 module.exports = {
+	DateType: require('./dateType'),
 	UserType: require('./userType'),
 	MessageType: require('./messageType'),
 	ChatType: require('./chatType'),
