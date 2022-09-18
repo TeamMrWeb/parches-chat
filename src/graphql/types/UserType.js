@@ -5,6 +5,7 @@
  */
 
 // required modules
+const DateType = require('./dateType')
 const {
 	GraphQLObjectType,
 	GraphQLID,
@@ -42,11 +43,11 @@ const UserType = new GraphQLObjectType({
 			description: 'If the user is verified or not.',
 		},
 		updatedAt: {
-			type: GraphQLString,
+			type: DateType,
 			description: 'The date of the last update.',
 		},
 		createdAt: {
-			type: GraphQLString,
+			type: DateType,
 			description: 'The date of the creation.',
 		},
 	},

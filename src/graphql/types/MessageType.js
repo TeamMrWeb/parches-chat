@@ -2,18 +2,18 @@
  * @file Contains message type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
 const UserType = require('./userType')
+const DateType = require('./dateType')
 const {
 	GraphQLObjectType,
 	GraphQLID,
 	GraphQLString,
 	GraphQLBoolean,
 	GraphQLList,
-	GraphQLScalarType,
 } = require('graphql')
 
 const { findById } = require('../../controllers/userController')
@@ -48,18 +48,11 @@ const MessageType = new GraphQLObjectType({
 			description: 'Get the users that have seen the message.',
 		},
 		updatedAt: {
-			type: GraphQLString,
+			type: DateType,
 			description: 'The date of the last update.',
 		},
 		createdAt: {
-			/**
-			 * TODO: Change this to a custom scalar type in another file.
-			 */
-			type: new GraphQLScalarType({
-				name: 'Date',
-				parseValue: (value) => new Date(value),
-				serialize: (value) => value.toISOString(),
-			}),
+			type: DateType,
 			description: 'The date of the creation.',
 		},
 	},
