@@ -1,16 +1,10 @@
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import ChatInfoHeader from "../ChatInfoHeader/ChatInfoHeader"
 import ChatInput from "../ChatInput/ChatInput"
 import Messages from "../Messages/Messages"
+import { useChat } from "./useChat"
 
 export default function Chat({ chatContainer }: { chatContainer: any }) {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    const auth = localStorage.auth
-    !auth && navigate("/login")
-  }, [])
+  useChat()
 
   return (
     <div className="chat-container" ref={chatContainer}>

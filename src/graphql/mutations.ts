@@ -15,12 +15,6 @@ export const createMessage = gql`
   mutation createMessage($chatId: ID!, $text: String!) {
     createMessage(chatId: $chatId, text: $text) {
       id
-      text
-      createdAt
-      author {
-        id
-      }
     }
   }
 `
-//el createMesasge fiajte que deuvlevee cosas y no las uso asi que scarlas del back
