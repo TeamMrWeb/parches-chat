@@ -41,6 +41,13 @@ export const chatById = gql`
         username
         avatar
       }
+    }
+  }
+`
+
+export const messagesByChatId = gql`
+  query getMessagesByChatId($id: ID!) {
+    chat(id: $id) {
       messages {
         id
         text
