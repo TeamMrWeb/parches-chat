@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 // required modules
@@ -35,7 +35,7 @@ const {
 } = require('./mutations')
 
 // required subscriptions
-const { messageAdded } = require('./subscriptions')
+const { messageAdded, chatMessageAdded } = require('./subscriptions')
 
 // query graphql object
 const QueryType = new GraphQLObjectType({
@@ -81,6 +81,7 @@ const SubscriptionType = new GraphQLObjectType({
 		'Parches Chat Root subscription type, contains all subscriptions provided by the API.',
 	fields: {
 		messageAdded,
+		chatMessageAdded,
 	},
 })
 
