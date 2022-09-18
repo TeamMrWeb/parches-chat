@@ -7,7 +7,6 @@ export const chatsSlice = createSlice({
   initialState,
   reducers: {
     setChats: (state, action) => {
-      console.log(action.payload.chats)
       const chats = action.payload.chats
       state.push(...chats)
     }

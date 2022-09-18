@@ -19,6 +19,7 @@ export const alertMessageSlice = createSlice({
   initialState,
   reducers: {
     createAlertMessage: (state, action) => {
+      console.log("maans", action.payload)
       Object.assign(state, { ...action.payload })
     },
     closeAlertMessage: state => {

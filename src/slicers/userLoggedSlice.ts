@@ -22,7 +22,6 @@ export const userLoggedSlice = createSlice({
       const firstFieldUnknown = action.payload[Object.keys(action.payload)[0]]
       const field = Object.keys(firstFieldUnknown)[1] as string
       const value = Object.values(firstFieldUnknown)[1]
-      console.log(firstFieldUnknown, field, value)
       state[field as keyof typeof state] = value
     }
   }

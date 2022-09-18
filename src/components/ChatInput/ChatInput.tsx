@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useChatInput } from "./useChatInput"
 import ChatPreviewImage from "../ChatPreviewImage/ChatPreviewImage"
@@ -7,14 +6,13 @@ import emojiIcon from "../../assets/icons/emoji-icon.svg"
 import plusIcon from "../../assets/icons/plus-icon.svg"
 
 export default function ChatInput() {
-  const [value, setValue] = useState("")
   const chat = useSelector((state: any) => state.chat)
-  const { showEmojisPicker, setShowEmojisPicker, previewImage, image, setImage } = useChatInput()
+  const { showEmojisPicker, setShowEmojisPicker, previewImage, image, setImage, value, setValue, submitMessage } = useChatInput(chat)
 
   return (
     <section className="chat-input">
       {image && <ChatPreviewImage image={image} setImage={setImage} />}
-      <div className="chat-input-wrapper">
+      <form className="chat-input-wrapper" onSubmit={e => submitMessage(e)}>
         <label htmlFor="image">
           <img className="chat-input__tool" src={plusIcon} alt="Adjuntar Imágen" />
         </label>
@@ -42,7 +40,7 @@ export default function ChatInput() {
           onClick={() => setShowEmojisPicker(!showEmojisPicker)}
         />
         {showEmojisPicker && <EmojisPicker setValue={setValue} />}
-      </div>
+      </form>
     </section>
   )
 }

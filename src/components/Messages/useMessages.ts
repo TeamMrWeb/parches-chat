@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { useLazyQueries } from "../../apollo/useLazyQueries"
+import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { messagesByChatId } from "../../graphql/queries"
 import { setMessages } from "../../slicers/messagesSlice"
 
@@ -9,7 +9,7 @@ interface author {
 }
 
 export const useMessages = () => {
-  const { lazyQueryMethod: getMessagesByChatId, loading } = useLazyQueries(messagesByChatId, setMessages)
+  const { lazyQueryMethod: getMessagesByChatId, loading } = useFetchingMethod(messagesByChatId, setMessages)
   const userLogged = useSelector((state: any) => state.userLogged)
   const messages = useSelector((state: any) => state.messages)
   const chat = useSelector((state: any) => state.chat)

@@ -15,10 +15,7 @@ export const comunication = () => {
 
   const wsLink = new GraphQLWsLink(
     createClient({
-      url: "ws://localhost:4000/subscriptions",
-      connectionParams: {
-        authToken: auth
-      }
+      url: "ws://localhost:4000/subscriptions"
     })
   )
 

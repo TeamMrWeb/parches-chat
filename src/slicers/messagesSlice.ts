@@ -9,6 +9,7 @@ interface messages {
   seen?: Object
   createdAt?: Date
   updatedAt?: Date
+  __typename?: string
 }
 
 const initialState: messages = [] as messages
@@ -18,11 +19,15 @@ export const messagesSlice = createSlice({
   initialState,
   reducers: {
     setMessages: (state, action) => {
+      console.log(...action.payload.chat.messages)
       Object.assign(state, { ...action.payload.chat.messages })
+    },
+    setNewLoggedUserMessage: (state, action) => {
+      ;(state as messages[]).push(action.payload.createMessage)
     }
   }
 })
 
-export const { setMessages } = messagesSlice.actions
+export const { setMessages, setNewLoggedUserMessage } = messagesSlice.actions
 
 export default messagesSlice.reducer

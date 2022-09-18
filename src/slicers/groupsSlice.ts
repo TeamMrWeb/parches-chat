@@ -7,7 +7,6 @@ export const groupsSlice = createSlice({
   initialState,
   reducers: {
     setGroups: (state, action) => {
-      console.log(action.payload.chats)
       const chats = action.payload.chats
       state.push(...chats)
     }
