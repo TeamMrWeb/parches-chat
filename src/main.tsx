@@ -5,15 +5,16 @@ import { store } from "./store/store"
 import App from "./App"
 import "./scss/index.css"
 import { comunication } from "./apollo/comunication"
+import React from "react"
 
 const { client } = comunication()
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </Provider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </Provider>
+  </React.StrictMode>
 )

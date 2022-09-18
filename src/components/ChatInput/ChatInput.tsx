@@ -1,32 +1,15 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
+import { useChatInput } from "./useChatInput"
+import ChatPreviewImage from "../ChatPreviewImage/ChatPreviewImage"
 import EmojisPicker from "../EmojisPicker/EmojisPicker"
 import emojiIcon from "../../assets/icons/emoji-icon.svg"
 import plusIcon from "../../assets/icons/plus-icon.svg"
-import ChatPreviewImage from "../ChatPreviewImage/ChatPreviewImage"
-import { useSelector } from "react-redux"
 
 export default function ChatInput() {
-  const [image, setImage] = useState("")
   const [value, setValue] = useState("")
-  const [showEmojisPicker, setShowEmojisPicker] = useState(false)
   const chat = useSelector((state: any) => state.chat)
-
-  window.onclick = (event: any) => {
-    if (
-      showEmojisPicker &&
-      !document.getElementsByClassName("emoji-picker-react")[0].contains(event.target) &&
-      event.target.className !== "chat-input__tool chat-input__tool--emoji-picker"
-    )
-      setShowEmojisPicker(false)
-  }
-
-  const cosoImagen = (imageRoute: any) => {
-    const route = URL.createObjectURL(imageRoute) as any
-    setImage(route)
-    // const data = new FormData() as any
-    // data.append("file",  imageRoute)
-    // console.log(data)
-  }
+  const { showEmojisPicker, setShowEmojisPicker, previewImage, image, setImage } = useChatInput()
 
   return (
     <section className="chat-input">
@@ -39,7 +22,7 @@ export default function ChatInput() {
           className="chat-input__tool--upload"
           type="file"
           onChange={e => {
-            e.target.files && cosoImagen(e.target.files[0])
+            e.target.files && previewImage(e.target.files[0])
           }}
           id="image"
         />
@@ -49,7 +32,7 @@ export default function ChatInput() {
           onChange={e => setValue(e.target.value)}
           onFocus={() => setShowEmojisPicker(false)}
           type="text"
-          // placeholder={`Enviar mensaje a ${chat?.users[0]?.username}`}
+          placeholder={`Enviar mensaje a ${chat.users && chat.users[0].username}`}
           maxLength={2000}
         />
         <img
