@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.8.5",
     "emoji-picker-react": "^3.6.1",
     "graphql": "^16.6.0",
+    "graphql-ws": "^5.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
