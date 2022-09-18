@@ -18,7 +18,7 @@ export const useChat = () => {
 
   useEffect(() => {
     data && dispatch(setNewLoggedUserMessage(data))
-  }, [loading])
+  }, [data])
 
   return {}
 }

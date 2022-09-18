@@ -41,7 +41,9 @@ export const useChatInput = (chat: chat) => {
     event.preventDefault()
     const message = value
     const chatId = chat.id
+    console.log(message)
     createNewMessage({ variables: { chatId: chatId, text: message } })
+    setValue("")
   }
 
   return { showEmojisPicker, setShowEmojisPicker, previewImage, image, setImage, value, setValue, submitMessage }
