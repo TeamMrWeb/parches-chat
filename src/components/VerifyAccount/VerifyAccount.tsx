@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { useQuery } from "@apollo/client"
-import { verifyQuery } from "../../graphql/queries/queries"
+import { verifyQuery } from "../../graphql/queries"
 
 export default function VerifyAccount() {
   const { token } = useParams()

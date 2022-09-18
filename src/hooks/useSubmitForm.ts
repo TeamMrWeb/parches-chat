@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { createAlertMessage } from "../slicers/alertMessageSlice"
 import { startLoader, completeProgressLoader } from "../slicers/loaderSlice"
-import { userRegister, userLogin } from "../graphql/mutations/mutations"
+import { userRegister, userLogin } from "../graphql/mutations"
 
 const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 

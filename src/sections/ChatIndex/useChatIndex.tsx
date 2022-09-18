@@ -2,12 +2,12 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { setUserLoggedField } from "../../slicers/userLoggedSlice"
 import { setChat } from "../../slicers/chatSlice"
-import { userLoggedId } from "../../graphql/queries/queries"
+import { userLoggedId } from "../../graphql/queries"
 import { useLazyQueries } from "../../apollo/useLazyQueries"
 import { useShowChat } from "../../contexts/ShowChatContext"
 import Chat from "../../components/Chat/Chat"
 import Home from "../Home/Home"
-import { chatById } from "../../graphql/queries/queries"
+import { chatById } from "../../graphql/queries"
 
 const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth

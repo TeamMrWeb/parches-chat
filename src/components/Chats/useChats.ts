@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useLazyQueries } from "../../apollo/useLazyQueries"
-import { chatsFromUserLogged } from "../../graphql/queries/queries"
+import { chatsFromUserLogged } from "../../graphql/queries"
 import { setChats } from "../../slicers/chatsSlice"
 
 export const useChats = () => {
