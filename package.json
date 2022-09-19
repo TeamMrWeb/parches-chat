@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node src/index.js",
         "dev": "set NODE_ENV=development && nodemon src/index.js",
-        "test": "cross-env NODE_ENV=test jest --testTimeout=15000"
+        "test": "cross-env NODE_ENV=test jest --testTimeout=15000 --detectOpenHandles --passWithNoTests"
     },
     "repository": {
         "type": "git",
