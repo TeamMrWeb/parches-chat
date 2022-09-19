@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-interface userLogged {
+interface loggedUser {
   username?: string
   avatar?: string
   verified?: boolean
@@ -12,13 +12,13 @@ interface userLogged {
   blockedUsers?: any
 }
 
-const initialState: userLogged = {}
+const initialState: loggedUser = {}
 
-export const userLoggedSlice = createSlice({
-  name: "userLogged",
+export const loggedUserSlice = createSlice({
+  name: "loggedUser",
   initialState,
   reducers: {
-    setUserLoggedField: (state, action) => {
+    setLoggedUserField: (state, action) => {
       const firstFieldUnknown = action.payload[Object.keys(action.payload)[0]]
       const field = Object.keys(firstFieldUnknown)[1] as string
       const value = Object.values(firstFieldUnknown)[1]
@@ -27,6 +27,6 @@ export const userLoggedSlice = createSlice({
   }
 })
 
-export const { setUserLoggedField } = userLoggedSlice.actions
+export const { setLoggedUserField } = loggedUserSlice.actions
 
-export default userLoggedSlice.reducer
+export default loggedUserSlice.reducer

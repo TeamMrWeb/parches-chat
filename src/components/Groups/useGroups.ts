@@ -5,17 +5,17 @@ import { chatsFromUserLogged } from "../../graphql/queries"
 import { setGroups } from "../../slicers/groupsSlice"
 
 export const useGroups = () => {
-  const userLogged = useSelector((state: any) => state.userLogged)
+  const loggedUser = useSelector((state: any) => state.loggedUser)
   const groups = useSelector((state: any) => state.groups)
 
   const { lazyQueryMethod: getUserGroups } = useFetchingMethod(chatsFromUserLogged, setGroups)
 
   useEffect(() => {
-    userLogged?.id &&
+    loggedUser?.id &&
       getUserGroups({
-        variables: { userId: userLogged.id, isGroup: true }
+        variables: { userId: loggedUser.id, isGroup: true }
       })
-  }, [userLogged.id])
+  }, [loggedUser.id])
 
   return { groups }
 }

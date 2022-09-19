@@ -11,6 +11,7 @@ export const useChatInfoHeader = () => {
   const [chatData, setChatData] = useState<ChatData>()
   const { showChat } = useShowChat()
   const chat = useSelector((state: any) => state.chat)
+  const loggedUser = useSelector((state: any) => state.loggedUser)
 
   useEffect(() => {
     const chatContainer = document.querySelector(".chat-container")

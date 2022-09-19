@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { setUserLoggedField } from "../../slicers/userLoggedSlice"
+import { setLoggedUserField } from "../../slicers/loggedUserSlice"
 import { setChat } from "../../slicers/chatSlice"
-import { userLoggedId, chatById } from "../../graphql/queries"
+import { LoggedUserId, chatById } from "../../graphql/queries"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { useShowChat } from "../../contexts/ShowChatContext"
 import Chat from "../../components/Chat/Chat"
@@ -12,9 +12,9 @@ const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth
 
 export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) => {
-  const { lazyQueryMethod: getUserLoggedId, loading } = useFetchingMethod(userLoggedId, setUserLoggedField)
+  const { lazyQueryMethod: getUserLoggedId, loading } = useFetchingMethod(LoggedUserId, setLoggedUserField)
   const { lazyQueryMethod: getChatByid } = useFetchingMethod(chatById, setChat)
-  const userLogged = useSelector((state: any) => state.userLogged)
+  const loggedUser = useSelector((state: any) => state.loggedUser)
   const [firstAccess, setFirstAccess] = useState(!notMobile)
   const { showChat } = useShowChat()
 
@@ -23,10 +23,10 @@ export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) =
   const getChatById = (chatId: string) => getChatByid({ variables: { id: chatId } })
 
   useEffect(() => {
-    const userAlreadyLogged = Object.keys(userLogged).length !== 0
+    const userAlreadyLogged = Object.keys(loggedUser).length !== 0
     if (userAlreadyLogged) return
     getUserLoggedId()
-  }, [userLogged, loading])
+  }, [loggedUser, loading])
 
   return { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile, getChatById }
 }
