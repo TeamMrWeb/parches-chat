@@ -1,7 +1,7 @@
 /**
  * @file Contains server configuration and initialization.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
@@ -12,7 +12,7 @@ const schema = require('./graphql/schemas')
 const createServer = require('http').createServer
 const { execute, subscribe } = require('graphql')
 const { useServer } = require('graphql-ws/lib/use/ws')
-const connectDatabase = require('./database')
+const { connectDatabase } = require('./database')
 
 // connect to database
 connectDatabase()

@@ -1,8 +1,7 @@
 /**
  * @file Contains date type.
  * @author Manuel Cabral
- * @contributor Leo Araya
- * @version 0.0.3
+ * @version 0.0.2
  */
 
 // required modules

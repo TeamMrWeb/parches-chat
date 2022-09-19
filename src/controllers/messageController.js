@@ -1,11 +1,11 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
-const { Message } = require('../models')
+const { Message } = require('../database').models
 const { ObjectId } = require('mongoose').Types
 
 /**

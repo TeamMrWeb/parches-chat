@@ -1,12 +1,12 @@
 /**
  * @file Contains token model.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
 const { Schema, model } = require('mongoose')
-const { EMAIL_EXPIRES_IN } = require('../config').JWT
+const { EMAIL_EXPIRES_IN } = require('../../config').JWT
 
 const tokenSchema = new Schema(
 	{

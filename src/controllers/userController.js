@@ -1,11 +1,11 @@
 /**
  * @file Contains user model functions.
  * @author Manuel Cabral
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
-const { User } = require('../models')
+const { User } = require('../database').models
 const { ObjectId } = require('mongoose').Types
 
 /**

@@ -6,7 +6,7 @@
 
 // required modules
 const jwt = require('jsonwebtoken')
-const { Token } = require('../models')
+const { Token } = require('../database').models
 const { SECRET, EXPIRES_IN, EMAIL_SECRET, EMAIL_EXPIRES_IN } =
 	require('../config').JWT
 
