@@ -19,8 +19,8 @@ npm start
 
 ## Desarrollo
 ### Scripts disponibles
-`npm dev`: ejecuta la aplicación en modo desarrollador
-`npm test`: ejecuta todos los tests disponibles
+- `npm dev`: ejecuta la aplicación en modo desarrollador
+- `npm test`: ejecuta todos los tests disponibles
 
 ### Variables de entorno
 Por defecto la aplicación genera algunas variables de entorno pero hay otras que no se pueden definir ya que requiere una API KEY privada.
