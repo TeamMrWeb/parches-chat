@@ -4,6 +4,8 @@ export const LoggedUserId = gql`
   query {
     user {
       id
+      username
+      avatar
     }
   }
 `

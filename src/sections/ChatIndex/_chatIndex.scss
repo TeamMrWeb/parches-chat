@@ -4,4 +4,9 @@
   height: 100vh;
   position: relative;
   overflow-x: hidden;
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 }

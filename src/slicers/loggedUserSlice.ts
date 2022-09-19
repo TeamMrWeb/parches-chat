@@ -19,10 +19,7 @@ export const loggedUserSlice = createSlice({
   initialState,
   reducers: {
     setLoggedUserField: (state, action) => {
-      const firstFieldUnknown = action.payload[Object.keys(action.payload)[0]]
-      const field = Object.keys(firstFieldUnknown)[1] as string
-      const value = Object.values(firstFieldUnknown)[1]
-      state[field as keyof typeof state] = value
+      Object.assign(state, { ...action.payload.user })
     }
   }
 })

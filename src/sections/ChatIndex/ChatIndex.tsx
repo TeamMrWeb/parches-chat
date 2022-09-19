@@ -3,6 +3,7 @@ import { useSwipe } from "../../hooks/useSwipe"
 import { useChatIndex } from "./useChatIndex"
 import Groups from "../../components/Groups/Groups"
 import Chats from "../../components/Chats/Chats"
+import LoggedUserArea from "../../components/LoggedUserArea/LoggedUserArea"
 
 export default function ChatIndex() {
   const chatContainer = useRef()
@@ -12,7 +13,10 @@ export default function ChatIndex() {
   return (
     <section className="chat-index" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
       <Groups getChatById={getChatById} />
-      <Chats firstAccess={firstAccess} setFirstAccess={setFirstAccess} getChatById={getChatById} />
+      <div className="sidebar">
+        <Chats firstAccess={firstAccess} setFirstAccess={setFirstAccess} getChatById={getChatById} />
+        <LoggedUserArea />
+      </div>
       {notMobile ? desktopBehaviour() : mobileBehaviour()}
     </section>
   )
