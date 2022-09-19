@@ -1,7 +1,7 @@
 /**
  * @file Contains all database things.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.5
  */
 
 // required modules
@@ -10,8 +10,12 @@ const URL = require('../config').DB.URL
 
 // setting up
 const connectDatabase = async () => {
-	await mongoose.connect(URL)
-	console.log(`Connected to ${URL} database successfully.`)
+	try {
+		await mongoose.connect(URL)
+		console.log(`Connected to ${URL} database successfully.`)
+	} catch (err) {
+		throw new Error(`Couldn't connect to ${URL} database.`)
+	}
 }
 
 module.exports = {
