@@ -1,7 +1,7 @@
 /**
  * @file Contains server configuration and initialization.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.9
  */
 
 // required modules
@@ -12,24 +12,25 @@ const schema = require('./graphql/schemas')
 const createServer = require('http').createServer
 const { execute, subscribe } = require('graphql')
 const { useServer } = require('graphql-ws/lib/use/ws')
-const { connectDatabase } = require('./database')
 const { checkEmailCredentials } = require('./utils/email')
+const { connectDatabase, checkDatabaseConnection } = require('./database')
 
 async function main() {
-	// connect to database
-	try {
-		await connectDatabase()
-	} catch (err) {
-		console.log("Couldn't connect to database.", err)
+	// check and connect to database
+
+	if (!checkDatabaseConnection()) {
+		console.log('Database not connected. Trying to connect...')
+		try {
+			await connectDatabase()
+		} catch (err) {
+			console.log("Couldn't connect to database.", err)
+		}
 	}
 
 	// check email credentials
-	try {
-		await checkEmailCredentials()
-		console.log('Email credentials are valid. Connection established.')
-	} catch (err) {
-		console.log("Couldn't connect to email server.", err)
-	}
+	const res = await checkEmailCredentials()
+	if (!res.status) console.log('Error', res.error)
+	else console.log('Email credentials are correct. Ready to send emails.')
 
 	// create server
 	const server = createServer(app)

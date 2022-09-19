@@ -1,7 +1,7 @@
 /**
  * @file Contains email related functions.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.4
  */
 
 // required modules
@@ -15,7 +15,6 @@ const { ADDRESS, USER, PASSWORD } = require('../config').EMAIL
  * @param {String} text - The text of the email.
  */
 const sendEmail = async (to, subject, text) => {
-	console.log('enviando email desde ', ADDRESS, PASSWORD)
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -32,29 +31,37 @@ const sendEmail = async (to, subject, text) => {
 	}
 
 	try {
-		await transporter.sendMail(mailOptions)
+		return {
+			status: true,
+			info: await transporter.sendMail(mailOptions),
+		}
 	} catch (error) {
-		console.log(error)
+		return {
+			status: false,
+			error: error.message,
+		}
 	}
 }
 
 /**
- * Check if email credentials are correct.
+ * Check if email credentials are correct. If no credentials are provided, it uses the config file.
+ * @param {String} user - The email address to send the email to.
+ * @param {String} password - The password of the email.
+ * @returns {Boolean} - True if credentials are correct. Otherwise, false.
  * @throws {Error} If credentials are incorrect.
  */
-const checkEmailCredentials = async () => {
-	const transporter = nodemailer.createTransport({
-		service: 'gmail',
-		auth: {
-			user: ADDRESS,
-			pass: PASSWORD,
-		},
-	})
-
+const checkEmailCredentials = async (address, password) => {
 	try {
-		await transporter.verify()
+		const transporter = nodemailer.createTransport({
+			service: 'gmail',
+			auth: {
+				user: address || ADDRESS,
+				pass: password || PASSWORD,
+			},
+		})
+		return { status: await transporter.verify() }
 	} catch (error) {
-		throw new Error('Email credentials are not valid.')
+		return { status: false, error: error.message }
 	}
 }
 
