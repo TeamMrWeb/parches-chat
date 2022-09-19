@@ -17,8 +17,8 @@ export const useChat = () => {
   }, [])
 
   useEffect(() => {
-    data && dispatch(setSuscriptionMessage(data))
+    if (data) {
+      dispatch(setSuscriptionMessage(data))
+    }
   }, [data])
-
-  return {}
 }
