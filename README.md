@@ -1,51 +1,44 @@
 
 # Parches Backend ⚙️
 
-Backend of Parches Chat providing a functional API using GraphQL
+Esta brach contiene la API funcional de Parches Chat desarrollada en NodeJS con ExpressJS, MongoDB y GraphQL
 
-Se full documentation [here](https://github.com/TeamParches/parches-chat/tree/docs)
-## Installation
-
+Para acceder a la documentación completa puedes dar click [aquí](https://github.com/TeamParches/parches-chat/tree/docs)
+## Instalación
+Clonación, cambio de rama e instalación
 ```bash
 git clone https://github.com/TeamParches/parches-chat.git
 cd parches-chat
 git checkout backend
 npm i -force
-npm start
 ```
-
-## Environment variables
-if you not define these variables you may have an error execution
-- PORT
-- MONGODB_URL
-- JWT_SECRET
-- JWT_EMAIL_SECRET
-- JWT_EXPIRES_IN
-- JWT_EMAIL_EXPIRES_IN
-- JWT_EMAIL_SECRET
-- EMAIL
-- EMAIL_USER
-- EMAIL_PASS
-
-## Development
-
-Scripts availables
-
-- **npm start** _executes normal start_
-- **npm dev**: _executes start in development mode_
-- **npm test**: _executes all tests from src/tests_
-
-## Exporting
-
-You need to install the package `get-graphql-schema` globally and disable or remove graphiql option in graphqlHTTP constructor ([here](https://github.com/TeamParches/parches-chat/blob/81e80ca78ebc8c2039ebdd28a2dbcb76b805a794/src/app.js#L32))
-
+Para ejecutar la aplicación
 ```bash
 npm start
 ```
 
-Open another terminal
+## Desarrollo
+### Scripts disponibles
+`npm dev`: ejecuta la aplicación en modo desarrollador
+`npm test`: ejecuta todos los tests disponibles
+
+### Variables de entorno
+Por defecto la aplicación genera algunas variables de entorno pero hay otras que no se pueden definir ya que requiere una API KEY privada.
+
+Es recomendable crear un archivo **.env** como el siguiente [ejemplo]()
+### Exportar
+
+Para exportar el esquema de GraphQL es necesario tener instalado python y el paquete `get-graphql-schema` de Node globalmente.
+
+Se tiene que desactivar la opción  **graphiql** en el middleware constructor de graphqlHTTP ([referencia](https://github.com/TeamParches/parches-chat/blob/81e80ca78ebc8c2039ebdd28a2dbcb76b805a794/src/app.js#L32))
+
+Ejecuta el servidor
+```bash
+npm start
+```
+En otra terminal
 ```bash
 python scripts/exportSchemas.py
 ```
 
-> Note: default exports in addons directory but you can change it
+> Note: por defecto todo el esquema es exportado en la carpeta addons
