@@ -1,0 +1,16 @@
+.groups {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  max-width: 70px;
+  min-width: 70px;
+  background-color: $primaryColorDark;
+  padding-top: 10px;
+  .groups-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
