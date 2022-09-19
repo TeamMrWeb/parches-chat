@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { messagesByChatId } from "../../graphql/queries"
-import { setMessages } from "../../slicers/messagesSlice"
+import { setMessages, clearMessages } from "../../slicers/messagesSlice"
 
 interface author {
   id: string
@@ -13,6 +13,7 @@ export const useMessages = () => {
   const userLogged = useSelector((state: any) => state.userLogged)
   const messages = useSelector((state: any) => state.messages)
   const chat = useSelector((state: any) => state.chat)
+  const dispatch = useDispatch()
 
   const defineMessageSide = (messageAuthor: author) => (messageAuthor.id === userLogged?.id ? "right" : "left")
 
@@ -23,6 +24,7 @@ export const useMessages = () => {
 
   useEffect(() => {
     if (messages.length !== 0 && !chat.id) return
+    dispatch(clearMessages())
     getMessagesByChatId({ variables: { id: chat.id } })
   }, [loading, chat])
 

@@ -21,7 +21,8 @@ export const useChatInfoHeader = () => {
 
   useEffect(() => {
     if (Object.keys(chat).length === 0) return
-    const username = chat.users[0].username
+    const loggedUserId = loggedUser.id
+    const username = chat.users.find((user: any) => user.id !== loggedUserId).username
     const avatar = chat.users[0].avatar
     setChatData({ ...chatData, username, avatar })
   }, [chat])
