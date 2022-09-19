@@ -21,12 +21,12 @@ export const messagesSlice = createSlice({
     setMessages: (state, action) => {
       Object.assign(state, { ...action.payload.chat.messages })
     },
-    setNewLoggedUserMessage: (state, action) => {
+    setSuscriptionMessage: (state, action) => {
       ;(state as messages[]).push(action.payload.messageAdded)
     }
   }
 })
 
-export const { setMessages, setNewLoggedUserMessage } = messagesSlice.actions
+export const { setMessages, setSuscriptionMessage } = messagesSlice.actions
 
 export default messagesSlice.reducer

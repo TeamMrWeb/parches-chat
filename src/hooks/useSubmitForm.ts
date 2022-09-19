@@ -13,9 +13,15 @@ export const useSubmitForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: string, redirecturl: string) => {
-    e.preventDefault()
-    dispatch(startLoader())
+  const submitMethods: {
+    register: any
+    login: any
+  } = {
+    register,
+    login
+  }
+
+  const getUserData = (e: React.FormEvent<HTMLFormElement>) => {
     const formInputsElements = e.currentTarget.elements as HTMLFormControlsCollection
     const inputsArray = Object.values(formInputsElements).slice(0, -1)
     let userData = {}
@@ -23,13 +29,13 @@ export const useSubmitForm = () => {
       Object.assign(userData, { [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value })
     })
     const { username, email, password } = userData as any
-    const submitMethods: {
-      register: any
-      login: any
-    } = {
-      register,
-      login
-    }
+    return { username, email, password }
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: string, redirecturl: string) => {
+    e.preventDefault()
+    dispatch(startLoader())
+    const { username, email, password } = getUserData(e)
     submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
       .then((res: any) => {
         dispatch(completeProgressLoader())
