@@ -1,7 +1,7 @@
 /**
  * @file Contains environment variables and some configuration.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 const config = require('dotenv').config
@@ -27,9 +27,9 @@ module.exports = {
 
 	// cloudinary
 	CLOUDINARY: {
-		CLOUD_NAME: process.env.CLOUD_NAME,
-		API_KEY: process.env.API_KEY,
-		API_SECRET: process.env.API_SECRET,
+		CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+		API_KEY: process.env.CLOUDINARY_API_KEY,
+		API_SECRET: process.env.CLOUDINARY_API_SECRET,
 	},
 
 	// json web token
@@ -42,8 +42,8 @@ module.exports = {
 
 	// email
 	EMAIL: {
-		USER: process.env.EMAIL_USER || 'wow',
-		PASSWORD: process.env.EMAIL_PASS || 'wow123',
-		ADDRESS: process.env.EMAIL || null,
+		USER: process.env.EMAIL_USER,
+		PASSWORD: process.env.EMAIL_PASS,
+		ADDRESS: process.env.EMAIL,
 	},
 }
