@@ -26,7 +26,7 @@ export const useMessages = () => {
     if (messages.length !== 0 && !chat.id) return
     dispatch(clearMessages())
     getMessagesByChatId({ variables: { id: chat.id } })
-  }, [loading, chat])
+  }, [chat])
 
   return { messages, defineMessageSide, formatCreatedAtDate }
 }
