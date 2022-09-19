@@ -10,7 +10,7 @@ export default function Chats({
   setFirstAccess: any
   getChatById: (chatId: string) => void
 }) {
-  const { chats } = useChats()
+  const { chats, defineChatName } = useChats()
 
   return (
     <section className={`chats ${firstAccess && "extended"}`}>
@@ -19,7 +19,7 @@ export default function Chats({
         {chats.map((chat: any) => (
           <Chat
             avatar={chat.avatar}
-            name={chat.name}
+            name={defineChatName(chat.users)}
             status={chat.status}
             key={chat.id}
             id={chat.id}

@@ -21,6 +21,10 @@ export const chatsFromUserLogged = gql`
       isGroup
       secure
       private
+      users {
+        id
+        username
+      }
     }
   }
 `
