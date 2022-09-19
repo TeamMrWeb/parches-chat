@@ -411,6 +411,10 @@ html body #root .App ul {
 .chat-header .header__image {
   width: 30px;
   height: 30px;
+  padding: 2px;
+  box-sizing: border-box;
+  border: 2px solid #8d4fc9;
+  border-radius: 100px;
 }
 .chat-header .right {
   display: flex;
@@ -690,19 +694,23 @@ html body #root .App ul {
   gap: 10px;
   cursor: pointer;
 }
-.userlogged-chat:hover {
+.userlogged-chat:hover, .userlogged-chat.active {
   background-color: #323346;
 }
-.userlogged-chat:hover .userlogged-chat__username {
+.userlogged-chat:hover .userlogged-chat__username, .userlogged-chat.active .userlogged-chat__username {
   color: #ffffff !important;
 }
-.userlogged-chat .userlogged-chat__image {
-  border: 3px solid;
+.userlogged-chat .userlogged-chat__avatar {
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  box-sizing: border-box;
+  border: 2px solid #8d4fc9;
   border-radius: 100px;
 }
 .userlogged-chat .userlogged-chat__username {
   font-size: 16px;
-  color: #8e9297;
+  color: #ffffff;
 }
 
 .groups {

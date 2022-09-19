@@ -14,6 +14,10 @@
   .header__image {
     width: 30px;
     height: 30px;
+    padding: 2px;
+    box-sizing: border-box;
+    border: 2px solid $purpleColor;
+    border-radius: 100px;
   }
   .right {
     display: flex;

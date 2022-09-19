@@ -17,7 +17,6 @@ export const useChat = () => {
   }, [])
 
   useEffect(() => {
-    console.log(data)
     data && dispatch(setSuscriptionMessage(data))
   }, [data])
 

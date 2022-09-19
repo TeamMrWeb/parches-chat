@@ -3,18 +3,23 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &.active {
     background-color: $secundaryColorHover;
     .userlogged-chat__username {
       color: $whiteColor !important;
     }
   }
-  .userlogged-chat__image {
-    border: 3px solid;
+  .userlogged-chat__avatar {
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    box-sizing: border-box;
+    border: 2px solid $purpleColor;
     border-radius: 100px;
   }
   .userlogged-chat__username {
     font-size: 16px;
-    color: $textGrayColor;
+    color: $whiteColor;
   }
 }
