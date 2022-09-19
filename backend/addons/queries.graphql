@@ -1,0 +1,50 @@
+"""
+    Creates a new chat and returns the chat id
+"""
+mutation {
+	newChat(
+		name: "primer chat"
+		usersId: [
+			"630beb82e9b6feb4ed2a72d0"
+			"630bebcfefc577cbd8a880be"
+			"630bf28970cb294c20c313f2"
+		]
+	) {
+		id
+	}
+}
+
+"""
+    Creates a new message and returns the message id
+"""
+mutation{
+  newMessage(
+    chatId:"630e0b626b162c3ecadc3819"
+    text: "primer mensaje"
+    image: ""
+  ) {
+    id
+  } 
+}
+
+"""
+Gets all chats from a user with all messages
+"""
+query{
+    getAllChats(
+        isGroup:true
+    ) {
+        id
+        name
+        users {
+            id
+            username
+        }
+        messages (
+            skip:0
+            limit:10, 
+        ) {
+            text
+        }
+    }
+}
