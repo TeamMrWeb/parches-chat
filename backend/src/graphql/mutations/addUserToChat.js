@@ -1,7 +1,7 @@
 /**
  * @file Contains addUserToChat mutation.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -58,7 +58,7 @@ const resolve = async (_, args, context) => {
 // mutation object
 const addUserToChat = {
 	type: ChatType,
-	description: 'Add a user to a chat.',
+	description: 'Add a user to a chat by id.',
 	args,
 	resolve,
 }

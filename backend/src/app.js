@@ -6,6 +6,7 @@
 
 // required modules
 const cors = require('cors')
+const morgan = require('morgan')
 const express = require('express')
 const compression = require('compression')
 const graphqlHTTP = require('express-graphql').graphqlHTTP
@@ -14,8 +15,10 @@ const schema = require('./graphql/schemas')
 
 // setting up
 const app = express()
+const logger = morgan('dev')
 
 // middlewares
+if (process.env.NODE_ENV.trim() === 'development') app.use(logger)
 app.use(cors())
 app.use(compression())
 app.use(authenticate)

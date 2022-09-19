@@ -1,7 +1,7 @@
 /**
  * @file Contains hello query (a simple test query).
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -10,7 +10,7 @@ const { GraphQLString } = require('graphql')
 // arguments object
 const hello = {
 	type: GraphQLString,
-	description: 'Hello World!',
+	description: 'A simple test query that returns "Hello World!"',
 	resolve: () => 'Hello World!',
 }
 

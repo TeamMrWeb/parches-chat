@@ -20,7 +20,7 @@ const resolve = async () => {
 // query object
 const users = {
 	type: new GraphQLList(UserType),
-	description: 'List of all users',
+	description: 'Returns all users from the database.',
 	resolve,
 }
 

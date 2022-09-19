@@ -1,7 +1,7 @@
 /**
  * @file Contains refresh token mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -32,7 +32,7 @@ const resolve = async (_, args, context) => {
 // mutation object
 const refreshToken = {
 	type: GraphQLString,
-	description: 'Refresh a token.',
+	description: 'Refresh a access token of a logged user.',
 	args,
 	resolve,
 }

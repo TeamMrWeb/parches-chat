@@ -1,7 +1,7 @@
 /**
  * @file Contains email related functions.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -38,6 +38,27 @@ const sendEmail = async (to, subject, text) => {
 	}
 }
 
+/**
+ * Check if email credentials are correct.
+ * @throws {Error} If credentials are incorrect.
+ */
+const checkEmailCredentials = async () => {
+	const transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: ADDRESS,
+			pass: PASSWORD,
+		},
+	})
+
+	try {
+		await transporter.verify()
+	} catch (error) {
+		throw new Error('Email credentials are not valid.')
+	}
+}
+
 module.exports = {
 	sendEmail,
+	checkEmailCredentials,
 }

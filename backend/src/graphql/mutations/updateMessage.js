@@ -1,7 +1,7 @@
 /**
  * @file Contains the update message mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -48,7 +48,7 @@ const resolve = async (_, args, context) => {
 // mutation object
 const updateMessage = {
 	type: MessageType,
-	description: 'Update a message',
+	description: 'Update a message by id.',
 	args,
 	resolve,
 }

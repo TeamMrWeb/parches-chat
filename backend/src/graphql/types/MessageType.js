@@ -2,11 +2,12 @@
  * @file Contains message type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 // required modules
 const UserType = require('./userType')
+const DateType = require('./dateType')
 const {
 	GraphQLObjectType,
 	GraphQLID,
@@ -36,7 +37,7 @@ const MessageType = new GraphQLObjectType({
 		author: {
 			type: UserType,
 			description: 'Get the author of the message.',
-			resolve: async (parent) => findById(parent.author)
+			resolve: async (parent) => findById(parent.author),
 		},
 		edited: {
 			type: GraphQLBoolean,
@@ -47,11 +48,11 @@ const MessageType = new GraphQLObjectType({
 			description: 'Get the users that have seen the message.',
 		},
 		updatedAt: {
-			type: GraphQLString,
+			type: DateType,
 			description: 'The date of the last update.',
 		},
 		createdAt: {
-			type: GraphQLString,
+			type: DateType,
 			description: 'The date of the creation.',
 		},
 	},

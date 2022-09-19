@@ -1,7 +1,7 @@
 /**
  * @file Contains chat mutation.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.1.0
  */
 
 // required modules
@@ -49,14 +49,19 @@ const resolve = async (_, args, context) => {
 		seen: [],
 	})
 	await addMessage(args.chatId, newMessage._id)
+
 	pubsub.publish(events.MESSAGE_ADDED, { messageAdded: newMessage })
+	pubsub.publish(`${events.CHAT_MESSAGE_ADDED}:${args.chatId}`, {
+		chatMessageAdded: newMessage,
+	})
+
 	return newMessage
 }
 
 // mutation object
 const createMessage = {
 	type: MessageType,
-	description: 'Create a new message',
+	description: 'Create a new message in a chat.',
 	args,
 	resolve,
 }

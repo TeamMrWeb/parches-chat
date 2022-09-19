@@ -1,18 +1,18 @@
 /**
  * @file Contains chat query.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
-const { GraphQLID, GraphQLString, GraphQLList } = require('graphql')
+const { GraphQLID, GraphQLNonNull } = require('graphql')
 const { ChatType } = require('../types')
 const { findById } = require('../../controllers/chatController')
 
 const args = {
 	id: {
-		type: GraphQLID,
-		description: 'The id of the chat.',
+		type: new GraphQLNonNull(GraphQLID),
+		description: 'The id of the chat to find.',
 	},
 }
 
@@ -31,7 +31,7 @@ const resolve = async (_, args) => {
 // query object
 const chat = {
 	type: ChatType,
-	description: 'Get a chat by id',
+	description: 'Get a chat by id.',
 	args,
 	resolve,
 }

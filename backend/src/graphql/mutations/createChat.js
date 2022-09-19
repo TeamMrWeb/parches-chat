@@ -2,7 +2,7 @@
  * @file Contains chat create mutation.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.1.3
+ * @version 0.1.4
  */
 
 // required modules
@@ -101,7 +101,7 @@ const resolve = async (_, args, context) => {
 // mutation object
 const newChat = {
 	type: ChatType,
-	description: 'Create a new chat',
+	description: 'Create a new chat and returns the chat object.',
 	args,
 	resolve,
 }

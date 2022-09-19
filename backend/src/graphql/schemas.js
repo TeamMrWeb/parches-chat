@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.0.9
+ * @version 0.1.1
  */
 
 // required modules
@@ -35,12 +35,13 @@ const {
 } = require('./mutations')
 
 // required subscriptions
-const { messageAdded } = require('./subscriptions')
+const { messageAdded, chatMessageAdded } = require('./subscriptions')
 
 // query graphql object
 const QueryType = new GraphQLObjectType({
 	name: 'QueryType',
-	description: 'Root query type',
+	description:
+		'Parches Chat Root query type, contains all queries provided by the API.',
 	fields: {
 		hello,
 		users,
@@ -56,7 +57,8 @@ const QueryType = new GraphQLObjectType({
 // mutation graphql object
 const MutationType = new GraphQLObjectType({
 	name: 'MutationType',
-	description: 'Root mutation type',
+	description:
+		'Parches Chat Root mutation type, contains all mutations provided by the API.',
 	fields: {
 		register,
 		login,
@@ -75,9 +77,11 @@ const MutationType = new GraphQLObjectType({
 // subscription graphql object
 const SubscriptionType = new GraphQLObjectType({
 	name: 'SubscriptionType',
-	description: 'Root subscription type',
+	description:
+		'Parches Chat Root subscription type, contains all subscriptions provided by the API.',
 	fields: {
 		messageAdded,
+		chatMessageAdded,
 	},
 })
 

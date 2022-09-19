@@ -1,7 +1,7 @@
 /**
  * @file Contains the deletion chat mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -51,7 +51,7 @@ const resolve = async (_, args, context) => {
 // mutation object
 const deleteChat = {
 	type: GraphQLString,
-	description: 'Delete a chat',
+	description: 'Delete a chat by id.',
 	args,
 	resolve,
 }
