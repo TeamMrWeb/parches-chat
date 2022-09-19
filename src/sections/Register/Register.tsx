@@ -15,7 +15,7 @@ export default function Register() {
           <h1 className="content__title">Parches Chat</h1>
           <p className="content__description">Registra tu cuenta</p>
         </header>
-        <form className="form" onSubmit={e => handleSubmit(e, "register", "/chat")}>
+        <form className="form" onSubmit={e => handleSubmit(e, "register", "/login")}>
           <FormGroupInput type="username" label="Nombre de usuario" placeholder="example" required={true} />
           <FormGroupInput type="email" label="Correo electrónico" placeholder="example@gmail.com" required={true} />
           <FormGroupInput type="password" label="Contraseña" placeholder="example196" minLength={4} maxLength={15} required={true} />

@@ -49,7 +49,7 @@ export const useSubmitForm = () => {
         if (type === "login") {
           const token = res.data.login
           localStorage.setItem("auth", token)
-          navigate("/chat")
+          navigate(redirecturl)
         }
       })
       .catch((err: any) => {
