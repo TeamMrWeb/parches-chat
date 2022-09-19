@@ -22,8 +22,8 @@ export default function Chat({
   const chat = useSelector((state: any) => state.chat)
 
   const defineChatActive = () => {
-    if (chat.id === id) return "userlogged-chat active"
-    return "userlogged-chat"
+    if (chat.id === id) return "loggedUser-chat active"
+    return "loggedUser-chat"
   }
 
   return (
@@ -33,13 +33,15 @@ export default function Chat({
         setFirstAccess(false), setShowChat && setShowChat(true), getChatById(id)
       }}
     >
-      <img
-        className="userlogged-chat__avatar"
-        src={avatar ? avatar : userDefaultIcon}
-        alt={`Avatar de ${name}`}
-        style={{ borderColor: borderColors[status] }}
-      />
-      <span className="userlogged-chat__username">{name}</span>
+      <button className="button-wrapper">
+        <img
+          className="loggedUser-chat__avatar"
+          src={avatar ? avatar : userDefaultIcon}
+          alt={`Avatar de ${name}`}
+          style={{ borderColor: borderColors[status] }}
+        />
+        <span className="loggedUser-chat__username">{name}</span>
+      </button>
     </li>
   )
 }
