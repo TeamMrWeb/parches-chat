@@ -48,7 +48,7 @@ Get a user by id.
 ```graphql example
 query example {
 	user(
-		userId: "764aa137694c9b6eda2d7005"
+		userId: "8a3da4e3a6dde86980be0049"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -78,9 +78,9 @@ Get messages by ids, if not provided, parent messages will be used.
 ```graphql example
 query example {
 	messages(
-		ids: ["764aa137694c9b6eda2d7005", "764aa137694c9b6eda2d7005"]
-		limit: 0
-		skip: 0
+		ids: ["8a3da4e3a6dde86980be0049", "8a3da4e3a6dde86980be0049"]
+		limit: 3
+		skip: 3
 	)
 	{
 		# add fields here (depends on the return type)
@@ -104,7 +104,7 @@ Get a chat by id.
 ```graphql example
 query example {
 	chat(
-		id: "764aa137694c9b6eda2d7005"
+		id: "8a3da4e3a6dde86980be0049"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -137,10 +137,10 @@ Get chats from a user by its id.
 ```graphql example
 query example {
 	chats(
-		userId: "764aa137694c9b6eda2d7005"
+		userId: "8a3da4e3a6dde86980be0049"
 		isGroup: True
-		skip: 0
-		limit: 0
+		skip: 3
+		limit: 3
 	)
 	{
 		# add fields here (depends on the return type)

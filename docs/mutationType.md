@@ -87,7 +87,7 @@ Create a new chat and returns the chat object.
 mutation example {
 	createChat(
 		name: "test"
-		usersId: ["764aa137694c9b6eda2d7005", "764aa137694c9b6eda2d7005"]
+		usersId: ["8a3da4e3a6dde86980be0049", "8a3da4e3a6dde86980be0049"]
 		avatar: "test"
 		secure: True
 		private: True
@@ -120,7 +120,7 @@ Create a new message in a chat.
 ```graphql example
 mutation example {
 	createMessage(
-		chatId: "764aa137694c9b6eda2d7005"
+		chatId: "8a3da4e3a6dde86980be0049"
 		text: "test"
 		image: "test"
 	)
@@ -158,7 +158,7 @@ mutation example {
 		username: "test"
 		email: "test"
 		avatar: "test"
-		status: 0
+		status: 3
 	)
 	{
 		# add fields here (depends on the return type)
@@ -185,7 +185,7 @@ Update a message by id.
 ```graphql example
 mutation example {
 	updateMessage(
-		messageId: "764aa137694c9b6eda2d7005"
+		messageId: "8a3da4e3a6dde86980be0049"
 		text: "test"
 	)
 	{
@@ -213,8 +213,8 @@ Add a user to a chat by id.
 ```graphql example
 mutation example {
 	addUserToChat(
-		chatId: "764aa137694c9b6eda2d7005"
-		userId: "764aa137694c9b6eda2d7005"
+		chatId: "8a3da4e3a6dde86980be0049"
+		userId: "8a3da4e3a6dde86980be0049"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -241,8 +241,8 @@ Remove a user from a chat by id.
 ```graphql example
 mutation example {
 	removeUserFromChat(
-		chatId: "764aa137694c9b6eda2d7005"
-		userId: "764aa137694c9b6eda2d7005"
+		chatId: "8a3da4e3a6dde86980be0049"
+		userId: "8a3da4e3a6dde86980be0049"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -288,7 +288,7 @@ Delete a chat by id.
 ```graphql example
 mutation example {
 	deleteChat(
-		chatId: "764aa137694c9b6eda2d7005"
+		chatId: "8a3da4e3a6dde86980be0049"
 	)
 
 }
@@ -313,8 +313,8 @@ Delete a message in a chat by id.
 ```graphql example
 mutation example {
 	deleteMessage(
-		chatId: "764aa137694c9b6eda2d7005"
-		messageId: "764aa137694c9b6eda2d7005"
+		chatId: "8a3da4e3a6dde86980be0049"
+		messageId: "8a3da4e3a6dde86980be0049"
 	)
 	{
 		# add fields here (depends on the return type)
