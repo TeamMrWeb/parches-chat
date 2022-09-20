@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom"
 import { logOut } from "../../slicers/loggedUserSlice"
 import { clearChats } from "../../slicers/chatsSlice"
 import { closeAlertMessage } from "../../slicers/alertMessageSlice"
+import { useApolloClient } from "@apollo/client"
 
 export default function UserQuickOptions() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const client = useApolloClient()
 
   const closeSession = () => {
+    client.clearStore()
     localStorage.clear()
     dispatch(logOut())
     dispatch(clearChats())
