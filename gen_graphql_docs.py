@@ -10,9 +10,12 @@
 """
 
 import os
+import sys
+import random
 import requests
 import markdown
-import random
+import argparse
+
 
 # The URL of the GraphQL endpoint
 GRAPHQL_URL = 'http://localhost:4000/graphql'
@@ -67,6 +70,27 @@ TYPES_EXAMPLE = {
     'Boolean': bool(random.getrandbits(1)),
     'ID': f'"{"".join(random.choices("0123456789abcdef", k=24))}"'
 }
+
+
+def define_arguments() -> argparse.ArgumentParser:
+    """
+        Generates the arguments for the script.
+        Returns:
+            The arguments.
+        returns:
+            The arguments object.
+    """
+
+    parser = argparse.ArgumentParser(
+        description='Generates the GraphQL documentation for the API.')
+
+    parser.add_argument('-u', '--url', type=str, default=GRAPHQL_URL,
+                        help='The URL of the GraphQL endpoint.')
+
+    parser.add_argument('-o', '--output', type=str, default=OUTPUT_DIRECTORY,
+                        help='The output directory for the documentation.')
+
+    return parser
 
 
 def parse_field(field: dict, include_return: bool, type: str) -> str:
@@ -222,11 +246,16 @@ def generate_directory(directory: str) -> None:
 
 if __name__ == '__main__':
 
-    targets = ['queryType', 'mutationType']
+    parser = define_arguments()
+    args = parser.parse_args(sys.argv[1:])
+    graphql_url = args.url
+    output_directory = args.output
 
-    print(f'Checking connection to {GRAPHQL_URL}...')
+    targets = ['queryType', 'mutationType', 'subscriptionType']
+
+    print(f'Checking connection to {graphql_url}...')
     try:
-        response = requests.get(GRAPHQL_URL)
+        response = requests.get(graphql_url)
     except Exception as err:
         raise SystemExit('Cannot connect to the GraphQL endpoint.')
 
@@ -235,14 +264,13 @@ if __name__ == '__main__':
         print(f'> Generating docs for {target} ..')
         query = generate_query(
             INSTROSPECTION_QUERY, target)
-        instrospection = get_instrospection(GRAPHQL_URL, query)
+        instrospection = get_instrospection(graphql_url, query)
         markdown = generate_markdown(instrospection, target)
-        filename = f'{OUTPUT_DIRECTORY}/{target}.md'
+        filename = f'{output_directory}/{target}.md'
         try:
             save_file(filename, markdown)
         except FileNotFoundError as err:
-            generate_directory(OUTPUT_DIRECTORY)
+            generate_directory(output_directory)
             save_file(filename, markdown)
         print(f'- Docs for {target} generated successfully')
-
     print('Documentation done!')
