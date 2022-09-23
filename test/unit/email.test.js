@@ -1,7 +1,7 @@
 /**
  * @file Contain all email util tests.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 const { expect } = require('chai')
 
@@ -10,6 +10,8 @@ const email = require('../../src/utils/email')
 
 // antispam
 const sendRealEmail = false
+
+// TODO: fix open handles after tests
 
 describe('Email', () => {
 	it('should verify email credentials', async () => {
@@ -23,7 +25,6 @@ describe('Email', () => {
 			'noexist@gmail.com',
 			'wtfpassword'
 		)
-		expect(result).to.have.property('status')
 		expect(result).to.have.property('status')
 		expect(result.status).to.be.false
 		expect(result.error).to.be.a('string')
@@ -49,5 +50,10 @@ describe('Email', () => {
 		expect(result).to.have.property('error')
 		expect(result.status).to.be.false
 		expect(result.error).to.be.a('string')
+	})
+
+	it('should not verify an invalid email', async () => {
+		const result = await email.isValidEmail('jiji.com')
+		expect(result).to.be.false
 	})
 })
