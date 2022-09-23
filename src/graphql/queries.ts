@@ -65,3 +65,12 @@ export const messagesByChatId = gql`
     }
   }
 `
+
+export const usersByUsername = gql`
+  query user($username: string!) {
+    user(username: $username) {
+      username
+      avatar
+    }
+  }
+`

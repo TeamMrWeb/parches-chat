@@ -975,4 +975,62 @@ html body #root .App ul {
 }
 .user-quick-options .close-session .close-session__text {
   color: #ffffff;
+}
+
+.add-friend-section {
+  position: absolute;
+  left: 0;
+  bottom: 60px;
+  background-color: #1c1d22;
+  width: 100%;
+  height: 400px;
+  color: #ffffff;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.add-friend-section .add-friend-section__title {
+  text-align: center;
+  font-weight: 400;
+}
+.add-friend-section .add-friend-section__input {
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #323346;
+  color: #8e9297;
+  padding: 20px 10px 20px;
+  box-sizing: border-box;
+}
+.add-friend-section .add-friend-section__input:focus {
+  outline: 1px solid #dd4ec6;
+}
+.add-friend-section .loader-spinner {
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-friend-section .results {
+  margin-top: 10px !important;
+}
+.add-friend-section .results .results__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-friend-section .results .results__item .left-side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.add-friend-section .results .results__item .left-side .results__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+.add-friend-section .results .results__item .results__icon {
+  width: 30px;
+  height: 30px;
 }/*# sourceMappingURL=index.css.map */
