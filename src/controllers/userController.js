@@ -70,6 +70,21 @@ const updateOneUser = async (id, data) => {
 	return await User.findByIdAndUpdate(id, data, { new: true })
 }
 
+/**
+ *  Add a friend to the user.
+ * @param {String} id - The id of the user to update.
+ * @param {String} friendId - The id of the friend to add.
+ * @returns {Object} The updated user.
+ */
+const addFriend = async (id, friendId) => {
+	if (!ObjectId.isValid(id) || !ObjectId.isValid(friendId)) return null
+	return await User.findByIdAndUpdate(
+		id,
+		{ $push: { friends: friendId } },
+		{ new: true }
+	)
+}
+
 module.exports = {
 	createUser,
 	findById,
@@ -77,4 +92,5 @@ module.exports = {
 	findAll,
 	findMany,
 	updateOneUser,
+	addFriend,
 }
