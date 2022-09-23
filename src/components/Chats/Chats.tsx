@@ -1,5 +1,6 @@
 import { useChats } from "./useChats"
 import Chat from "./Chat/Chat"
+import plusIcon from "../../assets/icons/plus-icon.svg"
 
 export default function Chats({
   firstAccess,
@@ -28,6 +29,12 @@ export default function Chats({
           />
         ))}
       </ul>
+      <div className="add-friend">
+        <div className="add-friend-wrapper">
+          <img className="add-friend__icon" src={plusIcon} alt="Ícono de agregar amigo" />
+        </div>
+        <span className="add-friend__text">Agregar amigo</span>
+      </div>
     </section>
   )
 }

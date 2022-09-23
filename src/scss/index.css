@@ -811,6 +811,37 @@ html body #root .App ul {
   flex-direction: column;
   gap: 10px;
 }
+.chats .add-friend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  padding-left: 5px;
+  width: 100%;
+  height: 42px;
+  cursor: pointer;
+}
+.chats .add-friend:hover {
+  background-color: #323346;
+}
+.chats .add-friend:hover .loggedUser-chat__username {
+  color: #ffffff !important;
+}
+.chats .add-friend .add-friend-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+.chats .add-friend .add-friend-wrapper .add-friend__icon {
+  width: 30px;
+  height: 30px;
+}
+.chats .add-friend .add-friend__text {
+  font-size: 16px;
+  color: #ffffff;
+}
 
 .group__image {
   width: 50px;
