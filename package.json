@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node src/index.js",
         "dev": "set NODE_ENV=development && nodemon src/index.js",
-        "test": "cross-env NODE_ENV=test jest --testTimeout=15000 --detectOpenHandles --passWithNoTests"
+        "test": "set NODE_ENV=test && mocha ./test/**/*.test.js"
     },
     "repository": {
         "type": "git",
@@ -47,7 +47,7 @@
         "chai": "^4.3.6",
         "cors": "^2.8.5",
         "cross-env": "^7.0.3",
-        "jest": "^29.0.1",
+        "mocha": "^10.0.0",
         "morgan": "^1.10.0",
         "nodemon": "^2.0.19",
         "supertest": "^6.2.4"
