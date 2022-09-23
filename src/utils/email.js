@@ -1,7 +1,7 @@
 /**
  * @file Contains email related functions.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -31,9 +31,10 @@ const sendEmail = async (to, subject, text) => {
 	}
 
 	try {
+		const info = await transporter.sendMail(mailOptions)
 		return {
 			status: true,
-			info: await transporter.sendMail(mailOptions),
+			info,
 		}
 	} catch (error) {
 		return {
@@ -65,7 +66,18 @@ const checkEmailCredentials = async (address, password) => {
 	}
 }
 
+/**
+ * Check if a email is valid.
+ * @param {String} email - The email to check.
+ * @returns {Boolean} - True if email is valid. Otherwise, false.
+ */
+const isValidEmail = (email) => {
+	const re = /^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i
+	return re.test(String(email).toLowerCase())
+}
+
 module.exports = {
 	sendEmail,
+	isValidEmail,
 	checkEmailCredentials,
 }
