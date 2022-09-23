@@ -1,7 +1,7 @@
 /**
  * @file Contain all database unit tests.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 const { expect } = require('chai')
 
@@ -13,11 +13,11 @@ const {
 } = require('../../src/database')
 
 describe('Database', () => {
-	beforeAll(async () => {
+	before(async () => {
 		await connectDatabase()
 	})
 
-	afterAll(async () => {
+	after(async () => {
 		await closeDatabase()
 	})
 

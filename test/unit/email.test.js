@@ -11,8 +11,6 @@ const email = require('../../src/utils/email')
 // antispam
 const sendRealEmail = false
 
-// TODO: fix open handles after tests
-
 describe('Email', () => {
 	it('should verify email credentials', async () => {
 		const result = await email.checkEmailCredentials()
