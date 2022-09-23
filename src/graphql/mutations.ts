@@ -20,7 +20,9 @@ export const createMessage = gql`
   }
 `
 export const addFriend = gql`
-  mutation addFriend($userId: String!) {
-    addUserFriend(userId: $userId)
+  mutation addFriend($userId: ID!) {
+    addUserFriend(userId: $userId) {
+      username
+    }
   }
 `
