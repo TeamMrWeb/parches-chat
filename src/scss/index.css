@@ -73,10 +73,17 @@ html body #root .App ul {
 .chat-index .sidebar {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
   height: 100%;
   position: relative;
 }
 
+@media screen and (min-width: 480px) {
+  .chat-index .sidebar {
+    max-width: 250px;
+  }
+}
 .register {
   display: flex;
   flex-direction: column;
@@ -729,7 +736,7 @@ html body #root .App ul {
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  width: 100%;
+  width: 70px;
   max-width: 70px;
   min-width: 70px;
   background-color: #22252c;
@@ -793,8 +800,7 @@ html body #root .App ul {
 }
 
 .chats {
-  width: 100vw;
-  max-width: 250px;
+  width: 100%;
   min-width: 200px;
   height: 100%;
   background-color: #2a2c37;
@@ -804,7 +810,7 @@ html body #root .App ul {
   color: #ffffff;
 }
 .chats.extended {
-  max-width: 100vw;
+  max-width: 100%;
 }
 .chats .chats-list {
   display: flex;
@@ -843,6 +849,15 @@ html body #root .App ul {
   color: #ffffff;
 }
 
+@media screen and (min-width: 480px) {
+  .chats {
+    width: 100%;
+    max-width: 100%;
+  }
+  .chats.extended {
+    max-width: 100vw;
+  }
+}
 .group__image {
   width: 50px;
   height: 50px;
@@ -904,6 +919,7 @@ html body #root .App ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 60px;
   background-color: #333641;
   color: #ffffff;
@@ -947,6 +963,11 @@ html body #root .App ul {
   height: 30px;
 }
 
+@media screen and (min-width: 480px) {
+  .logged-user-area {
+    max-width: 250px;
+  }
+}
 .user-quick-options {
   position: absolute;
   display: flex;
@@ -988,9 +1009,24 @@ html body #root .App ul {
   padding: 0 20px;
   box-sizing: border-box;
 }
-.add-friend-section .add-friend-section__title {
+.add-friend-section .add-friend-header {
+  display: flex;
+  align-items: center;
+}
+.add-friend-section .add-friend-header .add-friend-header__title {
   text-align: center;
   font-weight: 400;
+}
+.add-friend-section .add-friend-header .close {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.add-friend-section .add-friend-header .close .close__icon {
+  width: 100%;
+  height: 100%;
 }
 .add-friend-section .add-friend-section__input {
   width: 100%;
@@ -1019,6 +1055,13 @@ html body #root .App ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
+}
+.add-friend-section .results .results__item:hover {
+  background-color: #323346;
+}
+.add-friend-section .results .results__item:hover .loggedUser-chat__username {
+  color: #ffffff !important;
 }
 .add-friend-section .results .results__item .left-side {
   display: flex;

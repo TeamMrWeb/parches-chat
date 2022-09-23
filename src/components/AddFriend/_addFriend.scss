@@ -8,9 +8,24 @@
   color: $whiteColor;
   padding: 0 20px;
   box-sizing: border-box;
-  .add-friend-section__title {
-    text-align: center;
-    font-weight: 400;
+  .add-friend-header {
+    display: flex;
+    align-items: center;
+    .add-friend-header__title {
+      text-align: center;
+      font-weight: 400;
+    }
+    .close {
+      width: 50px;
+      height: 50px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      .close__icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
   .add-friend-section__input {
     width: 100%;
@@ -38,6 +53,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      cursor: pointer;
+      &:hover {
+        background-color: $secundaryColorHover;
+        .loggedUser-chat__username {
+          color: $whiteColor !important;
+        }
+      }
       .left-side {
         display: flex;
         align-items: center;

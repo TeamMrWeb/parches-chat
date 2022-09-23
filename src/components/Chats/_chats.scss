@@ -1,6 +1,6 @@
 .chats {
-  width: 100vw;
-  max-width: 250px;
+  width: 100%;
+  // max-width: 250px;
   min-width: 200px;
   height: 100%;
   background-color: $secundaryColor;
@@ -9,7 +9,7 @@
   box-sizing: border-box;
   color: $whiteColor;
   &.extended {
-    max-width: 100vw;
+    max-width: 100%;
   }
   .chats-list {
     display: flex;
@@ -45,6 +45,16 @@
     .add-friend__text {
       font-size: 16px;
       color: $whiteColor;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .chats {
+    width: 100%;
+    max-width: 100%;
+    &.extended {
+      max-width: 100vw;
     }
   }
 }

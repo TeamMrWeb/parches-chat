@@ -1,7 +1,7 @@
-import { resultKeyNameFromField } from "@apollo/client/utilities"
 import { Oval } from "react-loader-spinner"
 import { useAddFriend } from "./useAddFriend"
 import addFriendIcon from "../../assets/icons/add-friend-icon.svg"
+import closeIcon from "../../assets/icons/close-icon.svg"
 
 interface Result {
   username: string
@@ -19,7 +19,12 @@ export default function AddFriend({
 
   return (
     <section className="add-friend-section">
-      <h3 className="add-friend-section__title">Agrega a un amigo por su nombre de usuario</h3>
+      <header className="add-friend-header">
+        <h3 className="add-friend-header__title">Agrega a un amigo por su nombre de usuario</h3>
+        <button className="close" onClick={() => setShowAddFriend(!showAddFriend)}>
+          <img className="close__icon" src={closeIcon} alt="Ícono de cerrar ventana" />
+        </button>
+      </header>
       <input
         className="add-friend-section__input"
         type="text"

@@ -9,7 +9,7 @@ export const useAddFriend = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      getFriendByUsername({ variables: { username: inputValue } })
+      // getFriendByUsername({ variables: { username: inputValue } })
     }, 1000)
 
     return () => {

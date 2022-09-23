@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 60px;
   background-color: $primaryColorLight;
   color: $whiteColor;
@@ -22,8 +23,6 @@
       height: 40px;
       border-radius: 80px;
     }
-    .logged-user-area__name {
-    }
   }
   .configuration {
     display: flex;
@@ -43,5 +42,11 @@
       width: 30px;
       height: 30px;
     }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .logged-user-area {
+    max-width: 250px;
   }
 }
