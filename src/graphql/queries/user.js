@@ -1,7 +1,7 @@
 /**
  * @file Contains user query.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -37,8 +37,8 @@ const resolve = async (_, args, context) => {
 	if (!user)
 		throw new Error('Tienes que estar logueado para obtener un usuario.')
 	if (userId) return await findOne({ _id: userId })
-	if (username) return await findOne({ username })
-	else return await findOne({ _id: user._id })
+	else if (username) return await findOne({ username })
+	else return await findOne({ _id: user.id })
 }
 
 // query object
