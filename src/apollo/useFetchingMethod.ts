@@ -16,7 +16,7 @@ export const useFetchingMethod = (gqlType: any, setState?: any) => {
       dispatch(
         createAlertMessage({
           title: `Ha ocurrido un error inesperado`,
-          description: error,
+          description: error.message,
           type: "error",
           visible: true
         })

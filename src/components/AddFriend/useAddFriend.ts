@@ -20,14 +20,14 @@ export const useAddFriend = () => {
       const res = await getFriendByUsername({ variables: { username: inputValue } })
       const users = res.data.users
       setIsLoading(false)
-      setResults(users)
+      users && setResults(users)
     }, 1000)
     return () => clearTimeout(timer)
   }, [inputValue])
 
   const addFriendById = async (userId: string) => {
     const res = await addUserFriend({ variables: { userId } })
-    res &&
+    res.data &&
       dispatch(
         createAlertMessage({
           title: "Se ha agregado a un nuevo amigo",
