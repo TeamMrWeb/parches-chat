@@ -19,10 +19,25 @@ export const createMessage = gql`
     }
   }
 `
+
 export const addFriend = gql`
   mutation addFriend($userId: ID!) {
     addUserFriend(userId: $userId) {
+      id
       username
+    }
+  }
+`
+
+export const createChatBetweenFriends = gql`
+  mutation createChat($name: String!, $usersId: [ID!]!) {
+    createChat(name: $name, usersId: $usersId) {
+      id
+      name
+      avatar
+      users {
+        username
+      }
     }
   }
 `
