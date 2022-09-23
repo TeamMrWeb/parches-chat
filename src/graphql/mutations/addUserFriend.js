@@ -1,11 +1,11 @@
 /**
  * @file Contains friend addition mutation.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
-const { GraphQLNonNull, GraphQLID } = require('graphql')
+const { GraphQLNonNull, GraphQLID, GraphQLList } = require('graphql')
 const { UserType } = require('../types')
 const { findById, addFriend } = require('../../controllers/userController')
 
@@ -40,12 +40,15 @@ const resolve = async (_, args, context) => {
 		throw new Error('El usuario ya es tu amigo.')
 
 	await addFriend(userDb._id, friend._id)
-	return friend
+	let list = []
+	list.push(friend)
+	list.push(userDb)
+	return list
 }
 
 // mutation object
 const addUserFriend = {
-	type: UserType,
+	type: new GraphQLList(UserType),
 	description: 'Add a friend to the current logged user.',
 	args,
 	resolve,
