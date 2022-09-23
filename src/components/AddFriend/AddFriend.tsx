@@ -4,8 +4,10 @@ import addFriendIcon from "../../assets/icons/add-friend-icon.svg"
 import closeIcon from "../../assets/icons/close-icon.svg"
 
 interface Result {
+  id: string
   username: string
   avatar: string
+  __typename: string
 }
 
 export default function AddFriend({
@@ -15,7 +17,7 @@ export default function AddFriend({
   showAddFriend: boolean
   setShowAddFriend: (showAddFriend: boolean) => void
 }) {
-  const { inputValue, setInputValue, results } = useAddFriend()
+  const { inputValue, setInputValue, results, isLoading, addFriendById } = useAddFriend()
 
   return (
     <section className="add-friend-section">
@@ -31,7 +33,7 @@ export default function AddFriend({
         placeholder="Buscar por nombre"
         onChange={e => setInputValue(e.target.value)}
       />
-      {inputValue.length >= 2 ? (
+      {isLoading && inputValue.length >= 1 ? (
         <div className="loader-spinner">
           <Oval
             height={50}
@@ -46,15 +48,15 @@ export default function AddFriend({
         </div>
       ) : (
         <ul className="results">
-          {/* {results.map((result: Result) => (
-          ))} */}
-          <li className="results__item">
-            <div className="left-side">
-              <img className="results__avatar" src="https://i.pravatar.cc/150?img=1 " alt="Avatar de usuario" />
-              <span className="results__name">ds</span>
-            </div>
-            <img className="results__icon" src={addFriendIcon} alt="Ícono de agregar amigo" />
-          </li>
+          {results?.map((result: Result) => (
+            <li className="results__item" key={result.id} onClick={() => addFriendById(result.id)}>
+              <div className="left-side">
+                <img className="results__avatar" src={result.avatar} alt="Avatar de usuario" />
+                <span className="results__name">{result.username}</span>
+              </div>
+              <img className="results__icon" src={addFriendIcon} alt="Ícono de agregar amigo" />
+            </li>
+          ))}
         </ul>
       )}
     </section>

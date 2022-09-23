@@ -67,10 +67,12 @@ export const messagesByChatId = gql`
 `
 
 export const usersByUsername = gql`
-  query user($username: string!) {
-    user(username: $username) {
+  query user($username: String!) {
+    users(username: $username) {
+      id
       username
       avatar
+      email
     }
   }
 `

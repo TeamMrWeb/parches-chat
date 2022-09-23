@@ -1014,12 +1014,11 @@ html body #root .App ul {
   align-items: center;
 }
 .add-friend-section .add-friend-header .add-friend-header__title {
-  text-align: center;
   font-weight: 400;
 }
 .add-friend-section .add-friend-header .close {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -1049,6 +1048,9 @@ html body #root .App ul {
   align-items: center;
 }
 .add-friend-section .results {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   margin-top: 10px !important;
 }
 .add-friend-section .results .results__item {
@@ -1074,6 +1076,6 @@ html body #root .App ul {
   border-radius: 40px;
 }
 .add-friend-section .results .results__item .results__icon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }/*# sourceMappingURL=index.css.map */

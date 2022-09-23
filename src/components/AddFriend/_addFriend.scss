@@ -12,12 +12,11 @@
     display: flex;
     align-items: center;
     .add-friend-header__title {
-      text-align: center;
       font-weight: 400;
     }
     .close {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border: none;
       background-color: transparent;
       cursor: pointer;
@@ -48,6 +47,9 @@
     align-items: center;
   }
   .results {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     margin-top: 10px !important;
     .results__item {
       display: flex;
@@ -69,12 +71,10 @@
           height: 40px;
           border-radius: 40px;
         }
-        .results__name {
-        }
       }
       .results__icon {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
       }
     }
   }

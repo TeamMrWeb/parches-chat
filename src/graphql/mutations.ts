@@ -11,10 +11,16 @@ export const userLogin = gql`
     login(email: $email, password: $password)
   }
 `
+
 export const createMessage = gql`
   mutation createMessage($chatId: ID!, $text: String!) {
     createMessage(chatId: $chatId, text: $text) {
       id
     }
+  }
+`
+export const addFriend = gql`
+  mutation addFriend($userId: String!) {
+    addUserFriend(userId: $userId)
   }
 `
