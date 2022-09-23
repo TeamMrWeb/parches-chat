@@ -1,7 +1,7 @@
 /**
  * @file Contains friend addition mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -39,8 +39,8 @@ const resolve = async (_, args, context) => {
 	if (friends.includes(args.userId))
 		throw new Error('El usuario ya es tu amigo.')
 
-	userDb = await addFriend(userDb._id, friend._id)
-	return userDb
+	await addFriend(userDb._id, friend._id)
+	return friend
 }
 
 // mutation object
