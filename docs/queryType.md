@@ -20,13 +20,25 @@ query example {
 
 Returns all users from the database.
 
+#### Arguments
+
+- `username` _String_
+   - The username filter.
+
+- `verified` _Boolean_
+   - If the user is verified.
+
 > Returns _[**UserType**]_
 
 #### Example usage
 
 ```graphql example
 query example {
-	users	{
+	users(
+		username: "test"
+		verified: True
+	)
+	{
 		# add fields here (depends on the return type)
 	}
 }
@@ -41,6 +53,9 @@ Get a user by id.
 - `userId` _ID_
    - The id of the user, if not provided, logged user will be used.
 
+- `username` _String_
+   - The username of the user, if not provided, logged user will be used.
+
 > Returns **_UserType_**
 
 #### Example usage
@@ -48,7 +63,32 @@ Get a user by id.
 ```graphql example
 query example {
 	user(
-		userId: "8a3da4e3a6dde86980be0049"
+		userId: "cdc84f7449001d63448596d7"
+		username: "test"
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
+
+## > friends
+
+The friends of the logged user.
+
+#### Arguments
+
+- `status` _Int_
+   - The status of the friend
+
+> Returns _[**UserType**]_
+
+#### Example usage
+
+```graphql example
+query example {
+	friends(
+		status: 0
 	)
 	{
 		# add fields here (depends on the return type)
@@ -78,9 +118,9 @@ Get messages by ids, if not provided, parent messages will be used.
 ```graphql example
 query example {
 	messages(
-		ids: ["8a3da4e3a6dde86980be0049", "8a3da4e3a6dde86980be0049"]
-		limit: 3
-		skip: 3
+		ids: ["cdc84f7449001d63448596d7", "cdc84f7449001d63448596d7"]
+		limit: 0
+		skip: 0
 	)
 	{
 		# add fields here (depends on the return type)
@@ -104,7 +144,7 @@ Get a chat by id.
 ```graphql example
 query example {
 	chat(
-		id: "8a3da4e3a6dde86980be0049"
+		id: "cdc84f7449001d63448596d7"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -137,10 +177,10 @@ Get chats from a user by its id.
 ```graphql example
 query example {
 	chats(
-		userId: "8a3da4e3a6dde86980be0049"
+		userId: "cdc84f7449001d63448596d7"
 		isGroup: True
-		skip: 3
-		limit: 3
+		skip: 0
+		limit: 0
 	)
 	{
 		# add fields here (depends on the return type)
