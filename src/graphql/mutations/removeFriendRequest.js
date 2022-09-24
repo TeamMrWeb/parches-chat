@@ -48,11 +48,17 @@ const resolve = async (_, args, context) => {
 	if (!sended)
 		throw new Error('No has enviado una solicitud de amistad a este usuario.')
 
-	// add friend request to the user
+	// remove friend request from the user
 	sender.friends = sender.friends.filter(
 		(request) => request.user.toString() !== userId
 	)
 	sender.save()
+
+	// remove friend pending request from the friend
+	friend.friends = friend.friends.filter(
+		(request) => request.user.toString() !== senderId
+	)
+	friend.save()
 	return 'Solicitud eliminada de ' + friend.username
 }
 
