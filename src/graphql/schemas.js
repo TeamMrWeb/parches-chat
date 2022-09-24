@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.1.2
+ * @version 0.1.4
  */
 
 // required modules
@@ -33,6 +33,8 @@ const {
 	removeUserFromChat,
 	addUserFriend,
 	refreshToken,
+	sendFriendRequest,
+	removeFriendRequest,
 } = require('./mutations')
 
 // required subscriptions
@@ -73,6 +75,8 @@ const MutationType = new GraphQLObjectType({
 		deleteChat,
 		deleteMessage,
 		addUserFriend,
+		sendFriendRequest,
+		removeFriendRequest,
 	},
 })
 
