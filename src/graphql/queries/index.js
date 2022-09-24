@@ -10,6 +10,7 @@ module.exports = {
 	user: require('./user'),
 	chat: require('./chat'),
 	chats: require('./chats'),
+	friends: require('./friends'),
 	messages: require('./messages'),
 	verify: require('./verify'),
 	sendEmailVerification: require('./sendEmailVerification'),
