@@ -34,7 +34,7 @@ Subscription for new messages in a specific chat
 ```graphql example
 subscription example {
 	chatMessageAdded(
-		chatId: "8a3da4e3a6dde86980be0049"
+		chatId: "cdc84f7449001d63448596d7"
 	)
 	{
 		# add fields here (depends on the return type)
