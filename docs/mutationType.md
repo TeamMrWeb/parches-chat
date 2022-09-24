@@ -87,7 +87,7 @@ Create a new chat and returns the chat object.
 mutation example {
 	createChat(
 		name: "test"
-		usersId: ["8a3da4e3a6dde86980be0049", "8a3da4e3a6dde86980be0049"]
+		usersId: ["cdc84f7449001d63448596d7", "cdc84f7449001d63448596d7"]
 		avatar: "test"
 		secure: True
 		private: True
@@ -120,7 +120,7 @@ Create a new message in a chat.
 ```graphql example
 mutation example {
 	createMessage(
-		chatId: "8a3da4e3a6dde86980be0049"
+		chatId: "cdc84f7449001d63448596d7"
 		text: "test"
 		image: "test"
 	)
@@ -158,7 +158,7 @@ mutation example {
 		username: "test"
 		email: "test"
 		avatar: "test"
-		status: 3
+		status: 0
 	)
 	{
 		# add fields here (depends on the return type)
@@ -185,7 +185,7 @@ Update a message by id.
 ```graphql example
 mutation example {
 	updateMessage(
-		messageId: "8a3da4e3a6dde86980be0049"
+		messageId: "cdc84f7449001d63448596d7"
 		text: "test"
 	)
 	{
@@ -213,8 +213,8 @@ Add a user to a chat by id.
 ```graphql example
 mutation example {
 	addUserToChat(
-		chatId: "8a3da4e3a6dde86980be0049"
-		userId: "8a3da4e3a6dde86980be0049"
+		chatId: "cdc84f7449001d63448596d7"
+		userId: "cdc84f7449001d63448596d7"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -241,8 +241,8 @@ Remove a user from a chat by id.
 ```graphql example
 mutation example {
 	removeUserFromChat(
-		chatId: "8a3da4e3a6dde86980be0049"
-		userId: "8a3da4e3a6dde86980be0049"
+		chatId: "cdc84f7449001d63448596d7"
+		userId: "cdc84f7449001d63448596d7"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -288,7 +288,7 @@ Delete a chat by id.
 ```graphql example
 mutation example {
 	deleteChat(
-		chatId: "8a3da4e3a6dde86980be0049"
+		chatId: "cdc84f7449001d63448596d7"
 	)
 
 }
@@ -313,12 +313,108 @@ Delete a message in a chat by id.
 ```graphql example
 mutation example {
 	deleteMessage(
-		chatId: "8a3da4e3a6dde86980be0049"
-		messageId: "8a3da4e3a6dde86980be0049"
+		chatId: "cdc84f7449001d63448596d7"
+		messageId: "cdc84f7449001d63448596d7"
 	)
 	{
 		# add fields here (depends on the return type)
 	}
+}
+```
+
+## > sendFriendRequest
+
+Send a friend request to a user.
+
+#### Arguments
+
+- `userId` _ID_**!**
+   - The user id to send the friend request to.
+
+- `senderId` _ID_
+   - The user id of the sender. If not provided, the current logged user will be used.
+
+> Returns **_String_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	sendFriendRequest(
+		userId: "cdc84f7449001d63448596d7"
+		senderId: "cdc84f7449001d63448596d7"
+	)
+
+}
+```
+
+## > removeFriendRequest
+
+Remove a friend request.
+
+#### Arguments
+
+- `userId` _ID_**!**
+   - The user id to remove the friend request from.
+
+- `senderId` _ID_
+   - The user id of the sender. If not provided, the current logged user will be used.
+
+> Returns **_String_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	removeFriendRequest(
+		userId: "cdc84f7449001d63448596d7"
+		senderId: "cdc84f7449001d63448596d7"
+	)
+
+}
+```
+
+## > acceptFriendRequest
+
+Remove a friend request.
+
+#### Arguments
+
+- `userId` _ID_**!**
+   - The user id to accept the friend request from.
+
+> Returns **_String_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	acceptFriendRequest(
+		userId: "cdc84f7449001d63448596d7"
+	)
+
+}
+```
+
+## > declineFriendRequest
+
+Decline a friend request.
+
+#### Arguments
+
+- `userId` _ID_**!**
+   - The user id to decline the friend request from.
+
+> Returns **_String_**
+
+#### Example usage
+
+```graphql example
+mutation example {
+	declineFriendRequest(
+		userId: "cdc84f7449001d63448596d7"
+	)
+
 }
 ```
 
