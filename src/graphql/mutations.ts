@@ -20,12 +20,9 @@ export const createMessage = gql`
   }
 `
 
-export const addFriend = gql`
-  mutation addFriend($userId: ID!) {
-    addUserFriend(userId: $userId) {
-      id
-      username
-    }
+export const sendFriendRequestToUser = gql`
+  mutation sendFriendRequestToUser($userId: ID!, $senderId: ID!) {
+    sendFriendRequest(userId: $userId, senderId: $senderId)
   }
 `
 

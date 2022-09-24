@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { usersByUsername } from "../../graphql/queries"
-import { addFriend, createChatBetweenFriends } from "../../graphql/mutations"
+import { sendFriendRequestToUser, createChatBetweenFriends } from "../../graphql/mutations"
 import { useDispatch, useSelector } from "react-redux"
 import { createAlertMessage } from "../../slicers/alertMessageSlice"
 
 export const useAddFriend = () => {
   const { lazyQueryMethod: getFriendByUsername } = useFetchingMethod(usersByUsername)
-  const { lazyQueryMethod: addUserFriend } = useFetchingMethod(addFriend)
+  const { lazyQueryMethod: sendFriendRequest } = useFetchingMethod(sendFriendRequestToUser)
   const { lazyQueryMethod: createChat } = useFetchingMethod(createChatBetweenFriends)
   const [inputValue, setInputValue] = useState("")
   const [isLoading, setIsLoading] = useState(true)
@@ -27,24 +27,20 @@ export const useAddFriend = () => {
     return () => clearTimeout(timer)
   }, [inputValue])
 
-  const addFriendById = (userId: string) => {
-    addUserFriend({ variables: { userId } })
-      .then((res: any) => {
-        console.log({ res })
-        dispatch(
-          createAlertMessage({
-            title: "Se ha agregado a un nuevo amigo",
-            type: "success",
-            visible: true
-          })
-        )
-        const friend = res.data.addUserFriend
-        createChat({ variables: { name: friend.username, usersId: [loggedUser.id, friend.id] } })
-      })
-      .catch(() => {
-        return
-      })
+  const addFriendToLoggedUser = (friendId: string, friendUsername: string) => {
+    console.log(loggedUser, friendId)
+    sendFriendRequest({ variables: { userId: friendId, senderId: loggedUser.id } }).then((res: any) => {
+      if (!res.data) return
+      dispatch(
+        createAlertMessage({
+          title: "Se ha agregado a un nuevo amigo",
+          type: "success",
+          visible: true
+        })
+      )
+      createChat({ variables: { name: friendUsername, usersId: [loggedUser.id, friendId] } })
+    })
   }
 
-  return { setInputValue, inputValue, results, isLoading, addFriendById }
+  return { setInputValue, inputValue, results, isLoading, addFriendToLoggedUser }
 }

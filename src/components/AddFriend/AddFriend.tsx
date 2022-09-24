@@ -17,7 +17,7 @@ export default function AddFriend({
   showAddFriend: boolean
   setShowAddFriend: (showAddFriend: boolean) => void
 }) {
-  const { inputValue, setInputValue, results, isLoading, addFriendById } = useAddFriend()
+  const { inputValue, setInputValue, results, isLoading, addFriendToLoggedUser } = useAddFriend()
 
   return (
     <section className="add-friend-section">
@@ -49,7 +49,7 @@ export default function AddFriend({
       ) : (
         <ul className="results">
           {results?.map((result: Result) => (
-            <li className="results__item" key={result.id} onClick={() => addFriendById(result.id)}>
+            <li className="results__item" key={result.id} onClick={() => addFriendToLoggedUser(result.id, result.username)}>
               <div className="left-side">
                 <img className="results__avatar" src={result.avatar} alt="Avatar de usuario" />
                 <span className="results__name">{result.username}</span>
