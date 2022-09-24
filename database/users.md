@@ -5,12 +5,12 @@
  | Field | Type | Description |
  | ----- | ---- | ----------- |
 | username | String |  |
+| avatar | String |  |
 | verified | Boolean |  |
 | password | String |  |
 | email | String |  |
 | status | Int |  |
-| friends | Array of ObjectIds |  |
-| pendingFriends | Array of ObjectIds |  |
 | blockedUsers | Array of ObjectIds |  |
+| friends | Array of ObjectIds |  |
 | createdAt | Datetime |  |
 | updatedAt | Datetime |  |
