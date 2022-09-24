@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL mutations exports.
  * @author Manuel Cabral
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 module.exports = {
@@ -10,7 +10,6 @@ module.exports = {
 	login: require('./login'),
 	updateUser: require('./updateUser'),
 	refreshToken: require('./refreshToken'),
-	addUserFriend: require('./addUserFriend'),
 	sendFriendRequest: require('./sendFriendRequest'),
 	removeFriendRequest: require('./removeFriendRequest'),
 	declineFriendRequest: require('./declineFriendRequest'),

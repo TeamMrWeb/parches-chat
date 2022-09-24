@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.1.5
+ * @version 0.1.6
  */
 
 // required modules
@@ -78,7 +78,6 @@ const MutationType = new GraphQLObjectType({
 		refreshToken,
 		deleteChat,
 		deleteMessage,
-		addUserFriend,
 		sendFriendRequest,
 		removeFriendRequest,
 		acceptFriendRequest,
