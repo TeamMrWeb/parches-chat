@@ -1,7 +1,7 @@
 /**
  * @file Conatains the friend request mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -31,6 +31,9 @@ const resolve = async (_, args, context) => {
 
 	if (senderId === userId)
 		throw new Error('No puedes enviarte una solicitud de amistad a ti mismo')
+
+	if (senderId !== user.id)
+		throw new Error('No tienes permiso para enviar esta solicitud de amistad.')
 
 	let friend = await findById(userId)
 	if (!friend) throw new Error('Usurio no encontrado.')
