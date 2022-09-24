@@ -1,7 +1,7 @@
 /**
  * @file Conatains remove friend request mutation.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -13,21 +13,13 @@ const args = {
 		type: new GraphQLNonNull(GraphQLID),
 		description: 'The user id to remove the friend request from.',
 	},
-	senderId: {
-		type: GraphQLID,
-		description:
-			'The user id of the sender. If not provided, the current logged user will be used.',
-	},
 }
 
-const resolve = async (_, args, context) => {
-	const { user } = context
-	let { userId, senderId } = args
+const resolve = async (_, { userId }, { user }) => {
 	if (!user) throw new Error('Tienes que estar logueado')
 	if (!userId) throw new Error('El id del usuario no puede estar vacío')
 
-	// if not senderid provided, use the current logged user
-	if (!senderId) senderId = user.id
+	let senderId = user.id
 
 	if (senderId === userId)
 		throw new Error(
