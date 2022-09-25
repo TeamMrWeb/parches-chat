@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react"
-import { useFetchingMethod } from "../../apollo/useFetchingMethod"
-import { usersByUsername } from "../../graphql/queries"
-import { sendFriendRequestToUser, createChatBetweenFriends } from "../../graphql/mutations"
 import { useDispatch, useSelector } from "react-redux"
+import { useMutation } from "@apollo/client"
+import { useFetchingMethod } from "../../apollo/useFetchingMethod"
+import { createChatBetweenFriends, sendFriendRequestToUser } from "../../graphql/mutations"
+import { chatsFromUserLogged } from "../../graphql/queries"
+import { usersByUsername } from "../../graphql/queries"
 import { createAlertMessage } from "../../slicers/alertMessageSlice"
 
 export const useAddFriend = () => {
   const { lazyQueryMethod: getFriendByUsername } = useFetchingMethod(usersByUsername)
+  const loggedUser = useSelector((state: any) => state.loggedUser)
+  const [createChat] = useMutation(createChatBetweenFriends, {
+    refetchQueries: [{ query: chatsFromUserLogged, variables: { userId: loggedUser.id, isGroup: false } }]
+  })
   const { lazyQueryMethod: sendFriendRequest } = useFetchingMethod(sendFriendRequestToUser)
-  const { lazyQueryMethod: createChat } = useFetchingMethod(createChatBetweenFriends)
-  const [inputValue, setInputValue] = useState("")
   const [isLoading, setIsLoading] = useState(true)
+  const [inputValue, setInputValue] = useState("")
   const [results, setResults] = useState([])
   const dispatch = useDispatch()
-  const loggedUser = useSelector((state: any) => state.loggedUser)
 
   useEffect(() => {
     if (inputValue.length === 0) return setResults([])
@@ -27,9 +31,8 @@ export const useAddFriend = () => {
     return () => clearTimeout(timer)
   }, [inputValue])
 
-  const addFriendToLoggedUser = (friendId: string, friendUsername: string) => {
-    console.log(loggedUser, friendId)
-    sendFriendRequest({ variables: { userId: friendId, senderId: loggedUser.id } }).then((res: any) => {
+  const addFriendToLoggedUser = async (friendId: string, friendUsername: string) => {
+    await sendFriendRequest({ variables: { userId: friendId, senderId: loggedUser.id } }).then(async (res: any) => {
       if (!res.data) return
       dispatch(
         createAlertMessage({
@@ -38,7 +41,7 @@ export const useAddFriend = () => {
           visible: true
         })
       )
-      createChat({ variables: { name: friendUsername, usersId: [loggedUser.id, friendId] } })
+      await createChat({ variables: { name: friendUsername, usersId: [loggedUser.id, friendId] } })
     })
   }
 
