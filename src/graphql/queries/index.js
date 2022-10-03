@@ -11,7 +11,7 @@ module.exports = {
 	chat: require('./chat'),
 	chats: require('./chats'),
 	friends: require('./friends'),
-	messages: require('./messages'),
+	//messages: require('./messages'),
 	verify: require('./verify'),
 	sendEmailVerification: require('./sendEmailVerification'),
 }
