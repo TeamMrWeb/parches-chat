@@ -5,7 +5,7 @@
  */
 
 // required modules
-const DateType = require('./dateType')
+const DateType = require('./DateType')
 const {
 	GraphQLObjectType,
 	GraphQLID,

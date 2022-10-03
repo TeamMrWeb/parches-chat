@@ -7,7 +7,7 @@
 
 // required modules
 const UserType = require('./userType')
-const DateType = require('./dateType')
+const DateType = require('./DateType')
 const messages = require('../queries/messages')
 const findManyUsers = require('../../controllers/userController').findMany
 const findUserById = require('../../controllers/userController').findById
