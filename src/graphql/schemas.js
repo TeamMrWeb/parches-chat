@@ -16,7 +16,7 @@ const {
 	chats,
 	verify,
 	friends,
-	// messages, DEPRECATED: duplicate graphql object, fix it.
+	messages,
 	sendEmailVerification,
 } = require('./queries')
 
@@ -53,7 +53,7 @@ const QueryType = new GraphQLObjectType({
 		users,
 		user,
 		friends,
-		//messages,
+		messages,
 		chat,
 		chats,
 		verify,

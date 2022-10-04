@@ -8,7 +8,7 @@
 // required modules
 const UserType = require('./UserType')
 const DateTimeType = require('./DateTimeType')
-//const messages = require('../queries/messages') DEPRECATED: fix it
+const messages = require('../queries/messages')
 const findManyUsers = require('../../controllers/userController').findMany
 const findUserById = require('../../controllers/userController').findById
 
@@ -68,7 +68,7 @@ const ChatType = new GraphQLObjectType({
 			description: 'The users of the chat.',
 			resolve: async (parent) => findManyUsers(parent.users),
 		},
-		//messages,
+		messages,
 		updatedAt: {
 			type: DateTimeType,
 			description: 'The date of the last update.',
