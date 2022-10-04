@@ -2,12 +2,12 @@
  * @file Contains chat type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.9
+ * @version 0.1.0
  */
 
 // required modules
 const UserType = require('./UserType')
-const DateType = require('./DateType')
+const DateTimeType = require('./DateTimeType')
 //const messages = require('../queries/messages') DEPRECATED: fix it
 const findManyUsers = require('../../controllers/userController').findMany
 const findUserById = require('../../controllers/userController').findById
@@ -70,11 +70,11 @@ const ChatType = new GraphQLObjectType({
 		},
 		//messages,
 		updatedAt: {
-			type: DateType,
+			type: DateTimeType,
 			description: 'The date of the last update.',
 		},
 		createdAt: {
-			type: DateType,
+			type: DateTimeType,
 			description: 'The date of the creation.',
 		},
 	},

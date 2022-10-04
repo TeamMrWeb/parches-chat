@@ -2,12 +2,12 @@
  * @file Contains message type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
 const UserType = require('./UserType')
-const DateType = require('./DateType')
+const DateTimeType = require('./DateTimeType')
 const {
 	GraphQLObjectType,
 	GraphQLID,
@@ -48,11 +48,11 @@ const MessageType = new GraphQLObjectType({
 			description: 'Get the users that have seen the message.',
 		},
 		updatedAt: {
-			type: DateType,
+			type: DateTimeType,
 			description: 'The date of the last update.',
 		},
 		createdAt: {
-			type: DateType,
+			type: DateTimeType,
 			description: 'The date of the creation.',
 		},
 	},

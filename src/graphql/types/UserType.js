@@ -1,11 +1,11 @@
 /**
  * @file Contains user type.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
-const DateType = require('./DateType')
+const DateTimeType = require('./DateTimeType')
 const {
 	GraphQLObjectType,
 	GraphQLID,
@@ -43,11 +43,11 @@ const UserType = new GraphQLObjectType({
 			description: 'If the user is verified or not.',
 		},
 		updatedAt: {
-			type: DateType,
+			type: DateTimeType,
 			description: 'The date of the last update.',
 		},
 		createdAt: {
-			type: DateType,
+			type: DateTimeType,
 			description: 'The date of the creation.',
 		},
 	},
