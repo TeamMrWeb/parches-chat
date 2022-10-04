@@ -1,12 +1,12 @@
 /**
  * @file Contains all GraphQL object types.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.0.6
  */
 
 module.exports = {
-	DateTimeType: require('./DateTimeType'),
-	UserType: require('./UserType'),
-	MessageType: require('./MessageType'),
-	ChatType: require('./ChatType'),
+	DateType: require('./dateType'),
+	UserType: require('./userType'),
+	MessageType: require('./messageType'),
+	ChatType: require('./chatType'),
 }
