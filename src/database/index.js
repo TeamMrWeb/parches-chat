@@ -1,7 +1,7 @@
 /**
  * @file Contains all database things.
  * @author Manuel Cabral
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -42,9 +42,9 @@ module.exports = {
 
 	// export all models
 	models: {
-		User: require('./models/user'),
-		Message: require('./models/message'),
-		Chat: require('./models/chat'),
-		Token: require('./models/token'),
+		User: require('./models/User'),
+		Message: require('./models/Message'),
+		Chat: require('./models/Chat'),
+		Token: require('./models/Token'),
 	},
 }
