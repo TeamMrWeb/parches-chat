@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "npm i && npm run build"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
