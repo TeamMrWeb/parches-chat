@@ -29,6 +29,7 @@ export default function ChatInput() {
           value={value}
           onChange={e => setValue(e.target.value)}
           onFocus={() => setShowEmojisPicker(false)}
+          autoFocus
           type="text"
           placeholder={`Enviar mensaje a ${chat.users && chat.users[0].username}`}
           maxLength={2000}

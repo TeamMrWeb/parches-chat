@@ -8,14 +8,15 @@ export const useFetchingMethod = (gqlType: any, setState?: any) => {
 
   const [lazyQueryMethod, { loading, error, data }] = fetchingMethod(gqlType, {
     onCompleted: (data: any) => {
-      setState ? dispatch(setState(data)) : null
+      if (!setState) return
+      setState.name === "actionCreator" ? dispatch(setState(data)) : setState(data)
     },
     onError: (error: any) => {
       console.log(error)
       dispatch(
         createAlertMessage({
           title: `Ha ocurrido un error inesperado`,
-          description: error,
+          description: error.message,
           type: "error",
           visible: true
         })

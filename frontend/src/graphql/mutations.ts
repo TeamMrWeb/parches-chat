@@ -11,10 +11,30 @@ export const userLogin = gql`
     login(email: $email, password: $password)
   }
 `
+
 export const createMessage = gql`
   mutation createMessage($chatId: ID!, $text: String!) {
     createMessage(chatId: $chatId, text: $text) {
       id
+    }
+  }
+`
+
+export const sendFriendRequestToUser = gql`
+  mutation sendFriendRequestToUser($userId: ID!, $senderId: ID!) {
+    sendFriendRequest(userId: $userId, senderId: $senderId)
+  }
+`
+
+export const createChatBetweenFriends = gql`
+  mutation createChat($name: String!, $usersId: [ID!]!) {
+    createChat(name: $name, usersId: $usersId) {
+      id
+      name
+      avatar
+      users {
+        username
+      }
     }
   }
 `

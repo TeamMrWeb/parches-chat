@@ -1,7 +1,7 @@
 /**
  * @file Contains user model functions.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -41,9 +41,12 @@ const findById = async (id) => {
 
 /**
  * Find all users.
+ * @param {Object} option - The options to find the users.
+ * @param {Boolean} secure - If true, the password will be excluded from the result.
  * @returns {Array} The users found.
  */
-const findAll = async () => await User.find()
+const findAll = async (option, secure = true) =>
+	await User.find(option).select(secure ? '' : '+password')
 
 /**
  * Find many users by their ids.
@@ -67,6 +70,21 @@ const updateOneUser = async (id, data) => {
 	return await User.findByIdAndUpdate(id, data, { new: true })
 }
 
+/**
+ *  Add a friend to the user.
+ * @param {String} id - The id of the user to update.
+ * @param {String} friendId - The id of the friend to add.
+ * @returns {Object} The updated user.
+ */
+const addFriend = async (id, friendId) => {
+	if (!ObjectId.isValid(id) || !ObjectId.isValid(friendId)) return null
+	return await User.findByIdAndUpdate(
+		id,
+		{ $push: { friends: friendId } },
+		{ new: true }
+	)
+}
+
 module.exports = {
 	createUser,
 	findById,
@@ -74,4 +92,5 @@ module.exports = {
 	findAll,
 	findMany,
 	updateOneUser,
+	addFriend,
 }

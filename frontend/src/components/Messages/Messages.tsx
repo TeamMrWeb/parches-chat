@@ -1,5 +1,3 @@
-import { useEffect, useRef } from "react"
-import { useShowChat } from "../../contexts/ShowChatContext"
 import Message from "../Message/Message"
 import { useMessages } from "./useMessages"
 
@@ -18,13 +16,7 @@ interface Message {
 }
 
 export default function Messages() {
-  const { showChat } = useShowChat()
-  const scrollBottom = useRef<null | HTMLDivElement>(null)
-  const { messages, defineMessageSide, formatCreatedAtDate } = useMessages()
-
-  useEffect(() => {
-    showChat && scrollBottom.current && scrollBottom.current.scrollIntoView()
-  }, [showChat])
+  const { messages, defineMessageSide, formatCreatedAtDate, scrollBottom } = useMessages()
 
   return (
     <section className="messages">

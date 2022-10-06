@@ -4,6 +4,8 @@ export const LoggedUserId = gql`
   query {
     user {
       id
+      username
+      avatar
     }
   }
 `
@@ -60,6 +62,17 @@ export const messagesByChatId = gql`
           id
         }
       }
+    }
+  }
+`
+
+export const usersByUsername = gql`
+  query user($username: String!) {
+    users(username: $username) {
+      id
+      username
+      avatar
+      email
     }
   }
 `

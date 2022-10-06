@@ -1,13 +1,14 @@
 /**
  * @file Contains update user mutation.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 // required modules
 const { GraphQLString, GraphQLInt } = require('graphql')
 const { UserType } = require('../types')
-const { updateOneUser } = require('../../controllers/userController')
+const { isValidEmail } = require('../../utils/email')
+const { updateOneUser, findOne } = require('../../controllers/userController')
 
 const args = {
 	username: {
@@ -40,6 +41,12 @@ const resolve = async (_, args, context) => {
 	const { user } = context
 	if (!user)
 		throw new Error('Tienes que estar logeado para actualizar tu cuenta.')
+
+	if (!isValidEmail(args.email)) throw new Error('El email no es válido.')
+	const existUser = await findOne({ email: args.email })
+	if (existUser && existUser._id != user._id)
+		throw new Error('El email ya está registrado.')
+
 	const updatedUser = await updateOneUser(user.id, args)
 	const emailHasChanged = args.email !== updatedUser.email
 	if (emailHasChanged) {

@@ -1,7 +1,7 @@
 /**
  * @file Contains the user model.
  * @author Manuel Cabral
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -43,15 +43,15 @@ const userSchema = new Schema(
 		},
 		friends: [
 			{
-				type: Schema.Types.ObjectId,
-				ref: 'User',
-				limit: 100,
-			},
-		],
-		pendingFriends: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'User',
+				user: {
+					type: Schema.Types.ObjectId,
+					ref: 'User',
+				},
+				status: {
+					type: Number,
+					default: 0,
+					enum: [0, 1, 2, 3], // 0: added, 1: requested, 2: pending, 3: friend
+				},
 			},
 		],
 		blockedUsers: [

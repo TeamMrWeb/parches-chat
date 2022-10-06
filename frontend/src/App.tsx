@@ -12,7 +12,6 @@ import Login from "./sections/Login/Login"
 function App() {
   const alertMessage = useSelector((state: any) => state.alertMessage)
   const loader = useSelector((state: any) => state.loader)
-  const authToken = localStorage.auth
 
   return (
     <div className="App">
@@ -28,6 +27,7 @@ function App() {
             </Route>
             <Route path="/login" element={<Navigate to="/accounts/login" />} />
             <Route path="/register" element={<Navigate to="/accounts/register" />} />
+            <Route path="/" element={<Navigate to="/accounts/register" />} />
             <Route path="/chat" element={<ChatIndex />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

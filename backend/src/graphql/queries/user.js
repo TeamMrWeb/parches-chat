@@ -1,11 +1,11 @@
 /**
  * @file Contains user query.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.5
  */
 
 // required modules
-const { GraphQLID } = require('graphql')
+const { GraphQLID, GraphQLString } = require('graphql')
 const { UserType } = require('../types')
 const { findOne } = require('../../controllers/userController')
 
@@ -15,6 +15,11 @@ const args = {
 		type: GraphQLID,
 		description:
 			'The id of the user, if not provided, logged user will be used.',
+	},
+	username: {
+		type: GraphQLString,
+		description:
+			'The username of the user, if not provided, logged user will be used.',
 	},
 }
 
@@ -26,14 +31,14 @@ const args = {
  * @returns {Object} The user object.
  */
 const resolve = async (_, args, context) => {
-	let userId = args.userId
-	if (!userId) {
-		const { user } = context
-		if (!user)
-			throw new Error('Tienes que estar logueado para obtener un usuario.')
-		userId = user.id
-	}
-	return await findOne({ _id: userId })
+	const { user } = context
+	const { userId, username } = args
+	// TODO: better way to filter
+	if (!user)
+		throw new Error('Tienes que estar logueado para obtener un usuario.')
+	if (userId) return await findOne({ _id: userId })
+	else if (username) return await findOne({ username })
+	else return await findOne({ _id: user.id })
 }
 
 // query object

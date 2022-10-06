@@ -1,13 +1,18 @@
 import { useChats } from "./useChats"
 import Chat from "./Chat/Chat"
+import plusIcon from "../../assets/icons/plus-icon.svg"
 
 export default function Chats({
   firstAccess,
   setFirstAccess,
-  getChatById
+  getChatById,
+  showAddFriend,
+  setShowAddFriend
 }: {
   firstAccess: boolean
   setFirstAccess: any
+  showAddFriend: boolean
+  setShowAddFriend: (showAddFriend: boolean) => void
   getChatById: (chatId: string) => void
 }) {
   const { chats, defineChatName } = useChats()
@@ -28,6 +33,12 @@ export default function Chats({
           />
         ))}
       </ul>
+      <div className="add-friend" onClick={() => setShowAddFriend(!showAddFriend)}>
+        <div className="add-friend-wrapper">
+          <img className="add-friend__icon" src={plusIcon} alt="Ícono de agregar amigo" />
+        </div>
+        <span className="add-friend__text">Agregar amigo</span>
+      </div>
     </section>
   )
 }
