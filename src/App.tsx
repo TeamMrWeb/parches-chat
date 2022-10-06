@@ -27,6 +27,7 @@ function App() {
             </Route>
             <Route path="/login" element={<Navigate to="/accounts/login" />} />
             <Route path="/register" element={<Navigate to="/accounts/register" />} />
+            <Route path="/" element={<Navigate to="/accounts/register" />} />
             <Route path="/chat" element={<ChatIndex />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
