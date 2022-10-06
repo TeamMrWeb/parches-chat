@@ -28,7 +28,7 @@ npm run dev
 > ***Aviso:*** Se necesita clonar y ejecutar el servidor de la rama backend para utilizar esta página correctamente. [Ir a la rama backend](https://github.com/TeamParches/parches-chat/tree/backend)
 
 ## Despliegue 🚀
-Puedes utilizar esta página sin necesidad de instalar nada. Has click [aquí]() para ir al despliegue.
+Puedes utilizar esta página sin necesidad de instalar nada. Has click [aquí](https://parches-chat.vercel.app/) para ir al despliegue.
 
 ## Usuarios de prueba 🚻
 Si no quieres crear una cuenta o agregar a amigos, simplemente utiliza alguno de estos usuarios de prueba.
