@@ -19,7 +19,7 @@ export const useComunication = () => {
 
   const wsLink = new GraphQLWsLink(
     createClient({
-      url: "ws://parches-chat.up.railway.app/subscriptions"
+      url: "wss://parches-chat.up.railway.app/subscriptions"
     })
   )
 
