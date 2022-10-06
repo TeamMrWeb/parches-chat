@@ -10,7 +10,7 @@ export const useFetchingMethod = (gqlType: any, setState?: any) => {
     onCompleted: (data: any) => {
       if (!setState) return
       console.log(setState)
-      setState.name === "n" ? dispatch(setState(data)) : setState(data)
+      setState.name === "actionCreator" ? dispatch(setState(data)) : setState(data)
     },
     onError: (error: any) => {
       console.log(error)
