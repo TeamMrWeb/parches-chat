@@ -1,7 +1,7 @@
 /**
  * @file Contains chat mutation.
  * @author Manuel Cabral
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 // required modules
@@ -54,7 +54,13 @@ const resolve = async (_, args, context) => {
 	pubsub.publish(`${events.CHAT_MESSAGE_ADDED}:${args.chatId}`, {
 		chatMessageAdded: newMessage,
 	})
-
+	for (const userId of chat.users) {
+		if (userId !== user.id) {
+			pubsub.publish(`${events.USER_MESSSAGE_NOTIFICATION}:${userId}`, {
+				userMessageNotification: newMessage,
+			})
+		}
+	}
 	return newMessage
 }
 

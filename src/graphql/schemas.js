@@ -1,7 +1,7 @@
 /**
  * @file Contains all GraphQL schemas.
  * @author Manuel Cabral
- * @version 0.1.6
+ * @version 0.1.7
  */
 
 // required modules
@@ -41,7 +41,11 @@ const {
 } = require('./mutations')
 
 // required subscriptions
-const { messageAdded, chatMessageAdded } = require('./subscriptions')
+const {
+	messageAdded,
+	chatMessageAdded,
+	userMessageNotification,
+} = require('./subscriptions')
 
 // query graphql object
 const QueryType = new GraphQLObjectType({
@@ -93,6 +97,7 @@ const SubscriptionType = new GraphQLObjectType({
 	fields: {
 		messageAdded,
 		chatMessageAdded,
+		userMessageNotification,
 	},
 })
 
