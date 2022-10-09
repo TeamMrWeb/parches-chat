@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
+import loaderSpinnerReducer from "../slicers/loaderSpinnerSlice"
 import alertMessageReducer from "../slicers/alertMessageSlice"
 import loggedUserReducer from "../slicers/loggedUserSlice"
 import messsagesReducer from "../slicers/messagesSlice"
@@ -15,6 +16,7 @@ export const store = configureStore({
     groups: gropsReducer,
     chats: chatsReducer,
     chat: chatReducer,
-    messages: messsagesReducer
+    messages: messsagesReducer,
+    loaderSpinner: loaderSpinnerReducer
   }
 })

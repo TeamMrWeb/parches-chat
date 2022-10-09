@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setLoggedUserField } from "../../slicers/loggedUserSlice"
 import { LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION } from "../../graphql/subscriptions"
 import { LoggedUserId, chatById } from "../../graphql/queries"
@@ -9,6 +9,7 @@ import Chat from "../../components/Chat/Chat"
 import Home from "../Home/Home"
 import { useNotifications } from "../../hooks/useNotifications"
 import { useSubscription } from "@apollo/client"
+import { startLoaderSpinner } from "../../slicers/loaderSpinnerSlice"
 
 const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth
@@ -19,7 +20,7 @@ export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) =
   const [firstAccess, setFirstAccess] = useState(!notMobile)
   const { showChat } = useShowChat()
   const { data } = useSubscription(LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION, { variables: { userId: loggedUser.id } })
-
+  const dispatch = useDispatch()
   const { emitSoundOnNewMessage, showNewNotificationOnBrowserTab, showCurrentNotificationsOnBrowserTab } = useNotifications()
 
   const desktopBehaviour = () => (showChat ? <Chat chatContainer={chatContainer} /> : <Home />)
@@ -39,6 +40,7 @@ export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) =
 
   useEffect(() => {
     showCurrentNotificationsOnBrowserTab()
+    dispatch(startLoaderSpinner())
   }, [])
 
   return { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile }
