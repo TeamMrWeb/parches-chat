@@ -9,7 +9,6 @@ const cors = require('cors')
 const morgan = require('morgan')
 const express = require('express')
 const compression = require('compression')
-const fileupload = require('express-fileupload')
 const graphqlHTTP = require('express-graphql').graphqlHTTP
 const authenticate = require('./middlewares/auth')
 const schema = require('./graphql/schemas')
@@ -18,18 +17,19 @@ const schema = require('./graphql/schemas')
 const app = express()
 const logger = morgan('dev')
 
+// routes
+const indexRoutes = require('./routes/index.routes')
+const uploadRoutes = require('./routes/upload.routes')
+
 // middlewares
 if (process.env.NODE_ENV.trim() === 'development') app.use(logger)
 app.use(cors())
 app.use(compression())
 app.use(authenticate)
-app.use(fileupload({ useTempFiles: true, tempFileDir: './tmp' }))
 
-// routes
-app.get('/', (_, res) => {
-	res.send('Hello World')
-})
-
+// use routes
+app.use('/', indexRoutes)
+app.use('/upload', uploadRoutes)
 app.use(
 	'/graphql',
 	graphqlHTTP({
