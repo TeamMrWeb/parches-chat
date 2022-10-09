@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 // required modules
@@ -53,12 +53,12 @@ const findById = async (id) => {
  * @param {Array} ids - The ids of the messages to find.
  * @returns {Array} The messages found, or null if not found an id.
  */
-const findMany = async (ids, limit, skip) => {
+const findMany = async (ids, options) => {
 	for (const id of ids) if (!ObjectId.isValid(id)) return null
 	const mapIds = ids.map((id) => ObjectId(id))
 	return await Message.find({ _id: { $in: mapIds } })
-		.skip(skip)
-		.limit(limit)
+		.skip(options.skip)
+		.limit(options.limit)
 }
 
 /**
