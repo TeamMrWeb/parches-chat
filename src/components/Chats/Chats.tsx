@@ -5,7 +5,6 @@ import plusIcon from "../../assets/icons/plus-icon.svg"
 export default function Chats({
   firstAccess,
   setFirstAccess,
-  getChatById,
   showAddFriend,
   setShowAddFriend
 }: {
@@ -13,7 +12,6 @@ export default function Chats({
   setFirstAccess: any
   showAddFriend: boolean
   setShowAddFriend: (showAddFriend: boolean) => void
-  getChatById: (chatId: string) => void
 }) {
   const { chats, defineChatName } = useChats()
 
@@ -29,7 +27,6 @@ export default function Chats({
             key={chat.id}
             id={chat.id}
             setFirstAccess={setFirstAccess}
-            getChatById={getChatById}
           />
         ))}
       </ul>

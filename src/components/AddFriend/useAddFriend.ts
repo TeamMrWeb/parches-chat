@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useMutation } from "@apollo/client"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { createChatBetweenFriends, sendFriendRequestToUser } from "../../graphql/mutations"
-import { chatsFromUserLogged } from "../../graphql/queries"
+import { chatsFromLoggedUser } from "../../graphql/queries"
 import { usersByUsername } from "../../graphql/queries"
 import { createAlertMessage } from "../../slicers/alertMessageSlice"
 
@@ -11,7 +11,7 @@ export const useAddFriend = () => {
   const { lazyQueryMethod: getFriendByUsername } = useFetchingMethod(usersByUsername)
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const [createChat] = useMutation(createChatBetweenFriends, {
-    refetchQueries: [{ query: chatsFromUserLogged, variables: { userId: loggedUser.id, isGroup: false } }]
+    refetchQueries: [{ query: chatsFromLoggedUser, variables: { userId: loggedUser.id, isGroup: false } }]
   })
   const { lazyQueryMethod: sendFriendRequest } = useFetchingMethod(sendFriendRequestToUser)
   const [isLoading, setIsLoading] = useState(true)

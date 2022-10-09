@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { setLoggedUserField } from "../../slicers/loggedUserSlice"
-import { setChat } from "../../slicers/chatSlice"
 import { LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION } from "../../graphql/subscriptions"
 import { LoggedUserId, chatById } from "../../graphql/queries"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
@@ -15,8 +14,7 @@ const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth
 
 export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) => {
-  const { lazyQueryMethod: getLoggedUserId, loading } = useFetchingMethod(LoggedUserId, setLoggedUserField)
-  const { lazyQueryMethod: getChatByid } = useFetchingMethod(chatById, setChat)
+  const { lazyQueryMethod: getLoggedUserId, loading: loggedUserLoading } = useFetchingMethod(LoggedUserId, setLoggedUserField)
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const [firstAccess, setFirstAccess] = useState(!notMobile)
   const { showChat } = useShowChat()
@@ -26,13 +24,12 @@ export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) =
 
   const desktopBehaviour = () => (showChat ? <Chat chatContainer={chatContainer} /> : <Home />)
   const mobileBehaviour = () => !firstAccess && <Chat chatContainer={chatContainer} />
-  const getChatById = (chatId: string) => getChatByid({ variables: { id: chatId } })
 
   useEffect(() => {
     const userAlreadyLogged = Object.keys(loggedUser).length !== 0
     if (userAlreadyLogged) return
     getLoggedUserId()
-  }, [loggedUser, loading])
+  }, [loggedUser, loggedUserLoading])
 
   useEffect(() => {
     if (!data) return
@@ -44,5 +41,5 @@ export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) =
     showCurrentNotificationsOnBrowserTab()
   }, [])
 
-  return { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile, getChatById }
+  return { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile }
 }

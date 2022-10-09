@@ -1,14 +1,14 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
-import { chatsFromUserLogged } from "../../graphql/queries"
+import { chatsFromLoggedUser } from "../../graphql/queries"
 import { setGroups } from "../../slicers/groupsSlice"
 
 export const useGroups = () => {
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const groups = useSelector((state: any) => state.groups)
 
-  const { lazyQueryMethod: getUserGroups } = useFetchingMethod(chatsFromUserLogged, setGroups)
+  const { lazyQueryMethod: getUserGroups } = useFetchingMethod(chatsFromLoggedUser, setGroups)
 
   useEffect(() => {
     loggedUser?.id &&

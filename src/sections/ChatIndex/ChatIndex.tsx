@@ -12,17 +12,16 @@ export default function ChatIndex() {
   const [showQuickOptions, setShowQuickOptions] = useState(false)
   const [showAddFriend, setShowAddFriend] = useState(false)
 
-  const { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile, getChatById } = useChatIndex(chatContainer)
+  const { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile } = useChatIndex(chatContainer)
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe(chatContainer)
 
   return (
     <section className="chat-index" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-      <Groups getChatById={getChatById} />
+      <Groups />
       <div className="sidebar">
         <Chats
           firstAccess={firstAccess}
           setFirstAccess={setFirstAccess}
-          getChatById={getChatById}
           showAddFriend={showAddFriend}
           setShowAddFriend={setShowAddFriend}
         />
