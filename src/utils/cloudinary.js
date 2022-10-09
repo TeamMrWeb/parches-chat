@@ -5,7 +5,7 @@
  */
 
 // required modules
-import { CLOUDINARY } from '../config'
+const { CLOUDINARY } = require('../config')
 const cloudinary = require('cloudinary').v2
 
 // setting up
