@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useSubscription } from "@apollo/client"
-import { setSuscriptionMessage } from "../../slicers/messagesSlice"
+import { useSelector } from "react-redux"
 import { setLoggedUserField } from "../../slicers/loggedUserSlice"
 import { setChat } from "../../slicers/chatSlice"
+import { LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION } from "../../graphql/subscriptions"
 import { LoggedUserId, chatById } from "../../graphql/queries"
-import { MESSAGES_SUBSCRIPTION } from "../../graphql/subscriptions"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { useShowChat } from "../../contexts/ShowChatContext"
 import Chat from "../../components/Chat/Chat"
 import Home from "../Home/Home"
 import { useNotifications } from "../../hooks/useNotifications"
+import { useSubscription } from "@apollo/client"
 
 const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth
@@ -21,8 +20,8 @@ export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) =
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const [firstAccess, setFirstAccess] = useState(!notMobile)
   const { showChat } = useShowChat()
-  const { data } = useSubscription(MESSAGES_SUBSCRIPTION)
-  const dispatch = useDispatch()
+  const { data } = useSubscription(LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION, { variables: { userId: loggedUser.id } })
+
   const { emitSoundOnNewMessage, showNewNotificationOnBrowserTab, showCurrentNotificationsOnBrowserTab } = useNotifications()
 
   const desktopBehaviour = () => (showChat ? <Chat chatContainer={chatContainer} /> : <Home />)
@@ -36,13 +35,9 @@ export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) =
   }, [loggedUser, loading])
 
   useEffect(() => {
-    if (data) {
-      if (data.messageAdded.author.id !== loggedUser.id) {
-        emitSoundOnNewMessage()
-        showNewNotificationOnBrowserTab(data.messageAdded.author.id)
-      }
-      dispatch(setSuscriptionMessage(data))
-    }
+    if (!data) return
+    emitSoundOnNewMessage()
+    showNewNotificationOnBrowserTab(data.userMessageNotification.author.id)
   }, [data])
 
   useEffect(() => {
