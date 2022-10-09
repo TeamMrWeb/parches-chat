@@ -22,7 +22,7 @@ export const messagesSlice = createSlice({
       Object.assign(state, { ...action.payload.chat.messages })
     },
     setSuscriptionMessage: (state, action) => {
-      ;(state as messages[]).push(action.payload.messageAdded)
+      ;(state as messages[]).push(action.payload.chatMessageAdded)
     },
     clearMessages: state => {
       ;(state as messages[]).length = 0

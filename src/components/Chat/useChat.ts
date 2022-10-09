@@ -17,9 +17,9 @@ export const useChat = () => {
   const navigate = useNavigate()
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const { updateTitle, getNotificationsNumber, setDefaultTitle } = useNotifications()
-  const { data } = useSubscription(MESSAGES_SUBSCRIPTION)
-  const dispatch = useDispatch()
   const chat = useSelector((state: any) => state.chat)
+  const { data } = useSubscription(MESSAGES_SUBSCRIPTION, { variables: { chatId: chat.id } })
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const auth = localStorage.auth

@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
 export const MESSAGES_SUBSCRIPTION = gql`
-  subscription OnNewMessage {
-    messageAdded {
+  subscription OnNewMessage($chatId: ID!) {
+    chatMessageAdded(chatId: $chatId) {
       id
       text
       createdAt
