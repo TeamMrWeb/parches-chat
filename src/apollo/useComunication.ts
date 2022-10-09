@@ -5,7 +5,7 @@ import { createClient } from "graphql-ws"
 
 export const useComunication = () => {
   const httpLink = new HttpLink({
-    uri: "https://parches-chat.up.railway.app/graphql"
+    uri: import.meta.env.VITE_HTTP_LINK
   })
 
   const authLink = new ApolloLink((operation, forward) => {
@@ -19,7 +19,7 @@ export const useComunication = () => {
 
   const wsLink = new GraphQLWsLink(
     createClient({
-      url: "wss://parches-chat.up.railway.app/subscriptions"
+      url: import.meta.env.VITE_WS_LINK
     })
   )
 
