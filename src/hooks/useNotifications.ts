@@ -1,3 +1,8 @@
+interface Notification {
+  quantity: number
+  author: string
+}
+
 export const useNotifications = () => {
   const emitSoundOnNewMessage = () => {
     const audio = new Audio(
@@ -22,11 +27,11 @@ export const useNotifications = () => {
       : []
     const notificationsNumber = getNotificationsNumber(notifications)
     localStorage.setItem("notifications", JSON.stringify(notifications))
-    notificationsNumber >= 1 && updateTitle(notificationsNumber)
+    notificationsNumber >= 1 && updateTitle(notificationsNumber.toString())
   }
 
-  const updateNotifications = (currentNotifications: any, author: string) => {
-    const notificationFromAuthorIndex = currentNotifications.findIndex((notification: any) => notification.author === author)
+  const updateNotifications = (currentNotifications: Notification[], author: string) => {
+    const notificationFromAuthorIndex = currentNotifications.findIndex((notification: Notification) => notification.author === author)
     if (notificationFromAuthorIndex === -1) {
       const notifications = [...currentNotifications, { author, quantity: 1 }]
       return notifications
@@ -51,8 +56,8 @@ export const useNotifications = () => {
     document.title = defaultTitle
   }
 
-  const getNotificationsNumber = (notifications: any) =>
-    notifications.reduce((acc: number, notification: any) => acc + notification.quantity, 0)
+  const getNotificationsNumber = (notifications: Notification[]) =>
+    notifications.reduce((acc: number, notification: Notification) => acc + notification.quantity, 0)
 
   return {
     emitSoundOnNewMessage,

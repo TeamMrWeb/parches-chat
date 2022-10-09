@@ -41,6 +41,6 @@ export const useChat = () => {
     localStorage.setItem("notifications", JSON.stringify(notifications))
     const notificationsNumber = getNotificationsNumber(notifications)
     notificationsNumber === 0 && setDefaultTitle()
-    notificationsNumber >= 1 && updateTitle(notificationsNumber)
+    notificationsNumber >= 1 && updateTitle(notificationsNumber.toString())
   }, [chat])
 }
