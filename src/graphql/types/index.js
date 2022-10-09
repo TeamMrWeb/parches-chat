@@ -8,5 +8,6 @@ module.exports = {
 	DateTimeType: require('./dateTimeType'),
 	UserType: require('./userType'),
 	MessageType: require('./messageType'),
+	AvatarType: require('./avatarType'),
 	ChatType: require('./chatType'),
 }

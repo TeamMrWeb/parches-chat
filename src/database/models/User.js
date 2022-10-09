@@ -1,7 +1,7 @@
 /**
  * @file Contains the user model.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -15,8 +15,15 @@ const userSchema = new Schema(
 			unique: true,
 		},
 		avatar: {
-			type: String,
-			default: 'https://i.imgur.com/0y0Z0X1.png',
+			public_id: {
+				type: String,
+				default: 'avatar/default_avatar',
+			},
+			secure_url: {
+				type: String,
+				default:
+					'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
+			},
 		},
 		verified: {
 			type: Boolean,
