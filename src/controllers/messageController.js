@@ -1,7 +1,7 @@
 /**
  * @file Contains message model functions.
  * @author Manuel Cabral
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -59,6 +59,7 @@ const findMany = async (ids, options) => {
 	return await Message.find({ _id: { $in: mapIds } })
 		.skip(options.skip)
 		.limit(options.limit)
+		.sort({ createdAt: options.orderBy })
 }
 
 /**

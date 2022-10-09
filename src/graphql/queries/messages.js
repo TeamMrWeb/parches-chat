@@ -1,12 +1,12 @@
 /**
  * @file Contains messages query.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
 const MessageType = require('../types/messageType')
-const { GraphQLList, GraphQLInt, GraphQLID } = require('graphql')
+const { GraphQLList, GraphQLInt, GraphQLID, GraphQLString } = require('graphql')
 const { findMany } = require('../../controllers/messageController')
 
 // arguments object
@@ -23,6 +23,10 @@ const args = {
 	skip: {
 		type: GraphQLInt,
 		description: 'The number of messages to skip.',
+	},
+	orderBy: {
+		type: GraphQLString,
+		description: 'The order to sort by. (asc, desc)',
 	},
 }
 
@@ -41,6 +45,7 @@ const resolve = async (parent, args) => {
 	return await findMany(ids, {
 		limit: args.limit || 0,
 		skip: args.skip || 0,
+		orderBy: args.orderBy || 'desc',
 	})
 }
 
