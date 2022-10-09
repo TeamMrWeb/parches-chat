@@ -8,7 +8,7 @@ export const useChats = () => {
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const chats = useSelector((state: any) => state.chats)
 
-  const { lazyQueryMethod: getUserGroups } = useFetchingMethod(chatsFromUserLogged, setChats)
+  const { lazyQueryMethod: getChats } = useFetchingMethod(chatsFromUserLogged, setChats)
 
   const defineChatName = (users: any) => {
     const chatName = users.find((user: any) => user.id !== loggedUser.id && user).username
@@ -17,7 +17,7 @@ export const useChats = () => {
 
   useEffect(() => {
     loggedUser?.id &&
-      getUserGroups({
+      getChats({
         variables: { userId: loggedUser.id, isGroup: false }
       })
   }, [loggedUser.id])
