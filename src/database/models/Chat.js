@@ -17,7 +17,7 @@ const chatSchema = new Schema(
 		avatar: {
 			public_id: {
 				type: String,
-				default: 'chat/default_avatar',
+				default: 'chat/default_chat_image',
 			},
 			secure_url: {
 				type: String,
