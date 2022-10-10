@@ -1,4 +1,6 @@
 import InfiniteScroll from "react-infinite-scroll-component"
+import { Oval } from "react-loader-spinner"
+import LoaderSpinner from "../LoaderSpinner/LoaderSpinner"
 import Message from "../Message/Message"
 import { useMessages } from "./useMessages"
 
@@ -33,7 +35,20 @@ export default function Messages() {
         dataLength={messages?.length}
         next={() => refetchChatMessages(messages.length)}
         hasMore={hasMore}
-        loader={<span style={{ color: "white" }}>Loading...</span>}
+        loader={
+          <Oval
+            height={30}
+            width={30}
+            color="#dd4ec6"
+            wrapperStyle={{}}
+            wrapperClass="oval-loader"
+            visible={true}
+            ariaLabel="oval-loading"
+            secondaryColor="#8d4fc9"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        }
         inverse={true}
         scrollableTarget="scrollableDiv"
         className="messages-wrapper"
