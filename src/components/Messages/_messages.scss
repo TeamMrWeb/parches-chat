@@ -6,6 +6,7 @@
   padding-right: 33px;
   box-sizing: border-box;
   overflow-y: scroll;
+  position: relative;
   .messages-wrapper {
     display: flex;
     flex-direction: column-reverse;

@@ -18,8 +18,8 @@ interface Message {
   updatedAt: Date
 }
 
-export default function Messages() {
-  const { messages, defineMessageSide, formatCreatedAtDate, scrollBottom, refetchChatMessages, chat, hasMore } = useMessages()
+export default function Messages({ scrollBottom }: { scrollBottom: any }) {
+  const { messages, defineMessageSide, formatCreatedAtDate, refetchChatMessages, chat, hasMore } = useMessages()
   console.log(chat.id)
 
   return (
@@ -30,6 +30,7 @@ export default function Messages() {
         display: "flex",
         flexDirection: "column-reverse"
       }}
+      // onScroll={e => console.log(e.target.scrollTop, "scrolling")}
     >
       <InfiniteScroll
         dataLength={messages?.length}
@@ -67,6 +68,7 @@ export default function Messages() {
           />
         ))}
       </InfiniteScroll>
+
       <div className="scroll-bottom" ref={scrollBottom}></div>
     </section>
   )

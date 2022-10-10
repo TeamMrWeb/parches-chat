@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { messagesByChatId } from "../../graphql/queries"
@@ -14,7 +14,6 @@ export const useMessages = () => {
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const messages = useSelector((state: any) => state.messages)
   const chat = useSelector((state: any) => state.chat)
-  const scrollBottom = useRef<HTMLDivElement>(null)
   const dispatch = useDispatch()
 
   const defineMessageSide = (messageAuthor: author) => {
@@ -40,5 +39,5 @@ export const useMessages = () => {
     if (data?.chat?.messages.length < 20) setHasMore(false)
   }, [data])
 
-  return { messages, defineMessageSide, formatCreatedAtDate, scrollBottom, refetchChatMessages, chat, hasMore }
+  return { messages, defineMessageSide, formatCreatedAtDate, refetchChatMessages, chat, hasMore }
 }

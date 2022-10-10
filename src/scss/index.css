@@ -631,6 +631,7 @@ html body #root .App ul {
   padding-right: 33px;
   box-sizing: border-box;
   overflow-y: scroll;
+  position: relative;
 }
 .messages .messages-wrapper {
   display: flex;
@@ -876,6 +877,26 @@ html body #root .App ul {
   width: 100vw;
   height: 100%;
   transition: all 2s;
+}
+.chat-container .go-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  bottom: 80px;
+  right: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #2a2c37;
+  transition: 0.5s all;
+}
+.chat-container .go-down:hover {
+  background-color: rgba(61, 64, 78, 0.8745098039);
+}
+.chat-container .go-down .go-down__image {
+  width: 40px;
+  height: 100%;
 }
 
 .chat {

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useSubscription } from "@apollo/client"
@@ -20,6 +20,8 @@ export const useChat = () => {
   const chat = useSelector((state: any) => state.chat)
   const { data } = useSubscription(MESSAGES_SUBSCRIPTION, { variables: { chatId: chat.id } })
   const dispatch = useDispatch()
+  const [showButton, setShowButton] = useState(false)
+  const scrollBottom = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const auth = localStorage.auth
@@ -43,4 +45,20 @@ export const useChat = () => {
     notificationsNumber === 0 && setDefaultTitle()
     notificationsNumber >= 1 && updateTitle(notificationsNumber.toString())
   }, [chat])
+
+  useEffect(() => {
+    const onScroll = (e: any) => {
+      e.target.scrollTop <= -50 ? setShowButton(true) : setShowButton(false)
+    }
+    const messagesSection = document.querySelector(".messages")
+    messagesSection?.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  const goDown = () => {
+    const messagesSection = document.querySelector(".messages")
+    if (messagesSection) messagesSection.scrollTop = 0
+  }
+
+  return { showButton, goDown, scrollBottom }
 }
