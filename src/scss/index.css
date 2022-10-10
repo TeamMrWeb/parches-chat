@@ -634,7 +634,7 @@ html body #root .App ul {
 }
 .messages .messages-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 5px;
   height: -webkit-fit-content;
   height: -moz-fit-content;

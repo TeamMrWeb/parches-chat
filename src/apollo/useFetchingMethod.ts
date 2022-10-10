@@ -6,10 +6,9 @@ export const useFetchingMethod = (gqlType: any, setState?: any) => {
   const dispatch = useDispatch()
   const fetchingMethod = gqlType.definitions[0].operation === "mutation" ? (useMutation as any) : (useLazyQuery as any)
 
-  const [lazyQueryMethod, { loading, error, data }] = fetchingMethod(gqlType, {
+  const [lazyQueryMethod, { ...props }] = fetchingMethod(gqlType, {
     onCompleted: (data: any) => {
       if (!setState) return
-      console.log(setState)
       setState.name === "actionCreator" ? dispatch(setState(data)) : setState(data)
     },
     onError: (error: any) => {
@@ -25,5 +24,5 @@ export const useFetchingMethod = (gqlType: any, setState?: any) => {
     }
   })
 
-  return { lazyQueryMethod, loading, error, data }
+  return { lazyQueryMethod, ...props }
 }

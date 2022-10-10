@@ -19,7 +19,7 @@ export const messagesSlice = createSlice({
   initialState,
   reducers: {
     setMessages: (state, action) => {
-      Object.assign(state, { ...action.payload.chat.messages })
+      ;(state as messages[]).push(...action.payload.chat.messages)
     },
     setSuscriptionMessage: (state, action) => {
       ;(state as messages[]).push(action.payload.chatMessageAdded)

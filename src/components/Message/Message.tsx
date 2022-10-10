@@ -1,4 +1,4 @@
-export default function Message({ messageText, messageCreatedAt, side }: { messageText: string; messageCreatedAt: string; side: string }) {
+export default function Message({ messageText, messageCreatedAt, side }: { messageText: string; messageCreatedAt: string; side: any }) {
   return (
     <div className={side === "right" ? "message-container right" : "message-container left"}>
       <div className="message">
