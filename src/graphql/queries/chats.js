@@ -1,7 +1,7 @@
 /**
  * @file Contains chats query.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
@@ -13,6 +13,7 @@ const {
 } = require('graphql')
 const { ChatType } = require('../types')
 const { findAll } = require('../../controllers/chatController')
+const findUserById = require('../../controllers/userController').findById
 
 // arguments object
 const args = {
@@ -50,6 +51,9 @@ const resolve = async (_, args, context) => {
 			throw new Error('You must be logged in to get chats or provide a userId.')
 		userId = user.id
 	}
+	const userDb = await findUserById(userId)
+	if (!userDb)
+		throw new Error('Tu usuario no existe, por favor, inicia sesión.')
 	return await findAll({
 		userId,
 		skip: args.skip || 0,

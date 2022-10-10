@@ -1,7 +1,7 @@
 /**
  * @file Contains friends query.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -21,6 +21,8 @@ const resolve = async (_, args, { user }) => {
 	const { status } = args
 	if (!user) throw new Error('Tienes que estar logueado para obtener amigos.')
 	const userDb = await findById(user.id)
+	if (!userDb)
+		throw new Error('Tu usuario no existe, por favor, inicia sesión.')
 	const filter = userDb.friends.filter((friend) => friend.status === status)
 	const ids = filter.map((friend) => friend.user)
 	return await findMany(ids)
