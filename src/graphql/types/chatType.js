@@ -2,12 +2,13 @@
  * @file Contains chat type.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.9
+ * @version 0.1.0
  */
 
 // required modules
 const UserType = require('./userType')
 const DateTimeType = require('./dateTimeType')
+const AvatarType = require('./avatarType')
 const messages = require('../queries/messages')
 const findManyUsers = require('../../controllers/userController').findMany
 const findUserById = require('../../controllers/userController').findById
@@ -34,7 +35,7 @@ const ChatType = new GraphQLObjectType({
 			description: 'The name of the chat.',
 		},
 		avatar: {
-			type: GraphQLString,
+			type: AvatarType,
 			description: 'The avatar of the chat.',
 		},
 		admins: {

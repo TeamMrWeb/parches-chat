@@ -2,7 +2,7 @@
  * @file Contains chat model.
  * @author Manuel Cabral
  * @contributor Leo Araya
- * @version 0.0.7
+ * @version 0.0.8
  */
 
 // required modules
@@ -15,8 +15,14 @@ const chatSchema = new Schema(
 			required: true,
 		},
 		avatar: {
-			type: String,
-			required: false,
+			public_id: {
+				type: String,
+				default: 'chat/default_avatar',
+			},
+			secure_url: {
+				type: String,
+				default: 'https://i.imgur.com/0Z0Z0Z0.png',
+			},
 		},
 		messages: [
 			{
