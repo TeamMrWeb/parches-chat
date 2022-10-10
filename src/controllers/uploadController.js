@@ -1,11 +1,12 @@
 /**
  * @file Contains upload controller.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
 const fs = require('fs')
+const { PROFILE_AVATAR_FOLDER } = require('../config').CLOUDINARY
 const { findById } = require('./userController')
 const { uploadFile, deleteFile } = require('../services/cloudinary')
 
@@ -31,14 +32,19 @@ const uploadAvatar = async (req, res) => {
 		const result = await deleteFile(userDb.avatar.public_id)
 		console.log(result)
 	}
-	const { public_id, secure_url } = await uploadFile(image.tempFilePath)
+	const { public_id, secure_url } = await uploadFile(
+		image.tempFilePath,
+		PROFILE_AVATAR_FOLDER
+	)
 	userDb.avatar = {
 		public_id,
 		secure_url,
 	}
 	await userDb.save()
 	await fs.unlinkSync(image.tempFilePath)
-	res.send('Avatar uploaded successfully')
+	return res
+		.status(200)
+		.json({ message: 'Avatar uploaded/updated successfully' })
 }
 
 module.exports = {

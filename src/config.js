@@ -1,7 +1,7 @@
 /**
  * @file Contains environment variables and some configuration.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.0.9
  */
 
 const config = require('dotenv').config
@@ -30,7 +30,8 @@ module.exports = {
 		CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
 		API_KEY: process.env.CLOUDINARY_API_KEY,
 		API_SECRET: process.env.CLOUDINARY_API_SECRET,
-		FOLDER: process.env.CLOUDINARY_FOLDER,
+		PROFILE_AVATAR_FOLDER: process.env.CLOUDINARY_PROFILE_AVATAR_FOLDER,
+		CHAT_IMAGE_FOLDER: process.env.CLOUDINARY_CHAT_IMAGE_FOLDER,
 	},
 
 	// json web token
