@@ -27,7 +27,7 @@ router.post(
 )
 
 router.post(
-	'/chatimage/:id',
+	'/chatavatar/:id',
 	fileUpload({
 		useTempFiles: true,
 		tempFileDir: './tmp',
