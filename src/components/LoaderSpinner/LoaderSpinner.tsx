@@ -1,6 +1,16 @@
 import { Oval } from "react-loader-spinner"
 
 export default function LoaderSpinner() {
+  const showTooLongTimeWaitingWarning = () => {
+    setTimeout(() => {
+      return (
+        <p>
+          ¿Está tardando demasiado? Puede que haya un error con el servidor <p>Intenta de nuevo más tarde.</p>
+        </p>
+      )
+    }, 10000)
+  }
+
   return (
     <div className="loader-spinner">
       <Oval
@@ -16,6 +26,7 @@ export default function LoaderSpinner() {
         strokeWidthSecondary={2}
       />
       <p>Cargando Parches Chat...</p>
+      <>{showTooLongTimeWaitingWarning()}</>
     </div>
   )
 }
