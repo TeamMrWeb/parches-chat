@@ -1,6 +1,5 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import { Oval } from "react-loader-spinner"
-import LoaderSpinner from "../LoaderSpinner/LoaderSpinner"
 import Message from "../Message/Message"
 import { useMessages } from "./useMessages"
 
@@ -19,8 +18,7 @@ interface Message {
 }
 
 export default function Messages({ scrollBottom }: { scrollBottom: any }) {
-  const { messages, defineMessageSide, formatCreatedAtDate, refetchChatMessages, chat, hasMore } = useMessages()
-  console.log(chat.id)
+  const { messages, defineMessageSide, formatCreatedAtDate, refetchChatMessages, hasMore } = useMessages()
 
   return (
     <section
@@ -30,7 +28,6 @@ export default function Messages({ scrollBottom }: { scrollBottom: any }) {
         display: "flex",
         flexDirection: "column-reverse"
       }}
-      // onScroll={e => console.log(e.target.scrollTop, "scrolling")}
     >
       <InfiniteScroll
         dataLength={messages?.length}
@@ -68,7 +65,6 @@ export default function Messages({ scrollBottom }: { scrollBottom: any }) {
           />
         ))}
       </InfiniteScroll>
-
       <div className="scroll-bottom" ref={scrollBottom}></div>
     </section>
   )
