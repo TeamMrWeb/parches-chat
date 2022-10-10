@@ -31,7 +31,9 @@ export const createChatBetweenFriends = gql`
     createChat(name: $name, usersId: $usersId) {
       id
       name
-      avatar
+      avatar {
+        secure_url
+      }
       users {
         username
       }

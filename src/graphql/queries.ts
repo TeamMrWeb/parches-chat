@@ -5,7 +5,9 @@ export const LoggedUserId = gql`
     user {
       id
       username
-      avatar
+      avatar {
+        secure_url
+      }
     }
   }
 `
@@ -45,16 +47,18 @@ export const chatById = gql`
       users {
         id
         username
-        avatar
+        avatar {
+          secure_url
+        }
       }
     }
   }
 `
 
 export const messagesByChatId = gql`
-  query getMessagesByChatId($id: ID!) {
+  query getMessagesByChatId($id: ID!, $limit: Int, $skip: Int, $orderBy: string) {
     chat(id: $id) {
-      messages {
+      messages(limit: $limit, skip: $skip, orderBy: $orderBy) {
         id
         text
         createdAt
@@ -71,7 +75,9 @@ export const usersByUsername = gql`
     users(username: $username) {
       id
       username
-      avatar
+      avatar {
+        secure_url
+      }
       email
     }
   }

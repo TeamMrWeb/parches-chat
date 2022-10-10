@@ -23,7 +23,7 @@ export default function LoggedUserArea({
   return (
     <div className="logged-user-area">
       <div className="wrapper" onClick={() => setShowQuickOptions(!showQuickOptions)}>
-        <img className="logged-user-area__avatar" src={loggedUser.avatar ? loggedUser.avatar : userDefaultIcon} alt="" />
+        <img className="logged-user-area__avatar" src={loggedUser.avatar ? loggedUser.avatar.secure_url : userDefaultIcon} alt="" />
         <span className="logged-user-area__name">{loggedUser?.username}</span>
       </div>
       <button className="configuration">
