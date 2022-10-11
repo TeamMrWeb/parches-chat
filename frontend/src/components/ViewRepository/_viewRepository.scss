@@ -1,0 +1,13 @@
+.view-repository {
+  position: relative;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: $whiteColor;
+  &:hover {
+    color: $pinkColor;
+  }
+}
