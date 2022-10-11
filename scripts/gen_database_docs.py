@@ -20,7 +20,7 @@ import argparse
 
 
 DEFAULT_MONGO_URL = 'mongodb://localhost:27017'
-DEFAULT_OUTPUT_DIRECTORY = 'database'
+DEFAULT_OUTPUT_DIRECTORY = '../database'
 DEFAULT_DATABASE = 'parches-chat'
 
 

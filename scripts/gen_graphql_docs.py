@@ -21,7 +21,7 @@ import argparse
 GRAPHQL_URL = 'http://localhost:4000/graphql'
 
 # Ouput directory for the documentation
-OUTPUT_DIRECTORY = 'docs'
+OUTPUT_DIRECTORY = '../docs'
 
 INSTROSPECTION_QUERY = """
         query IntrospectionQuery {
