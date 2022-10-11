@@ -1,0 +1,12 @@
+.loader {
+  width: 100%;
+  position: absolute;
+  height: 3px;
+  .loader__progress {
+    width: 100%;
+    position: relative;
+    height: 2px;
+    background-color: $pinkColor;
+    transition: all 1s;
+  }
+}
