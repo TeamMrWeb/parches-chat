@@ -1,0 +1,288 @@
+schema {
+  query: QueryType
+  mutation: MutationType
+  subscription: SubscriptionType
+}
+
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+"""The chat type."""
+type ChatType {
+  """The id of the chat."""
+  id: ID
+
+  """The name of the chat."""
+  name: String
+
+  """The avatar of the chat."""
+  avatar: String
+
+  """The admins of the chat."""
+  admins: [UserType]
+
+  """The owner of the chat"""
+  owner: UserType
+
+  """If the chat is a group or not."""
+  isGroup: Boolean
+
+  """If the chat is secure"""
+  secure: Boolean
+
+  """If the chat is private or not."""
+  private: Boolean
+
+  """Max users in chat"""
+  maxUsers: Int
+
+  """The users of the chat."""
+  users: [UserType]
+
+  """Get messages by ids, if not provided, parent messages will be used."""
+  messages(
+    """
+    The ids of the messages, if not provided, parent messages will be used.
+    """
+    ids: [ID]
+
+    """The limit of messages to return."""
+    limit: Int
+
+    """The number of messages to skip."""
+    skip: Int
+  ): [MessageType]
+
+  """The date of the last update."""
+  updatedAt: String
+
+  """The date of the creation."""
+  createdAt: String
+}
+
+"""The message type."""
+type MessageType {
+  """The id of the message."""
+  id: ID
+
+  """The text of the message."""
+  text: String
+
+  """The image of the message."""
+  image: String
+
+  """Get the author of the message."""
+  author: UserType
+
+  """If the message has been edited."""
+  edited: Boolean
+
+  """Get the users that have seen the message."""
+  seen: [UserType]
+
+  """The date of the last update."""
+  updatedAt: String
+
+  """The date of the creation."""
+  createdAt: String
+}
+
+"""Root mutation type"""
+type MutationType {
+  """Register a new user"""
+  register(username: String!, email: String!, password: String!): String
+
+  """Login a user"""
+  login(email: String!, password: String!): String
+
+  """Create a new chat"""
+  createChat(
+    """The name of the chat."""
+    name: String!
+
+    """The id of the users of the chat."""
+    usersId: [ID]!
+
+    """The avatar of the chat."""
+    avatar: String
+
+    """If the chat is secure or not. If is secure the chat will have a owner."""
+    secure: Boolean
+
+    """If the chat is private or not."""
+    private: Boolean
+  ): ChatType
+
+  """Create a new message"""
+  createMessage(
+    """The id of the chat."""
+    chatId: ID!
+
+    """The text of the message."""
+    text: String!
+
+    """The image of the message."""
+    image: String
+  ): MessageType
+
+  """Update a user"""
+  updateUser(
+    """The new name of the user."""
+    username: String
+
+    """The new email of the user."""
+    email: String
+
+    """The new avatar of the user."""
+    avatar: String
+
+    """The new status of the user."""
+    status: Int
+  ): UserType
+
+  """Update a message"""
+  updateMessage(
+    """The id of the message."""
+    messageId: ID!
+
+    """The new text of the message."""
+    text: String
+  ): MessageType
+
+  """Add a user to a chat."""
+  addUserToChat(
+    """The id of the chat."""
+    chatId: ID!
+
+    """The id of the user, if not provided, the current user will be used."""
+    userId: ID
+  ): ChatType
+
+  """Remove a user from a chat."""
+  removeUserFromChat(
+    """The id of the chat."""
+    chatId: ID!
+
+    """The id of the user, if not provided, the current user will be used."""
+    userId: ID
+  ): ChatType
+
+  """Refresh a token."""
+  refreshToken(
+    """The token to refresh (not expired)."""
+    token: String!
+  ): String
+
+  """Delete a chat"""
+  deleteChat(
+    """The id of the chat to delete."""
+    chatId: ID!
+  ): String
+
+  """Delete a message"""
+  deleteMessage(
+    """The id of the chat that contains the message."""
+    chatId: ID!
+
+    """The id of the message to delete."""
+    messageId: ID!
+  ): ID
+}
+
+"""Root query type"""
+type QueryType {
+  """Hello World!"""
+  hello: String
+
+  """List of all users"""
+  users: [UserType]
+
+  """Get a user by id, email or username"""
+  user(
+    """The id of the user, if not provided, logged user will be used."""
+    userId: ID
+  ): UserType
+
+  """Get messages by ids, if not provided, parent messages will be used."""
+  messages(
+    """
+    The ids of the messages, if not provided, parent messages will be used.
+    """
+    ids: [ID]
+
+    """The limit of messages to return."""
+    limit: Int
+
+    """The number of messages to skip."""
+    skip: Int
+  ): [MessageType]
+
+  """Get a chat by id"""
+  chat(
+    """The id of the chat."""
+    id: ID
+  ): ChatType
+
+  """List of all chats"""
+  chats(
+    """
+    The id of the user to get the chats from. If not provided, logged user will be used.
+    """
+    userId: ID
+
+    """If the chat is a group or not."""
+    isGroup: Boolean
+
+    """The number of chats to skip."""
+    skip: Int
+
+    """The limit of chats to return."""
+    limit: Int
+  ): [ChatType]
+
+  """Verify a user by a token (through headers)"""
+  verify: String
+
+  """Send a email verification"""
+  sendEmailVerification(
+    """Email of the user to send the email verification"""
+    email: String!
+  ): String
+}
+
+"""Root subscription type"""
+type SubscriptionType {
+  """Subscription for new messages"""
+  messageAdded: MessageType
+}
+
+"""The user type."""
+type UserType {
+  """The id of the user."""
+  id: ID
+
+  """The username of the user."""
+  username: String
+
+  """The email of the user."""
+  email: String
+
+  """The avatar of the user."""
+  avatar: String
+
+  """The status of the user."""
+  status: Int
+
+  """If the user is verified or not."""
+  verified: Boolean
+
+  """The date of the last update."""
+  updatedAt: String
+
+  """The date of the creation."""
+  createdAt: String
+}
+
