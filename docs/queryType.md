@@ -36,7 +36,7 @@ Returns all users from the database.
 query example {
 	users(
 		username: "test"
-		verified: True
+		verified: False
 	)
 	{
 		# add fields here (depends on the return type)
@@ -63,7 +63,7 @@ Get a user by id.
 ```graphql example
 query example {
 	user(
-		userId: "cdc84f7449001d63448596d7"
+		userId: "34f0b8c49baec302abafac33"
 		username: "test"
 	)
 	{
@@ -111,6 +111,9 @@ Get messages by ids, if not provided, parent messages will be used.
 - `skip` _Int_
    - The number of messages to skip.
 
+- `orderBy` _String_
+   - The order to sort by. (asc, desc)
+
 > Returns _[**MessageType**]_
 
 #### Example usage
@@ -118,9 +121,10 @@ Get messages by ids, if not provided, parent messages will be used.
 ```graphql example
 query example {
 	messages(
-		ids: ["cdc84f7449001d63448596d7", "cdc84f7449001d63448596d7"]
+		ids: ["34f0b8c49baec302abafac33", "34f0b8c49baec302abafac33"]
 		limit: 0
 		skip: 0
+		orderBy: "test"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -144,7 +148,7 @@ Get a chat by id.
 ```graphql example
 query example {
 	chat(
-		id: "cdc84f7449001d63448596d7"
+		id: "34f0b8c49baec302abafac33"
 	)
 	{
 		# add fields here (depends on the return type)
@@ -177,8 +181,8 @@ Get chats from a user by its id.
 ```graphql example
 query example {
 	chats(
-		userId: "cdc84f7449001d63448596d7"
-		isGroup: True
+		userId: "34f0b8c49baec302abafac33"
+		isGroup: False
 		skip: 0
 		limit: 0
 	)

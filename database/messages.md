@@ -5,7 +5,6 @@
  | Field | Type | Description |
  | ----- | ---- | ----------- |
 | text | String |  |
-| image | String |  |
 | seen | Array of ObjectIds |  |
 | edited | Boolean |  |
 | author | ObjectId |  |

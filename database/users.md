@@ -5,7 +5,7 @@
  | Field | Type | Description |
  | ----- | ---- | ----------- |
 | username | String |  |
-| avatar | String |  |
+| avatar | Object |  |
 | verified | Boolean |  |
 | password | String |  |
 | email | String |  |

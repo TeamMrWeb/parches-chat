@@ -34,7 +34,31 @@ Subscription for new messages in a specific chat
 ```graphql example
 subscription example {
 	chatMessageAdded(
-		chatId: "cdc84f7449001d63448596d7"
+		chatId: "34f0b8c49baec302abafac33"
+	)
+	{
+		# add fields here (depends on the return type)
+	}
+}
+```
+
+## > userMessageNotification
+
+Subscription for message notifications for a specific user
+
+#### Arguments
+
+- `userId` _ID_
+   - The id of the user to subscribe
+
+> Returns **_MessageType_**
+
+#### Example usage
+
+```graphql example
+subscription example {
+	userMessageNotification(
+		userId: "34f0b8c49baec302abafac33"
 	)
 	{
 		# add fields here (depends on the return type)

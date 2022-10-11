@@ -5,6 +5,7 @@
  | Field | Type | Description |
  | ----- | ---- | ----------- |
 | name | String |  |
+| avatar | Object |  |
 | messages | Array of ObjectIds |  |
 | isGroup | Boolean |  |
 | secure | Boolean |  |
