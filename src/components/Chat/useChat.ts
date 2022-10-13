@@ -37,9 +37,9 @@ export const useChat = () => {
     if (!chat.id) return
     const possiblyAuthor = chat.users.find((user: User) => user.id !== loggedUser.id)
     const notifications = JSON.parse(localStorage.getItem("notifications") as string)
-    const authorIndex = notifications.findIndex((notification: any) => notification.author === possiblyAuthor.id)
-    if (authorIndex === -1) return
-    notifications.splice(authorIndex, 1)
+    const authorIndexFromNotifications = notifications.findIndex((notification: any) => notification.author === possiblyAuthor.id)
+    if (authorIndexFromNotifications === -1) return
+    notifications.splice(authorIndexFromNotifications, 1)
     localStorage.setItem("notifications", JSON.stringify(notifications))
     const notificationsNumber = getNotificationsNumber(notifications)
     notificationsNumber === 0 && setDefaultTitle()
