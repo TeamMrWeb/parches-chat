@@ -34,7 +34,7 @@ export default function AddFriend({
         onChange={e => setInputValue(e.target.value)}
       />
       {isLoading && inputValue.length >= 1 ? (
-        <div className="loader-spinner">
+        <div className="add-friend-loader-spinner">
           <Oval
             height={50}
             width={50}

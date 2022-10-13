@@ -1067,7 +1067,7 @@ html body #root .App ul {
 .add-friend-section .add-friend-section__input:focus {
   outline: 1px solid #dd4ec6;
 }
-.add-friend-section .loader-spinner {
+.add-friend-section .add-friend-loader-spinner {
   width: 100%;
   padding-top: 30px;
   display: flex;
