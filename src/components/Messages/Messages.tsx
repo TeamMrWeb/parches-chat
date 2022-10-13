@@ -3,18 +3,15 @@ import { Oval } from "react-loader-spinner"
 import Message from "../Message/Message"
 import { useMessages } from "./useMessages"
 
-interface author {
-  id: string
-}
-
 interface Message {
+  __typename: string
   id: string
   text: string
-  seen: Array<any>
-  edited: boolean
-  author: author
+  author: {
+    id: string
+    __typename: string
+  }
   createdAt: Date
-  updatedAt: Date
 }
 
 export default function Messages({ scrollBottom }: { scrollBottom: any }) {
@@ -56,7 +53,7 @@ export default function Messages({ scrollBottom }: { scrollBottom: any }) {
           </p>
         }
       >
-        {messages?.map((message: Message) => (
+        {messages?.map((message: any) => (
           <Message
             messageText={message.text}
             messageCreatedAt={formatCreatedAtDate(message.createdAt)}

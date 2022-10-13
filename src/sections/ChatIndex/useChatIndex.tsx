@@ -33,7 +33,7 @@ export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) =
   }, [loggedUser, loggedUserLoading])
 
   useEffect(() => {
-    if (!data) return
+    if (!data || data.userMessageNotification.author.id === loggedUser.id) return
     emitSoundOnNewMessage()
     showNewNotificationOnBrowserTab(data.userMessageNotification.author.id)
   }, [data])

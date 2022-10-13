@@ -16,9 +16,7 @@ export const useMessages = () => {
   const chat = useSelector((state: any) => state.chat)
   const dispatch = useDispatch()
 
-  const defineMessageSide = (messageAuthor: author) => {
-    messageAuthor.id === loggedUser?.id ? "right" : "left"
-  }
+  const defineMessageSide = (messageAuthor: author) => (messageAuthor.id === loggedUser.id ? "right" : "left")
 
   const formatCreatedAtDate = (createdAt: Date) => {
     const formatedDate = new Date(createdAt).toLocaleTimeString(navigator.language, { hour: "2-digit", minute: "2-digit" })
