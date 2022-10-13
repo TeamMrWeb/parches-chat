@@ -4,7 +4,10 @@ import { useShowChat } from "../../contexts/ShowChatContext"
 
 interface ChatData {
   username: string
-  avatar: string
+  avatar: {
+    __typename: string
+    secure_url: string
+  }
 }
 
 export const useChatInfoHeader = () => {
