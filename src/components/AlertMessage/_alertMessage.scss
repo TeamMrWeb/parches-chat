@@ -12,7 +12,8 @@
   border: 2px solid $primaryColorLight;
   border-radius: 10px;
   animation: appear 1s, disappear 1s linear 9.5s;
-  z-index: 10;
+  z-index: 1000;
+  background-color: $primaryColor;
   .alert-message__icon {
     width: 30px;
     height: 30px;

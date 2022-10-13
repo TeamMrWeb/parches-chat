@@ -470,7 +470,8 @@ html body #root .App ul {
   border-radius: 10px;
   -webkit-animation: appear 1s, disappear 1s linear 9.5s;
           animation: appear 1s, disappear 1s linear 9.5s;
-  z-index: 10;
+  z-index: 1000;
+  background-color: #1c1d22;
 }
 .alert-message .alert-message__icon {
   width: 30px;
