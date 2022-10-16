@@ -6,7 +6,10 @@ import closeIcon from "../../assets/icons/close-icon.svg"
 interface Result {
   id: string
   username: string
-  avatar: string
+  avatar: {
+    public_id: string
+    secure_url: string
+  }
   __typename: string
 }
 
@@ -51,7 +54,7 @@ export default function AddFriend({
           {results?.map((result: Result) => (
             <li className="results__item" key={result.id} onClick={() => addFriendToLoggedUser(result.id, result.username)}>
               <div className="left-side">
-                <img className="results__avatar" src={result.avatar} alt="Avatar de usuario" />
+                <img className="results__avatar" src={result.avatar.secure_url} alt="Avatar de usuario" />
                 <span className="results__name">{result.username}</span>
               </div>
               <img className="results__icon" src={addFriendIcon} alt="Ícono de agregar amigo" />

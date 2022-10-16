@@ -10,7 +10,10 @@ interface User {
   __typename: string
   id: string
   username: string
-  avatar: string
+  avatar: {
+    public_id: string
+    secure_url: string
+  }
 }
 
 export const useChat = () => {
