@@ -25,7 +25,7 @@ Para ejecutar la aplicación
 npm run dev
 ```
 
-> ***Aviso:*** Se necesita clonar y ejecutar el servidor de la rama backend para utilizar esta página correctamente. [Ir a la rama backend](https://github.com/TeamParches/parches-chat/tree/backend)
+> ***Aviso:*** Se necesita clonar y ejecutar el servidor de la rama backend para utilizar esta página correctamente de forma local. [Ir a la rama backend](https://github.com/TeamParches/parches-chat/tree/backend)
 
 ## Despliegue 🚀
 Puedes utilizar esta página sin necesidad de instalar nada. Has click [aquí](https://parches-chat.vercel.app/) para ir al despliegue.
