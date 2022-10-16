@@ -13,6 +13,7 @@
     "@apollo/client": "^3.6.9",
     "@reduxjs/toolkit": "^1.8.5",
     "emoji-picker-react": "^3.6.1",
+    "gh-pages": "^4.0.0",
     "graphql": "^16.6.0",
     "graphql-ws": "^5.11.1",
     "react": "^18.2.0",
