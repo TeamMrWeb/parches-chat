@@ -20,7 +20,7 @@ function App() {
         {alertMessage.visible && <AlertMessage />}
         {loader.status && <Loader progress={loader.progress} />}
         {loaderSpinner.status && <LoaderSpinner />}
-        <BrowserRouter basename="/parches-chat">
+        <BrowserRouter>
           <Routes>
             <Route path="/accounts/*">
               <Route path="login" element={<Login />} />
