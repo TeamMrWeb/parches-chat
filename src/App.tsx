@@ -32,7 +32,6 @@ function App() {
             <Route path="/register" element={<Navigate to="/accounts/register" />} />
             <Route path="/" element={<Navigate to="/accounts/login" />} />
             <Route path="/chat" element={<ChatIndex />} />
-            <Route path="/parches-chat" element={<div>putitomaricon</div>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </HashRouter>
