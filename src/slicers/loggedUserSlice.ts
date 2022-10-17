@@ -19,6 +19,7 @@ export const loggedUserSlice = createSlice({
   initialState,
   reducers: {
     setLoggedUserField: (state, action) => {
+      console.log(action.payload)
       Object.assign(state, { ...action.payload.user })
     },
     logOut: state => initialState

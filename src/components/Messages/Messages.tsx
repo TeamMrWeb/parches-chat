@@ -47,11 +47,6 @@ export default function Messages({ scrollBottom }: { scrollBottom: any }) {
         inverse={true}
         scrollableTarget="scrollableDiv"
         className="messages-wrapper"
-        endMessage={
-          <p style={{ textAlign: "center", color: "white" }}>
-            <b>Ups... Parece que has llegado al final</b>
-          </p>
-        }
       >
         {messages?.map((message: any) => (
           <Message

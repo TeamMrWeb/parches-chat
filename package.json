@@ -1,6 +1,6 @@
 {
   "name": "vite-project",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -8,13 +8,13 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "npm i && npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@reduxjs/toolkit": "^1.8.5",
     "emoji-picker-react": "^3.6.1",
-    "gh-pages": "^4.0.0",
     "graphql": "^16.6.0",
     "graphql-ws": "^5.11.1",
     "react": "^18.2.0",
@@ -29,6 +29,7 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
+    "gh-pages": "^4.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.7"
   }

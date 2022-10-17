@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { BrowserRouter, HashRouter, Navigate, Route, Routes } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { ShowChatProvider } from "./contexts/ShowChatContext"
 import VerifyAccount from "./components/VerifyAccount/VerifyAccount"
@@ -14,13 +14,14 @@ function App() {
   const alertMessage = useSelector((state: any) => state.alertMessage)
   const loader = useSelector((state: any) => state.loader)
   const loaderSpinner = useSelector((state: any) => state.loaderSpinner)
+
   return (
     <div className="App">
       <ShowChatProvider>
         {alertMessage.visible && <AlertMessage />}
         {loader.status && <Loader progress={loader.progress} />}
         {loaderSpinner.status && <LoaderSpinner />}
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/accounts/*">
               <Route path="login" element={<Login />} />
@@ -31,9 +32,10 @@ function App() {
             <Route path="/register" element={<Navigate to="/accounts/register" />} />
             <Route path="/" element={<Navigate to="/accounts/login" />} />
             <Route path="/chat" element={<ChatIndex />} />
+            <Route path="/parches-chat" element={<div>putitomaricon</div>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </ShowChatProvider>
     </div>
   )
