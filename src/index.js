@@ -12,6 +12,8 @@ const schema = require('./graphql/schemas')
 const createServer = require('http').createServer
 const { execute, subscribe } = require('graphql')
 const { useServer } = require('graphql-ws/lib/use/ws')
+const { clearFolderFiles } = require('./utils/files')
+const temp_folder = require('./config').CLOUDINARY.TEMP_FOLDER
 const { checkEmailCredentials } = require('./utils/email')
 const { connectDatabase, checkDatabaseConnection } = require('./database')
 
@@ -28,9 +30,15 @@ async function main() {
 	}
 
 	// check email credentials
-	const res = await checkEmailCredentials()
+	let res = await checkEmailCredentials()
 	if (!res.status) console.log('Error', res.error)
 	else console.log('Email credentials are correct. Ready to send emails.')
+
+	// clear files from uploads folder
+	console.log('Clearing files from temp folder...')
+	res = await clearFolderFiles(temp_folder)
+	if (!res) console.log('Temp folder is empty.')
+	else console.log('Temp folder cleared.')
 
 	// create server
 	const server = createServer(app)
