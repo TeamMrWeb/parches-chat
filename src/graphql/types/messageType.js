@@ -8,6 +8,8 @@
 // required modules
 const UserType = require('./userType')
 const DateTimeType = require('./dateTimeType')
+// NOTE: Using avatar type for image object
+const AvatarType = require('./avatarType')
 const {
 	GraphQLObjectType,
 	GraphQLID,
@@ -31,7 +33,7 @@ const MessageType = new GraphQLObjectType({
 			description: 'The text of the message.',
 		},
 		image: {
-			type: GraphQLString,
+			type: AvatarType,
 			description: 'The image of the message.',
 		},
 		author: {

@@ -1,7 +1,7 @@
 /**
  * @file Contains message model.
  * @author Manuel Cabral
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 // required modules
@@ -14,7 +14,16 @@ const messageSchema = new Schema(
 			required: true,
 		},
 		image: {
-			type: String,
+			exists: {
+				type: Boolean,
+				default: false,
+			},
+			public_id: {
+				type: String,
+			},
+			secure_url: {
+				type: String,
+			},
 		},
 		seen: [
 			{

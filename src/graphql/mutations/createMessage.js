@@ -1,7 +1,7 @@
 /**
  * @file Contains chat mutation.
  * @author Manuel Cabral
- * @version 0.1.1
+ * @version 0.1.2
  */
 
 // required modules
@@ -10,7 +10,12 @@ const { pubsub, events } = require('../pubsub')
 const createNewMessage =
 	require('../../controllers/messageController').createMessage
 const { findById, addMessage } = require('../../controllers/chatController')
-const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql')
+const {
+	GraphQLNonNull,
+	GraphQLString,
+	GraphQLBoolean,
+	GraphQLID,
+} = require('graphql')
 
 // arguments object
 const args = {
@@ -22,9 +27,9 @@ const args = {
 		type: new GraphQLNonNull(GraphQLString),
 		description: 'The text of the message.',
 	},
-	image: {
-		type: GraphQLString,
-		description: 'The image of the message.',
+	hasImage: {
+		type: GraphQLBoolean,
+		description: 'If the message has an image.',
 	},
 }
 
@@ -44,8 +49,10 @@ const resolve = async (_, args, context) => {
 	if (args.text.length < 1) throw new Error('El mensaje es muy corto.')
 	const newMessage = await createNewMessage({
 		text: args.text,
-		image: args.image,
 		author: user.id,
+		image: {
+			exists: args.hasImage,
+		},
 		seen: [],
 	})
 	await addMessage(args.chatId, newMessage._id)
