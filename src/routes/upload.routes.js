@@ -10,6 +10,7 @@ const fileUpload = require('express-fileupload')
 const {
 	uploadAvatar,
 	uploadChatImage,
+	uploadMessageImage,
 } = require('../controllers/uploadController')
 
 /**
@@ -33,6 +34,15 @@ router.post(
 		tempFileDir: './tmp',
 	}),
 	uploadChatImage
+)
+
+router.post(
+	'/messageimage/:chatId/:messageId',
+	fileUpload({
+		useTempFiles: true,
+		tempFileDir: './tmp',
+	}),
+	uploadMessageImage
 )
 
 module.exports = router
