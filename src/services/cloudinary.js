@@ -1,7 +1,7 @@
 /**
  * @file Conatains cloudinary related functions.
  * @author Manuel Cabral
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 // required modules
@@ -47,6 +47,20 @@ const uploadFile = async (path, folder) => {
 }
 
 /**
+ * Get a file from cloudinary.
+ * @param {String} publicId - The public id of the file to get.
+ * @returns {Object} - The result of the get.
+ */
+const getFile = async (publicId) => {
+	try {
+		const result = await cloudinary.api.resource(publicId)
+		return result
+	} catch (error) {
+		throw new Error(error.message)
+	}
+}
+
+/**
  * Deletes a file from cloudinary.
  * @param {String} publicId - The public id of the file to delete.
  * @returns {Object} - The result of the deletion.
@@ -64,5 +78,6 @@ const deleteFile = async (publicId) => {
 module.exports = {
 	uploadFile,
 	deleteFile,
+	getFile,
 	checkCloudinaryConnection,
 }
