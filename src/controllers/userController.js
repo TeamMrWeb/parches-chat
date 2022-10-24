@@ -1,7 +1,7 @@
 /**
  * @file Contains user model functions.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.0.9
  */
 
 // required modules
@@ -18,6 +18,16 @@ const createUser = async (data, save = true) => {
 	const newUser = new User(data)
 	if (save) await newUser.save()
 	return newUser
+}
+
+/**
+ * Remove a user from the database.
+ * @param {String} id - The id of the user to delete.
+ * @returns {void} Nothing.
+ */
+const removeUser = async (id) => {
+	if (!ObjectId.isValid(id)) return null
+	await User.findByIdAndDelete(id)
 }
 
 /**
@@ -87,6 +97,7 @@ const addFriend = async (id, friendId) => {
 
 module.exports = {
 	createUser,
+	removeUser,
 	findById,
 	findOne,
 	findAll,
