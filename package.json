@@ -6,7 +6,7 @@
     "scripts": {
         "start": "npm i -force && node src/index.js",
         "dev": "set NODE_ENV=development && nodemon src/index.js",
-        "test": "set NODE_ENV=test && mocha ./test/**/*.test.js"
+        "test": "set NODE_ENV=test && set CLOUD=false && mocha ./test/**/*.test.js"
     },
     "repository": {
         "type": "git",
