@@ -1,6 +1,6 @@
 {
     "name": "parches-chat-backend",
-    "version": "0.1.9",
+    "version": "0.2.0",
     "description": "backend of parches chat application",
     "main": "index.js",
     "scripts": {
@@ -46,6 +46,7 @@
     },
     "devDependencies": {
         "chai": "^4.3.6",
+        "chai-http": "^4.3.0",
         "cors": "^2.8.5",
         "mocha": "^10.0.0",
         "morgan": "^1.10.0",
