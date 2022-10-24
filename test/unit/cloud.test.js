@@ -15,7 +15,7 @@ const {
 
 // useful variables
 let public_id = ''
-const test_image = 'test/unit/resources/kitty.jpg'
+const test_image = 'test/resources/kitty.jpg'
 const test_folder = 'test'
 
 if (process.env.CLOUD !== 'true') console.log('Skipping cloud tests ...')
