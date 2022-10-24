@@ -1,7 +1,7 @@
 /**
  * @file Contain all database unit tests.
  * @author Manuel Cabral
- * @version 0.0.3
+ * @version 0.0.4
  */
 const { expect } = require('chai')
 
@@ -14,7 +14,7 @@ const {
 const userController = require('../../src/controllers/userController')
 
 // useful variables
-const user_payload = require('./resources/user_payload.json')
+const user_payload = require('../resources/user_payload.json')
 let userObject = null
 
 describe('Database', () => {
@@ -58,6 +58,8 @@ describe('User Database', () => {
 	})
 
 	it('should create a new user', async () => {
+		const user = await userController.findOne({ email: user_payload.email })
+		if (user) await userController.removeUser(user._id)
 		const result = await userController.createUser(user_payload)
 		// catch user object for later tests
 		userObject = result
