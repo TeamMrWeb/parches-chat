@@ -41,9 +41,19 @@ export const useEmojis = () => {
     return text;
   };
 
+  /**
+   * Gets emojis by category
+   * @param category - The category of the emojis
+   * @returns The emojis (list of emoji objects)
+   */
+  const getEmojiCategory = (category: string) => {
+    return emojis.filter((emoji) => emoji.category === category);
+  };
+
   return {
     getEmoji,
     getEmojiByShortName,
+    getEmojiCategory,
     parseText,
   };
 };
