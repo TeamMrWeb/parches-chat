@@ -11,8 +11,10 @@ html {
   }
   body {
     margin: 0;
+    padding: 0;
     overflow-x: hidden;
     height: 100vh;
+    height: 100%;
     width: 100%;
     font-family: $fontFamily;
     font-weight: 300;
@@ -22,6 +24,7 @@ html {
       height: 100%;
       .App {
         position: relative;
+        height: 100%;
         & * p,
         ul {
           list-style: none;
