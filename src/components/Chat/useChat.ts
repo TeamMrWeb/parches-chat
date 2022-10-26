@@ -5,22 +5,13 @@ import { useSubscription } from "@apollo/client"
 import { MESSAGES_SUBSCRIPTION } from "../../graphql/subscriptions"
 import { useNotifications } from "../../hooks/useNotifications"
 import { setSuscriptionMessage } from "../../slicers/messagesSlice"
-
-interface User {
-  __typename: string
-  id: string
-  username: string
-  avatar: {
-    public_id: string
-    secure_url: string
-  }
-}
+import { NotificationProps, RootState, UserProps } from "../../ts/interfaces"
 
 export const useChat = () => {
   const navigate = useNavigate()
-  const loggedUser = useSelector((state: any) => state.loggedUser)
+  const loggedUser = useSelector((state: RootState) => state.loggedUser)
+  const chat = useSelector((state: RootState) => state.chat)
   const { updateTitle, getNotificationsNumber, setDefaultTitle } = useNotifications()
-  const chat = useSelector((state: any) => state.chat)
   const { data } = useSubscription(MESSAGES_SUBSCRIPTION, { variables: { chatId: chat.id } })
   const dispatch = useDispatch()
   const [showButton, setShowButton] = useState(false)
@@ -38,9 +29,11 @@ export const useChat = () => {
 
   useEffect(() => {
     if (!chat.id) return
-    const possiblyAuthor = chat.users.find((user: User) => user.id !== loggedUser.id)
+    const possiblyAuthor = chat?.users?.find((user: UserProps) => user.id !== loggedUser.id)
     const notifications = JSON.parse(localStorage.getItem("notifications") as string)
-    const authorIndexFromNotifications = notifications.findIndex((notification: any) => notification.author === possiblyAuthor.id)
+    const authorIndexFromNotifications = notifications.findIndex(
+      (notification: NotificationProps) => notification.author === possiblyAuthor?.id
+    )
     if (authorIndexFromNotifications === -1) return
     notifications.splice(authorIndexFromNotifications, 1)
     localStorage.setItem("notifications", JSON.stringify(notifications))
