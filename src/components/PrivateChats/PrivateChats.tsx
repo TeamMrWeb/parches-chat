@@ -1,6 +1,7 @@
 import { usePrivateChats } from "./usePrivateChats"
-import Chat from "./PrivateChat/PrivateChat"
+import { PrivateChat } from ".."
 import plusIcon from "../../assets/icons/plus-icon.svg"
+import { ChatProps } from "../../ts/interfaces"
 
 export default function PrivateChats({
   firstAccess,
@@ -9,7 +10,7 @@ export default function PrivateChats({
   setShowAddFriend
 }: {
   firstAccess: boolean
-  setFirstAccess: any
+  setFirstAccess: (firstAccess: boolean) => void
   showAddFriend: boolean
   setShowAddFriend: (showAddFriend: boolean) => void
 }) {
@@ -19,13 +20,13 @@ export default function PrivateChats({
     <section className={`chats ${firstAccess && "extended"}`}>
       <h3 className="chats__title">Chats</h3>
       <ul className="chats-list">
-        {chats.map((chat: any) => (
-          <Chat
+        {chats.map((chat: ChatProps) => (
+          <PrivateChat
             avatar={chat.avatar}
             name={defineChatName(chat.users)}
             status={chat.status}
             key={chat.id}
-            id={chat.id}
+            id={chat.id!}
             setFirstAccess={setFirstAccess}
           />
         ))}
