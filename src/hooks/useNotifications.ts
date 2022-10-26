@@ -1,7 +1,4 @@
-interface Notification {
-  quantity: number
-  author: string
-}
+import { NotificationProps } from "../ts/interfaces"
 
 export const useNotifications = () => {
   const emitSoundOnNewMessage = () => {
@@ -30,8 +27,8 @@ export const useNotifications = () => {
     notificationsNumber >= 1 && updateTitle(notificationsNumber.toString())
   }
 
-  const updateNotifications = (currentNotifications: Notification[], author: string) => {
-    const notificationFromAuthorIndex = currentNotifications.findIndex((notification: Notification) => notification.author === author)
+  const updateNotifications = (currentNotifications: NotificationProps[], author: string) => {
+    const notificationFromAuthorIndex = currentNotifications.findIndex((notification: NotificationProps) => notification.author === author)
     if (notificationFromAuthorIndex === -1) {
       const notifications = [...currentNotifications, { author, quantity: 1 }]
       return notifications
@@ -56,8 +53,8 @@ export const useNotifications = () => {
     document.title = defaultTitle
   }
 
-  const getNotificationsNumber = (notifications: Notification[]) =>
-    notifications.reduce((acc: number, notification: Notification) => acc + notification.quantity, 0)
+  const getNotificationsNumber = (notifications: NotificationProps[]) =>
+    notifications.reduce((acc: number, notification: NotificationProps) => acc + notification.quantity, 0)
 
   return {
     emitSoundOnNewMessage,
