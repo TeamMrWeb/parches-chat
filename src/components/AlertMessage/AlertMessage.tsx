@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { closeAlertMessage } from "../../slicers/alertMessageSlice"
-import closeIcon from "../../assets/icons/close-icon.svg"
 import successIcon from "../../assets/icons/success-icon.svg"
 import warningIcon from "../../assets/icons/warning-icon.svg"
+import closeIcon from "../../assets/icons/close-icon.svg"
 import errorIcon from "../../assets/icons/error-icon.svg"
 import infoIcon from "../../assets/icons/info-icon.svg"
 
@@ -12,16 +12,17 @@ export default function AlertMessage() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       dispatch(closeAlertMessage())
-    }, 1000000)
+    }, 10000)
+    return () => clearTimeout(timer)
   }, [])
 
   const typesIcon: {
-    success: any
-    warning: any
-    error: any
-    info: any
+    success: string
+    warning: string
+    error: string
+    info: string
   } = {
     success: successIcon,
     warning: warningIcon,
