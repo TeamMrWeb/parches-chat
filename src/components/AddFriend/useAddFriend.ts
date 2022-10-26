@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useMutation } from "@apollo/client"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { createChatBetweenFriends, sendFriendRequestToUser } from "../../graphql/mutations"
-import { chatsFromLoggedUser } from "../../graphql/queries"
-import { usersByUsername } from "../../graphql/queries"
+import { chatsFromLoggedUser, usersByUsername } from "../../graphql/queries"
 import { createAlertMessage } from "../../slicers/alertMessageSlice"
+import { AddFriendErrorResponseProps, AddFriendResponseProps, RootState } from "../../ts/interfaces"
 
 export const useAddFriend = () => {
   const { lazyQueryMethod: getFriendByUsername } = useFetchingMethod(usersByUsername)
-  const loggedUser = useSelector((state: any) => state.loggedUser)
+  const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const [createChat] = useMutation(createChatBetweenFriends, {
     refetchQueries: [{ query: chatsFromLoggedUser, variables: { userId: loggedUser.id, isGroup: false } }]
   })
@@ -32,17 +32,19 @@ export const useAddFriend = () => {
   }, [inputValue])
 
   const addFriendToLoggedUser = async (friendId: string, friendUsername: string) => {
-    await sendFriendRequest({ variables: { userId: friendId, senderId: loggedUser.id } }).then(async (res: any) => {
-      if (!res.data) return
-      dispatch(
-        createAlertMessage({
-          title: "Se ha agregado a un nuevo amigo",
-          type: "success",
-          visible: true
-        })
-      )
-      await createChat({ variables: { name: friendUsername, usersId: [loggedUser.id, friendId] } })
-    })
+    await sendFriendRequest({ variables: { userId: friendId, senderId: loggedUser.id } }).then(
+      async (res: AddFriendResponseProps | AddFriendErrorResponseProps) => {
+        if (!res.data) return
+        dispatch(
+          createAlertMessage({
+            title: "Se ha agregado a un nuevo amigo",
+            type: "success",
+            visible: true
+          })
+        )
+        await createChat({ variables: { name: friendUsername, usersId: [loggedUser.id, friendId] } })
+      }
+    )
   }
 
   return { setInputValue, inputValue, results, isLoading, addFriendToLoggedUser }
