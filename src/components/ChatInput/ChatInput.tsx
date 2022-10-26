@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux"
 import { useChatInput } from "./useChatInput"
-import ChatPreviewImage from "../ChatPreviewImage/ChatPreviewImage"
-import EmojisPicker from "../EmojisPicker/EmojisPicker"
+import { EmojisPicker, ChatPreviewImage } from "../"
+import { RootState } from "../../ts/interfaces"
 import emojiIcon from "../../assets/icons/emoji-icon.svg"
 import plusIcon from "../../assets/icons/plus-icon.svg"
 
 export default function ChatInput() {
-  const chat = useSelector((state: any) => state.chat)
+  const chat = useSelector((state: RootState) => state.chat)
   const { showEmojisPicker, setShowEmojisPicker, previewImage, image, setImage, value, setValue, submitMessage } = useChatInput(chat)
 
   return (
