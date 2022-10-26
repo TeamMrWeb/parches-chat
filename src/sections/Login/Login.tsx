@@ -1,7 +1,5 @@
 import { useSubmitForm } from "../../hooks/useSubmitForm"
-import AccountQuestion from "../../components/AccountQuestion/AccountQuestion"
-import FormGroupInput from "../../components/FormGroupInput/FormGroupInput"
-import ViewRepository from "../../components/ViewRepository/ViewRepository"
+import { AccountQuestion, FormGroupInput, ViewRepository } from "../../components"
 import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
 
 export default function Login() {
