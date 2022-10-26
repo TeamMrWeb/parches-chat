@@ -1,7 +1,5 @@
 import { useChat } from "./useChat"
-import ChatInfoHeader from "../ChatInfoHeader/ChatInfoHeader"
-import ChatInput from "../ChatInput/ChatInput"
-import Messages from "../Messages/Messages"
+import { ChatInput, Messages, ChatInfoHeader } from ".."
 import downArrowIcon from "../../assets/icons/down-arrow-icon.svg"
 
 export default function Chat({ chatContainer }: { chatContainer: React.RefObject<HTMLDivElement> }) {
@@ -14,7 +12,7 @@ export default function Chat({ chatContainer }: { chatContainer: React.RefObject
       <ChatInput />
       {showButton && (
         <button className={"go-down"} onClick={() => goDown()}>
-          <img className="go-down__image" src={downArrowIcon} alt="Ícono para ir hacia el abajo" />
+          <img className="go-down__image" src={downArrowIcon} alt="Ícono para ir hacia abajo" />
         </button>
       )}
     </div>
