@@ -2,16 +2,7 @@ import { Oval } from "react-loader-spinner"
 import { useAddFriend } from "./useAddFriend"
 import addFriendIcon from "../../assets/icons/add-friend-icon.svg"
 import closeIcon from "../../assets/icons/close-icon.svg"
-
-interface Result {
-  id: string
-  username: string
-  avatar: {
-    public_id: string
-    secure_url: string
-  }
-  __typename: string
-}
+import { ResultProps } from "../../ts/interfaces"
 
 export default function AddFriend({
   showAddFriend,
@@ -51,7 +42,7 @@ export default function AddFriend({
         </div>
       ) : (
         <ul className="results">
-          {results?.map((result: Result) => (
+          {results?.map((result: ResultProps) => (
             <li className="results__item" key={result.id} onClick={() => addFriendToLoggedUser(result.id, result.username)}>
               <div className="left-side">
                 <img className="results__avatar" src={result.avatar.secure_url} alt="Avatar de usuario" />
