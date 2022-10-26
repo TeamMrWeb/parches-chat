@@ -8,15 +8,16 @@ import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { useSubscription } from "@apollo/client"
 import { useShowChat } from "../../contexts/ShowChatContext"
 import { useNotifications } from "../../hooks/useNotifications"
-import Chat from "../../components/Chat/Chat"
+import { Chat } from "../../components"
 import Home from "../Home/Home"
+import { RootState } from "../../ts/interfaces"
 
 const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth
 
 export const useChatIndex = (chatContainer: RefObject<HTMLDivElement>) => {
   const { lazyQueryMethod: getLoggedUserId, loading: loggedUserLoading } = useFetchingMethod(LoggedUserId, setLoggedUserField)
-  const loggedUser = useSelector((state: any) => state.loggedUser)
+  const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const chat = useSelector((state: any) => state.chat)
   const [firstAccess, setFirstAccess] = useState(!notMobile)
   const { showChat } = useShowChat()

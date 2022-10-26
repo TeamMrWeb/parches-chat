@@ -1,11 +1,7 @@
 import { useRef, useState } from "react"
 import { useSwipe } from "../../hooks/useSwipe"
 import { useChatIndex } from "./useChatIndex"
-import Groups from "../../components/Groups/Groups"
-import Chats from "../../components/Chats/Chats"
-import LoggedUserArea from "../../components/LoggedUserArea/LoggedUserArea"
-import UserQuickOptions from "../../components/UserQuickOptions/UserQuickOptions"
-import AddFriend from "../../components/AddFriend/AddFriend"
+import { LoggedUserArea, UserQuickOptions, AddFriend, Groups, PrivateChats } from "../../components"
 
 export default function ChatIndex() {
   const chatContainer = useRef<HTMLDivElement>(null)
@@ -18,7 +14,7 @@ export default function ChatIndex() {
     <section className="chat-index" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
       <Groups />
       <div className="sidebar">
-        <Chats
+        <PrivateChats
           firstAccess={firstAccess}
           setFirstAccess={setFirstAccess}
           showAddFriend={showAddFriend}
