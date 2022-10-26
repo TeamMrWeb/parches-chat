@@ -1,8 +1,8 @@
-import { useChats } from "./useChats"
-import Chat from "./Chat/Chat"
+import { usePrivateChats } from "./usePrivateChats"
+import Chat from "./PrivateChat/PrivateChat"
 import plusIcon from "../../assets/icons/plus-icon.svg"
 
-export default function Chats({
+export default function PrivateChats({
   firstAccess,
   setFirstAccess,
   showAddFriend,
@@ -13,7 +13,7 @@ export default function Chats({
   showAddFriend: boolean
   setShowAddFriend: (showAddFriend: boolean) => void
 }) {
-  const { chats, defineChatName } = useChats()
+  const { chats, defineChatName } = usePrivateChats()
 
   return (
     <section className={`chats ${firstAccess && "extended"}`}>

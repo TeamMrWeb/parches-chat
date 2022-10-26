@@ -6,7 +6,7 @@ import { setChat } from "../../../slicers/chatSlice"
 import { chatById } from "../../../graphql/queries"
 import { useFetchingMethod } from "../../../apollo/useFetchingMethod"
 
-export default function Chat({
+export default function PrivateChat({
   avatar,
   name,
   status,

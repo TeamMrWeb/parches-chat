@@ -5,7 +5,7 @@ import { chatsFromLoggedUser } from "../../graphql/queries"
 import { setChats } from "../../slicers/chatsSlice"
 import { stopLoaderSpinner } from "../../slicers/loaderSpinnerSlice"
 
-export const useChats = () => {
+export const usePrivateChats = () => {
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const chats = useSelector((state: any) => state.chats)
   const dispatch = useDispatch()
