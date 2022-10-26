@@ -8,10 +8,9 @@ import UserQuickOptions from "../../components/UserQuickOptions/UserQuickOptions
 import AddFriend from "../../components/AddFriend/AddFriend"
 
 export default function ChatIndex() {
-  const chatContainer = useRef()
+  const chatContainer = useRef<HTMLDivElement>(null)
   const [showQuickOptions, setShowQuickOptions] = useState(false)
   const [showAddFriend, setShowAddFriend] = useState(false)
-
   const { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile } = useChatIndex(chatContainer)
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe(chatContainer)
 

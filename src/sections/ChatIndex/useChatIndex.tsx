@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { RefObject, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { startLoaderSpinner } from "../../slicers/loaderSpinnerSlice"
 import { setLoggedUserField } from "../../slicers/loggedUserSlice"
@@ -14,7 +14,7 @@ import Home from "../Home/Home"
 const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth
 
-export const useChatIndex = (chatContainer: React.MutableRefObject<undefined>) => {
+export const useChatIndex = (chatContainer: RefObject<HTMLDivElement>) => {
   const { lazyQueryMethod: getLoggedUserId, loading: loggedUserLoading } = useFetchingMethod(LoggedUserId, setLoggedUserField)
   const loggedUser = useSelector((state: any) => state.loggedUser)
   const chat = useSelector((state: any) => state.chat)
