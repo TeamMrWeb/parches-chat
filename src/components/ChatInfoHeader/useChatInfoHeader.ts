@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useShowChat } from "../../contexts/ShowChatContext"
-
-interface ChatData {
-  username: string
-  avatar: {
-    __typename: string
-    secure_url: string
-  }
-}
+import { ChatDataProps, RootState, UserProps } from "../../ts/interfaces"
 
 export const useChatInfoHeader = () => {
-  const [chatData, setChatData] = useState<ChatData>()
+  const [chatData, setChatData] = useState<ChatDataProps>()
   const { showChat } = useShowChat()
-  const chat = useSelector((state: any) => state.chat)
-  const loggedUser = useSelector((state: any) => state.loggedUser)
+  const chat = useSelector((state: RootState) => state.chat)
+  const loggedUser = useSelector((state: RootState) => state.loggedUser)
 
   useEffect(() => {
     const chatContainer = document.querySelector(".chat-container")
@@ -25,8 +18,8 @@ export const useChatInfoHeader = () => {
   useEffect(() => {
     if (Object.keys(chat).length === 0) return
     const loggedUserId = loggedUser.id
-    const username = chat.users.find((user: any) => user.id !== loggedUserId).username
-    const avatar = chat.users[0].avatar
+    const username = chat?.users?.find((user: UserProps) => user.id !== loggedUserId)?.username!
+    const avatar = chat.users![0].avatar
     setChatData({ ...chatData, username, avatar })
   }, [chat])
 

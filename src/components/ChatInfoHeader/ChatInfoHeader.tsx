@@ -1,8 +1,8 @@
 import { useShowChat } from "../../contexts/ShowChatContext"
 import { useChatInfoHeader } from "./useChatInfoHeader"
+import userDefaultIcon from "../../assets/icons/user-default-icon.svg"
 import dotsIcon from "../../assets/icons/dots-icon.svg"
 import backIcon from "../../assets/icons/back-icon.svg"
-import userDefaultIcon from "../../assets/icons/user-default-icon.svg"
 
 export default function ChatInfoHeader() {
   const { showChat, setShowChat } = useShowChat()
