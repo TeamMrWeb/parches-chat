@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { ChatProps } from "../ts/interfaces"
 
-const initialState: string[] = []
+const initialState: ChatProps[] = []
 
 export const chatsSlice = createSlice({
   name: "chats",
@@ -10,7 +11,7 @@ export const chatsSlice = createSlice({
       const chats = action.payload.chats
       state.push(...chats)
     },
-    clearChats: state => initialState
+    clearChats: () => initialState
   }
 })
 

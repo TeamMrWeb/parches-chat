@@ -1,21 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { ChatProps } from "../ts/interfaces"
 
-interface chat {
-  id?: string
-  name?: string
-  messages?: Array<object>
-  isGroup?: boolean
-  secure?: boolean
-  private?: boolean
-  maxUsers?: number
-  ownerId?: any
-  admins?: Array<object>
-  users?: Array<object>
-  createdAt?: Date
-  updatedAt?: Date
-}
-
-const initialState: chat = {}
+const initialState: ChatProps = {}
 
 export const chatSlice = createSlice({
   name: "chat",

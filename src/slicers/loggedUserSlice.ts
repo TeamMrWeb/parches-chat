@@ -1,18 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { LoggedUserProps } from "../ts/interfaces"
 
-interface loggedUser {
-  username?: string
-  avatar?: string
-  verified?: boolean
-  password?: string
-  email?: string
-  status?: number
-  friends?: any
-  pendingFriends?: any
-  blockedUsers?: any
-}
-
-const initialState: loggedUser = {}
+const initialState: LoggedUserProps = {}
 
 export const loggedUserSlice = createSlice({
   name: "loggedUser",
@@ -21,7 +10,7 @@ export const loggedUserSlice = createSlice({
     setLoggedUserField: (state, action) => {
       Object.assign(state, { ...action.payload.user })
     },
-    logOut: state => initialState
+    logOut: () => initialState
   }
 })
 
