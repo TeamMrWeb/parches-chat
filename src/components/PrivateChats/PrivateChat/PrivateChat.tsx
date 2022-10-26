@@ -1,10 +1,12 @@
-import { useShowChat } from "../../../contexts/ShowChatContext"
-import userDefaultIcon from "../../../assets/icons/user-default-icon.svg"
 import { useSelector } from "react-redux"
-const borderColors = ["green", "orange", "red", "gray"]
+import { useShowChat } from "../../../contexts/ShowChatContext"
 import { setChat } from "../../../slicers/chatSlice"
 import { chatById } from "../../../graphql/queries"
 import { useFetchingMethod } from "../../../apollo/useFetchingMethod"
+import { RootState } from "../../../ts/interfaces"
+import userDefaultIcon from "../../../assets/icons/user-default-icon.svg"
+
+const borderColors = ["green", "orange", "red", "gray"]
 
 export default function PrivateChat({
   avatar,
@@ -16,18 +18,15 @@ export default function PrivateChat({
   avatar: string
   name: string
   status: number
-  setFirstAccess: any
+  setFirstAccess: (firstAccess: boolean) => void
   id: string
 }) {
   const { setShowChat } = useShowChat()
-  const chat = useSelector((state: any) => state.chat)
+  const chat = useSelector((state: RootState) => state.chat)
   const getChatById = (chatId: string) => getChatByid({ variables: { id: chatId } })
   const { lazyQueryMethod: getChatByid } = useFetchingMethod(chatById, setChat)
 
-  const defineChatActive = () => {
-    if (chat.id === id) return "loggedUser-chat active"
-    return "loggedUser-chat"
-  }
+  const defineChatActive = () => (chat.id === id ? "loggedUser-chat active" : "loggedUser-chat")
 
   return (
     <li
