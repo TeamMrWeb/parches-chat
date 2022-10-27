@@ -1,11 +1,11 @@
 /**
  * @file Contains the verify query.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 // required modules
-const { GraphQLNonNull, GraphQLString } = require('graphql')
+const { GraphQLString } = require('graphql')
 const { verifyToken, findToken } = require('../../utils/auth')
 const findUser = require('../../controllers/userController').findOne
 
