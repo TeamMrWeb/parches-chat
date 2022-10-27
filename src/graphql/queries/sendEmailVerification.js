@@ -1,14 +1,14 @@
 /**
  * @file Contains send email verification mutation.
  * @author Manuel Cabral
- * @version 0.0.9
+ * @version 0.1.0
  */
 
 // required modules
 const { GraphQLString, GraphQLNonNull } = require('graphql')
 const findOneUser = require('../../controllers/userController').findOne
 const { createToken, existsEmailToken } = require('../../utils/auth')
-const { sendEmail } = require('../../utils/email')
+const { sendVerification } = require('../../utils/email')
 
 // arguments object
 const args = {
@@ -32,23 +32,8 @@ const resolve = async (_, args) => {
 	const tokenDb = await existsEmailToken(email)
 	if (tokenDb) throw new Error('Verification already sent')
 	const token = await createToken({ email }, { useEmail: true })
-	const textEmail = `\
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="utf-8">
-            <title>Confirmar email</title>
-        </head>
-        <body>
-            <h1>Reconfirmación de email</h1>
-            <h2>Hola ${user.username}</h2>
-            <p>Gracias por registrarte en Parches Chat. Para reconfirmar tu email, por favor haz click en el siguiente enlace: </p>
-            <a href="http://localhost:3000/account/verify/${token}">Reconfirmar email</a>
-        </body>
-    </html>
-    `
-	await sendEmail(user.email, 'Confirmación de email', textEmail)
-	return 'Email sent'
+	await sendVerification(user, token, 'Confirmar email')
+	return 'Confirmación de email enviada'
 }
 
 // query object

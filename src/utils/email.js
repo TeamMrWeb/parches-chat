@@ -1,12 +1,13 @@
 /**
  * @file Contains email related functions.
  * @author Manuel Cabral
- * @version 0.0.5
+ * @version 0.0.7
  */
 
 // required modules
 const nodemailer = require('nodemailer')
-const { ADDRESS, USER, PASSWORD } = require('../config').EMAIL
+const { ADDRESS, PASSWORD } = require('../config').EMAIL
+const { DOMAIN } = require('../config')
 
 /**
  * Send an simple email.
@@ -45,6 +46,32 @@ const sendEmail = async (to, subject, text) => {
 }
 
 /**
+ * Send an email verification.
+ * @param {Object} user - The user to send the email to.
+ * @param {String} token - The token to send.
+ * @param {String} subject - The subject of the email.
+ * @returns
+ */
+const sendVerification = async (user, token, subject) => {
+	const text = `\
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>${subject}</title>
+        </head>
+        <body>
+            <h1>${subject}</h1>
+            <h2>Hola ${user.username}!</h2>
+            <p>Para confirmar tu email de Parches Chat, por favor haz click en el siguiente enlace: </p>
+            <a href="${DOMAIN}/account/verify/${token}">Confirmar email</a>
+        </body>
+    </html>
+    `
+	return await sendEmail(user.email, subject, text)
+}
+
+/**
  * Check if email credentials are correct. If no credentials are provided, it uses the config file.
  * @param {String} user - The email address to send the email to.
  * @param {String} password - The password of the email.
@@ -80,4 +107,5 @@ module.exports = {
 	sendEmail,
 	isValidEmail,
 	checkEmailCredentials,
+	sendVerification,
 }

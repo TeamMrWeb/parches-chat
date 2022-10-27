@@ -1,12 +1,11 @@
 /**
  * @file Contains register mutation.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.1.0
  */
 
 // required modules
-const { sendEmail } = require('../../utils/email')
-const { createToken, existsEmailToken } = require('../../utils/auth')
+const { existsEmailToken } = require('../../utils/auth')
 const { createUser, findOne } = require('../../controllers/userController')
 const { GraphQLNonNull, GraphQLString } = require('graphql')
 
@@ -41,35 +40,8 @@ const resolve = async (_, args) => {
 		throw new Error('Usuario ya registrado, por favor verifica tu cuenta.')
 
 	const newUser = await createUser(args, true)
-	const token = await createToken(
-		{
-			id: newUser._id,
-			username: newUser.username,
-			email: newUser.email,
-		},
-		{ useEmail: true }
-	)
-
-	/**
-	 * @todo improve better email template
-	 */
-	const textEmail = `\
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <meta charset="utf-8">
-                <title>Confirmar email</title>
-            </head>
-            <body>
-                <h1>Confirmación de email</h1>
-                <h2>Hola ${newUser.username}</h2>
-                <p>Gracias por registrarte en Parches Chat. Para confirmar tu email, por favor haz click en el siguiente enlace: </p>
-                <a href="http://localhost:3000/account/verify/${token}">Confirmar email</a>
-            </body>
-        </html>
-    `
-	await sendEmail(newUser.email, 'Confirmación de email', textEmail)
-	return 'Email enviado, por favor verifica tu cuenta.'
+	newUser.save()
+	return 'Cuenta registrada correctamente'
 }
 
 // mutation object
