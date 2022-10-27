@@ -1,7 +1,7 @@
 /**
  * @file Contains environment variables and some configuration.
  * @author Manuel Cabral
- * @version 0.1.2
+ * @version 0.1.3
  */
 
 const config = require('dotenv').config
@@ -13,6 +13,7 @@ config()
 module.exports = {
 	// server port
 	PORT: process.env.PORT || 4000,
+	DOMAIN: process.env.DOMAIN || 'http://localhost:4000',
 
 	// database connection
 	DB: {
