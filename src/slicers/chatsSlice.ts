@@ -9,7 +9,7 @@ export const chatsSlice = createSlice({
   reducers: {
     setChats: (state, action) => {
       const chats = action.payload.chats
-      state.push(...chats)
+      Object.assign(state, { ...chats })
     },
     clearChats: () => initialState
   }
