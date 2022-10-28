@@ -22,7 +22,7 @@ export default function PrivateChats({
       <ul className="chats-list">
         {chats.map((chat: ChatProps) => (
           <PrivateChat
-            avatar={chat.avatar!}
+            avatar={chat.avatar?.secure_url!}
             name={defineChatName(chat.users)}
             status={chat.status!}
             key={chat.id}

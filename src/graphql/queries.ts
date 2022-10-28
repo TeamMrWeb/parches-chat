@@ -21,6 +21,9 @@ export const chatsFromLoggedUser = gql`
   query getChatsFromUser($userId: ID!, $isGroup: Boolean) {
     chats(userId: $userId, isGroup: $isGroup) {
       id
+      avatar {
+        secure_url
+      }
       name
       isGroup
       secure

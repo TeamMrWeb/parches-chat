@@ -28,7 +28,8 @@
       .content__image {
         width: 100%;
         max-width: 200px;
-        height: 100%;
+        height: 25vh;
+        max-height: 179px;
         margin-bottom: 20px;
       }
       .content__title {
@@ -43,6 +44,21 @@
       .content__description {
         text-align: center;
         @include fluid-type(font-size, 600px, 1200px, 14px, 16px);
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 636px) {
+  .login {
+    .content {
+      .header {
+        .content__title {
+          font-size: clamp(16px, 30px, 5vmin);
+        }
+        .content__description {
+          font-size: clamp(12px, 16px, 2vmin);
+        }
       }
     }
   }

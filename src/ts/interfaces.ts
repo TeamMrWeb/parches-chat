@@ -64,7 +64,10 @@ export interface UserProps {
 
 export interface ChatProps {
   id?: string
-  avatar?: string
+  avatar?: {
+    public_id: string
+    secure_url: string
+  }
   name?: string
   messages?: Array<object>
   isGroup?: boolean
