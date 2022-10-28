@@ -36,14 +36,14 @@
         color: $textWhiteColor;
         font-weight: 500;
         letter-spacing: 0.5px;
-        @include fluid-type(font-size, 600px, 1200px, 30px, 40px);
+        font-size: clamp(16px, 30px, 5vmin);
         font-weight: 900;
         line-height: 2;
         margin: 0;
       }
       .content__description {
         text-align: center;
-        @include fluid-type(font-size, 600px, 1200px, 14px, 16px);
+        font-size: clamp(12px, 16px, 5vmin);
       }
     }
   }
