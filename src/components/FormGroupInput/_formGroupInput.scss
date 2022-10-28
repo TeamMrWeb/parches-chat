@@ -6,8 +6,10 @@
   gap: 5px;
   width: 100%;
   max-width: 300px;
+  color: $pinkColor;
   .form__label {
     @include fluid-type(font-size, 600px, 1200px, 12px, 14px);
+    color: $whiteColor;
   }
   .form__input {
     height: 4vmin;

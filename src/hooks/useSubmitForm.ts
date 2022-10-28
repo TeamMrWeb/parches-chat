@@ -19,23 +19,9 @@ export const useSubmitForm = () => {
     login
   }
 
-  const getUserData = (e: React.FormEvent<HTMLFormElement>) => {
-    const formInputsElements = e.currentTarget.elements as HTMLFormControlsCollection
-    const inputsArray = Object.values(formInputsElements).slice(0, -1)
-    let userData = {}
-    inputsArray.forEach(elem => {
-      Object.assign(userData, {
-        [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value
-      })
-    })
-    const { username, email, password } = userData as any
-    return { username, email, password }
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: string, redirecturl: string) => {
-    e.preventDefault()
+  const handleSubmit = (values: any, type: string, redirecturl: string) => {
     dispatch(startLoader())
-    const { username, email, password } = getUserData(e)
+    const { username, email, password } = values
     submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
       .then((res: any) => {
         dispatch(completeProgressLoader())
@@ -56,6 +42,7 @@ export const useSubmitForm = () => {
       .catch((err: any) => {
         dispatch(completeProgressLoader())
         console.log(err)
+        const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
         dispatch(
           createAlertMessage({
             title: `Error de ${capitalizeFirstLetter(type)}`,
