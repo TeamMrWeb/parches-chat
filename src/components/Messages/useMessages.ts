@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { messagesByChatId } from "../../graphql/queries"
 import { setMessages, clearMessages } from "../../slicers/messagesSlice"
-import { authorProps, RootState } from "../../ts/interfaces"
+import { AuthorProps, RootState } from "../../ts/interfaces"
 
 export const useMessages = () => {
   const { lazyQueryMethod: getMessagesByChatId, data } = useFetchingMethod(
@@ -16,7 +16,7 @@ export const useMessages = () => {
   const chat = useSelector((state: RootState) => state.chat)
   const dispatch = useDispatch()
 
-  const defineMessageSide = (messageAuthor: authorProps) =>
+  const defineMessageSide = (messageAuthor: AuthorProps) =>
     messageAuthor.id === loggedUser.id ? "right" : "left"
 
   const formatCreatedAtDate = (createdAt: Date) => {

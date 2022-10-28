@@ -11,3 +11,9 @@
     color: $pinkColor;
   }
 }
+
+@media screen and (max-height: 750px) {
+  .view-repository {
+    font-size: clamp(2px, 10px, 5vmin);
+  }
+}

@@ -1,19 +1,39 @@
 .form-group {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 5px;
+  width: 100%;
+  max-width: 300px;
   .form__label {
     @include fluid-type(font-size, 600px, 1200px, 12px, 14px);
   }
   .form__input {
-    height: 30px;
+    height: 4vmin;
+    max-height: 30px;
     border-radius: 10px;
     border: none;
     background-color: $secundaryColorHover;
     color: $textGrayColor;
     padding: 10px 15px 10px;
+    box-sizing: unset;
+    width: 100%;
     &:focus {
       outline: 1px solid $pinkColor;
+    }
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .form-group {
+    .form__label {
+      font-size: clamp(8px, 16px, 2vmin);
+    }
+    .form__input {
+      max-height: 30px;
+      font-size: clamp(8px, 16px, 2vmin);
+      padding: 7px 15px 7px;
     }
   }
 }

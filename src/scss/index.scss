@@ -36,6 +36,15 @@ html {
   }
 }
 
+@media screen and (max-height: 750px) {
+  body {
+    overflow: hidden;
+    section {
+      overflow-y: scroll;
+    }
+  }
+}
+
 //sections
 @import "../sections/ChatIndex/chatIndex";
 @import "../sections/Register/register";
@@ -55,7 +64,6 @@ html {
 @import "../components/Messages/messages";
 @import "../components/Message/message";
 @import "../components/Groups/groups";
-@import "../components/Button/button";
 @import "../components/GoHome/goHome";
 @import "../components/Loader/loader";
 @import "../components/PrivateChats/privateChats";

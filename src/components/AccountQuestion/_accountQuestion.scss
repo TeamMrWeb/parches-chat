@@ -3,11 +3,18 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  font-size: clamp(10px, 14px, 5vmin);
   .account-question__link {
     text-decoration: none;
     color: $pinkColor;
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .account-question {
+    font-size: clamp(2px, 10px, 5vmin);
   }
 }

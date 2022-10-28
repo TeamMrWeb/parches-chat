@@ -47,7 +47,7 @@ export default function Messages({
           <Message
             messageText={message.text!}
             messageCreatedAt={formatCreatedAtDate(message.createdAt!)}
-            side={defineMessageSide(message.author)}
+            side={defineMessageSide(message.author!)}
             key={message.id}
           />
         ))}
