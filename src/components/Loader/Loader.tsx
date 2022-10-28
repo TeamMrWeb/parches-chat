@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { incrementProgressLoader, stopLoader } from "../../slicers/loaderSlice"
+import { RootState } from "../../ts/interfaces"
 
-export default function Loader({ progress }: { progress: any }) {
-  const loader = useSelector((state: any) => state.loader)
-  const ref = useRef<HTMLDivElement | null>(null)
+export default function Loader({ progress }: { progress: number }) {
   const [index, setIndex] = useState(2)
+  const loader = useSelector((state: RootState) => state.loader)
+  const ref = useRef<HTMLDivElement | null>(null)
   const dispatch = useDispatch()
 
   const getRandomInt = (min: number, max: number) => {

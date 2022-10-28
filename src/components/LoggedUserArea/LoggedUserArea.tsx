@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import configurationIcon from "../../assets/icons/configuration-icon.svg"
 import userDefaultIcon from "../../assets/icons/user-default-icon.svg"
+import { RootState } from "../../ts/interfaces"
 
 export default function LoggedUserArea({
   showQuickOptions,
@@ -9,13 +10,13 @@ export default function LoggedUserArea({
   showQuickOptions: boolean
   setShowQuickOptions: React.Dispatch<React.SetStateAction<boolean>>
 }) {
-  const loggedUser = useSelector((state: any) => state.loggedUser)
+  const loggedUser = useSelector((state: RootState) => state.loggedUser)
 
-  window.onclick = (event: any) => {
+  window.onclick = (event: MouseEvent) => {
     if (
       showQuickOptions &&
-      !document.getElementsByClassName("logged-user-area")[0].contains(event.target) &&
-      event.target.className !== "user-quick-options"
+      !document.getElementsByClassName("logged-user-area")[0].contains(event.target as Element) &&
+      (event.target as Element).className !== "user-quick-options"
     )
       setShowQuickOptions(false)
   }
@@ -23,7 +24,11 @@ export default function LoggedUserArea({
   return (
     <div className="logged-user-area">
       <div className="wrapper" onClick={() => setShowQuickOptions(!showQuickOptions)}>
-        <img className="logged-user-area__avatar" src={loggedUser.avatar ? loggedUser.avatar.secure_url : userDefaultIcon} alt="" />
+        <img
+          className="logged-user-area__avatar"
+          src={loggedUser.avatar ? loggedUser.avatar.secure_url : userDefaultIcon}
+          alt=""
+        />
         <span className="logged-user-area__name">{loggedUser?.username}</span>
       </div>
       <button className="configuration">

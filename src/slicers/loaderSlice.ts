@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { loaderProps } from "../ts/interfaces"
 
-interface loader {
-  status: boolean
-  progress: number
-}
-
-const initialState: loader = {
+const initialState: loaderProps = {
   status: false,
   progress: 0
 }
@@ -30,6 +26,7 @@ export const loaderSlice = createSlice({
   }
 })
 
-export const { startLoader, stopLoader, incrementProgressLoader, completeProgressLoader } = loaderSlice.actions
+export const { startLoader, stopLoader, incrementProgressLoader, completeProgressLoader } =
+  loaderSlice.actions
 
 export default loaderSlice.reducer
