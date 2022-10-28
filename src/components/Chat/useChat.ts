@@ -43,8 +43,8 @@ export const useChat = () => {
   }, [chat])
 
   useEffect(() => {
-    const onScroll = (e: any) => {
-      e.target.scrollTop <= -50 ? setShowButton(true) : setShowButton(false)
+    const onScroll = (e: Event) => {
+      ;(e.target as HTMLDivElement).scrollTop <= -50 ? setShowButton(true) : setShowButton(false)
     }
     const messagesSection = document.querySelector(".messages")
     messagesSection?.addEventListener("scroll", onScroll)

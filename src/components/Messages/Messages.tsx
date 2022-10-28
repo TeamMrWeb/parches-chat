@@ -4,7 +4,11 @@ import { MessageProps } from "../../ts/interfaces"
 import { useMessages } from "./useMessages"
 import Message from "../Message/Message"
 
-export default function Messages({ scrollBottom }: { scrollBottom: any }) {
+export default function Messages({
+  scrollBottom
+}: {
+  scrollBottom: React.RefObject<HTMLDivElement>
+}) {
   const { messages, defineMessageSide, formatCreatedAtDate, refetchChatMessages, hasMore } =
     useMessages()
 
@@ -41,8 +45,8 @@ export default function Messages({ scrollBottom }: { scrollBottom: any }) {
       >
         {messages?.map((message: MessageProps) => (
           <Message
-            messageText={message.text}
-            messageCreatedAt={formatCreatedAtDate(message.createdAt)}
+            messageText={message.text!}
+            messageCreatedAt={formatCreatedAtDate(message.createdAt!)}
             side={defineMessageSide(message.author)}
             key={message.id}
           />

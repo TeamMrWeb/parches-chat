@@ -35,7 +35,7 @@ export interface LoggedUserProps {
   password?: string
   email?: string
   status?: number
-  friends?: any
+  friends?: UserProps
   pendingFriends?: any
   blockedUsers?: any
 }
