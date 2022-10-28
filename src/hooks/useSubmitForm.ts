@@ -5,8 +5,6 @@ import { createAlertMessage } from "../slicers/alertMessageSlice"
 import { startLoader, completeProgressLoader } from "../slicers/loaderSlice"
 import { userRegister, userLogin } from "../graphql/mutations"
 
-const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
-
 export const useSubmitForm = () => {
   const [register] = useMutation(userRegister)
   const [login] = useMutation(userLogin)
@@ -26,7 +24,9 @@ export const useSubmitForm = () => {
     const inputsArray = Object.values(formInputsElements).slice(0, -1)
     let userData = {}
     inputsArray.forEach(elem => {
-      Object.assign(userData, { [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value })
+      Object.assign(userData, {
+        [(elem as HTMLInputElement).name]: (elem as HTMLInputElement).value
+      })
     })
     const { username, email, password } = userData as any
     return { username, email, password }
@@ -39,18 +39,19 @@ export const useSubmitForm = () => {
     submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
       .then((res: any) => {
         dispatch(completeProgressLoader())
-        dispatch(
-          createAlertMessage({
-            title: `El ${capitalizeFirstLetter(type)} se realizó correctamente`,
-            type: "success",
-            visible: true
-          })
-        )
+        type === "register" &&
+          dispatch(
+            createAlertMessage({
+              title: `Tu cuenta se ha registrado satisfactoriamente`,
+              type: "success",
+              visible: true
+            })
+          )
         if (type === "login") {
           const token = res.data.login
           localStorage.setItem("auth", token)
-          navigate(redirecturl)
         }
+        navigate(redirecturl)
       })
       .catch((err: any) => {
         dispatch(completeProgressLoader())
