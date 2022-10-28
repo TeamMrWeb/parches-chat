@@ -1,13 +1,13 @@
-interface FormGroup {
-  type: string
-  label: string
-  placeholder: string
-  minLength?: number
-  maxLength?: number
-  required: boolean
-}
+import { FormGroupProps } from "../../ts/interfaces"
 
-export default function FormGroupInput({ type, label, placeholder, minLength, maxLength, required }: FormGroup) {
+export default function FormGroupInput({
+  type,
+  label,
+  placeholder,
+  minLength,
+  maxLength,
+  required
+}: FormGroupProps) {
   return (
     <div className="form-group">
       <label className="form__label" htmlFor={type}>
