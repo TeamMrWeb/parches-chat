@@ -1,31 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { MessageProps } from "../ts/interfaces"
 
-interface messages {
-  id?: string
-  text?: string
-  image?: string
-  author?: Object
-  edited?: boolean
-  seen?: Object
-  createdAt?: Date
-  updatedAt?: Date
-  __typename?: string
-}
-
-const initialState: messages = [] as messages
+const initialState: MessageProps = [] as MessageProps
 
 export const messagesSlice = createSlice({
   name: "messages",
   initialState,
   reducers: {
     setMessages: (state, action) => {
-      ;(state as messages[]).push(...action.payload.chat.messages)
+      ;(state as MessageProps[]).push(...action.payload.chat.messages)
     },
     setSuscriptionMessage: (state, action) => {
-      ;(state as messages[]).unshift(action.payload.chatMessageAdded)
+      ;(state as MessageProps[]).unshift(action.payload.chatMessageAdded)
     },
     clearMessages: state => {
-      ;(state as messages[]).length = 0
+      ;(state as MessageProps[]).length = 0
     }
   }
 })

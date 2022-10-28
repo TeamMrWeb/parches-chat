@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { loaderProps } from "../ts/interfaces"
+import { LoaderProps } from "../ts/interfaces"
 
-const initialState: loaderProps = {
+const initialState: LoaderProps = {
   status: false,
   progress: 0
 }

@@ -10,28 +10,37 @@ import { useShowChat } from "../../contexts/ShowChatContext"
 import { useNotifications } from "../../hooks/useNotifications"
 import { Chat } from "../../components"
 import Home from "../Home/Home"
-import { RootState } from "../../ts/interfaces"
+import { RootState, UserProps } from "../../ts/interfaces"
 
 const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth
 
 export const useChatIndex = (chatContainer: RefObject<HTMLDivElement>) => {
-  const { lazyQueryMethod: getLoggedUserId, loading: loggedUserLoading } = useFetchingMethod(LoggedUserId, setLoggedUserField)
+  const { lazyQueryMethod: getLoggedUserId, loading: loggedUserLoading } = useFetchingMethod(
+    LoggedUserId,
+    setLoggedUserField
+  )
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
-  const chat = useSelector((state: any) => state.chat)
+  const chat = useSelector((state: RootState) => state.chat)
   const [firstAccess, setFirstAccess] = useState(!notMobile)
   const { showChat } = useShowChat()
-  const { data } = useSubscription(LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION, { variables: { userId: loggedUser.id } })
+  const { data } = useSubscription(LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION, {
+    variables: { userId: loggedUser.id }
+  })
   const dispatch = useDispatch()
-  const { emitSoundOnNewMessage, showNewNotificationOnBrowserTab, showCurrentNotificationsOnBrowserTab } = useNotifications()
+  const {
+    emitSoundOnNewMessage,
+    showNewNotificationOnBrowserTab,
+    showCurrentNotificationsOnBrowserTab
+  } = useNotifications()
 
   const desktopBehaviour = () => (showChat ? <Chat chatContainer={chatContainer} /> : <Home />)
   const mobileBehaviour = () => !firstAccess && <Chat chatContainer={chatContainer} />
 
   const checkIfIsAlreadyOnChat = () => {
     if (!chat.users) return
-    const author = chat.users.find((user: any) => user.id !== loggedUser.id)
-    return author.id === data.userMessageNotification.author.id
+    const author = chat.users.find((user: UserProps) => user.id !== loggedUser.id)
+    return author?.id === data.userMessageNotification.author.id
   }
 
   useEffect(() => {
@@ -41,7 +50,12 @@ export const useChatIndex = (chatContainer: RefObject<HTMLDivElement>) => {
   }, [loggedUser, loggedUserLoading])
 
   useEffect(() => {
-    if (!data || data.userMessageNotification.author.id === loggedUser.id || checkIfIsAlreadyOnChat()) return
+    if (
+      !data ||
+      data.userMessageNotification.author.id === loggedUser.id ||
+      checkIfIsAlreadyOnChat()
+    )
+      return
     emitSoundOnNewMessage()
     showNewNotificationOnBrowserTab(data.userMessageNotification.author.id)
   }, [data])

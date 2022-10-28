@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { LoaderSpinnerProps } from "../ts/interfaces"
 
-interface loader {
-  status: boolean
-}
-
-const initialState: loader = {
+const initialState: LoaderSpinnerProps = {
   status: false
 }
 

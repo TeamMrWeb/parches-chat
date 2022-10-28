@@ -1,19 +1,17 @@
-import { BrowserRouter, HashRouter, Navigate, Route, Routes } from "react-router-dom"
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { ShowChatProvider } from "./contexts/ShowChatContext"
-import VerifyAccount from "./components/VerifyAccount/VerifyAccount"
-import AlertMessage from "./components/AlertMessage/AlertMessage"
-import Loader from "./components/Loader/Loader"
+import { VerifyAccount, AlertMessage, Loader, LoaderSpinner } from "./components"
 import ChatIndex from "./sections/ChatIndex/ChatIndex"
 import NotFound from "./sections/NotFound/NotFound"
 import Register from "./sections/Register/Register"
 import Login from "./sections/Login/Login"
-import LoaderSpinner from "./components/LoaderSpinner/LoaderSpinner"
+import { RootState } from "./ts/interfaces"
 
 function App() {
-  const alertMessage = useSelector((state: any) => state.alertMessage)
-  const loader = useSelector((state: any) => state.loader)
-  const loaderSpinner = useSelector((state: any) => state.loaderSpinner)
+  const alertMessage = useSelector((state: RootState) => state.alertMessage)
+  const loader = useSelector((state: RootState) => state.loader)
+  const loaderSpinner = useSelector((state: RootState) => state.loaderSpinner)
 
   return (
     <div className="App">

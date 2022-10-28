@@ -6,9 +6,10 @@ import warningIcon from "../../assets/icons/warning-icon.svg"
 import closeIcon from "../../assets/icons/close-icon.svg"
 import errorIcon from "../../assets/icons/error-icon.svg"
 import infoIcon from "../../assets/icons/info-icon.svg"
+import { RootState } from "../../ts/interfaces"
 
 export default function AlertMessage() {
-  const alertMessage = useSelector((state: any) => state.alertMessage)
+  const alertMessage = useSelector((state: RootState) => state.alertMessage)
   const dispatch = useDispatch()
 
   useEffect(() => {

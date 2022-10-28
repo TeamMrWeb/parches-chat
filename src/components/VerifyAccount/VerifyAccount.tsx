@@ -7,7 +7,7 @@ export default function VerifyAccount() {
   const { token } = useParams()
   const navigate = useNavigate()
 
-  const { data, error } = useQuery<any>(verifyQuery, {
+  const { data, error } = useQuery(verifyQuery, {
     variables: { token },
     context: {
       headers: {

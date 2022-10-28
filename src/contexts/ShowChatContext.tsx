@@ -8,9 +8,13 @@ interface showChatCOntext {
 
 const ShowChatContext = createContext<showChatCOntext>({ showChat: false })
 
-const ShowChatProvider = ({ children }: { children: any }) => {
+const ShowChatProvider = ({ children }: { children: React.ReactNode }) => {
   const [showChat, setShowChat] = useState(false)
-  return <ShowChatContext.Provider value={{ showChat, setShowChat }}>{children}</ShowChatContext.Provider>
+  return (
+    <ShowChatContext.Provider value={{ showChat, setShowChat }}>
+      {children}
+    </ShowChatContext.Provider>
+  )
 }
 
 const useShowChat = () => useContext(ShowChatContext)

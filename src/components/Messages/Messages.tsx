@@ -1,21 +1,12 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import { Oval } from "react-loader-spinner"
-import Message from "../Message/Message"
+import { MessageProps } from "../../ts/interfaces"
 import { useMessages } from "./useMessages"
-
-interface Message {
-  __typename: string
-  id: string
-  text: string
-  author: {
-    id: string
-    __typename: string
-  }
-  createdAt: Date
-}
+import Message from "../Message/Message"
 
 export default function Messages({ scrollBottom }: { scrollBottom: any }) {
-  const { messages, defineMessageSide, formatCreatedAtDate, refetchChatMessages, hasMore } = useMessages()
+  const { messages, defineMessageSide, formatCreatedAtDate, refetchChatMessages, hasMore } =
+    useMessages()
 
   return (
     <section
@@ -48,7 +39,7 @@ export default function Messages({ scrollBottom }: { scrollBottom: any }) {
         scrollableTarget="scrollableDiv"
         className="messages-wrapper"
       >
-        {messages?.map((message: any) => (
+        {messages?.map((message: MessageProps) => (
           <Message
             messageText={message.text}
             messageCreatedAt={formatCreatedAtDate(message.createdAt)}

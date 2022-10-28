@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { AlertMessageProps } from "../ts/interfaces"
 
-interface alertMessage {
-  title: string
-  description: string
-  type: string //success, warning, info, error
-  visible: boolean
-}
-
-const initialState: alertMessage = {
+const initialState: AlertMessageProps = {
   title: "",
   description: "",
   type: "",
