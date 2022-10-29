@@ -2,6 +2,8 @@
 
 Esta rama contiene la página web de Parches Chat
 
+> ***Aviso:*** Este proyecto aún se encuentra en desarollo en su fase beta. Puede que las funcionalidades dejen de funcionar de un día para otro.
+
 ## Tecnologías usadas 💫
 [![React](https://img.shields.io/badge/-React-blue?style=for-the-badge&logo=React)](https://es.reactjs.org/)
 [![Redux](https://img.shields.io/badge/-Redux-764ABC?style=for-the-badge&logo=Redux)](https://es.redux.js.org/)
