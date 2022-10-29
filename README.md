@@ -2,6 +2,8 @@
 
 Esta rama contiene la página web de Parches Chat
 
+> ***Aviso:*** Este proyecto aún se encuentra en desarollo en su fase beta. Puede que las funcionalidades dejen de funcionar de un día para otro.
+
 ## Tecnologías usadas 💫
 [![React](https://img.shields.io/badge/-React-blue?style=for-the-badge&logo=React)](https://es.reactjs.org/)
 [![Redux](https://img.shields.io/badge/-Redux-764ABC?style=for-the-badge&logo=Redux)](https://es.redux.js.org/)
@@ -28,7 +30,7 @@ npm run dev
 > ***Aviso:*** Se necesita clonar y ejecutar el servidor de la rama backend para utilizar esta página correctamente de forma local. [Ir a la rama backend](https://github.com/TeamParches/parches-chat/tree/backend)
 
 ## Despliegue 🚀
-Puedes utilizar esta página sin necesidad de instalar nada. Has click [aquí](https://parches-chat.vercel.app/) para ir al despliegue.
+Puedes utilizar esta página sin necesidad de instalar nada. Has click [aquí](https://teamparches.github.io/parches-chat/) para ir al despliegue.
 
 ## Usuarios de prueba 🚻
 Si no quieres crear una cuenta o agregar a amigos, simplemente utiliza alguno de estos usuarios de prueba.
