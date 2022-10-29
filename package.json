@@ -14,6 +14,7 @@
     "@apollo/client": "^3.6.9",
     "@reduxjs/toolkit": "^1.8.5",
     "emoji-picker-react": "^3.6.1",
+    "firebase": "^9.13.0",
     "formik": "^2.2.9",
     "graphql": "^16.6.0",
     "graphql-ws": "^5.11.1",

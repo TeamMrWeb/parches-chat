@@ -3,9 +3,12 @@ import { Form, Formik } from "formik"
 import * as Yup from "yup"
 import { AccountQuestion, FormGroupInput, ViewRepository } from "../../components"
 import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
+import googleIcon from "../../assets/icons/google-icon.svg"
+import { useGoogleSignIn } from "../../hooks/useGoogleSignIn"
 
 export default function Register() {
   const { handleSubmit } = useSubmitForm()
+  const { signInWithGoogle } = useGoogleSignIn()
 
   return (
     <section className="register">
@@ -60,6 +63,10 @@ export default function Register() {
               required={true}
             />
             <input className="form__submit" type="submit" value="Registrar cuenta" />
+            <button className="google-register" onClick={() => signInWithGoogle()} type="button">
+              <img src={googleIcon} alt="Ícono de Google" />
+              <span>Registrarse con Google</span>
+            </button>
             <AccountQuestion
               question="¿Ya tienes una cuenta?"
               href="/accounts/login"

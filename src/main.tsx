@@ -6,6 +6,7 @@ import App from "./App"
 import "./scss/index.css"
 import { useComunication } from "./apollo/useComunication"
 import React from "react"
+import "./firebase"
 
 const { client } = useComunication()
 
