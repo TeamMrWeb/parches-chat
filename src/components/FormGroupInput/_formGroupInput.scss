@@ -12,7 +12,7 @@
     color: $whiteColor;
   }
   .form__input {
-    height: 4vmin;
+    height: 10vmin;
     max-height: 30px;
     border-radius: 10px;
     border: none;
@@ -23,19 +23,6 @@
     width: 100%;
     &:focus {
       outline: 1px solid $pinkColor;
-    }
-  }
-}
-
-@media screen and (max-height: 750px) {
-  .form-group {
-    .form__label {
-      font-size: clamp(8px, 16px, 2vmin);
-    }
-    .form__input {
-      max-height: 30px;
-      font-size: clamp(8px, 16px, 2vmin);
-      padding: 7px 15px 7px;
     }
   }
 }

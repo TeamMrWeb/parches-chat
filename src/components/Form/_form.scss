@@ -28,12 +28,3 @@
     }
   }
 }
-
-@media screen and (max-height: 750px) {
-  .form {
-    .form__submit {
-      max-height: 40px;
-      font-size: clamp(12px, 14px, 5vmin);
-    }
-  }
-}

@@ -12,9 +12,3 @@
     }
   }
 }
-
-@media screen and (max-height: 750px) {
-  .account-question {
-    font-size: clamp(2px, 10px, 5vmin);
-  }
-}

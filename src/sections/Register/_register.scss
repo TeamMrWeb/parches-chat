@@ -25,7 +25,8 @@
       width: 100%;
       gap: 10px;
       .content__image {
-        width: 100%;
+        // width: 100%;
+        width: 30vw;
         max-width: 200px;
         height: 25vh;
         max-height: 179px;
@@ -34,14 +35,14 @@
       .content__title {
         color: $textWhiteColor;
         letter-spacing: 0.5px;
-        font-size: clamp(16px, 30px, 5vmin);
+        font-size: clamp(24px, 30px, 5vmin);
         font-weight: 900;
         line-height: 2;
         margin: 0;
       }
       .content__description {
         text-align: center;
-        font-size: clamp(12px, 16px, 5vmin);
+        font-size: clamp(18px, 16px, 5vmin);
       }
     }
     .google-register {
@@ -71,11 +72,28 @@
   .register {
     .content {
       .header {
+        .content__image {
+          margin: 0;
+        }
         .content__title {
           font-size: clamp(16px, 30px, 5vmin);
         }
         .content__description {
           font-size: clamp(12px, 16px, 2vmin);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .register {
+    justify-content: unset;
+    .content {
+      .header {
+        .content__image {
+          margin: 0;
+          height: 100%;
         }
       }
     }

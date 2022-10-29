@@ -127,7 +127,7 @@ html body #root .App ul {
   gap: 10px;
 }
 .register .content .header .content__image {
-  width: 100%;
+  width: 30vw;
   max-width: 200px;
   height: 25vh;
   max-height: 179px;
@@ -136,14 +136,14 @@ html body #root .App ul {
 .register .content .header .content__title {
   color: #e7ecf7;
   letter-spacing: 0.5px;
-  font-size: clamp(16px, 30px, 5vmin);
+  font-size: clamp(24px, 30px, 5vmin);
   font-weight: 900;
   line-height: 2;
   margin: 0;
 }
 .register .content .header .content__description {
   text-align: center;
-  font-size: clamp(12px, 16px, 5vmin);
+  font-size: clamp(18px, 16px, 5vmin);
 }
 .register .content .google-register {
   display: flex;
@@ -167,11 +167,23 @@ html body #root .App ul {
 }
 
 @media screen and (max-height: 636px) {
+  .register .content .header .content__image {
+    margin: 0;
+  }
   .register .content .header .content__title {
     font-size: clamp(16px, 30px, 5vmin);
   }
   .register .content .header .content__description {
     font-size: clamp(12px, 16px, 2vmin);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .register {
+    justify-content: unset;
+  }
+  .register .content .header .content__image {
+    margin: 0;
+    height: 100%;
   }
 }
 .not-found {
@@ -218,7 +230,7 @@ html body #root .App ul {
   gap: 10px;
 }
 .login .content .header .content__image {
-  width: 100%;
+  width: 30vw;
   max-width: 200px;
   height: 25vh;
   max-height: 179px;
@@ -228,14 +240,14 @@ html body #root .App ul {
   color: #e7ecf7;
   font-weight: 500;
   letter-spacing: 0.5px;
-  font-size: clamp(16px, 30px, 5vmin);
+  font-size: clamp(24px, 30px, 5vmin);
   font-weight: 900;
   line-height: 2;
   margin: 0;
 }
 .login .content .header .content__description {
   text-align: center;
-  font-size: clamp(12px, 16px, 5vmin);
+  font-size: clamp(18px, 16px, 5vmin);
 }
 
 @media screen and (max-height: 636px) {
@@ -244,6 +256,15 @@ html body #root .App ul {
   }
   .login .content .header .content__description {
     font-size: clamp(12px, 16px, 2vmin);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .login {
+    justify-content: unset;
+  }
+  .login .content .header .content__image {
+    margin: 0;
+    height: 100%;
   }
 }
 .home {
@@ -373,11 +394,6 @@ html body #root .App ul {
   text-decoration: underline;
 }
 
-@media screen and (max-height: 750px) {
-  .account-question {
-    font-size: clamp(2px, 10px, 5vmin);
-  }
-}
 .form-group {
   display: flex;
   align-items: center;
@@ -403,7 +419,7 @@ html body #root .App ul {
   }
 }
 .form-group .form__input {
-  height: 4vmin;
+  height: 10vmin;
   max-height: 30px;
   border-radius: 10px;
   border: none;
@@ -417,16 +433,6 @@ html body #root .App ul {
   outline: 1px solid #dd4ec6;
 }
 
-@media screen and (max-height: 750px) {
-  .form-group .form__label {
-    font-size: clamp(8px, 16px, 2vmin);
-  }
-  .form-group .form__input {
-    max-height: 30px;
-    font-size: clamp(8px, 16px, 2vmin);
-    padding: 7px 15px 7px;
-  }
-}
 .view-repository {
   position: relative;
   top: 30px;
@@ -441,11 +447,6 @@ html body #root .App ul {
   color: #dd4ec6;
 }
 
-@media screen and (max-height: 750px) {
-  .view-repository {
-    font-size: clamp(2px, 10px, 5vmin);
-  }
-}
 .chat-header {
   display: flex;
   align-items: center;
@@ -963,12 +964,6 @@ html body #root .App ul {
   box-shadow: 0 0px 15px 2px #8d4fc9;
 }
 
-@media screen and (max-height: 750px) {
-  .form .form__submit {
-    max-height: 40px;
-    font-size: clamp(12px, 14px, 5vmin);
-  }
-}
 .logged-user-area {
   display: flex;
   justify-content: space-between;
