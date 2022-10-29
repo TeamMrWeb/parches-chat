@@ -68,7 +68,8 @@ export const useChatInput = (chat: ChatProps) => {
           title: `¡Ey!`,
           description: "Estas enviando mensajes muy rápido, espera un poco",
           type: "warning",
-          visible: true
+          visible: true,
+          lifeTime: 5000
         })
       )
     }

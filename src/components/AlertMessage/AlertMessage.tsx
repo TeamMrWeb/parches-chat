@@ -15,7 +15,7 @@ export default function AlertMessage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(closeAlertMessage())
-    }, 10000)
+    }, alertMessage.lifeTime)
     return () => clearTimeout(timer)
   }, [])
 

@@ -138,6 +138,7 @@ export interface AlertMessageProps {
   description: string
   type: string //success, warning, info, error
   visible: boolean
+  lifeTime?: number
 }
 
 export interface LoaderSpinnerProps {

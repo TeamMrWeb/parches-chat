@@ -5,7 +5,8 @@ const initialState: AlertMessageProps = {
   title: "",
   description: "",
   type: "",
-  visible: false
+  visible: false,
+  lifeTime: 10000
 }
 
 export const alertMessageSlice = createSlice({
