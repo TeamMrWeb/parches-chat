@@ -11,7 +11,9 @@ export const useAddFriend = () => {
   const { lazyQueryMethod: getFriendByUsername } = useFetchingMethod(usersByUsername)
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const [createChat] = useMutation(createChatBetweenFriends, {
-    refetchQueries: [{ query: chatsFromLoggedUser, variables: { userId: loggedUser.id, isGroup: false } }]
+    refetchQueries: [
+      { query: chatsFromLoggedUser, variables: { userId: loggedUser.id, isGroup: false } }
+    ]
   })
   const { lazyQueryMethod: sendFriendRequest } = useFetchingMethod(sendFriendRequestToUser)
   const [isLoading, setIsLoading] = useState(true)
@@ -42,10 +44,12 @@ export const useAddFriend = () => {
             visible: true
           })
         )
-        await createChat({ variables: { name: friendUsername, usersId: [loggedUser.id, friendId] } })
+        await createChat({
+          variables: { name: friendUsername, usersId: [loggedUser.id, friendId] }
+        })
       }
     )
   }
 
-  return { setInputValue, inputValue, results, isLoading, addFriendToLoggedUser }
+  return { setInputValue, inputValue, results, isLoading, addFriendToLoggedUser, loggedUser }
 }

@@ -11,7 +11,8 @@ export default function AddFriend({
   showAddFriend: boolean
   setShowAddFriend: (showAddFriend: boolean) => void
 }) {
-  const { inputValue, setInputValue, results, isLoading, addFriendToLoggedUser } = useAddFriend()
+  const { inputValue, setInputValue, results, isLoading, addFriendToLoggedUser, loggedUser } =
+    useAddFriend()
 
   return (
     <section className="add-friend-section">
@@ -43,12 +44,27 @@ export default function AddFriend({
       ) : (
         <ul className="results">
           {results?.map((result: ResultProps) => (
-            <li className="results__item" key={result.id} onClick={() => addFriendToLoggedUser(result.id, result.username)}>
+            <li
+              className="results__item"
+              key={result.id}
+              onClick={() =>
+                result.id !== loggedUser.id && addFriendToLoggedUser(result.id, result.username)
+              }
+              title="Agregar amigo"
+            >
               <div className="left-side">
-                <img className="results__avatar" src={result.avatar.secure_url} alt="Avatar de usuario" />
+                <img
+                  className="results__avatar"
+                  src={result.avatar.secure_url}
+                  alt="Avatar de usuario"
+                />
                 <span className="results__name">{result.username}</span>
               </div>
-              <img className="results__icon" src={addFriendIcon} alt="Ícono de agregar amigo" />
+              {result.id !== loggedUser.id ? (
+                <img className="results__icon" src={addFriendIcon} alt="Ícono de agregar amigo" />
+              ) : (
+                "Tú"
+              )}
             </li>
           ))}
         </ul>

@@ -1107,6 +1107,8 @@ html body #root .App ul {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  padding: 5px;
+  box-sizing: border-box;
 }
 .add-friend-section .results .results__item:hover {
   background-color: #323346;
@@ -1120,8 +1122,8 @@ html body #root .App ul {
   gap: 10px;
 }
 .add-friend-section .results .results__item .left-side .results__avatar {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 40px;
 }
 .add-friend-section .results .results__item .results__icon {

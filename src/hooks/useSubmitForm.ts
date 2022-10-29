@@ -42,10 +42,9 @@ export const useSubmitForm = () => {
       .catch((err: any) => {
         dispatch(completeProgressLoader())
         console.log(err)
-        const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
         dispatch(
           createAlertMessage({
-            title: `Error de ${capitalizeFirstLetter(type)}`,
+            title: `Error de ${type === "login" ? "inicio de sesión" : "registro"}`,
             description: err.message,
             type: "error",
             visible: true
