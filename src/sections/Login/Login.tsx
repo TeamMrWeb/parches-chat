@@ -25,8 +25,8 @@ export default function Login() {
               .max(20, "Debe contener 20 caracteres o menos")
               .min(6, "Debe contener 6 caracteres o mas")
               .matches(
-                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/,
-                "Debe contener al menos una mayúscula, una minúscula, un número y un caracter especial"
+                /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,20}$/,
+                "Debe contener al menos una mayúscula, una minúscula y un número"
               )
               .required("Requerido")
           })}
