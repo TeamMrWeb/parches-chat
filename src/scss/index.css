@@ -418,19 +418,32 @@ html body #root .App ul {
     font-size: 14px;
   }
 }
-.form-group .form__input {
+.form-group .input-wrapper {
+  position: relative;
+  width: 100%;
+}
+.form-group .input-wrapper .form__input {
   height: 10vmin;
   max-height: 30px;
   border-radius: 10px;
   border: none;
   background-color: #323346;
   color: #8e9297;
-  padding: 10px 15px 10px;
-  box-sizing: unset;
+  padding: 25px 0;
+  padding-left: 15px;
+  box-sizing: border-box;
   width: 100%;
 }
-.form-group .form__input:focus {
+.form-group .input-wrapper .form__input:focus {
   outline: 1px solid #dd4ec6;
+}
+.form-group .input-wrapper .form__eye-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+  width: 20px;
+  cursor: pointer;
+  filter: invert(40%) sepia(21%) saturate(2195%) hue-rotate(231deg) brightness(94%) contrast(92%);
 }
 
 .view-repository {
@@ -615,6 +628,45 @@ html body #root .App ul {
   background-color: #333641 !important;
 }
 
+.emojis-container {
+  position: absolute;
+  right: 0px;
+  bottom: 55px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #1c1d22;
+  width: 400px;
+  height: 300px;
+  border: 1px solid #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.emojis-container .emojis-wrapper {
+  height: 100%;
+}
+.emojis-container .emojis-wrapper .emojis-header .categories-list {
+  display: flex;
+}
+.emojis-container .emojis-wrapper .emojis-header .categories-list .category {
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.emojis-container .emojis-wrapper .emojis-header .categories-list .category:hover {
+  color: #dd4ec6;
+}
+.emojis-container .emojis-wrapper .emojis-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  height: 100%;
+  overflow-y: scroll;
+}
+.emojis-container .emojis-wrapper .emojis-list .emoji {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
 .chat-input {
   background-color: #1c1d22;
   height: 100%;
