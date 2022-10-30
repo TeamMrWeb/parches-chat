@@ -249,6 +249,26 @@ html body #root .App ul {
   text-align: center;
   font-size: clamp(18px, 16px, 5vmin);
 }
+.login .content .google-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  color: gray;
+  cursor: pointer;
+  transition: color 0.5s ease;
+  font-family: "Inter";
+  background-color: white;
+  border: 1px solid #e9e9e9;
+  transition: all 0.25s;
+}
+.login .content .google-register:hover {
+  color: #1c1d22;
+  box-shadow: 0px 5px 10px 0.5px white;
+}
 
 @media screen and (max-height: 636px) {
   .login .content .header .content__title {
@@ -313,6 +333,63 @@ html body #root .App ul {
   background-position: -200px;
   box-shadow: 0 5px 20px 0 #8d4fc9;
   color: #ffffff;
+}
+
+.email-verification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1d22;
+  width: 100%;
+  height: 100vh;
+  color: #ffffff;
+}
+.email-verification .email-verification-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.email-verification .email-verification-wrapper .email-verification__description {
+  text-align: center;
+}
+.email-verification .email-verification-wrapper .button {
+  background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
+  background-size: 100%;
+  background-position: 0;
+  border-radius: 10px;
+  border: none;
+  color: #ffffff;
+  font-family: "Inter";
+  font-size: clamp(12px, 16px, 5vmin);
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 1px 10px 0 #8d4fc9;
+  background-repeat: no-repeat;
+  background-color: #8d4fc9;
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  box-sizing: border-box;
+}
+.email-verification .email-verification-wrapper .button:hover {
+  background-position: -200px;
+  box-shadow: 0 0px 15px 2px #8d4fc9;
+}
+.email-verification .email-verification-wrapper .button.disabled {
+  background: #2a2c37;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.email-verification .email-verification-wrapper .email-verification__cooldown {
+  margin: 20px !important;
+}
+.email-verification .email-verification-wrapper .email-verification__cooldown span {
+  color: #dd4ec6;
 }
 
 .preview-container {
@@ -541,6 +618,7 @@ html body #root .App ul {
 .alert-message .info-message .info-message__title {
   font-size: 16px;
   font-weight: 600;
+  word-wrap: break-word;
 }
 .alert-message .info-message .info-message__description {
   word-wrap: break-word;

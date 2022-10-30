@@ -7,6 +7,7 @@ import NotFound from "./sections/NotFound/NotFound"
 import Register from "./sections/Register/Register"
 import Login from "./sections/Login/Login"
 import { RootState } from "./ts/interfaces"
+import EmailVerification from "./sections/EmailVerification/EmailVerification"
 
 function App() {
   const alertMessage = useSelector((state: RootState) => state.alertMessage)
@@ -24,6 +25,7 @@ function App() {
             <Route path="/accounts/*">
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
+              <Route path="emailverification/:email" element={<EmailVerification />} />
               <Route path="verify/:token" element={<VerifyAccount />} />
             </Route>
             <Route path="/login" element={<Navigate to="/accounts/login" />} />

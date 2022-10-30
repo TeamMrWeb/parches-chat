@@ -24,10 +24,12 @@
     gap: 5px;
     width: 100%;
     max-width: 170px;
+
     height: 100%;
     .info-message__title {
       font-size: 16px;
       font-weight: 600;
+      word-wrap: break-word;
     }
     .info-message__description {
       word-wrap: break-word;
