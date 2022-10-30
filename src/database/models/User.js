@@ -1,7 +1,7 @@
 /**
  * @file Contains the user model.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.0.9
  */
 
 // required modules
@@ -24,6 +24,11 @@ const userSchema = new Schema(
 				default:
 					'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
 			},
+		},
+		fromPlatform: {
+			type: String,
+			enum: ['local', 'google'],
+			default: 'local',
 		},
 		verified: {
 			type: Boolean,
