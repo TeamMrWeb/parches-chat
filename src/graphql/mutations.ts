@@ -40,3 +40,13 @@ export const createChatBetweenFriends = gql`
     }
   }
 `
+export const registerWithGoogle = gql`
+  mutation registerWithGoogle($username: String!, $email: String!) {
+    register(username: "manu", email: "manuandres864@gmail.com", authStrategy: "google")
+  }
+`
+export const loginWithGoogle = gql`
+  mutation loginWithGoogle($email: String!) {
+    login(email: "manuandres864@gmail.com", authStrategy: "google")
+  }
+`

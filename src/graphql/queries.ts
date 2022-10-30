@@ -82,6 +82,7 @@ export const usersByUsername = gql`
         secure_url
       }
       email
+      isVerified
     }
   }
 `
