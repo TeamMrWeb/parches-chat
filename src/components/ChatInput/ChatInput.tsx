@@ -4,10 +4,20 @@ import { EmojisPicker, ChatPreviewImage } from "../"
 import { RootState } from "../../ts/interfaces"
 import emojiIcon from "../../assets/icons/emoji-icon.svg"
 import plusIcon from "../../assets/icons/plus-icon.svg"
+import Emojis from "../Emojis/Emojis"
 
 export default function ChatInput() {
   const chat = useSelector((state: RootState) => state.chat)
-  const { showEmojisPicker, setShowEmojisPicker, previewImage, image, setImage, value, setValue, submitMessage } = useChatInput(chat)
+  const {
+    showEmojisPicker,
+    setShowEmojisPicker,
+    previewImage,
+    image,
+    setImage,
+    value,
+    setValue,
+    submitMessage
+  } = useChatInput(chat)
 
   return (
     <section className="chat-input">
@@ -40,7 +50,8 @@ export default function ChatInput() {
           alt="Enviar emoji"
           onClick={() => setShowEmojisPicker(!showEmojisPicker)}
         />
-        {showEmojisPicker && <EmojisPicker setValue={setValue} />}
+        {/* {showEmojisPicker && <EmojisPicker setValue={setValue} />} */}
+        {showEmojisPicker && <Emojis setValue={setValue} />}
       </form>
     </section>
   )

@@ -25,7 +25,7 @@ export const useChatInput = (chat: ChatProps) => {
   window.onclick = (event: MouseEvent) => {
     if (
       showEmojisPicker &&
-      !document.getElementsByClassName("emoji-picker-react")[0].contains(event.target as Element) &&
+      !document.querySelector(".emojis-container")?.contains(event.target as Element) &&
       (event.target as Element).className !== "chat-input__tool chat-input__tool--emoji-picker"
     )
       setShowEmojisPicker(false)

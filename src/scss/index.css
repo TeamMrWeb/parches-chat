@@ -353,6 +353,7 @@ html body #root .App ul {
   max-width: 600px;
   padding: 20px;
   box-sizing: border-box;
+  text-align: center;
 }
 .email-verification .email-verification-wrapper .email-verification__description {
   text-align: center;
