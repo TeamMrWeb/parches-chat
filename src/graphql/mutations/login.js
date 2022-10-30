@@ -1,7 +1,7 @@
 /**
  * @file Contains login mutation.
  * @author Manuel Cabral
- * @version 0.0.8
+ * @version 0.1.0
  */
 
 // required modules
@@ -19,6 +19,10 @@ const args = {
 		type: new GraphQLNonNull(GraphQLString),
 		description: 'The password of the user (not hashed).',
 	},
+	authStrategy: {
+		type: GraphQLString,
+		description: 'The auth strategy to use.',
+	},
 }
 
 /**
@@ -28,9 +32,15 @@ const args = {
  * @returns {String} - A token.
  */
 const resolve = async (_, args) => {
-	const user = await findOne(args, false)
-	if (!user || args.password !== user.password)
-		throw new Error('Creedenciales incorrectas.')
+	let user
+	if (args.authStrategy === 'google') {
+		user = await findOne({ email: args.email, fromPlatform: 'google' }, false)
+		if (!user) throw new Error('Usuario no registrado desde google.')
+	} else {
+		user = await findOne(args, false)
+		if (!user || args.password !== user.password)
+			throw new Error('Creedenciales incorrectas.')
+	}
 	if (!user.verified)
 		throw new Error('Usuario no verificado, por favor verifica tu cuenta.')
 	return createToken({
