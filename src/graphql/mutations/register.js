@@ -1,7 +1,7 @@
 /**
  * @file Contains register mutation.
  * @author Manuel Cabral
- * @version 0.1.0
+ * @version 0.1.2
  */
 
 // required modules
@@ -23,6 +23,10 @@ const args = {
 		type: new GraphQLNonNull(GraphQLString),
 		description: 'The password of the user (not hashed).',
 	},
+	authStrategy: {
+		type: GraphQLString,
+		description: 'The auth strategy to use.',
+	},
 }
 
 /**
@@ -39,9 +43,22 @@ const resolve = async (_, args) => {
 	if (user && !user.verified)
 		throw new Error('Usuario ya registrado, por favor verifica tu cuenta.')
 
-	const newUser = await createUser(args, true)
-	newUser.save()
-	return 'Cuenta registrada correctamente'
+	if (args.authStrategy === 'google') {
+		await createUser(
+			{
+				username: args.username,
+				email: args.email,
+				// TODO: Add a random password generator.
+				password: '1',
+				fromPlatform: args.authStrategy,
+			},
+			true
+		)
+		return 'Usuario registrado desde google correctamente.'
+	}
+
+	await createUser(args, true)
+	return 'Usuario registrado correctamente.'
 }
 
 // mutation object
