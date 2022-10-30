@@ -1,7 +1,7 @@
 /**
  * @file Contains users query.
  * @author Manuel Cabral
- * @version 0.0.4
+ * @version 0.0.6
  */
 
 // required modules
@@ -32,7 +32,8 @@ const resolve = async (_, args, context) => {
 	const userDb = await findUserById(user.id)
 	if (!userDb)
 		throw new Error('Tu usuario no existe, por favor, inicia sesión.')
-	if (username) return await findAll({ username })
+	if (username)
+		return await findAll({ username: new RegExp(username, 'i') }, false)
 	else if (verified) return await findAll({ verified })
 	else return await findAll()
 }
@@ -40,7 +41,7 @@ const resolve = async (_, args, context) => {
 // query object
 const users = {
 	type: new GraphQLList(UserType),
-	description: 'Returns all users from the database.',
+	description: 'Returns all users from the database by username.',
 	args,
 	resolve,
 }
