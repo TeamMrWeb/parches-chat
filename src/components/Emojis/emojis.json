@@ -5261,7 +5261,7 @@
         "shortname": ":baseball:",
         "unicode": "26be",
         "html": "&#9918;",
-        "category": "",
+        "category": "Activities",
         "order": "1782"
     },
     {
@@ -7466,7 +7466,7 @@
         "shortname": "",
         "unicode": "",
         "html": "&#127466;",
-        "category": "",
+        "category": "Symbols",
         "order": ""
     },
     {
@@ -9860,7 +9860,7 @@
         "shortname": "",
         "unicode": "",
         "html": "&#35;",
-        "category": "",
+        "category": "Symbols",
         "order": ""
     },
     {
@@ -10427,7 +10427,7 @@
         "shortname": ":u6307:",
         "unicode": "1f22f",
         "html": "&#127535;",
-        "category": "",
+        "category": "Symbols",
         "order": "2146"
     },
     {
@@ -10904,7 +10904,7 @@
         "shortname": ":u7121:",
         "unicode": "1f21a",
         "html": "&#127514;",
-        "category": "",
+        "category": "Symbols",
         "order": "2149"
     },
     {
@@ -32955,87 +32955,6 @@
         "unicode": "1F5E3 FE0F",
         "html": "&#x1F5E3;&#xFE0F;",
         "category": "People & Body (person-symbol)",
-        "order": ""
-    },
-    {
-        "emoji": "🏻",
-        "name": "light skin tone",
-        "shortname": ":light_skin_tone:",
-        "unicode": "1F3FB",
-        "html": "&#x1F3FB;",
-        "category": "Component (skin-tone)",
-        "order": ""
-    },
-    {
-        "emoji": "🏼",
-        "name": "medium-light skin tone",
-        "shortname": ":mediumlight_skin_tone:",
-        "unicode": "1F3FC",
-        "html": "&#x1F3FC;",
-        "category": "Component (skin-tone)",
-        "order": ""
-    },
-    {
-        "emoji": "🏽",
-        "name": "medium skin tone",
-        "shortname": ":medium_skin_tone:",
-        "unicode": "1F3FD",
-        "html": "&#x1F3FD;",
-        "category": "Component (skin-tone)",
-        "order": ""
-    },
-    {
-        "emoji": "🏾",
-        "name": "medium-dark skin tone",
-        "shortname": ":mediumdark_skin_tone:",
-        "unicode": "1F3FE",
-        "html": "&#x1F3FE;",
-        "category": "Component (skin-tone)",
-        "order": ""
-    },
-    {
-        "emoji": "🏿",
-        "name": "dark skin tone",
-        "shortname": ":dark_skin_tone:",
-        "unicode": "1F3FF",
-        "html": "&#x1F3FF;",
-        "category": "Component (skin-tone)",
-        "order": ""
-    },
-    {
-        "emoji": "🦰",
-        "name": "red hair",
-        "shortname": ":red_hair:",
-        "unicode": "1F9B0",
-        "html": "&#x1F9B0;",
-        "category": "Component (hair-style)",
-        "order": ""
-    },
-    {
-        "emoji": "🦱",
-        "name": "curly hair",
-        "shortname": ":curly_hair:",
-        "unicode": "1F9B1",
-        "html": "&#x1F9B1;",
-        "category": "Component (hair-style)",
-        "order": ""
-    },
-    {
-        "emoji": "🦳",
-        "name": "white hair",
-        "shortname": ":white_hair:",
-        "unicode": "1F9B3",
-        "html": "&#x1F9B3;",
-        "category": "Component (hair-style)",
-        "order": ""
-    },
-    {
-        "emoji": "🦲",
-        "name": "bald",
-        "shortname": ":bald:",
-        "unicode": "1F9B2",
-        "html": "&#x1F9B2;",
-        "category": "Component (hair-style)",
         "order": ""
     },
     {

@@ -714,24 +714,12 @@ html body #root .App ul {
   border-radius: 10px;
   color: #ffffff;
   background-color: #1c1d22;
-  width: 400px;
+  width: 500px;
   height: 300px;
   border: 1px solid #ffffff;
-  padding: 20px;
-  box-sizing: border-box;
 }
 .emojis-container .emojis-wrapper {
   height: 100%;
-}
-.emojis-container .emojis-wrapper .emojis-header .categories-list {
-  display: flex;
-}
-.emojis-container .emojis-wrapper .emojis-header .categories-list .category {
-  cursor: pointer;
-  transition: all 0.25s;
-}
-.emojis-container .emojis-wrapper .emojis-header .categories-list .category:hover {
-  color: #dd4ec6;
 }
 .emojis-container .emojis-wrapper .emojis-list {
   display: flex;
@@ -739,13 +727,60 @@ html body #root .App ul {
   gap: 5px;
   height: 100%;
   overflow-y: scroll;
+  padding: 20px;
+  box-sizing: border-box;
 }
 .emojis-container .emojis-wrapper .emojis-list .emoji {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
   font-size: 20px;
   cursor: pointer;
 }
+.emojis-container .emojis-wrapper .emojis-footer {
+  display: flex;
+  align-items: center;
+  background-color: #2a2c37;
+  height: 50px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.emojis-container .emojis-wrapper .emojis-footer .categories-list {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+}
+.emojis-container .emojis-wrapper .emojis-footer .categories-list .category {
+  width: 100%;
+  height: 20px;
+}
+.emojis-container .emojis-wrapper .emojis-footer .categories-list .category.active {
+  filter: invert(39%) sepia(56%) saturate(897%) hue-rotate(232deg) brightness(89%) contrast(91%);
+  transition: none;
+}
+.emojis-container .emojis-wrapper .emojis-footer .categories-list .category .category__button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  height: 20px;
+}
+.emojis-container .emojis-wrapper .emojis-footer .categories-list .category .category__button .category__icon {
+  width: 40px;
+  height: 20px;
+  filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
+  transition: all 0.25s;
+}
+.emojis-container .emojis-wrapper .emojis-footer .categories-list .category .category__button .category__icon:hover {
+  filter: invert(39%) sepia(56%) saturate(897%) hue-rotate(232deg) brightness(89%) contrast(91%);
+}
+
 .chat-input {
   background-color: #1c1d22;
   height: 100%;

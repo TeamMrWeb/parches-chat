@@ -1,35 +1,28 @@
 import { useEmojis } from "./useEmojis"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { Oval } from "react-loader-spinner"
+import houseIcon from "../../assets/icons/house-icon.svg"
 
 export default function Emojis({ setValue }: { setValue: (value: any) => void }) {
   const {
-    getEmoji,
-    getEmojiByShortName,
-    getEmojiCategory,
-    parseText,
+    getEmojisFromCategory,
     emojisList,
     hasMore,
-    getMoreEmojis
+    getMoreEmojis,
+    getEmojisCategories,
+    defineCategoryIcon,
+    currentCategory,
+    getAllEmojis
   } = useEmojis()
 
   return (
     <section className="emojis-container">
       <div className="emojis-wrapper">
-        <header className="emojis-header">
-          <ul className="categories-list">
-            <li className="category">
-              <span className="category-name">Todos</span>
-            </li>
-          </ul>
-        </header>
-        {/* <div
-          id="scrollableDiv"
-          style={{ height: 250, overflow: "auto", display: "flex", flexDirection: "column" }}
-        > */}
         <InfiniteScroll
           dataLength={emojisList.length}
-          next={() => getMoreEmojis(emojisList.length)}
+          next={() => {
+            getMoreEmojis(emojisList.length)
+          }}
           hasMore={hasMore}
           height={250}
           loader={
@@ -58,8 +51,33 @@ export default function Emojis({ setValue }: { setValue: (value: any) => void })
             </div>
           ))}
         </InfiniteScroll>
+        <footer className="emojis-footer">
+          <ul className="categories-list">
+            {getEmojisCategories().map((category, index) => (
+              <li
+                key={index}
+                className={category === currentCategory ? "category active" : "category"}
+              >
+                <button
+                  className="category__button"
+                  onClick={() => getEmojisFromCategory(category)}
+                >
+                  <img
+                    className="category__icon"
+                    src={defineCategoryIcon(category)}
+                    alt={`Categoría ${category}`}
+                  />
+                </button>
+              </li>
+            ))}
+            <li className={currentCategory === "" ? "category active" : "category"}>
+              <button className="category__button" onClick={() => getAllEmojis()}>
+                <img className="category__icon" src={houseIcon} alt="Todas las categorías" />
+              </button>
+            </li>
+          </ul>
+        </footer>
       </div>
-      {/* </div> */}
     </section>
   )
 }
