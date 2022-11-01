@@ -15,8 +15,6 @@ export const useGoogleSignIn = (authMethod: string) => {
       const username = user.displayName
       const password = ""
       const authStrategy = "google"
-      console.log(user)
-      console.log(authMethod)
       authMethod === "register"
         ? handleSubmit(
             { username, email, password, authStrategy },
