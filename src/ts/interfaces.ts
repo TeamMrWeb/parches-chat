@@ -144,3 +144,25 @@ export interface AlertMessageProps {
 export interface LoaderSpinnerProps {
   status: boolean
 }
+
+export interface EmojiProps {
+  emoji: string
+  name: string
+  shortname: string
+  unicode: string
+  html: string
+  category: string
+  order: string
+}
+
+export interface CategoriesIconProps {
+  "People & Body": string
+  "Smileys & Emotion": string
+  Activities: string
+  Symbols: string
+  Objects: string
+  "Animals & Nature": string
+  "Travel & Places": string
+  "Food & Drink": string
+  Flags: string
+}
