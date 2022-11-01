@@ -50,7 +50,6 @@ export default function ChatInput() {
           alt="Enviar emoji"
           onClick={() => setShowEmojisPicker(!showEmojisPicker)}
         />
-        {/* {showEmojisPicker && <EmojisPicker setValue={setValue} />} */}
         {showEmojisPicker && <Emojis setValue={setValue} />}
       </form>
     </section>

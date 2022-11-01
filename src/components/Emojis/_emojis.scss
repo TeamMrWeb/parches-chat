@@ -6,10 +6,55 @@
   color: $whiteColor;
   background-color: $primaryColor;
   width: 500px;
-  height: 300px;
+  height: 350px;
   border: 1px solid $whiteColor;
   .emojis-wrapper {
     height: 100%;
+    .emojis-search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 50px;
+      padding: 0 20px;
+      background-color: $secundaryColor;
+      box-sizing: border-box;
+      .emojis-search-wrapper {
+        width: 100%;
+        position: relative;
+        .emojis-search__input {
+          width: 100%;
+          background-color: $primaryColor;
+          color: $whiteColor;
+          border: none;
+          height: 30px;
+          padding-left: 10px;
+          box-sizing: border-box;
+          &:focus {
+            outline: 1px solid $pinkColor;
+            border-radius: 5px;
+          }
+        }
+        .emojis-search__icon {
+          position: absolute;
+          right: 10px;
+          top: 25%;
+          width: 15px;
+          height: 15px;
+          filter: invert(92%) sepia(93%) saturate(0%) hue-rotate(202deg) brightness(106%)
+            contrast(106%);
+          &--close {
+            position: absolute;
+            right: 10px;
+            top: 25%;
+            width: 15px;
+            height: 15px;
+            filter: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
     .emojis-list {
       display: flex;
       flex-wrap: wrap;

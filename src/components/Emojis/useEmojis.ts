@@ -9,28 +9,7 @@ import planeIcon from "../../assets/icons/plane-icon.svg"
 import faceIcon from "../../assets/icons/face-icon.svg"
 import flagIcon from "../../assets/icons/flag-icon.svg"
 import crowIcon from "../../assets/icons/crow-icon.svg"
-
-interface EmojiProps {
-  emoji: string
-  name: string
-  shortname: string
-  unicode: string
-  html: string
-  category: string
-  order: string
-}
-
-interface CategoriesIconProps {
-  "People & Body": string
-  "Smileys & Emotion": string
-  Activities: string
-  Symbols: string
-  Objects: string
-  "Animals & Nature": string
-  "Travel & Places": string
-  "Food & Drink": string
-  Flags: string
-}
+import { CategoriesIconProps, EmojiProps } from "../../ts/interfaces"
 
 const categoriesIcons = {
   "People & Body": personIcon,
@@ -49,6 +28,7 @@ export const useEmojis = () => {
   const [emojisList, setEmojisList] = useState<EmojiProps[]>([])
   const [emojisFromCategory, setEmojisFromCategory] = useState<EmojiProps[]>([])
   const [currentCategory, setCurrentCategory] = useState("")
+  const [search, setSearch] = useState("")
 
   const emojisSortedByCategory = useMemo(
     () => emojis.sort((a, b) => a.category.localeCompare(b.category)),
@@ -88,6 +68,18 @@ export const useEmojis = () => {
     ].slice(1, 10)
 
   const getAllEmojis = () => setEmojisFromCategory([])
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      if (search === "") setEmojisFromCategory([])
+      const searchResult = emojisSortedByCategory.filter(emoji =>
+        emoji.name.toLowerCase().includes(search.toLowerCase())
+      )
+      console.log(searchResult)
+      setEmojisList(searchResult)
+    }, 1000)
+    return () => clearTimeout(timeOut)
+  }, [search])
 
   /**
    * Gets the emoji value from a emoji object
@@ -147,6 +139,8 @@ export const useEmojis = () => {
     getEmojisCategories,
     defineCategoryIcon,
     currentCategory,
-    getAllEmojis
+    getAllEmojis,
+    setSearch,
+    search
   }
 }

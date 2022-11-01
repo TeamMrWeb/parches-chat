@@ -715,11 +715,55 @@ html body #root .App ul {
   color: #ffffff;
   background-color: #1c1d22;
   width: 500px;
-  height: 300px;
+  height: 350px;
   border: 1px solid #ffffff;
 }
 .emojis-container .emojis-wrapper {
   height: 100%;
+}
+.emojis-container .emojis-wrapper .emojis-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  background-color: #2a2c37;
+  box-sizing: border-box;
+}
+.emojis-container .emojis-wrapper .emojis-search .emojis-search-wrapper {
+  width: 100%;
+  position: relative;
+}
+.emojis-container .emojis-wrapper .emojis-search .emojis-search-wrapper .emojis-search__input {
+  width: 100%;
+  background-color: #1c1d22;
+  color: #ffffff;
+  border: none;
+  height: 30px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.emojis-container .emojis-wrapper .emojis-search .emojis-search-wrapper .emojis-search__input:focus {
+  outline: 1px solid #dd4ec6;
+  border-radius: 5px;
+}
+.emojis-container .emojis-wrapper .emojis-search .emojis-search-wrapper .emojis-search__icon {
+  position: absolute;
+  right: 10px;
+  top: 25%;
+  width: 15px;
+  height: 15px;
+  filter: invert(92%) sepia(93%) saturate(0%) hue-rotate(202deg) brightness(106%) contrast(106%);
+}
+.emojis-container .emojis-wrapper .emojis-search .emojis-search-wrapper .emojis-search__icon--close {
+  position: absolute;
+  right: 10px;
+  top: 25%;
+  width: 15px;
+  height: 15px;
+  filter: none;
+  cursor: pointer;
 }
 .emojis-container .emojis-wrapper .emojis-list {
   display: flex;
