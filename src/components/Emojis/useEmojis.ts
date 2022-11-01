@@ -80,18 +80,10 @@ export const useEmojis = () => {
       const searchResult = emojisSortedByCategory.filter(emoji =>
         emoji.name.toLowerCase().includes(search.toLowerCase())
       )
-      console.log(searchResult)
       setEmojisList(searchResult)
     }, 1000)
     return () => clearTimeout(timeOut)
   }, [search])
-
-  /**
-   * Gets the emoji value from a emoji object
-   * @param emoji_object - The emoji object
-   * @returns The emoji value
-   */
-  const getEmoji = (emoji_object: any) => emoji_object["emoji"]
 
   /**
    * Gets a emoji by shortname
@@ -99,10 +91,8 @@ export const useEmojis = () => {
    * @param only_object - If true, returns the emoji object, otherwise returns the emoji value
    * @returns The emoji object or the emoji value
    */
-  const getEmojiByShortName = (shortName: string, only_object: Boolean = false) => {
-    const emoji = emojis.find(emoji => emoji.shortname === shortName)
-    return only_object ? emoji : getEmoji(emoji)
-  }
+  const getEmojiByShortName = (shortName: string) =>
+    emojis.find(emoji => emoji.shortname === shortName)
 
   /**
    * Parses a string and replaces all shortnames with emojis values
@@ -115,17 +105,13 @@ export const useEmojis = () => {
     if (matches) {
       matches.forEach(match => {
         const emoji = getEmojiByShortName(match)
-        text = text.replace(match, emoji)
+        if (!emoji) return
+        text = text.replace(match, emoji.emoji)
       })
     }
     return text
   }
 
-  /**
-   * Gets emojis by category
-   * @param category - The category of the emojis
-   * @returns The emojis (list of emoji objects)
-   */
   const getEmojisFromCategory = (category: string) => {
     scrollToTop()
     const allEmojisFromCategory = emojisSortedByCategory.filter(emoji =>
@@ -136,10 +122,7 @@ export const useEmojis = () => {
     setHasMore(true)
   }
 
-  const scrollToTop = () => {
-    const emojisListElement = document.querySelector(".emojis-list")
-    emojisListElement?.scroll(0, 0)
-  }
+  const scrollToTop = () => document.querySelector(".emojis-list")?.scroll(0, 0)
 
   return {
     getEmojisFromCategory,
@@ -152,6 +135,6 @@ export const useEmojis = () => {
     getAllEmojis,
     setSearch,
     search,
-    getEmojiByShortName
+    parseText
   }
 }

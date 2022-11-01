@@ -1,9 +1,10 @@
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, lazy, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { createMessage } from "../../graphql/mutations"
 import { createAlertMessage } from "../../slicers/alertMessageSlice"
 import { ChatProps } from "../../ts/interfaces"
+import { useEmojis } from "../Emojis/useEmojis"
 
 export const useChatInput = (chat: ChatProps) => {
   const [value, setValue] = useState("")
@@ -16,6 +17,13 @@ export const useChatInput = (chat: ChatProps) => {
   const [messagesIn5s, setMessagesIn5s] = useState(0)
   const [chatMessageStarted, setChatMessageStarted] = useState(false)
   const dispatch = useDispatch()
+  const { parseText } = useEmojis()
+
+  useEffect(() => {
+    if (value.length <= 0) return
+    let newValue = parseText(value)
+    newValue && setValue(newValue)
+  }, [value])
 
   useEffect(() => {
     const timestamp = new Date().getSeconds()
