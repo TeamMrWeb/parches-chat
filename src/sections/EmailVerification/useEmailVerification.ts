@@ -11,7 +11,7 @@ export const useEmailVerification = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!error && buttonCooldown) {
+    if (!error && buttonCooldown === 300) {
       dispatch(
         createAlertMessage({
           title: `Se ha enviado un correo de verificación a tu correo electrónico`,
@@ -20,14 +20,12 @@ export const useEmailVerification = () => {
         })
       )
     }
-  }, [error])
+  }, [error, buttonCooldown])
 
   const sendEmailVerification = (email: string) => {
     sendVerificationToEmail({ variables: { email } }).then(() => {
       setButtonCooldown(300)
-      setInterval(() => {
-        setButtonCooldown(prev => prev - 1)
-      }, 1000)
+      setInterval(() => setButtonCooldown(prev => prev - 1), 1000)
     })
   }
 

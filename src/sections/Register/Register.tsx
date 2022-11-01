@@ -39,7 +39,7 @@ export default function Register() {
               )
               .required("Requerido")
           })}
-          onSubmit={values => handleSubmit(values, "register", "/login")}
+          onSubmit={values => handleSubmit(values, "register", "/accounts/emailverification")}
         >
           <Form className="form">
             <FormGroupInput
@@ -63,7 +63,11 @@ export default function Register() {
               required={true}
             />
             <input className="form__submit" type="submit" value="Registrar cuenta" />
-            <button className="google-register" onClick={() => signInWithGoogle()} type="button">
+            <button
+              className="google-register"
+              onClick={() => signInWithGoogle("register")}
+              type="button"
+            >
               <img src={googleIcon} alt="Ícono de Google" />
               <span>Registrarse con Google</span>
             </button>

@@ -21,23 +21,19 @@ export const useSubmitForm = () => {
 
   const handleSubmit = (values: any, type: string, redirecturl: string) => {
     dispatch(startLoader())
-    const { username, email, password } = values
-    submitMethods[type as keyof typeof submitMethods]({ variables: { username, email, password } })
+    console.log(values)
+    const { username, email, password, authStrategy } = values
+    submitMethods[type as keyof typeof submitMethods]({
+      variables: { username, email, password, authStrategy }
+    })
       .then((res: any) => {
         dispatch(completeProgressLoader())
-        type === "register" &&
-          dispatch(
-            createAlertMessage({
-              title: `Tu cuenta se ha registrado satisfactoriamente`,
-              type: "success",
-              visible: true
-            })
-          )
+        if (type === "register") return navigate(`${redirecturl}/${email}`)
         if (type === "login") {
           const token = res.data.login
           localStorage.setItem("auth", token)
         }
-        navigate(redirecturl)
+        redirecturl && navigate(redirecturl)
       })
       .catch((err: any) => {
         dispatch(completeProgressLoader())
