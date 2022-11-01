@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useEmailVerification } from "./useEmailVerification"
 
 export default function EmailVerification() {
@@ -30,6 +30,9 @@ export default function EmailVerification() {
           </p>
         )}
       </div>
+      <Link className="login-link" to={"/login"}>
+        Ingresar con mi cuenta
+      </Link>
     </section>
   )
 }

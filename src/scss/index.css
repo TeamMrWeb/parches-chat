@@ -343,6 +343,7 @@ html body #root .App ul {
   width: 100%;
   height: 100vh;
   color: #ffffff;
+  position: relative;
 }
 .email-verification .email-verification-wrapper {
   display: flex;
@@ -392,7 +393,23 @@ html body #root .App ul {
 .email-verification .email-verification-wrapper .email-verification__cooldown span {
   color: #dd4ec6;
 }
+.email-verification .login-link {
+  position: absolute;
+  bottom: 100px;
+  color: #ffffff;
+  font-size: 20px;
+  transition: all 0.25s;
+  text-align: center;
+}
+.email-verification .login-link:hover {
+  color: #8d4fc9;
+}
 
+@media screen and (max-height: 500px) {
+  .email-verification .login-link {
+    bottom: 20px;
+  }
+}
 .preview-container {
   height: 250px;
   width: 100%;
