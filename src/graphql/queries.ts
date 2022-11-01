@@ -86,3 +86,9 @@ export const usersByUsername = gql`
     }
   }
 `
+
+export const SEND_EMAIL_VERIFICATION = gql`
+  query SEND_EMAIL_VERIFICATION($email: String!) {
+    sendEmailVerification(email: $email)
+  }
+`

@@ -1,14 +1,19 @@
 import { gql } from "@apollo/client"
 
 export const userRegister = gql`
-  mutation registerUser($username: String!, $email: String!, $password: String!) {
-    register(username: $username, email: $email, password: $password)
+  mutation registerUser(
+    $username: String!
+    $email: String!
+    $password: String!
+    $authStrategy: String
+  ) {
+    register(username: $username, email: $email, password: $password, authStrategy: $authStrategy)
   }
 `
 
 export const userLogin = gql`
-  mutation LoginUser($email: String!, $password: String!) {
-    login(email: $email, password: $password)
+  mutation LoginUser($email: String!, $password: String!, $authStrategy: String) {
+    login(email: $email, password: $password, authStrategy: $authStrategy)
   }
 `
 
@@ -38,15 +43,5 @@ export const createChatBetweenFriends = gql`
         username
       }
     }
-  }
-`
-export const registerWithGoogle = gql`
-  mutation registerWithGoogle($username: String!, $email: String!) {
-    register(username: "manu", email: "manuandres864@gmail.com", authStrategy: "google")
-  }
-`
-export const loginWithGoogle = gql`
-  mutation loginWithGoogle($email: String!) {
-    login(email: "manuandres864@gmail.com", authStrategy: "google")
   }
 `
