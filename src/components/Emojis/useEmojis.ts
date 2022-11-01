@@ -67,7 +67,12 @@ export const useEmojis = () => {
       ...new Set(emojisSortedByCategory.map(emoji => emoji.category.replace(/ *\([^)]*\) */g, "")))
     ].slice(1, 10)
 
-  const getAllEmojis = () => setEmojisFromCategory([])
+  const getAllEmojis = () => {
+    scrollToTop()
+    setEmojisFromCategory([])
+    setCurrentCategory("")
+    setHasMore(true)
+  }
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
@@ -122,13 +127,18 @@ export const useEmojis = () => {
    * @returns The emojis (list of emoji objects)
    */
   const getEmojisFromCategory = (category: string) => {
-    const emojisListElement = document.querySelector(".emojis-list")
-    emojisListElement?.scroll(0, 0)
+    scrollToTop()
     const allEmojisFromCategory = emojisSortedByCategory.filter(emoji =>
       emoji.category.includes(category)
     )
     setCurrentCategory(category)
     setEmojisFromCategory(allEmojisFromCategory)
+    setHasMore(true)
+  }
+
+  const scrollToTop = () => {
+    const emojisListElement = document.querySelector(".emojis-list")
+    emojisListElement?.scroll(0, 0)
   }
 
   return {
@@ -141,6 +151,7 @@ export const useEmojis = () => {
     currentCategory,
     getAllEmojis,
     setSearch,
-    search
+    search,
+    getEmojiByShortName
   }
 }

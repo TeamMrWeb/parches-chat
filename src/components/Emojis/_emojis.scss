@@ -73,8 +73,6 @@
         height: 40px;
         font-size: 20px;
         cursor: pointer;
-        .emoji__emoji {
-        }
       }
     }
     .emojis-footer {
@@ -85,7 +83,6 @@
       padding: 0 20px;
       box-sizing: border-box;
       border-radius: 10px;
-      // height: 100%;
       .categories-list {
         display: flex;
         align-items: center;
@@ -93,7 +90,6 @@
         gap: 5px;
         height: 100%;
         .category {
-          // width: 100%;
           width: max-content;
           height: 20px;
           &.active {
@@ -135,10 +131,6 @@
         padding-top: 10px !important;
         padding-bottom: 10px !important;
         height: 70px;
-        .categories-list {
-          .category {
-          }
-        }
       }
     }
   }
