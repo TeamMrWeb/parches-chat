@@ -8,7 +8,6 @@ export default function VerifyAccount() {
   const navigate = useNavigate()
 
   const { data, error } = useQuery(verifyQuery, {
-    variables: { token },
     context: {
       headers: {
         authorization: token
@@ -17,7 +16,6 @@ export default function VerifyAccount() {
   })
 
   useEffect(() => {
-    console.log(data, error)
     data?.verify && navigate("/accounts/login")
   }, [data, error])
 

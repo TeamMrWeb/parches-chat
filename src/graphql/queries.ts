@@ -12,8 +12,8 @@ export const LoggedUserId = gql`
   }
 `
 export const verifyQuery = gql`
-  query verifyAccountByToken($token: String!) {
-    verify(token: $token)
+  query {
+    verify
   }
 `
 
