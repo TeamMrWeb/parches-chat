@@ -11,7 +11,8 @@ export const useComunication = () => {
   const authLink = new ApolloLink((operation, forward) => {
     operation.setContext(() => ({
       headers: {
-        auth: localStorage.getItem("auth")
+        auth: localStorage.getItem("auth"),
+        ...operation.getContext().headers
       }
     }))
     return forward(operation)
