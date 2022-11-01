@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { useChatInput } from "./useChatInput"
-import { EmojisPicker, ChatPreviewImage } from "../"
+import { ChatPreviewImage } from "../"
 import { RootState } from "../../ts/interfaces"
 import emojiIcon from "../../assets/icons/emoji-icon.svg"
 import plusIcon from "../../assets/icons/plus-icon.svg"
