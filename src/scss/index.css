@@ -714,7 +714,8 @@ html body #root .App ul {
   border-radius: 10px;
   color: #ffffff;
   background-color: #1c1d22;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 350px;
   border: 1px solid #ffffff;
 }
@@ -730,6 +731,7 @@ html body #root .App ul {
   padding: 0 20px;
   background-color: #2a2c37;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 .emojis-container .emojis-wrapper .emojis-search .emojis-search-wrapper {
   width: 100%;
@@ -795,11 +797,14 @@ html body #root .App ul {
 .emojis-container .emojis-wrapper .emojis-footer .categories-list {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 5px;
-  height: 20px;
+  height: 100%;
 }
 .emojis-container .emojis-wrapper .emojis-footer .categories-list .category {
-  width: 100%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   height: 20px;
 }
 .emojis-container .emojis-wrapper .emojis-footer .categories-list .category.active {
@@ -825,6 +830,16 @@ html body #root .App ul {
   filter: invert(39%) sepia(56%) saturate(897%) hue-rotate(232deg) brightness(89%) contrast(91%);
 }
 
+@media screen and (max-width: 904px) {
+  .emojis-container {
+    height: 370px;
+  }
+  .emojis-container .emojis-wrapper .emojis-footer {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    height: 70px;
+  }
+}
 .chat-input {
   background-color: #1c1d22;
   height: 100%;

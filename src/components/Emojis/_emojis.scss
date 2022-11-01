@@ -5,7 +5,8 @@
   border-radius: 10px;
   color: $whiteColor;
   background-color: $primaryColor;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 350px;
   border: 1px solid $whiteColor;
   .emojis-wrapper {
@@ -19,6 +20,7 @@
       padding: 0 20px;
       background-color: $secundaryColor;
       box-sizing: border-box;
+      border-radius: 10px;
       .emojis-search-wrapper {
         width: 100%;
         position: relative;
@@ -83,13 +85,16 @@
       padding: 0 20px;
       box-sizing: border-box;
       border-radius: 10px;
+      // height: 100%;
       .categories-list {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 5px;
-        height: 20px;
+        height: 100%;
         .category {
-          width: 100%;
+          // width: 100%;
+          width: max-content;
           height: 20px;
           &.active {
             filter: invert(39%) sepia(56%) saturate(897%) hue-rotate(232deg) brightness(89%)
@@ -115,6 +120,23 @@
                   contrast(91%);
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 904px) {
+  .emojis-container {
+    height: 370px;
+    .emojis-wrapper {
+      .emojis-footer {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        height: 70px;
+        .categories-list {
+          .category {
           }
         }
       }
