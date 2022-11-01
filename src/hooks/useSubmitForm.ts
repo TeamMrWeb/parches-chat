@@ -21,7 +21,6 @@ export const useSubmitForm = () => {
 
   const handleSubmit = (values: any, type: string, redirecturl: string) => {
     dispatch(startLoader())
-    console.log(values)
     const { username, email, password, authStrategy } = values
     submitMethods[type as keyof typeof submitMethods]({
       variables: { username, email, password, authStrategy }

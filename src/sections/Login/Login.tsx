@@ -1,10 +1,14 @@
 import { useSubmitForm } from "../../hooks/useSubmitForm"
 import { AccountQuestion, FormGroupInput, ViewRepository } from "../../components"
 import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
+import googleIcon from "../../assets/icons/google-icon.svg"
 import { Form, Formik } from "formik"
 import * as Yup from "yup"
+import { useGoogleSignIn } from "../../hooks/useGoogleSignIn"
+
 export default function Login() {
   const { handleSubmit } = useSubmitForm()
+  const { signInWithGoogle } = useGoogleSignIn("login")
 
   return (
     <section className="login">
@@ -48,6 +52,10 @@ export default function Login() {
               required={true}
             />
             <input className="form__submit" type="submit" value="Ingresar" />
+            <button className="google-register" onClick={() => signInWithGoogle()} type="button">
+              <img src={googleIcon} alt="Ícono de Google" />
+              <span>Ingresar con Google</span>
+            </button>
             <AccountQuestion
               question="¿No estas registrado?"
               href="/accounts/register"

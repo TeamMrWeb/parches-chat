@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom"
 import { useEmailVerification } from "./useEmailVerification"
 
 export default function EmailVerification() {
-  const { email, username } = useParams<{ email: string; username: string }>()
+  const { email } = useParams<{ email: string }>()
   const { sendEmailVerification, buttonCooldown, convertTimeToMinutesAndSeconds } =
     useEmailVerification()
 

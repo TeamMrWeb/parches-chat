@@ -1,31 +1,31 @@
-import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "firebase/auth"
 import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import { provider } from "../authGoogleProvider"
 import { useSubmitForm } from "./useSubmitForm"
+import { getAuth, signInWithRedirect, getRedirectResult } from "firebase/auth"
 
-export const useGoogleSignIn = () => {
+export const useGoogleSignIn = (authMethod: string) => {
   const auth = getAuth()
-  const navigate = useNavigate()
   const { handleSubmit } = useSubmitForm()
 
   useEffect(() => {
-    getRedirectResult(auth)
-      .then((result: any) => {
-        const user = result?.user
-        const email = user.email
-        console.log(user)
-        // handleSubmit(user, "login", "/chat")
-        // navigate("/login")
-      })
-      .catch(error => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        const email = error?.customData?.email
-        const credential = GoogleAuthProvider.credentialFromError(error)
-        console.log(errorCode, errorMessage, email, credential)
-      })
-  }, [])
+    getRedirectResult(auth).then((result: any) => {
+      if (!result) return
+      const user = result.user
+      const email = user.email
+      const username = user.displayName
+      const password = ""
+      const authStrategy = "google"
+      console.log(user)
+      console.log(authMethod)
+      authMethod === "register"
+        ? handleSubmit(
+            { username, email, password, authStrategy },
+            "register",
+            "/accounts/emailverification"
+          )
+        : handleSubmit({ email, password, authStrategy }, "login", "/chat")
+    })
+  }, [authMethod])
 
   const signInWithGoogle = () => signInWithRedirect(auth, provider)
 

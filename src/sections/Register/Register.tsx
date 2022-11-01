@@ -8,7 +8,7 @@ import { useGoogleSignIn } from "../../hooks/useGoogleSignIn"
 
 export default function Register() {
   const { handleSubmit } = useSubmitForm()
-  const { signInWithGoogle } = useGoogleSignIn()
+  const { signInWithGoogle } = useGoogleSignIn("register")
 
   return (
     <section className="register">
@@ -63,11 +63,7 @@ export default function Register() {
               required={true}
             />
             <input className="form__submit" type="submit" value="Registrar cuenta" />
-            <button
-              className="google-register"
-              onClick={() => signInWithGoogle("register")}
-              type="button"
-            >
+            <button className="google-register" onClick={() => signInWithGoogle()} type="button">
               <img src={googleIcon} alt="Ícono de Google" />
               <span>Registrarse con Google</span>
             </button>

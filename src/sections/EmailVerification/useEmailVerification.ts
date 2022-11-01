@@ -23,8 +23,8 @@ export const useEmailVerification = () => {
   }, [error, buttonCooldown])
 
   const sendEmailVerification = (email: string) => {
+    setButtonCooldown(300)
     sendVerificationToEmail({ variables: { email } }).then(() => {
-      setButtonCooldown(300)
       setInterval(() => setButtonCooldown(prev => prev - 1), 1000)
     })
   }

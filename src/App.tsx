@@ -27,6 +27,7 @@ function App() {
               <Route path="register" element={<Register />} />
               <Route path="emailverification/:email" element={<EmailVerification />} />
               <Route path="verify/:token" element={<VerifyAccount />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="/login" element={<Navigate to="/accounts/login" />} />
             <Route path="/register" element={<Navigate to="/accounts/register" />} />
