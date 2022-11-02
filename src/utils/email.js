@@ -64,7 +64,7 @@ const sendVerification = async (user, token, subject) => {
             <h1>${subject}</h1>
             <h2>Hola ${user.username}!</h2>
             <p>Para confirmar tu email de Parches Chat, por favor haz click en el siguiente enlace: </p>
-            <a href="${DOMAIN}/account/verify/${token}">Confirmar email</a>
+            <a href="${DOMAIN}/accounts/verify/${token}">Confirmar email</a>
         </body>
     </html>
     `
