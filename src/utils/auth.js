@@ -44,7 +44,6 @@ const verifyToken = async (token, options) => {
 	if (useEmail) {
 		const dbToken = await Token.findOne({ token })
 		if (!dbToken) throw new Error('Token expired')
-		dbToken.remove()
 	}
 	return decoded.user
 }
