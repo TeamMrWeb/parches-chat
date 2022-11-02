@@ -39,8 +39,8 @@ Si no quieres crear una cuenta o agregar a amigos, simplemente utiliza alguno de
 - `Usuario1:`
 
       Email: exampleuser1@gmail.com
-      Password: exampleuser123
+      Password: Exampleuser123
 - `Usuario2:`
 
       Email: exampleuser2@gmail.com
-      Password: exampleuser123
+      Password: Exampleuser123
