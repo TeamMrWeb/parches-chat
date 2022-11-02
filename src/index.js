@@ -12,7 +12,7 @@ const schema = require('./graphql/schemas')
 const createServer = require('http').createServer
 const { execute, subscribe } = require('graphql')
 const { useServer } = require('graphql-ws/lib/use/ws')
-const { clearFolderFiles } = require('./utils/files')
+const { existsPath, createPath, clearFolderFiles } = require('./utils/files')
 const temp_folder = require('./config').CLOUDINARY.TEMP_FOLDER
 const { checkEmailCredentials } = require('./utils/email')
 const { connectDatabase, checkDatabaseConnection } = require('./database')
@@ -36,6 +36,11 @@ async function main() {
 
 	// clear files from uploads folder
 	console.log('Clearing files from temp folder...')
+    const folderExist = await existsPath(temp_folder)
+    if (!folderExist){
+        console.log('Temp folder does not exist. Creating it...')
+        await createPath(temp_folder)
+    }
 	res = await clearFolderFiles(temp_folder)
 	if (!res) console.log('Temp folder is empty.')
 	else console.log('Temp folder cleared.')

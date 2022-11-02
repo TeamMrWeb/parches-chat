@@ -21,6 +21,20 @@ const clearFolderFiles = async (path) => {
 	return true
 }
 
+/**
+ * Check if a path exists.
+ * @param {*} path - The path to check.
+ * @returns {Boolean} - True if the path exists. Otherwise, false.
+ */
+const existsPath = async (path) => fs.existsSync(path)
+
+const createPath = async (path) => {
+    const exists = await existsPath(path)
+    if (!exists) await fs.mkdirSync(path)
+}
+
 module.exports = {
+    existsPath,
+    createPath,
 	clearFolderFiles,
 }
