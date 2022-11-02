@@ -161,6 +161,9 @@ html body #root .App ul {
   border: 1px solid #e9e9e9;
   transition: all 0.25s;
 }
+.register .content .google-register.disabled {
+  cursor: not-allowed;
+}
 .register .content .google-register:hover {
   color: #1c1d22;
   box-shadow: 0px 5px 10px 0.5px white;
@@ -264,6 +267,9 @@ html body #root .App ul {
   background-color: white;
   border: 1px solid #e9e9e9;
   transition: all 0.25s;
+}
+.login .content .google-register.disabled {
+  cursor: not-allowed;
 }
 .login .content .google-register:hover {
   color: #1c1d22;
@@ -1156,6 +1162,9 @@ html body #root .App ul {
   height: 50px;
   margin-top: 15px;
   box-sizing: border-box;
+}
+.form .form__submit.disabled {
+  cursor: not-allowed;
 }
 .form .form__submit:hover {
   background-position: -200px;

@@ -7,7 +7,7 @@ import * as Yup from "yup"
 import { useGoogleSignIn } from "../../hooks/useGoogleSignIn"
 
 export default function Login() {
-  const { handleSubmit } = useSubmitForm()
+  const { handleSubmit, disabled, setDisabled } = useSubmitForm()
   const { signInWithGoogle } = useGoogleSignIn("login")
 
   return (
@@ -51,8 +51,21 @@ export default function Login() {
               maxLength={15}
               required={true}
             />
-            <input className="form__submit" type="submit" value="Ingresar" />
-            <button className="google-register" onClick={() => signInWithGoogle()} type="button">
+            <input
+              className={disabled ? "form__submit disabled" : "form__submit"}
+              type="submit"
+              value="Ingresar"
+              disabled={disabled}
+            />
+            <button
+              className={disabled ? "google-register disabled" : "google-register"}
+              onClick={() => {
+                signInWithGoogle()
+                setDisabled(!disabled)
+              }}
+              type="button"
+              disabled={disabled}
+            >
               <img src={googleIcon} alt="Ícono de Google" />
               <span>Ingresar con Google</span>
             </button>

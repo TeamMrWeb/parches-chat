@@ -5,9 +5,10 @@ import { AccountQuestion, FormGroupInput, ViewRepository } from "../../component
 import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
 import googleIcon from "../../assets/icons/google-icon.svg"
 import { useGoogleSignIn } from "../../hooks/useGoogleSignIn"
+import { useState } from "react"
 
 export default function Register() {
-  const { handleSubmit } = useSubmitForm()
+  const { handleSubmit, disabled, setDisabled } = useSubmitForm()
   const { signInWithGoogle } = useGoogleSignIn("register")
 
   return (
@@ -62,8 +63,21 @@ export default function Register() {
               maxLength={15}
               required={true}
             />
-            <input className="form__submit" type="submit" value="Registrar cuenta" />
-            <button className="google-register" onClick={() => signInWithGoogle()} type="button">
+            <input
+              className={disabled ? "form__submit disabled" : "form__submit"}
+              type="submit"
+              value="Registrar cuenta"
+              disabled={disabled}
+            />
+            <button
+              className={disabled ? "google-register disabled" : "google-register"}
+              disabled={disabled}
+              onClick={() => {
+                signInWithGoogle()
+                setDisabled(!disabled)
+              }}
+              type="button"
+            >
               <img src={googleIcon} alt="Ícono de Google" />
               <span>Registrarse con Google</span>
             </button>

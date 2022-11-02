@@ -22,6 +22,9 @@
     height: 50px;
     margin-top: 15px;
     box-sizing: border-box;
+    &.disabled {
+      cursor: not-allowed;
+    }
     &:hover {
       background-position: -200px;
       box-shadow: 0 0px 15px 2px $purpleColor;
