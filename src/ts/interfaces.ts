@@ -69,13 +69,13 @@ export interface ChatProps {
     secure_url: string
   }
   name?: string
-  messages?: Array<object>
+  messages?: MessageProps[]
   isGroup?: boolean
   secure?: boolean
   private?: boolean
   maxUsers?: number
   ownerId?: any
-  admins?: Array<object>
+  admins?: UserProps[]
   users?: UserProps[]
   status?: number
   createdAt?: Date

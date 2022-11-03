@@ -8,6 +8,7 @@ import Register from "./sections/Register/Register"
 import Login from "./sections/Login/Login"
 import { RootState } from "./ts/interfaces"
 import EmailVerification from "./sections/EmailVerification/EmailVerification"
+import VerifySession from "./components/VerifySession/VerifySession"
 
 function App() {
   const alertMessage = useSelector((state: RootState) => state.alertMessage)
@@ -19,8 +20,8 @@ function App() {
       <ShowChatProvider>
         {alertMessage.visible && <AlertMessage />}
         {loader.status && <Loader progress={loader.progress} />}
-        {loaderSpinner.status && <LoaderSpinner />}
         <HashRouter>
+          {loaderSpinner.status && <LoaderSpinner />}
           <Routes>
             <Route path="/accounts/*">
               <Route path="login" element={<Login />} />
@@ -31,8 +32,15 @@ function App() {
             </Route>
             <Route path="/login" element={<Navigate to="/accounts/login" />} />
             <Route path="/register" element={<Navigate to="/accounts/register" />} />
-            <Route path="/" element={<Navigate to="/accounts/login" />} />
-            <Route path="/chat" element={<ChatIndex />} />
+            <Route path="/" element={<Navigate to="/chat" />} />
+            <Route
+              path="/chat"
+              element={
+                <VerifySession>
+                  <ChatIndex />
+                </VerifySession>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </HashRouter>
