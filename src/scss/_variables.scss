@@ -11,6 +11,35 @@ $pinkColor: #dd4ec6;
 $purpleColor: #8d4fc9;
 $whiteColor: #ffffff;
 
+@mixin gradient-button {
+  background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
+  background-size: 100%;
+  background-position: 0;
+  border-radius: 10px;
+  border: none;
+  color: $whiteColor;
+  font-family: $fontFamily;
+  font-size: clamp(12px, 16px, 5vmin);
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 1px 10px 0 $purpleColor;
+  background-repeat: no-repeat;
+  background-color: $purpleColor;
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  box-sizing: border-box;
+  &:hover {
+    background-position: -200px;
+    box-shadow: 0 0px 15px 2px $purpleColor;
+  }
+  &.disabled {
+    background: $secundaryColor;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }
@@ -22,7 +51,12 @@ $whiteColor: #ffffff;
 
   @media screen and (min-width: $min-vw) {
     @each $property in $properties {
-      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+      #{$property}: calc(
+        #{$min-value} +
+          #{strip-unit($max-value - $min-value)} *
+          (100vw - #{$min-vw}) /
+          #{strip-unit($max-vw - $min-vw)}
+      );
     }
   }
 
