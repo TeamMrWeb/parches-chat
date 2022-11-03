@@ -1,10 +1,7 @@
 import { RefObject, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { startLoaderSpinner } from "../../slicers/loaderSpinnerSlice"
-import { setLoggedUserField } from "../../slicers/loggedUserSlice"
 import { LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION } from "../../graphql/subscriptions"
-import { LoggedUserId } from "../../graphql/queries"
-import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { useSubscription } from "@apollo/client"
 import { useShowChat } from "../../contexts/ShowChatContext"
 import { useNotifications } from "../../hooks/useNotifications"
@@ -16,10 +13,6 @@ const maxMobileDeviceWidth = 480
 const notMobile = window.screen.width >= maxMobileDeviceWidth
 
 export const useChatIndex = (chatContainer: RefObject<HTMLDivElement>) => {
-  const { lazyQueryMethod: getLoggedUserId, loading: loggedUserLoading } = useFetchingMethod(
-    LoggedUserId,
-    setLoggedUserField
-  )
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const chat = useSelector((state: RootState) => state.chat)
   const [firstAccess, setFirstAccess] = useState(!notMobile)
@@ -42,12 +35,6 @@ export const useChatIndex = (chatContainer: RefObject<HTMLDivElement>) => {
     const author = chat.users.find((user: UserProps) => user.id !== loggedUser.id)
     return author?.id === data.userMessageNotification.author.id
   }
-
-  useEffect(() => {
-    const userAlreadyLogged = Object.keys(loggedUser).length !== 0
-    if (userAlreadyLogged) return
-    getLoggedUserId()
-  }, [loggedUser, loggedUserLoading])
 
   useEffect(() => {
     if (

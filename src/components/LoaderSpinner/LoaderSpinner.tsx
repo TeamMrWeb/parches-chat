@@ -13,8 +13,8 @@ export default function LoaderSpinner() {
     const timeOut = setTimeout(() => {
       setTooLongLoadMessage(
         <p>
-          ¿Está tardando demasiado? Puede que haya un error con el servidor.
-          <p>Intenta de nuevo más tarde.</p>
+          ¿Está tardando demasiado? Puede quehaya un error con el servidor.
+          <span>Intenta de nuevo más tarde.</span>
         </p>
       )
     }, 5000)
@@ -38,7 +38,7 @@ export default function LoaderSpinner() {
       <p>Cargando Parches Chat...</p>
       {tooLongLoadMessage && (
         <div className="message-wrapper">
-          <p>{tooLongLoadMessage}</p>
+          {tooLongLoadMessage}
           <Link to="/login" className="button" onClick={() => dispatch(stopLoaderSpinner())}>
             Volver al inicio de sesión
           </Link>

@@ -12,7 +12,6 @@ export const useSubmitForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [disabled, setDisabled] = useState(false)
-
   const submitMethods: {
     register: any
     login: any
