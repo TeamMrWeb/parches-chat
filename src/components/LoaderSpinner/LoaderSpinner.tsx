@@ -1,15 +1,25 @@
+import { useEffect, useState } from "react"
 import { Oval } from "react-loader-spinner"
+import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { stopLoaderSpinner } from "../../slicers/loaderSpinnerSlice"
 
 export default function LoaderSpinner() {
-  const showTooLongTimeWaitingWarning = () => {
-    setTimeout(() => {
-      return (
+  const [tooLongLoadMessage, setTooLongLoadMessage] = useState<any>()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    console.log("hola")
+    const timeOut = setTimeout(() => {
+      setTooLongLoadMessage(
         <p>
-          ¿Está tardando demasiado? Puede que haya un error con el servidor <p>Intenta de nuevo más tarde.</p>
+          ¿Está tardando demasiado? Puede que haya un error con el servidor.
+          <p>Intenta de nuevo más tarde.</p>
         </p>
       )
-    }, 10000)
-  }
+    }, 5000)
+    return () => clearTimeout(timeOut)
+  }, [])
 
   return (
     <div className="loader-spinner">
@@ -26,7 +36,14 @@ export default function LoaderSpinner() {
         strokeWidthSecondary={2}
       />
       <p>Cargando Parches Chat...</p>
-      <>{showTooLongTimeWaitingWarning()}</>
+      {tooLongLoadMessage && (
+        <div className="message-wrapper">
+          <p>{tooLongLoadMessage}</p>
+          <Link to="/login" className="button" onClick={() => dispatch(stopLoaderSpinner())}>
+            Volver al inicio de sesión
+          </Link>
+        </div>
+      )}
     </div>
   )
 }

@@ -11,4 +11,24 @@
   z-index: 100;
   color: white;
   font-size: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  .message-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    p {
+      text-align: center;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include gradient-button;
+      max-width: 200px;
+      text-decoration: none;
+    }
+  }
 }
