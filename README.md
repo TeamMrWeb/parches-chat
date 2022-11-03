@@ -30,8 +30,15 @@ npm run dev
 
 > ***Aviso:*** Se necesita clonar y ejecutar el servidor de la rama backend para utilizar esta página correctamente de forma local. [Ir a la rama backend](https://github.com/TeamParches/parches-chat/tree/backend)
 
+## Variables de entorno 🏭
+La aplicación necesita utilizar ciertas variables de entorno. Para acceder a ellas siga estos pasos:
+ - Crear un archivo **.env** en el root de la carpeta frontend
+ - Copiar y pegar el contenido del archivo .env.example.txt dentro de **.env**
+
+> ***Aviso:*** Es necesario colocar estas variables para el correcto funcionamiento de la aplicación.
+
 ## Despliegue 🚀
-Puedes utilizar esta página sin necesidad de instalar nada. Has click [aquí](https://teamparches.github.io/parches-chat/) para ir al despliegue.
+Puedes utilizar esta aplicación sin necesidad de instalar ni configurar absolutamente nada. Has click [aquí](https://teamparches.github.io/parches-chat/) para ir al despliegue.
 
 ## Usuarios de prueba 🚻
 Si no quieres crear una cuenta o agregar a amigos, simplemente utiliza alguno de estos usuarios de prueba.
