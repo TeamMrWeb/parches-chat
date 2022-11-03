@@ -43,30 +43,32 @@ export default function AddFriend({
         </div>
       ) : (
         <ul className="results">
-          {results?.map((result: ResultProps) => (
-            <li
-              className="results__item"
-              key={result.id}
-              onClick={() =>
-                result.id !== loggedUser.id && addFriendToLoggedUser(result.id, result.username)
-              }
-              title="Agregar amigo"
-            >
-              <div className="left-side">
-                <img
-                  className="results__avatar"
-                  src={result.avatar.secure_url}
-                  alt="Avatar de usuario"
-                />
-                <span className="results__name">{result.username}</span>
-              </div>
-              {result.id !== loggedUser.id ? (
-                <img className="results__icon" src={addFriendIcon} alt="Ícono de agregar amigo" />
-              ) : (
-                "Tú"
-              )}
-            </li>
-          ))}
+          {results?.map((result: ResultProps) =>
+            result.verified ? (
+              <li
+                className="results__item"
+                key={result.id}
+                onClick={() =>
+                  result.id !== loggedUser.id && addFriendToLoggedUser(result.id, result.username)
+                }
+                title="Agregar amigo"
+              >
+                <div className="left-side">
+                  <img
+                    className="results__avatar"
+                    src={result.avatar.secure_url}
+                    alt="Avatar de usuario"
+                  />
+                  <span className="results__name">{result.username}</span>
+                </div>
+                {result.id !== loggedUser.id ? (
+                  <img className="results__icon" src={addFriendIcon} alt="Ícono de agregar amigo" />
+                ) : (
+                  "Tú"
+                )}
+              </li>
+            ) : null
+          )}
         </ul>
       )}
     </section>

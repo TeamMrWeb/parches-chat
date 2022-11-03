@@ -22,6 +22,7 @@ export interface ResultProps {
     public_id: string
     secure_url: string
   }
+  verified: boolean
   __typename: string
 }
 
