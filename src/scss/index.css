@@ -205,6 +205,9 @@ html body #root .App ul {
   text-align: center;
 }
 .not-found .not-found__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;
@@ -223,6 +226,7 @@ html body #root .App ul {
   margin-top: 15px;
   box-sizing: border-box;
   max-width: 200px;
+  text-decoration: none;
 }
 .not-found .not-found__button:hover {
   background-position: -200px;

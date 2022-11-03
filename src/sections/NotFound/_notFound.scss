@@ -13,7 +13,11 @@
     text-align: center;
   }
   .not-found__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include gradient-button;
     max-width: 200px;
+    text-decoration: none;
   }
 }
