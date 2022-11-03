@@ -3,8 +3,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
   height: 100vh;
+  width: 100%;
   background-color: $primaryColor;
   color: $whiteColor;
+  .not-found__title {
+    text-align: center;
+  }
+  .not-found__button {
+    @include gradient-button;
+    max-width: 200px;
+  }
 }
