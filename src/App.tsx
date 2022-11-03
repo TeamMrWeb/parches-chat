@@ -1,14 +1,13 @@
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { ShowChatProvider } from "./contexts/ShowChatContext"
-import { VerifyAccount, AlertMessage, Loader, LoaderSpinner } from "./components"
+import { VerifyAccount, AlertMessage, Loader, LoaderSpinner, VerifySession } from "./components"
+import EmailVerification from "./sections/EmailVerification/EmailVerification"
 import ChatIndex from "./sections/ChatIndex/ChatIndex"
 import NotFound from "./sections/NotFound/NotFound"
 import Register from "./sections/Register/Register"
 import Login from "./sections/Login/Login"
 import { RootState } from "./ts/interfaces"
-import EmailVerification from "./sections/EmailVerification/EmailVerification"
-import VerifySession from "./components/VerifySession/VerifySession"
 
 function App() {
   const alertMessage = useSelector((state: RootState) => state.alertMessage)

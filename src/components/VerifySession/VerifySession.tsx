@@ -10,10 +10,7 @@ export default function VerifySession({ children }: { children: JSX.Element }) {
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const navigate = useNavigate()
   const userIsLogged = Object.keys(loggedUser).length !== 0
-  const { lazyQueryMethod: getLoggedUserId, loading: loggedUserLoading } = useFetchingMethod(
-    LoggedUserId,
-    setLoggedUserField
-  )
+  const { lazyQueryMethod: getLoggedUserId } = useFetchingMethod(LoggedUserId, setLoggedUserField)
   useEffect(() => {
     const auth = localStorage.getItem("auth")
     if (!auth) navigate("/login")
