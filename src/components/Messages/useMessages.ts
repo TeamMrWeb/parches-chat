@@ -20,10 +20,11 @@ export const useMessages = () => {
     messageAuthor.id === loggedUser.id ? "right" : "left"
 
   const formatCreatedAtDate = (createdAt: Date) => {
-    const formatedDate = new Date(createdAt).toLocaleTimeString(navigator.language, {
-      hour: "2-digit",
-      minute: "2-digit"
-    })
+    const hours = new Date(createdAt).getHours()
+    const minutes = new Date(createdAt).getMinutes()
+    const formatedDate = `${hours < 10 ? `0${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    } ${hours < 12 ? "AM" : "PM"}`
     return formatedDate
   }
 

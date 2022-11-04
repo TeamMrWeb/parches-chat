@@ -2,8 +2,7 @@
   background-color: $primaryColor;
   height: 100%;
   padding: 0px 50px;
-  padding-bottom: 10px;
-  max-height: 50px;
+  max-height: 60px;
   position: relative;
   .chat-input-wrapper {
     display: grid;
@@ -19,9 +18,8 @@
       cursor: pointer;
       width: 25px;
       height: 25px;
-      
     }
-    .chat-input__tool--upload{
+    .chat-input__tool--upload {
       display: none;
     }
     .chat-input__input {

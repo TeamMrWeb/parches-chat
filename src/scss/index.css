@@ -873,8 +873,7 @@ html body #root .App ul {
   background-color: #1c1d22;
   height: 100%;
   padding: 0px 50px;
-  padding-bottom: 10px;
-  max-height: 50px;
+  max-height: 60px;
   position: relative;
 }
 .chat-input .chat-input-wrapper {
@@ -973,7 +972,7 @@ html body #root .App ul {
   background-color: #333641;
   color: #ffffff;
   padding: 5px 10px;
-  padding-right: 40px;
+  padding-right: 60px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
