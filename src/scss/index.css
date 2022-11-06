@@ -225,6 +225,8 @@ html body #root .App ul {
   height: 50px;
   margin-top: 15px;
   box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
   max-width: 200px;
   text-decoration: none;
 }
@@ -375,6 +377,8 @@ html body #root .App ul {
   height: 50px;
   margin-top: 15px;
   box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
 }
 .home .button-container .view-repository:hover {
   background-position: -200px;
@@ -428,6 +432,8 @@ html body #root .App ul {
   height: 50px;
   margin-top: 15px;
   box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
 }
 .email-verification .email-verification-wrapper .button:hover {
   background-position: -200px;
@@ -1434,6 +1440,8 @@ html body #root .App ul {
   height: 50px;
   margin-top: 15px;
   box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
   max-width: 200px;
   text-decoration: none;
 }

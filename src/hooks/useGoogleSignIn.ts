@@ -2,14 +2,18 @@ import { useEffect } from "react"
 import { provider } from "../authGoogleProvider"
 import { useSubmitForm } from "./useSubmitForm"
 import { getAuth, signInWithRedirect, getRedirectResult } from "firebase/auth"
+import { useDispatch } from "react-redux"
+import { startLoader, stopLoader } from "../slicers/loaderSlice"
 
 export const useGoogleSignIn = (authMethod: string) => {
   const auth = getAuth()
   const { handleSubmit } = useSubmitForm()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getRedirectResult(auth).then((result: any) => {
       if (!result) return
+      dispatch(stopLoader())
       const user = result.user
       const email = user.email
       const username = user.displayName
@@ -25,7 +29,10 @@ export const useGoogleSignIn = (authMethod: string) => {
     })
   }, [authMethod])
 
-  const signInWithGoogle = () => signInWithRedirect(auth, provider)
+  const signInWithGoogle = () => {
+    dispatch(startLoader())
+    signInWithRedirect(auth, provider)
+  }
 
   return { signInWithGoogle }
 }
