@@ -9,7 +9,6 @@ export default function LoaderSpinner() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log("hola")
     const timeOut = setTimeout(() => {
       setTooLongLoadMessage(
         <p>

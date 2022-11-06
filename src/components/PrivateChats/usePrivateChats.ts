@@ -26,7 +26,7 @@ export const usePrivateChats = () => {
   }, [loggedUser.id])
 
   useEffect(() => {
-    !loading && chats && dispatch(stopLoaderSpinner())
+    !loading && chats.length && dispatch(stopLoaderSpinner())
   }, [loading])
 
   return { chats, defineChatName }
