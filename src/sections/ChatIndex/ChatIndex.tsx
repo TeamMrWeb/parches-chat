@@ -7,11 +7,17 @@ export default function ChatIndex() {
   const chatContainer = useRef<HTMLDivElement>(null)
   const [showQuickOptions, setShowQuickOptions] = useState(false)
   const [showAddFriend, setShowAddFriend] = useState(false)
-  const { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile } = useChatIndex(chatContainer)
+  const { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile } =
+    useChatIndex(chatContainer)
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe(chatContainer)
 
   return (
-    <section className="chat-index" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+    <section
+      className="chat-index"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       <Groups />
       <div className="sidebar">
         <PrivateChats
@@ -20,9 +26,14 @@ export default function ChatIndex() {
           showAddFriend={showAddFriend}
           setShowAddFriend={setShowAddFriend}
         />
-        <LoggedUserArea showQuickOptions={showQuickOptions} setShowQuickOptions={setShowQuickOptions} />
+        <LoggedUserArea
+          showQuickOptions={showQuickOptions}
+          setShowQuickOptions={setShowQuickOptions}
+        />
         {showQuickOptions && <UserQuickOptions />}
-        {showAddFriend && <AddFriend showAddFriend={showAddFriend} setShowAddFriend={setShowAddFriend} />}
+        {showAddFriend && (
+          <AddFriend showAddFriend={showAddFriend} setShowAddFriend={setShowAddFriend} />
+        )}
       </div>
       {notMobile ? desktopBehaviour() : mobileBehaviour()}
     </section>

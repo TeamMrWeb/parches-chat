@@ -13,8 +13,9 @@ export default function LoaderSpinner() {
     const timeOut = setTimeout(() => {
       setTooLongLoadMessage(
         <p>
-          ¿Está tardando demasiado? Puede quehaya un error con el servidor.
-          <span>Intenta de nuevo más tarde.</span>
+          ¿Está tardando demasiado? Puede que haya un error con el servidor.
+          <br />
+          <span> Intenta de nuevo más tarde.</span>
         </p>
       )
     }, 5000)
