@@ -1482,11 +1482,14 @@ html body #root .App ul {
   left: 0;
   top: 70px;
   width: 100%;
-  height: 600px;
+  height: 400px;
 }
 .add-new-group .add-new-group-wrapper {
   width: 100%;
   position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #1c1d22;
 }
 .add-new-group .add-new-group-wrapper .search-friends-section {
   left: 0;
@@ -1494,9 +1497,6 @@ html body #root .App ul {
   bottom: 0;
   width: 100%;
   height: 400px;
-  position: relative;
-  padding: 20px;
-  box-sizing: border-box;
 }
 .add-new-group .add-new-group-wrapper .next-step {
   display: flex;
@@ -1537,6 +1537,12 @@ html body #root .App ul {
   cursor: not-allowed;
 }
 
+@media screen and (max-width: 300px) {
+  .add-new-group {
+    width: 100vw;
+    left: -70px;
+  }
+}
 .search-friends-section {
   position: absolute;
   left: 0;

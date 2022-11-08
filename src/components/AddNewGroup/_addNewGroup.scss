@@ -6,19 +6,19 @@
   left: 0;
   top: 70px;
   width: 100%;
-  height: 600px;
+  height: 400px;
   .add-new-group-wrapper {
     width: 100%;
     position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: $primaryColor;
     .search-friends-section {
       left: 0;
       top: 0px;
       bottom: 0;
       width: 100%;
       height: 400px;
-      position: relative;
-      padding: 20px;
-      box-sizing: border-box;
     }
     .next-step {
       @include gradient-button;
@@ -28,5 +28,12 @@
       position: absolute;
       bottom: 0px;
     }
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .add-new-group {
+    width: 100vw;
+    left: -70px;
   }
 }
