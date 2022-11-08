@@ -8,7 +8,7 @@ import { useEmojis } from "../Emojis/useEmojis"
 
 export const useChatInput = (chat: ChatProps) => {
   const [value, setValue] = useState("")
-  const [image, setImage] = useState("")
+  const [images, setImages] = useState<File[]>([])
   const [showEmojisPicker, setShowEmojisPicker] = useState(false)
   const { lazyQueryMethod: createNewMessage } = useFetchingMethod(createMessage)
   const [messageDelay, setMessageDelay] = useState(new Date().getSeconds())
@@ -40,8 +40,7 @@ export const useChatInput = (chat: ChatProps) => {
   }
 
   const previewImage = (imageRoute: File) => {
-    const route = URL.createObjectURL(imageRoute)
-    setImage(route)
+    setImages(images => [...(images || []), imageRoute])
   }
 
   const protectFromFlood = () => {
@@ -90,8 +89,8 @@ export const useChatInput = (chat: ChatProps) => {
     showEmojisPicker,
     setShowEmojisPicker,
     previewImage,
-    image,
-    setImage,
+    images,
+    setImages,
     value,
     setValue,
     submitMessage

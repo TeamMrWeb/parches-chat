@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useChatInput } from "./useChatInput"
 import { ChatPreviewImage } from "../"
 import { RootState } from "../../ts/interfaces"
 import emojiIcon from "../../assets/icons/emoji-icon.svg"
 import plusIcon from "../../assets/icons/plus-icon.svg"
 import Emojis from "../Emojis/Emojis"
+import { createAlertMessage } from "../../slicers/alertMessageSlice"
 
 export default function ChatInput() {
   const chat = useSelector((state: RootState) => state.chat)
@@ -12,16 +13,17 @@ export default function ChatInput() {
     showEmojisPicker,
     setShowEmojisPicker,
     previewImage,
-    image,
-    setImage,
+    images,
+    setImages,
     value,
     setValue,
     submitMessage
   } = useChatInput(chat)
+  const dispatch = useDispatch()
 
   return (
     <section className="chat-input">
-      {image && <ChatPreviewImage image={image} setImage={setImage} />}
+      {images && images.length >= 1 && <ChatPreviewImage images={images} setImages={setImages} />}
       <form className="chat-input-wrapper" onSubmit={e => submitMessage(e)}>
         <label htmlFor="image">
           <img className="chat-input__tool" src={plusIcon} alt="Adjuntar Imágen" />
@@ -30,7 +32,15 @@ export default function ChatInput() {
           className="chat-input__tool--upload"
           type="file"
           onChange={e => {
-            e.target.files && previewImage(e.target.files[0])
+            images.length <= 5
+              ? e.target.files && previewImage(e.target.files[0])
+              : dispatch(
+                  createAlertMessage({
+                    title: "Solo puedes enviar hasta 5 imágenes",
+                    type: "warning",
+                    visible: true
+                  })
+                )
           }}
           id="image"
         />

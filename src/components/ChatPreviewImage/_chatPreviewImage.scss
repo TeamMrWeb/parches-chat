@@ -7,34 +7,87 @@
   margin-right: 50px;
   padding: 0 50px;
   box-sizing: border-box;
-  .preview-wrapper {
+  .images-list {
+    display: flex;
+    gap: 30px;
     width: 100%;
-    height: 100%;
+    overflow-x: auto;
     background-color: $secundaryColor;
-    padding-top: 5px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    .preview-image {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
-      height: 200px;
-      margin: 20px;
+    border-radius: 10px 10px 0 0;
+    .preview-wrapper {
       width: 100%;
-      min-width: 100px;
       max-width: 250px;
-      background-color: $primaryColor;
-      border-radius: 10px;
-      padding: 10px;
+      height: 100%;
+      padding-top: 5px;
       box-sizing: border-box;
-      .preview-image__image {
-        height: 150px;
+      .preview-image {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 200px;
+        margin: 20px;
         width: 100%;
-        object-fit: cover;
+        min-width: 100px;
+        max-width: 250px;
+        background-color: $primaryColor;
         border-radius: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+        .preview-image__image {
+          height: 150px;
+          width: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+        .preview-image__name {
+          color: $whiteColor;
+          word-wrap: break-word;
+          overflow-x: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .delete-image {
+          position: absolute;
+          right: -10px;
+          top: -10px;
+          border: none;
+          background-color: $primaryColor;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          .delete-image__icon {
+            width: 25px;
+            height: 25px;
+            filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%)
+              contrast(94%);
+          }
+        }
       }
-      .preview-image__name {
-        color: $whiteColor;
+      .send-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 60px;
+        bottom: 40%;
+        border: none;
+        background-color: $primaryColor;
+        border-radius: 10px;
+        rotate: 270deg;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        transition: all 0.25s;
+        &:hover {
+          .send-image__icon {
+            filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%)
+              contrast(94%);
+          }
+        }
+        .send-image__icon {
+          width: 100%;
+        }
       }
     }
   }
@@ -43,19 +96,42 @@
 @media screen and (max-width: 600px) {
   .preview-container {
     height: 170px;
-    bottom: 40px;
     padding: 0 20px;
-    .preview-wrapper {
-      padding: 0;
-      padding-top: 5px;
-      .preview-image {
-        height: 150px;
-        width: 50px;
+    .images-list {
+      gap: 0px;
+      overflow-x: auto;
+      .preview-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 0;
-        margin: 0;
-        margin-left: 10px;
-        .preview-image__name {
-          display: none;
+        padding-top: 5px;
+        .preview-image {
+          height: 150px;
+          width: 50px;
+          padding: 0;
+          margin: 0;
+          margin-left: 10px;
+          .preview-image__name {
+            display: none;
+          }
+          .delete-image {
+            width: 30px;
+            height: 30px;
+            right: 0;
+            cursor: pointer;
+            .delete-image__icon {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+        .send-image {
+          right: 30px;
+          width: 40px;
+          height: 40px;
+          .send-image__icon {
+          }
         }
       }
     }
