@@ -2,18 +2,20 @@ import { Oval } from "react-loader-spinner"
 import { ResultProps } from "../../ts/interfaces"
 import { useSearchFriends } from "./useSearchFriends"
 import closeIcon from "../../assets/icons/close-icon.svg"
-import addFriendIcon from "../../assets/icons/add-friend-icon.svg"
+import FriendsResults from "../FriendsResults/FriendsResults"
 
 export default function SearchFriends({
   title,
   showModal,
   type,
-  setAction
+  setAction,
+  children
 }: {
   title: string
   showModal: any
   type: string
   setAction: any
+  children: JSX.Element
 }) {
   const { isLoading, results, loggedUser, inputValue, setInputValue } = useSearchFriends()
 
@@ -31,6 +33,7 @@ export default function SearchFriends({
         placeholder="Buscar por nombre"
         onChange={e => setInputValue(e.target.value)}
       />
+      {results.length <= 0 && children && !isLoading ? children : null}
       {isLoading && inputValue.length >= 1 ? (
         <div className="search-friends-loader-spinner">
           <Oval
@@ -45,40 +48,12 @@ export default function SearchFriends({
           />
         </div>
       ) : (
-        <ul className="results">
-          {results?.map((result: ResultProps) =>
-            result.verified ? (
-              <li
-                className="results__item"
-                key={result.id}
-                onClick={() => result.id !== loggedUser.id && setAction(result.id, result.username)}
-                title="Agregar amigo"
-              >
-                <div className="left-side">
-                  <img
-                    className="results__avatar"
-                    src={result.avatar.secure_url}
-                    alt="Avatar de usuario"
-                  />
-                  <span className="results__name">{result.username}</span>
-                </div>
-                {type === "addFriend" ? (
-                  result.id !== loggedUser.id ? (
-                    <img
-                      className="results__icon"
-                      src={addFriendIcon}
-                      alt="Ícono de agregar amigo"
-                    />
-                  ) : (
-                    "Tú"
-                  )
-                ) : (
-                  <div>agregaralgrupo</div>
-                )}
-              </li>
-            ) : null
-          )}
-        </ul>
+        <FriendsResults
+          results={results}
+          loggedUser={loggedUser}
+          setAction={setAction}
+          type="addFriend"
+        />
       )}
     </section>
   )

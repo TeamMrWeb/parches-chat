@@ -7,7 +7,7 @@ import { RootState } from "../../ts/interfaces"
 export const useSearchFriends = () => {
   const { lazyQueryMethod: getFriendByUsername } = useFetchingMethod(usersByUsername)
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [inputValue, setInputValue] = useState("")
   const [results, setResults] = useState([])
 
