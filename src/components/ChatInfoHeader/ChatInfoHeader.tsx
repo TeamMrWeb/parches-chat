@@ -10,11 +10,20 @@ export default function ChatInfoHeader() {
 
   return (
     <section className="chat-header header">
-      <img className="header__back" src={backIcon} alt="Ícono de volver atrás" onClick={() => setShowChat && setShowChat(!showChat)} />
-      <img className="header__image" src={chatData?.avatar ? chatData.avatar.secure_url : userDefaultIcon} alt="Imagén de $friend" />
+      <img
+        className="header__back"
+        src={backIcon}
+        alt="Ícono de volver atrás"
+        onClick={() => setShowChat && setShowChat(!showChat)}
+      />
+      <img
+        className="header__image"
+        src={chatData?.avatar ? chatData.avatar.secure_url : userDefaultIcon}
+        alt="Imagén de $friend"
+      />
       <div className="right">
         <span className="header__username">{chatData?.username}</span>
-        <img className="header__options" src={dotsIcon} alt="Opciones" />
+        {/* <img className="header__options" src={dotsIcon} alt="Opciones" /> */}
       </div>
     </section>
   )
