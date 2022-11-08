@@ -1584,6 +1584,45 @@ html body #root .App ul {
   height: 30px;
   border-radius: 40px;
 }
+.results .results__item .toggler-wrapper {
+  display: block;
+  width: 45px;
+  height: 25px;
+  cursor: pointer;
+  position: relative;
+}
+.results .results__item .toggler-wrapper input[type=checkbox] {
+  display: none;
+}
+.results .results__item .toggler-wrapper input[type=checkbox]:checked + .toggler-slider {
+  background-color: #8d4fc9;
+}
+.results .results__item .toggler-wrapper .toggler-slider {
+  background-color: #323346;
+  position: absolute;
+  border-radius: 100px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 300ms ease;
+}
+.results .results__item .toggler-wrapper .toggler-knob {
+  position: absolute;
+  transition: all 300ms ease;
+}
+.results .results__item .toggler-wrapper input[type=checkbox]:checked + .toggler-slider .toggler-knob {
+  left: calc(100% - 18.75px);
+}
+.results .results__item .toggler-wrapper .toggler-knob {
+  width: 12.5px;
+  height: 12.5px;
+  top: 50%;
+  left: 6.25px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: #dd4ec6;
+}
 .results .results__item .results__icon {
   width: 25px;
   height: 25px;
