@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useMutation } from "@apollo/client"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { createChatBetweenFriends, sendFriendRequestToUser } from "../../graphql/mutations"
-import { chatsFromLoggedUser, usersByUsername } from "../../graphql/queries"
+import { chatsFromLoggedUser } from "../../graphql/queries"
 import { createAlertMessage } from "../../slicers/alertMessageSlice"
 import { AddFriendErrorResponseProps, AddFriendResponseProps, RootState } from "../../ts/interfaces"
 
 export const useAddFriend = () => {
-  const { lazyQueryMethod: getFriendByUsername } = useFetchingMethod(usersByUsername)
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const [createChat] = useMutation(createChatBetweenFriends, {
     refetchQueries: [
@@ -16,22 +14,7 @@ export const useAddFriend = () => {
     ]
   })
   const { lazyQueryMethod: sendFriendRequest } = useFetchingMethod(sendFriendRequestToUser)
-  const [isLoading, setIsLoading] = useState(true)
-  const [inputValue, setInputValue] = useState("")
-  const [results, setResults] = useState([])
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (inputValue.length === 0) return setResults([])
-    setIsLoading(true)
-    const timer = setTimeout(async () => {
-      const res = await getFriendByUsername({ variables: { username: inputValue } })
-      const users = res.data.users
-      setIsLoading(false)
-      users && setResults(users)
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [inputValue])
 
   const addFriendToLoggedUser = async (friendId: string, friendUsername: string) => {
     await sendFriendRequest({ variables: { userId: friendId, senderId: loggedUser.id } }).then(
@@ -51,5 +34,5 @@ export const useAddFriend = () => {
     )
   }
 
-  return { setInputValue, inputValue, results, isLoading, addFriendToLoggedUser, loggedUser }
+  return { addFriendToLoggedUser }
 }
