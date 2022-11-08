@@ -1,4 +1,5 @@
 import { useAddFriend } from "../AddFriend/useAddFriend"
+import CreateGroup from "../CreateGroup/CreateGroup"
 import FriendsResults from "../FriendsResults/FriendsResults"
 import SearchFriends from "../SearchFriends/SearchFriends"
 import { useAddNewGroup } from "./useAddNewGroup"
@@ -9,31 +10,52 @@ export default function AddNewGroup({
   setShowAddNewGroup: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const { addFriendToLoggedUser } = useAddFriend()
-  const { friends, loggedUser, setUsersToGroup, nexStep } = useAddNewGroup()
+  const {
+    friends,
+    loggedUser,
+    usersToGroup,
+    setUsersToGroup,
+    nexStep,
+    showNextStep,
+    setShowNextStep
+  } = useAddNewGroup()
 
   return (
     <section className="add-new-group">
-      <SearchFriends
-        title="Crea un nuevo grupo"
-        showModal={setShowAddNewGroup}
-        type="addNewGroup"
-        setAction={addFriendToLoggedUser}
-      >
-        {friends.length >= 1 ? (
-          <FriendsResults
-            results={friends}
-            loggedUser={loggedUser}
-            setAction={null}
+      {showNextStep ? (
+        <CreateGroup
+          friendsAdded={usersToGroup}
+          setShowNextStep={setShowNextStep}
+          setShowAddNewGroup={setShowAddNewGroup}
+          setUsersToGroup={setUsersToGroup}
+        />
+      ) : (
+        <>
+          <SearchFriends
+            title="Crea un nuevo grupo"
+            showModal={setShowAddNewGroup}
             type="addNewGroup"
-            onChecked={setUsersToGroup}
-          />
-        ) : (
-          <></>
-        )}
-      </SearchFriends>
-      <button className="next-step" onClick={() => nexStep()}>
-        Siguiente
-      </button>
+            setAction={addFriendToLoggedUser}
+          >
+            {friends.length >= 1 ? (
+              <FriendsResults
+                results={friends}
+                loggedUser={loggedUser}
+                setAction={null}
+                type="addNewGroup"
+                onChecked={setUsersToGroup}
+              />
+            ) : (
+              <></>
+            )}
+          </SearchFriends>
+          {usersToGroup.length >= 1 ? (
+            <button className="next-step" onClick={() => nexStep()}>
+              Siguiente
+            </button>
+          ) : null}
+        </>
+      )}
     </section>
   )
 }
