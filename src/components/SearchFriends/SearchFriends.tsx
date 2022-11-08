@@ -7,12 +7,16 @@ export default function SearchFriends({
   title,
   showModal,
   setAction,
-  children
+  children,
+  type,
+  onChecked
 }: {
   title: string
   showModal: any
-  setAction: any
+  setAction?: any
   children?: JSX.Element
+  type: string
+  onChecked?: any
 }) {
   const { isLoading, results, loggedUser, inputValue, setInputValue } = useSearchFriends()
 
@@ -49,7 +53,8 @@ export default function SearchFriends({
           results={results}
           loggedUser={loggedUser}
           setAction={setAction}
-          type="addFriend"
+          type={type}
+          onChecked={onChecked}
         />
       )}
     </section>

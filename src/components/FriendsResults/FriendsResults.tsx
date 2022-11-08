@@ -41,28 +41,30 @@ export default function FriendsResults({
                 "Tú"
               )
             ) : (
-              <>
-                <label className="toggler-wrapper">
-                  <input
-                    type="checkbox"
-                    onChange={e =>
-                      e.target.checked
-                        ? onChecked((checked: any) => [
-                            ...checked,
-                            {
-                              id: result.id,
-                              username: result.username,
-                              avatar: result.avatar
-                            }
-                          ])
-                        : onChecked([])
-                    }
-                  />
-                  <div className="toggler-slider">
-                    <div className="toggler-knob"></div>
-                  </div>
-                </label>
-              </>
+              type === "addNewGroup" && (
+                <>
+                  <label className="toggler-wrapper">
+                    <input
+                      type="checkbox"
+                      onChange={e =>
+                        e.target.checked
+                          ? onChecked((checked: any) => [
+                              ...checked,
+                              {
+                                id: result.id,
+                                username: result.username,
+                                avatar: result.avatar
+                              }
+                            ])
+                          : onChecked([])
+                      }
+                    />
+                    <div className="toggler-slider">
+                      <div className="toggler-knob"></div>
+                    </div>
+                  </label>
+                </>
+              )
             )}
           </li>
         ) : null

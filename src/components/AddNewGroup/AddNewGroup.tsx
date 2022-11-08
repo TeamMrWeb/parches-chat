@@ -30,11 +30,12 @@ export default function AddNewGroup({
           setUsersToGroup={setUsersToGroup}
         />
       ) : (
-        <>
+        <div className="add-new-group-wrapper">
           <SearchFriends
             title="Crea un nuevo grupo"
             showModal={setShowAddNewGroup}
-            setAction={addFriendToLoggedUser}
+            type="addNewGroup"
+            onChecked={setUsersToGroup}
           >
             {friends.length >= 1 ? (
               <FriendsResults
@@ -53,7 +54,7 @@ export default function AddNewGroup({
               Siguiente
             </button>
           ) : null}
-        </>
+        </div>
       )}
     </section>
   )

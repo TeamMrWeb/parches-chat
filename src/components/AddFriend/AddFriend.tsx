@@ -13,6 +13,7 @@ export default function AddFriend({
       title="Agrega a un amigo por su nombre de usuario"
       showModal={setShowAddFriend}
       setAction={addFriendToLoggedUser}
+      type="addFriend"
     />
   )
 }
