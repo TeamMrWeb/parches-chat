@@ -1,0 +1,34 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px !important;
+  .results__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 5px;
+    box-sizing: border-box;
+    &:hover {
+      background-color: $secundaryColorHover;
+      .loggedUser-chat__username {
+        color: $whiteColor !important;
+      }
+    }
+    .left-side {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .results__avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 40px;
+      }
+    }
+    .results__icon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
