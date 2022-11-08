@@ -15,17 +15,6 @@ export interface AccountQuestionProps {
   hrefText: string
 }
 
-export interface ResultProps {
-  id: string
-  username: string
-  avatar: {
-    public_id: string
-    secure_url: string
-  }
-  verified: boolean
-  __typename: string
-}
-
 export interface LoggedUserProps {
   id?: string
   username?: string
@@ -56,6 +45,7 @@ export interface UserProps {
   __typename: string
   id: string
   username: string
+  verified: boolean
   avatar: {
     __typename: string
     public_id: string

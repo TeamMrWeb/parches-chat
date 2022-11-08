@@ -1,7 +1,6 @@
-import { ResultProps } from "../../ts/interfaces"
+import { UserProps } from "../../ts/interfaces"
 import cameraIcon from "../../assets/icons/camera-icon.svg"
 import { useCreateGroup } from "./useCreateGroup"
-import { url } from "inspector"
 
 export default function CreateGroup({
   friendsAdded,
@@ -9,10 +8,10 @@ export default function CreateGroup({
   setShowAddNewGroup,
   setUsersToGroup
 }: {
-  friendsAdded: any
+  friendsAdded: UserProps[]
   setShowNextStep: React.Dispatch<React.SetStateAction<boolean>>
   setShowAddNewGroup: React.Dispatch<React.SetStateAction<boolean>>
-  setUsersToGroup: any
+  setUsersToGroup: React.Dispatch<React.SetStateAction<never[]>>
 }) {
   const { name, setName, avatar, setAvatar, createGroup } = useCreateGroup()
 
@@ -42,8 +41,8 @@ export default function CreateGroup({
         />
       </header>
       <ul className="results">
-        {friendsAdded?.map((result: any) => (
-          <li className="results__item" key={result.userId}>
+        {friendsAdded?.map((result: UserProps) => (
+          <li className="results__item" key={result.id}>
             <div className="left-side">
               <img
                 className="results__avatar"

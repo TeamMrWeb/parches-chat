@@ -12,7 +12,6 @@ export default function AddFriend({
     <SearchFriends
       title="Agrega a un amigo por su nombre de usuario"
       showModal={setShowAddFriend}
-      type="addFriend"
       setAction={addFriendToLoggedUser}
     />
   )

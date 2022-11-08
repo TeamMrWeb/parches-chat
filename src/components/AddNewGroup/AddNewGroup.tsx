@@ -34,7 +34,6 @@ export default function AddNewGroup({
           <SearchFriends
             title="Crea un nuevo grupo"
             showModal={setShowAddNewGroup}
-            type="addNewGroup"
             setAction={addFriendToLoggedUser}
           >
             {friends.length >= 1 ? (

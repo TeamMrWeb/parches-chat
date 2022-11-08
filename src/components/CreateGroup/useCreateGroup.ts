@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useFetchingMethod } from "../../apollo/useFetchingMethod"
 import { CREATE_GROUP } from "../../graphql/mutations"
-import { ResultProps, RootState } from "../../ts/interfaces"
+import { UserProps, RootState } from "../../ts/interfaces"
 
 export const useCreateGroup = () => {
   const [name, setName] = useState("Nuevo Grupo")
@@ -11,11 +11,11 @@ export const useCreateGroup = () => {
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
 
   const createGroup = (
-    friends: ResultProps[],
+    friends: UserProps[],
     name: string = "Nuevo grupo",
     avatar: File | undefined
   ) => {
-    const friendsId = friends.map((friend: ResultProps) => friend.userId)
+    const friendsId = friends.map((friend: UserProps) => friend.id)
     const usersId = [...friendsId, loggedUser.id]
     console.log(friendsId, usersId, name, avatar)
     creatGroup({ variables: { name, usersId, avatar } })

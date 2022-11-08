@@ -1,5 +1,4 @@
 import { Oval } from "react-loader-spinner"
-import { ResultProps } from "../../ts/interfaces"
 import { useSearchFriends } from "./useSearchFriends"
 import closeIcon from "../../assets/icons/close-icon.svg"
 import FriendsResults from "../FriendsResults/FriendsResults"
@@ -7,13 +6,11 @@ import FriendsResults from "../FriendsResults/FriendsResults"
 export default function SearchFriends({
   title,
   showModal,
-  type,
   setAction,
   children
 }: {
   title: string
   showModal: any
-  type: string
   setAction: any
   children?: JSX.Element
 }) {

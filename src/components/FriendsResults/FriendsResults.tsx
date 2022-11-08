@@ -1,5 +1,5 @@
 import addFriendIcon from "../../assets/icons/add-friend-icon.svg"
-import { ResultProps } from "../../ts/interfaces"
+import { LoggedUserProps, UserProps } from "../../ts/interfaces"
 
 export default function FriendsResults({
   results,
@@ -8,15 +8,15 @@ export default function FriendsResults({
   type,
   onChecked
 }: {
-  results: ResultProps[]
-  loggedUser: any
+  results: UserProps[]
+  loggedUser: LoggedUserProps
   setAction: any
   type: string
   onChecked?: any
 }) {
   return (
     <ul className="results">
-      {results?.map((result: ResultProps) =>
+      {results?.map((result: UserProps) =>
         result.verified ? (
           <li
             className="results__item"
@@ -48,7 +48,7 @@ export default function FriendsResults({
                   onChecked((checked: any) => [
                     ...checked,
                     {
-                      userId: result.id,
+                      id: result.id,
                       username: result.username,
                       avatar: result.avatar
                     }
