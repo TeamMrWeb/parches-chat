@@ -45,15 +45,17 @@ export default function FriendsResults({
                 <label className="toggler-wrapper">
                   <input
                     type="checkbox"
-                    onChange={() =>
-                      onChecked((checked: any) => [
-                        ...checked,
-                        {
-                          id: result.id,
-                          username: result.username,
-                          avatar: result.avatar
-                        }
-                      ])
+                    onChange={e =>
+                      e.target.checked
+                        ? onChecked((checked: any) => [
+                            ...checked,
+                            {
+                              id: result.id,
+                              username: result.username,
+                              avatar: result.avatar
+                            }
+                          ])
+                        : onChecked([])
                     }
                   />
                   <div className="toggler-slider">
