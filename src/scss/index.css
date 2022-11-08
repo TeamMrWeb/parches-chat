@@ -1288,8 +1288,13 @@ html body #root .App ul {
 }
 
 @media screen and (max-width: 480px) {
+  .chat-container {
+    filter: brightness(50%);
+    transition: filter 0s;
+  }
   .chat-container.expanded {
     position: fixed;
+    filter: brightness(100%);
   }
 }
 .form {
@@ -1537,10 +1542,11 @@ html body #root .App ul {
   cursor: not-allowed;
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 600px) {
   .add-new-group {
     width: 100vw;
     left: -70px;
+    z-index: 100;
   }
 }
 .search-friends-section {

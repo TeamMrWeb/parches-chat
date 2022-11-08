@@ -37,8 +37,11 @@
 
 @media screen and (max-width: 480px) {
   .chat-container {
+    filter: brightness(50%);
+    transition: filter 0s;
     &.expanded {
       position: fixed;
+      filter: brightness(100%);
     }
   }
 }

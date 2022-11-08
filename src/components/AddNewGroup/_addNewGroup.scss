@@ -31,9 +31,10 @@
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 600px) {
   .add-new-group {
     width: 100vw;
     left: -70px;
+    z-index: 100;
   }
 }
