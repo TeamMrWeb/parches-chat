@@ -1,3 +1,3 @@
-import { GoogleAuthProvider } from 'firebase/auth'
+import { GoogleAuthProvider } from "firebase/auth"
 
 export const provider = new GoogleAuthProvider()

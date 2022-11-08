@@ -1,0 +1,11 @@
+{
+  "testEnvironment": "jest-environment-jsdom",
+  "transformIgnorePatterns": ["node_modules/(?!variables/.*)", "node_modules/(?!(string-width|strip-ansi|ansi-regex)/)"],
+  "transform": {
+    "^.+\\.[t|j]sx?$": "babel-jest"
+  },
+   "moduleNameMapper": {
+    "^.+\\.svg$": "jest-svg-transformer",
+    "firebase": "firebase/auth"
+  }
+}

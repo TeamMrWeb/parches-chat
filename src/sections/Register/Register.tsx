@@ -5,7 +5,6 @@ import { AccountQuestion, FormGroupInput, ViewRepository } from "../../component
 import parchesChatIcon from "../../assets/icons/parches-chat-icon.svg"
 import googleIcon from "../../assets/icons/google-icon.svg"
 import { useGoogleSignIn } from "../../hooks/useGoogleSignIn"
-import { useState } from "react"
 
 export default function Register() {
   const { handleSubmit, disabled, setDisabled } = useSubmitForm()
