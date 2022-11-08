@@ -18,8 +18,8 @@ export const userLogin = gql`
 `
 
 export const createMessage = gql`
-  mutation createMessage($chatId: ID!, $text: String!) {
-    createMessage(chatId: $chatId, text: $text) {
+  mutation createMessage($chatId: ID!, $text: String!, $hasImage: Boolean!) {
+    createMessage(chatId: $chatId, text: $text, hasImage: $hasImage) {
       id
     }
   }
