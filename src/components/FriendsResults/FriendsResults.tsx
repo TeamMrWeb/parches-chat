@@ -56,7 +56,9 @@ export default function FriendsResults({
                                 avatar: result.avatar
                               }
                             ])
-                          : onChecked([])
+                          : onChecked((checked: UserProps[]) =>
+                              checked.filter((user: any) => user.id !== result.id)
+                            )
                       }
                     />
                     <div className="toggler-slider">
