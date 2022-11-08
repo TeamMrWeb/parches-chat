@@ -2,8 +2,13 @@ import { useGroups } from "./useGroups"
 import { GroupProps } from "../../ts/interfaces"
 import GoHome from "../GoHome/GoHome"
 import Group from "../Group/Group"
+import plusIcon from "../../assets/icons/plus-icon.svg"
 
-export default function Groups() {
+export default function Groups({
+  setShowAddNewGroup
+}: {
+  setShowAddNewGroup: React.Dispatch<React.SetStateAction<boolean>>
+}) {
   const { groups } = useGroups()
 
   return (
@@ -14,6 +19,9 @@ export default function Groups() {
           <Group id={group.id} image={group.image} key={group.id} />
         ))}
       </ul>
+      <button className="add-group" onClick={() => setShowAddNewGroup(true)}>
+        <img className="add-group__icon" src={plusIcon} alt="Añadir grupo" />
+      </button>
     </section>
   )
 }

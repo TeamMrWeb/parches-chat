@@ -2,11 +2,13 @@ import { useRef, useState } from "react"
 import { useSwipe } from "../../hooks/useSwipe"
 import { useChatIndex } from "./useChatIndex"
 import { LoggedUserArea, UserQuickOptions, AddFriend, Groups, PrivateChats } from "../../components"
+import AddNewGroup from "../../components/AddNewGroup/AddNewGroup"
 
 export default function ChatIndex() {
   const chatContainer = useRef<HTMLDivElement>(null)
   const [showQuickOptions, setShowQuickOptions] = useState(false)
   const [showAddFriend, setShowAddFriend] = useState(false)
+  const [showAddNewGroup, setShowAddNewGroup] = useState(false)
   const { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile } =
     useChatIndex(chatContainer)
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe(chatContainer)
@@ -18,7 +20,7 @@ export default function ChatIndex() {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <Groups />
+      <Groups setShowAddNewGroup={setShowAddNewGroup} />
       <div className="sidebar">
         <PrivateChats
           firstAccess={firstAccess}
@@ -31,9 +33,8 @@ export default function ChatIndex() {
           setShowQuickOptions={setShowQuickOptions}
         />
         {showQuickOptions && <UserQuickOptions />}
-        {showAddFriend && (
-          <AddFriend showAddFriend={showAddFriend} setShowAddFriend={setShowAddFriend} />
-        )}
+        {showAddFriend && <AddFriend setShowAddFriend={setShowAddFriend} />}
+        {showAddNewGroup && <AddNewGroup setShowAddNewGroup={setShowAddNewGroup} />}
       </div>
       {notMobile ? desktopBehaviour() : mobileBehaviour()}
     </section>
