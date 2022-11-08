@@ -1,0 +1,24 @@
+.add-new-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 70px;
+  width: 100%;
+  height: 600px;
+  .search-friends-section {
+    left: 0;
+    top: 0px;
+    bottom: 0;
+    width: 100%;
+    height: 400px;
+    position: relative;
+  }
+  .next-step {
+    @include gradient-button;
+    width: 100%;
+    height: 40px;
+    margin: 0;
+  }
+}
