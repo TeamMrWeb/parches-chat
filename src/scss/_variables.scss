@@ -12,6 +12,9 @@ $purpleColor: #8d4fc9;
 $whiteColor: #ffffff;
 
 @mixin gradient-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;

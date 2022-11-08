@@ -43,11 +43,13 @@
       border: none;
       color: $whiteColor;
       outline: none;
-      font-size: 18px;
+      font-size: 14px;
       width: 130px;
+      height: 30px;
       padding: 10px;
       box-sizing: border-box;
       border-radius: 10px;
+      border-bottom: 2px solid $pinkColor;
     }
   }
   .results {
@@ -99,9 +101,11 @@
     box-sizing: border-box;
     .button {
       @include gradient-button;
+      height: 40px;
     }
     .button--close {
       @include gradient-button;
+      height: 40px;
       box-shadow: none;
       background: $secundaryColorHover;
       &:hover {

@@ -208,6 +208,9 @@ html body #root .App ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;
@@ -360,6 +363,9 @@ html body #root .App ul {
   font-size: 16px;
 }
 .home .button-container .view-repository {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;
@@ -415,6 +421,9 @@ html body #root .App ul {
   text-align: center;
 }
 .email-verification .email-verification-wrapper .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;
@@ -1417,6 +1426,9 @@ html body #root .App ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;
@@ -1474,6 +1486,9 @@ html body #root .App ul {
   box-sizing: border-box;
 }
 .add-new-group .add-new-group-wrapper .next-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;
@@ -1682,11 +1697,13 @@ html body #root .App ul {
   border: none;
   color: #ffffff;
   outline: none;
-  font-size: 18px;
+  font-size: 14px;
   width: 130px;
+  height: 30px;
   padding: 10px;
   box-sizing: border-box;
   border-radius: 10px;
+  border-bottom: 2px solid #dd4ec6;
 }
 .create-group .results {
   display: flex;
@@ -1737,6 +1754,9 @@ html body #root .App ul {
   box-sizing: border-box;
 }
 .create-group .buttons .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;
@@ -1756,6 +1776,7 @@ html body #root .App ul {
   box-sizing: border-box;
   padding: 10px;
   text-align: center;
+  height: 40px;
 }
 .create-group .buttons .button:hover {
   background-position: -200px;
@@ -1767,6 +1788,9 @@ html body #root .App ul {
   cursor: not-allowed;
 }
 .create-group .buttons .button--close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(93.07deg, #dd4ec6 0%, #8d4fc9 100%);
   background-size: 100%;
   background-position: 0;
@@ -1786,6 +1810,7 @@ html body #root .App ul {
   box-sizing: border-box;
   padding: 10px;
   text-align: center;
+  height: 40px;
   box-shadow: none;
   background: #323346;
 }
