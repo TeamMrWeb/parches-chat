@@ -92,3 +92,16 @@ export const SEND_EMAIL_VERIFICATION = gql`
     sendEmailVerification(email: $email)
   }
 `
+export const GET_FRIENDS_FROM_LOGGED_USER = gql`
+  query {
+    friends(status: 1) {
+      id
+      username
+      avatar {
+        secure_url
+      }
+      email
+      verified
+    }
+  }
+`
