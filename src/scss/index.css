@@ -1231,9 +1231,22 @@ html body #root .App ul {
   color: #ffffff;
 }
 
-.group__image {
+.group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: all 0.25s;
+}
+.group:hover {
+  border-radius: 10px;
+  background-color: #333641;
+}
+.group .group__image {
   width: 50px;
   height: 50px;
+  border-radius: 100px;
 }
 
 .chat-container {

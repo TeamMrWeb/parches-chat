@@ -1,4 +1,17 @@
-.group__image {
-  width: 50px;
-  height: 50px;
+.group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: all 0.25s;
+  &:hover {
+    border-radius: 10px;
+    background-color: $primaryColorLight;
+  }
+  .group__image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+  }
 }

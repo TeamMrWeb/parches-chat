@@ -16,7 +16,7 @@ export default function Groups({
       <GoHome />
       <ul className="groups-list">
         {groups?.map((group: GroupProps) => (
-          <Group id={group.id} image={group.image} key={group.id} />
+          <Group id={group.id} image={group.avatar.secure_url} key={group.id} />
         ))}
       </ul>
       <button className="add-group" onClick={() => setShowAddNewGroup(true)}>

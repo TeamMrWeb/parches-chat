@@ -97,7 +97,10 @@ export interface FormGroupProps {
 
 export interface GroupProps {
   id: string
-  image: string
+  avatar: {
+    __typename: string
+    secure_url: string
+  }
 }
 
 export interface LoaderProps {

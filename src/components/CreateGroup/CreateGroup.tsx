@@ -65,7 +65,15 @@ export default function CreateGroup({
         >
           Cancelar
         </button>
-        <button className="button" onClick={() => createGroup(friendsAdded, name, avatar)}>
+        <button
+          className="button"
+          onClick={() => {
+            createGroup(friendsAdded, name, avatar)
+            setShowNextStep(false)
+            setShowAddNewGroup(false)
+            setUsersToGroup([])
+          }}
+        >
           Crear
         </button>
       </div>
