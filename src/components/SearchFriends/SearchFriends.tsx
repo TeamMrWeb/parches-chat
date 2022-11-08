@@ -15,7 +15,7 @@ export default function SearchFriends({
   showModal: any
   type: string
   setAction: any
-  children: JSX.Element
+  children?: JSX.Element
 }) {
   const { isLoading, results, loggedUser, inputValue, setInputValue } = useSearchFriends()
 

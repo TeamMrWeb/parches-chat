@@ -47,8 +47,8 @@ export const createChatBetweenFriends = gql`
 `
 
 export const CREATE_GROUP = gql`
-  mutation CREATE_GROUP($name: String!, $usersId: [ID!]!) {
-    createChat(name: $name, usersId: $usersId, private: false, secure: false) {
+  mutation CREATE_GROUP($name: String!, $usersId: [ID]!, $avatar: String) {
+    createChat(name: $name, usersId: $usersId, avatar: $avatar, private: false, secure: false) {
       id
       name
       avatar {

@@ -47,7 +47,11 @@ export default function FriendsResults({
                 onChange={e =>
                   onChecked((checked: any) => [
                     ...checked,
-                    { userId: result.id, username: result.username }
+                    {
+                      userId: result.id,
+                      username: result.username,
+                      avatar: result.avatar
+                    }
                   ])
                 }
               />

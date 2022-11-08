@@ -1,0 +1,112 @@
+.create-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  background-color: $primaryColor;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  .create-group-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    .upload-avatar__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border: none;
+      background-color: $secundaryColorHover;
+      border-radius: 200px;
+      cursor: pointer;
+      .upload-avatar__avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+      }
+      .upload-avatar__icon {
+        width: 30px;
+        height: 30px;
+        filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%)
+          contrast(94%);
+      }
+    }
+    .create-group__input-file {
+      display: none;
+    }
+    .create-group__input {
+      background-color: $secundaryColorHover;
+      border: none;
+      color: $whiteColor;
+      outline: none;
+      font-size: 18px;
+      width: 130px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 10px;
+    }
+  }
+  .results {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px !important;
+    width: 100%;
+    .results__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 5px;
+      box-sizing: border-box;
+      &:hover {
+        background-color: $secundaryColorHover;
+        .loggedUser-chat__username {
+          color: $whiteColor !important;
+        }
+      }
+      .left-side {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: $whiteColor;
+        .results__avatar {
+          width: 30px;
+          height: 30px;
+          border-radius: 40px;
+        }
+      }
+      .results__icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    gap: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    .button {
+      @include gradient-button;
+    }
+    .button--close {
+      @include gradient-button;
+      box-shadow: none;
+      background: $secundaryColorHover;
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
