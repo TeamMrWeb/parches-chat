@@ -31,9 +31,9 @@ export default function LoggedUserArea({
         />
         <span className="logged-user-area__name">{loggedUser?.username}</span>
       </div>
-      <button className="configuration">
+      {/* <button className="configuration">
         <img className="configuration__icon" src={configurationIcon} alt="" />
-      </button>
+      </button> */}
     </div>
   )
 }
