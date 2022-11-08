@@ -45,3 +45,18 @@ export const createChatBetweenFriends = gql`
     }
   }
 `
+
+export const CREATE_GROUP = gql`
+  mutation CREATE_GROUP($name: String!, $usersId: [ID!]!) {
+    createChat(name: $name, usersId: $usersId, private: false, secure: false) {
+      id
+      name
+      avatar {
+        secure_url
+      }
+      users {
+        username
+      }
+    }
+  }
+`
