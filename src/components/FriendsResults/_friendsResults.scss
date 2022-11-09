@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: 5px;
   margin-top: 10px !important;
+  height: 257px;
+  overflow-y: auto;
   .results__item {
     display: flex;
     align-items: center;

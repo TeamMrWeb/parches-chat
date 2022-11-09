@@ -1609,6 +1609,8 @@ html body #root .App ul {
   flex-direction: column;
   gap: 5px;
   margin-top: 10px !important;
+  height: 257px;
+  overflow-y: auto;
 }
 .results .results__item {
   display: flex;
