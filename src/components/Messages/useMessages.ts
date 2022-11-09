@@ -6,10 +6,11 @@ import { setMessages, clearMessages } from "../../slicers/messagesSlice"
 import { AuthorProps, RootState } from "../../ts/interfaces"
 
 export const useMessages = () => {
-  const { lazyQueryMethod: getMessagesByChatId, data } = useFetchingMethod(
-    messagesByChatId,
-    setMessages
-  )
+  const {
+    lazyQueryMethod: getMessagesByChatId,
+    data,
+    loading
+  } = useFetchingMethod(messagesByChatId, setMessages)
   const [hasMore, setHasMore] = useState(true)
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const messages = useSelector((state: RootState) => state.messages)
@@ -29,7 +30,6 @@ export const useMessages = () => {
   }
 
   useEffect(() => {
-    console.log(chat, messages)
     if (!chat.id) return
     dispatch(clearMessages())
     getMessagesByChatId({ variables: { id: chat.id, limit: 25, skip: 0, orderBy: "DESC" } })
@@ -45,5 +45,13 @@ export const useMessages = () => {
     if (data?.chat?.messages.length < 20) setHasMore(false)
   }, [data])
 
-  return { messages, defineMessageSide, formatCreatedAtDate, refetchChatMessages, chat, hasMore }
+  return {
+    messages,
+    defineMessageSide,
+    formatCreatedAtDate,
+    refetchChatMessages,
+    chat,
+    hasMore,
+    loading
+  }
 }

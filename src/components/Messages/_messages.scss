@@ -7,6 +7,13 @@
   box-sizing: border-box;
   overflow-y: scroll;
   position: relative;
+  .oval-loader {
+    &__loading-data {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
   .messages-wrapper {
     display: flex;
     flex-direction: column-reverse;
