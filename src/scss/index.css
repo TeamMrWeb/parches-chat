@@ -562,7 +562,7 @@ html body #root .App ul {
   transition: all 0.25s;
 }
 .preview-container .images-list .preview-wrapper .send-image:hover .send-image__icon {
-  filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
+  filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
 }
 .preview-container .images-list .preview-wrapper .send-image .send-image__icon {
   width: 100%;
@@ -679,7 +679,7 @@ html body #root .App ul {
   bottom: 15px;
   width: 20px;
   cursor: pointer;
-  filter: invert(40%) sepia(21%) saturate(2195%) hue-rotate(231deg) brightness(94%) contrast(92%);
+  filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
 }
 
 .view-repository {
@@ -728,9 +728,14 @@ html body #root .App ul {
   color: #ffffff;
   font-size: 16px;
 }
-.chat-header .right .header__options {
-  width: 25px;
-  height: 25px;
+.chat-header .right .search-messages {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+}
+.chat-header .right .search-messages .search-messages__icon {
+  filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
 }
 
 @media screen and (max-width: 480px) {
@@ -922,7 +927,7 @@ html body #root .App ul {
   height: 20px;
 }
 .emojis-container .emojis-wrapper .emojis-footer .categories-list .category.active {
-  filter: invert(39%) sepia(56%) saturate(897%) hue-rotate(232deg) brightness(89%) contrast(91%);
+  filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
   transition: none;
 }
 .emojis-container .emojis-wrapper .emojis-footer .categories-list .category .category__button {
@@ -941,7 +946,7 @@ html body #root .App ul {
   transition: all 0.25s;
 }
 .emojis-container .emojis-wrapper .emojis-footer .categories-list .category .category__button .category__icon:hover {
-  filter: invert(39%) sepia(56%) saturate(897%) hue-rotate(232deg) brightness(89%) contrast(91%);
+  filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
 }
 
 @media screen and (max-width: 904px) {
@@ -1114,7 +1119,7 @@ html body #root .App ul {
   cursor: pointer;
 }
 .groups .add-group .add-group__icon {
-  filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
+  filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
 }
 
 .go-home {

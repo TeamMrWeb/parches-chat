@@ -43,8 +43,7 @@
           top: 25%;
           width: 15px;
           height: 15px;
-          filter: invert(92%) sepia(93%) saturate(0%) hue-rotate(202deg) brightness(106%)
-            contrast(106%);
+          filter: $whiteFilter;
           &--close {
             position: absolute;
             right: 10px;
@@ -93,8 +92,7 @@
           width: max-content;
           height: 20px;
           &.active {
-            filter: invert(39%) sepia(56%) saturate(897%) hue-rotate(232deg) brightness(89%)
-              contrast(91%);
+            filter: $purpleFilter;
             transition: none;
           }
           .category__button {
@@ -108,12 +106,10 @@
             .category__icon {
               width: 40px;
               height: 20px;
-              filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%)
-                contrast(84%);
+              filter: $pinkFilter;
               transition: all 0.25s;
               &:hover {
-                filter: invert(39%) sepia(56%) saturate(897%) hue-rotate(232deg) brightness(89%)
-                  contrast(91%);
+                filter: $purpleFilter;
               }
             }
           }

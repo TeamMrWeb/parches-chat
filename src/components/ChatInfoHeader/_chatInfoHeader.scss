@@ -28,9 +28,14 @@
       color: $whiteColor;
       font-size: 16px;
     }
-    .header__options {
-      width: 25px;
-      height: 25px;
+    .search-messages {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: transparent;
+      .search-messages__icon {
+        filter: $pinkFilter;
+      }
     }
   }
 }

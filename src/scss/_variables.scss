@@ -10,6 +10,10 @@ $greenColor: #3a905c;
 $pinkColor: #dd4ec6;
 $purpleColor: #8d4fc9;
 $whiteColor: #ffffff;
+$purpleFilter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%)
+  contrast(94%);
+$pinkFilter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
+$whiteFilter: invert(92%) sepia(93%) saturate(0%) hue-rotate(202deg) brightness(106%) contrast(106%);
 
 @mixin gradient-button {
   display: flex;

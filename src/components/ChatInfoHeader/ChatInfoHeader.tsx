@@ -1,7 +1,7 @@
 import { useShowChat } from "../../contexts/ShowChatContext"
 import { useChatInfoHeader } from "./useChatInfoHeader"
 import userDefaultIcon from "../../assets/icons/user-default-icon.svg"
-import dotsIcon from "../../assets/icons/dots-icon.svg"
+import searchIcon from "../../assets/icons/search-icon.svg"
 import backIcon from "../../assets/icons/back-icon.svg"
 
 export default function ChatInfoHeader() {
@@ -23,7 +23,9 @@ export default function ChatInfoHeader() {
       />
       <div className="right">
         <span className="header__username">{chatData?.name}</span>
-        {/* <img className="header__options" src={dotsIcon} alt="Opciones" /> */}
+        <button className="search-messages">
+          <img className="search-messages__icon" src={searchIcon} alt="Buscar mensajes" />
+        </button>
       </div>
     </section>
   )

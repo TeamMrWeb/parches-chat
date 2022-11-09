@@ -31,8 +31,7 @@
       .upload-avatar__icon {
         width: 30px;
         height: 30px;
-        filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%)
-          contrast(94%);
+        filter: $purpleFilter;
       }
     }
     .create-group__input-file {
