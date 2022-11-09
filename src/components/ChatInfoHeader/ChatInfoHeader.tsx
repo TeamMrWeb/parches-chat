@@ -22,7 +22,7 @@ export default function ChatInfoHeader() {
         alt="Imagén de $friend"
       />
       <div className="right">
-        <span className="header__username">{chatData?.username}</span>
+        <span className="header__username">{chatData?.name}</span>
         {/* <img className="header__options" src={dotsIcon} alt="Opciones" /> */}
       </div>
     </section>

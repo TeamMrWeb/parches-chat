@@ -17,10 +17,16 @@ export const useChatInfoHeader = () => {
 
   useEffect(() => {
     if (Object.keys(chat).length === 0) return
-    const loggedUserId = loggedUser.id
-    const username = chat?.users?.find((user: UserProps) => user.id !== loggedUserId)?.username!
-    const avatar = chat.users![0].avatar
-    setChatData({ ...chatData, username, avatar })
+    if (chat.isGroup) {
+      const name = chat.name!
+      const avatar = chat.avatar!
+      setChatData({ ...chatData, name, avatar })
+    } else {
+      const loggedUserId = loggedUser.id
+      const name = chat?.users?.find((user: UserProps) => user.id !== loggedUserId)?.username!
+      const avatar = chat.users![0].avatar
+      setChatData({ ...chatData, name, avatar })
+    }
   }, [chat])
 
   return { showChat, chatData }

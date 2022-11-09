@@ -79,9 +79,9 @@ export interface NotificationProps {
 }
 
 export interface ChatDataProps {
-  username: string
+  name: string
   avatar: {
-    __typename: string
+    __typename?: string
     secure_url: string
   }
 }

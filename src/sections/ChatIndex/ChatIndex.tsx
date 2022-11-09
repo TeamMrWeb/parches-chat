@@ -20,7 +20,11 @@ export default function ChatIndex() {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <Groups setShowAddNewGroup={setShowAddNewGroup} />
+      <Groups
+        setShowAddNewGroup={setShowAddNewGroup}
+        firstAccess={firstAccess}
+        setFirstAccess={setFirstAccess}
+      />
       <div className="sidebar">
         <PrivateChats
           firstAccess={firstAccess}
