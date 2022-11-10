@@ -4,6 +4,7 @@ import { useChatInfoHeader } from "./useChatInfoHeader"
 import userDefaultIcon from "../../assets/icons/user-default-icon.svg"
 import searchIcon from "../../assets/icons/search-icon.svg"
 import backIcon from "../../assets/icons/back-icon.svg"
+import SearchMessages from "../SearchMessages/SearchMessages"
 
 export default function ChatInfoHeader() {
   const { showChat, setShowChat } = useShowChat()
@@ -26,12 +27,13 @@ export default function ChatInfoHeader() {
       <div className="right">
         <span className="header__username">{chatData?.name}</span>
         <button
-          className="search-messages"
+          className="search-messages-tool"
           onClick={() => setShowSearchMessages!(!showSearchMessages)}
         >
           <img className="search-messages__icon" src={searchIcon} alt="Buscar mensajes" />
         </button>
       </div>
+      {showSearchMessages ? <SearchMessages /> : null}
     </section>
   )
 }

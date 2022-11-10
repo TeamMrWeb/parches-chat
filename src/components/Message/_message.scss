@@ -12,6 +12,11 @@
       }
     }
   }
+  &.active {
+    background-color: $pinkColor;
+    border-radius: 5px 10px 10px 5px;
+    animation: 1s linear 2s disappear;
+  }
   .message {
     background-color: $primaryColorLight;
     color: $whiteColor;
@@ -45,5 +50,14 @@
         font-size: 10px;
       }
     }
+  }
+}
+
+@keyframes disappear {
+  0% {
+    background-color: $pinkColor;
+  }
+  100% {
+    background-color: transparent;
   }
 }

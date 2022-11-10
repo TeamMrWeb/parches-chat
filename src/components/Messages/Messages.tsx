@@ -65,6 +65,7 @@ export default function Messages({
         >
           {messages?.map((message: MessageProps) => (
             <Message
+              messageId={message.id!}
               messageText={message.text!}
               messageCreatedAt={formatCreatedAtDate(message.createdAt!)}
               side={defineMessageSide(message.author!)}

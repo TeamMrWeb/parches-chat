@@ -706,6 +706,7 @@ html body #root .App ul {
   background-color: #2a2c37;
   padding: 10px 20px;
   box-sizing: border-box;
+  position: relative;
 }
 .chat-header .header__back {
   display: none;
@@ -728,7 +729,7 @@ html body #root .App ul {
   color: #ffffff;
   font-size: 16px;
 }
-.chat-header .right .search-messages {
+.chat-header .right .search-messages-tool {
   width: 30px;
   height: 30px;
   border: none;
@@ -736,10 +737,10 @@ html body #root .App ul {
   cursor: pointer;
   transition: all 0.25s;
 }
-.chat-header .right .search-messages:hover .search-messages__icon {
+.chat-header .right .search-messages-tool:hover .search-messages__icon {
   filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
 }
-.chat-header .right .search-messages .search-messages__icon {
+.chat-header .right .search-messages-tool .search-messages__icon {
   filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
 }
 
@@ -1068,6 +1069,12 @@ html body #root .App ul {
 .message-container.right .message .message__hour {
   color: #8e9297;
 }
+.message-container.active {
+  background-color: #dd4ec6;
+  border-radius: 5px 10px 10px 5px;
+  -webkit-animation: 1s linear 2s disappear;
+          animation: 1s linear 2s disappear;
+}
 .message-container .message {
   background-color: #333641;
   color: #ffffff;
@@ -1100,6 +1107,14 @@ html body #root .App ul {
   }
   .message-container .message .message__hour {
     font-size: 10px;
+  }
+}
+@keyframes disappear {
+  0% {
+    background-color: #dd4ec6;
+  }
+  100% {
+    background-color: transparent;
   }
 }
 .groups {
@@ -1869,4 +1884,62 @@ html body #root .App ul {
 }
 .create-group .buttons .button--close:hover {
   box-shadow: none;
+}
+
+.search-messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background-color: #323346;
+  z-index: 100;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.search-messages .search-messages__input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #8d4fc9;
+  outline: none;
+  color: #ffffff;
+}
+.search-messages .search-messages__coincidence,
+.search-messages .search-messages__close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.search-messages .search-messages__coincidence .search-messages__arrow,
+.search-messages .search-messages__close .search-messages__arrow {
+  width: 100%;
+  transform: rotate(180deg);
+}
+.search-messages .search-messages__coincidence .search-messages__arrow--down,
+.search-messages .search-messages__close .search-messages__arrow--down {
+  width: 100%;
+}
+.search-messages .search-messages__close {
+  position: relative;
+  margin-left: 10px;
+}
+.search-messages .search-messages__close:before {
+  cursor: default;
+  content: "|";
+  position: absolute;
+  left: -10px;
+  color: #8d4fc9;
+  font-size: 18px;
+}
+.search-messages .search-messages__close .search-messages__close-icon {
+  width: 100%;
+  filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
 }/*# sourceMappingURL=index.css.map */

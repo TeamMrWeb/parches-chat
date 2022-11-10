@@ -8,6 +8,7 @@
   background-color: $secundaryColor;
   padding: 10px 20px;
   box-sizing: border-box;
+  position: relative;
   .header__back {
     display: none;
   }
@@ -28,7 +29,7 @@
       color: $whiteColor;
       font-size: 16px;
     }
-    .search-messages {
+    .search-messages-tool {
       width: 30px;
       height: 30px;
       border: none;

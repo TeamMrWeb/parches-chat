@@ -1,0 +1,55 @@
+.search-messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background-color: $secundaryColorHover;
+  z-index: 100;
+  padding: 0 10px;
+  box-sizing: border-box;
+  .search-messages__input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $purpleColor;
+    outline: none;
+    color: $whiteColor;
+  }
+  .search-messages__coincidence,
+  .search-messages__close {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    .search-messages__arrow {
+      width: 100%;
+      transform: rotate(180deg);
+    }
+    .search-messages__arrow--down {
+      width: 100%;
+    }
+  }
+  .search-messages__close {
+    position: relative;
+    margin-left: 10px;
+    &:before {
+      cursor: default;
+      content: "|";
+      position: absolute;
+      left: -10px;
+      color: $purpleColor;
+      font-size: 18px;
+    }
+    .search-messages__close-icon {
+      width: 100%;
+      filter: $purpleFilter;
+    }
+  }
+}
