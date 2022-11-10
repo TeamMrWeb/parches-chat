@@ -31,6 +31,7 @@ export const useMessages = () => {
 
   useEffect(() => {
     if (!chat.id) return
+    setHasMore(true)
     dispatch(clearMessages())
     getMessagesByChatId({ variables: { id: chat.id, limit: 25, skip: 0, orderBy: "DESC" } })
   }, [chat])

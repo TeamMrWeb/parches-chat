@@ -22,11 +22,10 @@ export const useSearchMessages = () => {
       setResults(results)
       const messageFound = results[coincidence.index]
       activeElement(messageFound)
-      console.log(results)
     }, 1000)
     return () => clearTimeout(timer)
   }, [message])
-  console.log(messages)
+
   useEffect(() => {
     if (results.length <= 0) return
     const messageFound = results[coincidence.index]
