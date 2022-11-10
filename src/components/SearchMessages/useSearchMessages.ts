@@ -17,7 +17,7 @@ export const useSearchMessages = () => {
     if (message.length === 0) return setMessage("")
     const timer = setTimeout(async () => {
       const results = messages.filter((messageToFind: MessageProps) =>
-        messageToFind.text!.includes(message)
+        messageToFind.text!.includes(message.toLocaleLowerCase())
       )
       setResults(results)
       const messageFound = results[coincidence.index]
