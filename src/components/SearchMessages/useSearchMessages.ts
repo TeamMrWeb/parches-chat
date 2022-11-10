@@ -21,6 +21,8 @@ export const useSearchMessages = () => {
       )
       setResults(results)
       const messageFound = results[coincidence.index]
+      if (!messageFound) return
+      setCoincidence({ index: 0, direction: "up" })
       activeElement(messageFound)
     }, 1000)
     return () => clearTimeout(timer)
@@ -29,16 +31,20 @@ export const useSearchMessages = () => {
   useEffect(() => {
     if (results.length <= 0) return
     const messageFound = results[coincidence.index]
+    if (!messageFound) return
     const messageElement = activeElement(messageFound)
     let messageToRemove
     if (coincidence.direction === "up") messageToRemove = results[coincidence.index - 1]
     else messageToRemove = results[coincidence.index + 1]
-    messageElement && desactiveElement(messageToRemove)
+    messageElement && messageToRemove && desactiveElement(messageToRemove)
   }, [coincidence])
 
   const activeElement = (messageFound: MessageProps) => {
     const messageElement = document.getElementById(`${messageFound.id}`)
-    messageElement && messageElement.classList.add("active")
+    if (messageElement) {
+      messageElement.scrollIntoView({ behavior: "smooth" })
+      messageElement.classList.add("active")
+    }
     setTimeout(() => {
       messageElement && messageElement.classList.remove("active")
     }, 2900)
@@ -50,5 +56,32 @@ export const useSearchMessages = () => {
     messageElement && messageElement.classList.remove("active")
   }
 
-  return { setMessage, setCoincidence }
+  const incrementCoincidence = () => {
+    if (coincidence.index + 1 >= results.length) return
+    setCoincidence(coincidence => {
+      return { index: coincidence.index + 1, direction: "up" }
+    })
+  }
+
+  const decrementCoincidence = () => {
+    if (coincidence.index - 1 <= -1) return
+    setCoincidence(coincidence => {
+      return { index: coincidence.index - 1, direction: "down" }
+    })
+  }
+
+  const coincidencesCount = () => {
+    const currentCoindicence = coincidence.index
+    const totalCoincidences = results.length
+    if (totalCoincidences === 0) return null
+    return `${currentCoindicence + 1} / ${totalCoincidences}`
+  }
+
+  return {
+    setMessage,
+    setCoincidence,
+    coincidencesCount,
+    incrementCoincidence,
+    decrementCoincidence
+  }
 }

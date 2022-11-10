@@ -21,6 +21,11 @@
     outline: none;
     color: $whiteColor;
   }
+  .coincidences-count {
+    display: flex;
+    color: $whiteColor;
+    width: 90px;
+  }
   .search-messages__coincidence,
   .search-messages__close {
     width: 40px;

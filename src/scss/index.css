@@ -1910,6 +1910,11 @@ html body #root .App ul {
   outline: none;
   color: #ffffff;
 }
+.search-messages .coincidences-count {
+  display: flex;
+  color: #ffffff;
+  width: 90px;
+}
 .search-messages .search-messages__coincidence,
 .search-messages .search-messages__close {
   width: 40px;

@@ -5,7 +5,13 @@ import { useSearchMessages } from "./useSearchMessages"
 
 export default function SearchMessages() {
   const { showSearchMessages, setShowSearchMessages } = useShowSearchMessages()
-  const { setMessage, setCoincidence } = useSearchMessages()
+  const {
+    setMessage,
+    setCoincidence,
+    coincidencesCount,
+    incrementCoincidence,
+    decrementCoincidence
+  } = useSearchMessages()
 
   return (
     <section className="search-messages">
@@ -14,24 +20,13 @@ export default function SearchMessages() {
         type="text"
         onChange={e => setMessage(e.target.value)}
       />
-      <button
-        className="search-messages__coincidence"
-        onClick={() =>
-          setCoincidence(coincidence => {
-            return { index: coincidence.index + 1, direction: "up" }
-          })
-        }
-      >
+      {coincidencesCount() ? (
+        <span className="coincidences-count">{coincidencesCount()}</span>
+      ) : null}
+      <button className="search-messages__coincidence" onClick={() => incrementCoincidence()}>
         <img className="search-messages__arrow" src={downArrow} alt="Subir coincidencia" />
       </button>
-      <button
-        className="search-messages__coincidence"
-        onClick={() =>
-          setCoincidence(coincidence => {
-            return { index: coincidence.index - 1, direction: "down" }
-          })
-        }
-      >
+      <button className="search-messages__coincidence" onClick={() => decrementCoincidence()}>
         <img className="search-messages__arrow--down" src={downArrow} alt="Bajar coincidencia" />
       </button>
       <button
