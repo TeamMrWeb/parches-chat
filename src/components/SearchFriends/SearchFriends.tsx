@@ -1,7 +1,9 @@
 import { Oval } from "react-loader-spinner"
-import { useSearchFriends } from "./useSearchFriends"
+import { useSearch } from "../../hooks/useSearch"
 import closeIcon from "../../assets/icons/close-icon.svg"
 import FriendsResults from "../FriendsResults/FriendsResults"
+import { useFetchingMethod } from "../../apollo/useFetchingMethod"
+import { usersByUsername } from "../../graphql/queries"
 
 export default function SearchFriends({
   title,
@@ -18,7 +20,11 @@ export default function SearchFriends({
   type: string
   onChecked?: any
 }) {
-  const { isLoading, results, loggedUser, inputValue, setInputValue } = useSearchFriends()
+  const { lazyQueryMethod: getFriendByUsername } = useFetchingMethod(usersByUsername)
+  const { isLoading, results, loggedUser, inputValue, setInputValue } = useSearch(
+    getFriendByUsername,
+    { variables: { username: "" } }
+  )
 
   return (
     <section className="search-friends-section">
