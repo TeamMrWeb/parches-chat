@@ -2,7 +2,11 @@ import { useChat } from "./useChat"
 import { ChatInput, Messages, ChatInfoHeader } from ".."
 import downArrowIcon from "../../assets/icons/down-arrow-icon.svg"
 
-export default function Chat({ chatContainer }: { chatContainer: React.RefObject<HTMLDivElement> }) {
+export default function Chat({
+  chatContainer
+}: {
+  chatContainer: React.RefObject<HTMLDivElement>
+}) {
   const { showButton, goDown, scrollBottom } = useChat()
 
   return (

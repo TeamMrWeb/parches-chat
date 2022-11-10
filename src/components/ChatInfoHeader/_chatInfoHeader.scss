@@ -33,6 +33,13 @@
       height: 30px;
       border: none;
       background-color: transparent;
+      cursor: pointer;
+      transition: all 0.25s;
+      &:hover {
+        .search-messages__icon {
+          filter: $purpleFilter;
+        }
+      }
       .search-messages__icon {
         filter: $pinkFilter;
       }

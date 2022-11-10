@@ -733,6 +733,11 @@ html body #root .App ul {
   height: 30px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.chat-header .right .search-messages:hover .search-messages__icon {
+  filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
 }
 .chat-header .right .search-messages .search-messages__icon {
   filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);

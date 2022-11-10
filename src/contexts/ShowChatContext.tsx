@@ -1,12 +1,12 @@
 import { useContext } from "react"
 import { createContext, useState } from "react"
 
-interface showChatCOntext {
+interface showChatContext {
   showChat: boolean
   setShowChat?: (value: boolean) => void
 }
 
-const ShowChatContext = createContext<showChatCOntext>({ showChat: false })
+const ShowChatContext = createContext<showChatContext>({ showChat: false })
 
 const ShowChatProvider = ({ children }: { children: React.ReactNode }) => {
   const [showChat, setShowChat] = useState(false)
