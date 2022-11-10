@@ -27,7 +27,7 @@ export default function Messages({
         flexDirection: "column-reverse"
       }}
     >
-      {loading ? (
+      {loading && messages.length <= 0 ? (
         <Oval
           height={100}
           width={100}
