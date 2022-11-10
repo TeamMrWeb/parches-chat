@@ -23,8 +23,9 @@
   }
   .coincidences-count {
     display: flex;
+    justify-content: center;
     color: $whiteColor;
-    width: 90px;
+    width: 120px;
   }
   .search-messages__coincidence,
   .search-messages__close {

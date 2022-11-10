@@ -57,14 +57,16 @@ export const useSearchMessages = () => {
   }
 
   const incrementCoincidence = () => {
-    if (coincidence.index + 1 >= results.length) return
+    if (coincidence.index + 1 >= results.length)
+      return setCoincidence({ index: 0, direction: "up" })
     setCoincidence(coincidence => {
       return { index: coincidence.index + 1, direction: "up" }
     })
   }
 
   const decrementCoincidence = () => {
-    if (coincidence.index - 1 <= -1) return
+    if (coincidence.index - 1 <= -1)
+      return setCoincidence({ index: results.length - 1, direction: "up" })
     setCoincidence(coincidence => {
       return { index: coincidence.index - 1, direction: "down" }
     })
