@@ -54,7 +54,7 @@ export interface UserProps {
 }
 
 export interface ChatProps {
-  id?: string
+  id: string
   avatar?: {
     public_id: string
     secure_url: string
@@ -79,6 +79,7 @@ export interface NotificationProps {
 }
 
 export interface ChatDataProps {
+  id: string
   name: string
   avatar: {
     __typename?: string

@@ -18,14 +18,16 @@ export const useChatInfoHeader = () => {
   useEffect(() => {
     if (Object.keys(chat).length === 0) return
     if (chat.isGroup) {
+      const id = chat.id
       const name = chat.name!
       const avatar = chat.avatar!
-      setChatData({ ...chatData, name, avatar })
+      setChatData({ ...chatData, id, name, avatar })
     } else {
       const loggedUserId = loggedUser.id
+      const id = chat.id
       const name = chat?.users?.find((user: UserProps) => user.id !== loggedUserId)?.username!
       const avatar = chat.users![0].avatar
-      setChatData({ ...chatData, name, avatar })
+      setChatData({ ...chatData, id, name, avatar })
     }
   }, [chat])
 

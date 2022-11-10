@@ -61,6 +61,7 @@ export const chatById = gql`
 export const messagesByChatId = gql`
   query getMessagesByChatId($id: ID!, $limit: Int, $skip: Int, $orderBy: String) {
     chat(id: $id) {
+      id
       messages(limit: $limit, skip: $skip, orderBy: $orderBy) {
         id
         text
