@@ -50,6 +50,7 @@ export const chatById = gql`
       users {
         id
         username
+        status
         avatar {
           secure_url
         }

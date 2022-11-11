@@ -56,5 +56,5 @@ export const useChat = () => {
     if (messagesSection) messagesSection.scrollTop = 0
   }
 
-  return { showButton, goDown, scrollBottom }
+  return { showButton, goDown, scrollBottom, chat }
 }

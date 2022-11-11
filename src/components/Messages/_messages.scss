@@ -1,12 +1,13 @@
 .messages {
   width: 100%;
-  height: 100%;
   background-color: $primaryColor;
   padding: 20px 50px;
   padding-right: 33px;
   box-sizing: border-box;
   overflow-y: scroll;
   position: relative;
+  height: 100%;
+  max-height: max-content;
   .oval-loader {
     &__loading-data {
       position: absolute;

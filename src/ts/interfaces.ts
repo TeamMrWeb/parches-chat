@@ -46,6 +46,7 @@ export interface UserProps {
   id: string
   username: string
   verified: boolean
+  status: number
   avatar: {
     __typename: string
     public_id: string

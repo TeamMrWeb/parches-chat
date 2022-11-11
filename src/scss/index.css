@@ -1015,13 +1015,16 @@ html body #root .App ul {
 }
 .messages {
   width: 100%;
-  height: 100%;
   background-color: #1c1d22;
   padding: 20px 50px;
   padding-right: 33px;
   box-sizing: border-box;
   overflow-y: scroll;
   position: relative;
+  height: 100%;
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
 }
 .messages .oval-loader__loading-data {
   position: absolute;
@@ -1284,8 +1287,19 @@ html body #root .App ul {
   flex-direction: column;
   position: relative;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   transition: all 2s;
+}
+.chat-container .chat-wrapper {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 50px);
+}
+.chat-container .chat-wrapper .chat-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 .chat-container .go-down {
   display: flex;
@@ -1948,4 +1962,40 @@ html body #root .App ul {
 .search-messages .search-messages__close .search-messages__close-icon {
   width: 100%;
   filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
+}
+
+.group-members {
+  width: 250px;
+  height: 100%;
+  background-color: #2a2c37;
+  color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+.group-members .status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.group-members .status-list .status .status__title {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.members-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.members-list .member {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+}
+.members-list .member .member__avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
 }/*# sourceMappingURL=index.css.map */

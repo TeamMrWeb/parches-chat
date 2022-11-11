@@ -3,8 +3,19 @@
   flex-direction: column;
   position: relative;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   transition: all 2s;
+  .chat-wrapper {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 50px);
+    .chat-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+  }
   .go-down {
     display: flex;
     justify-content: center;

@@ -1,0 +1,20 @@
+.group-members {
+  width: 250px;
+  height: 100%;
+  background-color: $secundaryColor;
+  color: $whiteColor;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  .status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .status {
+      .status__title {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+}
