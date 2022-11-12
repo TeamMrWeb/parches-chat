@@ -6,17 +6,15 @@ import plusIcon from "../../assets/icons/plus-icon.svg"
 
 export default function Groups({
   setShowAddNewGroup,
-  firstAccess,
   setFirstAccess
 }: {
   setShowAddNewGroup: React.Dispatch<React.SetStateAction<boolean>>
-  firstAccess: boolean
   setFirstAccess: (firstAccess: boolean) => void
 }) {
   const { groups } = useGroups()
 
   return (
-    <section className={`groups ${firstAccess && "extended"}`}>
+    <section className="groups">
       <GoHome />
       <ul className="groups-list">
         {groups?.map((group: GroupProps) => (

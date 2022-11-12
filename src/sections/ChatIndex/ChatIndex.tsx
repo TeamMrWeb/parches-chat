@@ -27,11 +27,7 @@ export default function ChatIndex() {
       onTouchEnd={onTouchEnd}
     >
       <div className="chat-index-wrapper">
-        <Groups
-          setShowAddNewGroup={setShowAddNewGroup}
-          firstAccess={firstAccess}
-          setFirstAccess={setFirstAccess}
-        />
+        <Groups setShowAddNewGroup={setShowAddNewGroup} setFirstAccess={setFirstAccess} />
         <div className="sidebar">
           <PrivateChats
             firstAccess={firstAccess}
