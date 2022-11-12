@@ -1,4 +1,4 @@
-# Parches Front-end 🌌
+# Parches Chat Front-end 🌌
 
 Esta rama contiene la página web de Parches Chat
 
