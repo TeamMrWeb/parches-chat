@@ -46,13 +46,26 @@
   z-index: 10;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .chat-container {
-    filter: brightness(50%);
+    position: fixed;
+    filter: brightness(100%);
+    pointer-events: all;
     transition: filter 0s;
-    &.expanded {
-      position: fixed;
-      filter: brightness(100%);
+    &.disabled {
+      position: unset;
+      .chat-header {
+        filter: brightness(50%);
+        transition: filter 0s;
+        pointer-events: none;
+      }
+      .chat-wrapper {
+        .chat-content {
+          filter: brightness(50%);
+          transition: filter 0s;
+          pointer-events: none;
+        }
+      }
     }
   }
 }

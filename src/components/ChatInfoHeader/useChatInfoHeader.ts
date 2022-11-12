@@ -10,12 +10,6 @@ export const useChatInfoHeader = () => {
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
 
   useEffect(() => {
-    const chatContainer = document.querySelector(".chat-container")
-    if (!showChat && chatContainer) chatContainer.className = "chat-container"
-    else if (showChat && chatContainer) chatContainer.className = "chat-container expanded"
-  }, [showChat])
-
-  useEffect(() => {
     if (Object.keys(chat).length === 0) return
     if (chat.isGroup) {
       const id = chat.id!

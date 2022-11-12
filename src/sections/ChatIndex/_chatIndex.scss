@@ -4,20 +4,38 @@
   height: 100vh;
   position: fixed;
   overflow-x: hidden;
-  .sidebar {
+  .chat-index-wrapper {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    max-width: 100%;
-    height: 100%;
-    position: relative;
+    max-width: 320px;
+    &.disabled {
+      display: none;
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      position: relative;
+    }
   }
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 550px) {
   .chat-index {
-    .sidebar {
-      max-width: 250px;
+    .chat-index-wrapper {
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .chat-index {
+    .chat-index-wrapper {
+      .sidebar {
+        max-width: 250px;
+      }
     }
   }
 }

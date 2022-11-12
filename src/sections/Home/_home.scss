@@ -6,6 +6,8 @@
   width: 100%;
   height: 100%;
   background-color: $primaryColor;
+  padding: 20px;
+  box-sizing: border-box;
   .home-header {
     display: flex;
     flex-direction: column;
@@ -21,6 +23,7 @@
     }
     .home__description {
       font-size: 16px;
+      text-align: center;
     }
   }
   .button-container {

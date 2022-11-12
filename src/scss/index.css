@@ -81,7 +81,15 @@ html body #root .App ul {
   position: fixed;
   overflow-x: hidden;
 }
-.chat-index .sidebar {
+.chat-index .chat-index-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+}
+.chat-index .chat-index-wrapper.disabled {
+  display: none;
+}
+.chat-index .chat-index-wrapper .sidebar {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -90,8 +98,13 @@ html body #root .App ul {
   position: relative;
 }
 
-@media screen and (min-width: 480px) {
-  .chat-index .sidebar {
+@media screen and (max-width: 550px) {
+  .chat-index .chat-index-wrapper {
+    max-width: 100%;
+  }
+}
+@media screen and (min-width: 550px) {
+  .chat-index .chat-index-wrapper .sidebar {
     max-width: 250px;
   }
 }
@@ -344,6 +357,8 @@ html body #root .App ul {
   width: 100%;
   height: 100%;
   background-color: #1c1d22;
+  padding: 20px;
+  box-sizing: border-box;
 }
 .home .home-header {
   display: flex;
@@ -361,6 +376,7 @@ html body #root .App ul {
 }
 .home .home-header .home__description {
   font-size: 16px;
+  text-align: center;
 }
 .home .button-container .view-repository {
   display: flex;
@@ -1331,14 +1347,25 @@ html body #root .App ul {
   z-index: 10;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .chat-container {
-    filter: brightness(50%);
-    transition: filter 0s;
-  }
-  .chat-container.expanded {
     position: fixed;
     filter: brightness(100%);
+    pointer-events: all;
+    transition: filter 0s;
+  }
+  .chat-container.disabled {
+    position: unset;
+  }
+  .chat-container.disabled .chat-header {
+    filter: brightness(50%);
+    transition: filter 0s;
+    pointer-events: none;
+  }
+  .chat-container.disabled .chat-wrapper .chat-content {
+    filter: brightness(50%);
+    transition: filter 0s;
+    pointer-events: none;
   }
 }
 .form {
@@ -1423,7 +1450,7 @@ html body #root .App ul {
   height: 30px;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 550px) {
   .logged-user-area {
     max-width: 250px;
   }
@@ -1965,6 +1992,7 @@ html body #root .App ul {
 }
 
 .group-members {
+  display: none;
   width: 250px;
   height: 100%;
   background-color: #2a2c37;
@@ -1972,6 +2000,12 @@ html body #root .App ul {
   padding: 20px;
   box-sizing: border-box;
   overflow-y: scroll;
+  overflow-x: hidden;
+}
+.group-members.expanded {
+  display: inline-block;
+  position: fixed;
+  right: 0;
 }
 .group-members .status-list {
   display: flex;
@@ -1983,6 +2017,11 @@ html body #root .App ul {
   font-weight: 500;
 }
 
+@media screen and (max-width: 550px) {
+  .group-members.expanded {
+    top: 0;
+  }
+}
 .members-list {
   display: flex;
   flex-direction: column;

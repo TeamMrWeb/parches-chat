@@ -9,10 +9,10 @@ import { Chat } from "../../components"
 import Home from "../Home/Home"
 import { RootState, UserProps } from "../../ts/interfaces"
 
-const maxMobileDeviceWidth = 480
+const maxMobileDeviceWidth = 550
 const notMobile = window.screen.width >= maxMobileDeviceWidth
 
-export const useChatIndex = (chatContainer: RefObject<HTMLDivElement>) => {
+export const useChatIndex = (chatElement: RefObject<HTMLDivElement>) => {
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const chat = useSelector((state: RootState) => state.chat)
   const [firstAccess, setFirstAccess] = useState(!notMobile)
@@ -27,8 +27,8 @@ export const useChatIndex = (chatContainer: RefObject<HTMLDivElement>) => {
     showCurrentNotificationsOnBrowserTab
   } = useNotifications()
 
-  const desktopBehaviour = () => (showChat ? <Chat chatContainer={chatContainer} /> : <Home />)
-  const mobileBehaviour = () => !firstAccess && <Chat chatContainer={chatContainer} />
+  const desktopBehaviour = () => (showChat ? <Chat chatElement={chatElement} /> : <Home />)
+  const mobileBehaviour = () => !firstAccess && <Chat chatElement={chatElement} />
 
   const checkIfIsAlreadyOnChat = () => {
     if (!chat.users) return
