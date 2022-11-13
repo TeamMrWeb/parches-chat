@@ -1,4 +1,5 @@
 .group-members {
+  display: none;
   width: 250px;
   height: 100%;
   background-color: $secundaryColor;
@@ -9,8 +10,6 @@
   overflow-x: hidden;
   &.expanded {
     display: inline-block;
-    position: fixed;
-    right: 0;
   }
   .status-list {
     display: flex;
@@ -27,8 +26,9 @@
 
 @media screen and (max-width: 900px) {
   .group-members {
-    display: none;
     &.expanded {
+      position: fixed;
+      right: 0;
       top: 0;
     }
   }

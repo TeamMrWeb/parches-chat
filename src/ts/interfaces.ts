@@ -86,6 +86,7 @@ export interface ChatDataProps {
     __typename?: string
     secure_url: string
   }
+  isGroup: boolean
 }
 
 export interface FormGroupProps {

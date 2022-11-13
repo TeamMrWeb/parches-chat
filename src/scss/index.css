@@ -718,7 +718,7 @@ html body #root .App ul {
   gap: 10px;
   width: 100%;
   height: 100%;
-  max-height: 60px;
+  height: 60px;
   background-color: #2a2c37;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -745,7 +745,13 @@ html body #root .App ul {
   color: #ffffff;
   font-size: 16px;
 }
-.chat-header .right .search-messages-tool {
+.chat-header .right .tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.chat-header .right .tools .tool {
   width: 30px;
   height: 30px;
   border: none;
@@ -753,14 +759,14 @@ html body #root .App ul {
   cursor: pointer;
   transition: all 0.25s;
 }
-.chat-header .right .search-messages-tool:hover .search-messages__icon {
+.chat-header .right .tools .tool:hover .tool__icon {
   filter: invert(42%) sepia(53%) saturate(1158%) hue-rotate(235deg) brightness(81%) contrast(94%);
 }
-.chat-header .right .search-messages-tool .search-messages__icon {
+.chat-header .right .tools .tool .tool__icon {
   filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 900px) {
   .chat-header .header__back {
     display: inline-block;
     width: 30px;
@@ -1319,7 +1325,7 @@ html body #root .App ul {
 .chat-container .chat-wrapper {
   display: flex;
   width: 100%;
-  height: calc(100% - 50px);
+  height: calc(100% - 55px);
 }
 .chat-container .chat-wrapper .chat-content {
   display: flex;
@@ -2002,6 +2008,7 @@ html body #root .App ul {
 }
 
 .group-members {
+  display: none;
   width: 250px;
   height: 100%;
   background-color: #2a2c37;
@@ -2013,8 +2020,6 @@ html body #root .App ul {
 }
 .group-members.expanded {
   display: inline-block;
-  position: fixed;
-  right: 0;
 }
 .group-members .status-list {
   display: flex;
@@ -2027,10 +2032,9 @@ html body #root .App ul {
 }
 
 @media screen and (max-width: 900px) {
-  .group-members {
-    display: none;
-  }
   .group-members.expanded {
+    position: fixed;
+    right: 0;
     top: 0;
   }
 }
