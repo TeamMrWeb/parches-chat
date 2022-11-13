@@ -7,11 +7,11 @@ interface ShowChatContainerContext {
 }
 
 const ShowChatContainerContext = createContext<ShowChatContainerContext>({
-  showChatContainer: false
+  showChatContainer: true
 })
 
 const ShowChatContainerProvider = ({ children }: { children: React.ReactNode }) => {
-  const [showChatContainer, setShowChatContainer] = useState(false)
+  const [showChatContainer, setShowChatContainer] = useState(true)
   return (
     <ShowChatContainerContext.Provider value={{ showChatContainer, setShowChatContainer }}>
       {children}

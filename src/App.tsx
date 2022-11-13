@@ -2,6 +2,7 @@ import { HashRouter, Navigate, Route, Routes } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { ShowChatInfoSidebarProvider } from "./contexts/ShowChatInfoSIdebarContext"
 import { ShowSearchMessagesProvider } from "./contexts/ShowSearchMessagesContext"
+import { ShowChatContainerProvider } from "./contexts/ShowChatContainerContext"
 import { ShowChatProvider } from "./contexts/ShowChatContext"
 import { VerifyAccount, AlertMessage, Loader, LoaderSpinner, VerifySession } from "./components"
 import EmailVerification from "./sections/EmailVerification/EmailVerification"
@@ -20,7 +21,12 @@ function App() {
   return (
     <div className="App">
       <Compose
-        components={[ShowChatProvider, ShowSearchMessagesProvider, ShowChatInfoSidebarProvider]}
+        components={[
+          ShowChatProvider,
+          ShowSearchMessagesProvider,
+          ShowChatInfoSidebarProvider,
+          ShowChatContainerProvider
+        ]}
       >
         {alertMessage.visible && <AlertMessage />}
         {loader.status && <Loader progress={loader.progress} />}
