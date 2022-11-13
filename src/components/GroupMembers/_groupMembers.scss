@@ -1,5 +1,4 @@
 .group-members {
-  display: none;
   width: 250px;
   height: 100%;
   background-color: $secundaryColor;
@@ -26,8 +25,9 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 900px) {
   .group-members {
+    display: none;
     &.expanded {
       top: 0;
     }

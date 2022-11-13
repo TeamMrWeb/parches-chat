@@ -103,7 +103,7 @@ html body #root .App ul {
     max-width: 100%;
   }
 }
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 900px) {
   .chat-index .chat-index-wrapper .sidebar {
     max-width: 250px;
   }
@@ -1357,7 +1357,7 @@ html body #root .App ul {
   z-index: 10;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 900px) {
   .chat-container {
     position: fixed;
     filter: brightness(100%);
@@ -1460,7 +1460,7 @@ html body #root .App ul {
   height: 30px;
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 900px) {
   .logged-user-area {
     max-width: 250px;
   }
@@ -2002,7 +2002,6 @@ html body #root .App ul {
 }
 
 .group-members {
-  display: none;
   width: 250px;
   height: 100%;
   background-color: #2a2c37;
@@ -2027,7 +2026,10 @@ html body #root .App ul {
   font-weight: 500;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 900px) {
+  .group-members {
+    display: none;
+  }
   .group-members.expanded {
     top: 0;
   }
