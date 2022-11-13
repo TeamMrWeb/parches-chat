@@ -1,12 +1,5 @@
-import { useSelector } from "react-redux"
-import { useShowChat } from "../../../contexts/ShowChatContext"
-import { setChat } from "../../../slicers/chatSlice"
-import { chatById } from "../../../graphql/queries"
-import { useFetchingMethod } from "../../../apollo/useFetchingMethod"
-import { RootState } from "../../../ts/interfaces"
+import { usePrivateChat } from "./usePrivateChat"
 import userDefaultIcon from "../../../assets/icons/user-default-icon.svg"
-
-const borderColors = ["green", "orange", "red", "gray"]
 
 export default function PrivateChat({
   avatar,
@@ -21,16 +14,13 @@ export default function PrivateChat({
   setFirstAccess: (firstAccess: boolean) => void
   id: string
 }) {
-  const { setShowChat } = useShowChat()
-  const chat = useSelector((state: RootState) => state.chat)
-  const getChatById = (chatId: string) => getChatByid({ variables: { id: chatId } })
-  const { lazyQueryMethod: getChatByid } = useFetchingMethod(chatById, setChat)
-
-  const defineChatActive = () => (chat.id === id ? "loggedUser-chat active" : "loggedUser-chat")
+  const { setShowChat, getChatById, defineChatActive, borderColors, lastMessage } = usePrivateChat({
+    id
+  })
 
   return (
     <li
-      className={defineChatActive()}
+      className={defineChatActive(id)}
       onClick={() => {
         setFirstAccess(false), setShowChat && setShowChat(true), getChatById(id)
       }}
@@ -42,7 +32,12 @@ export default function PrivateChat({
           alt={`Avatar de ${name}`}
           style={{ borderColor: borderColors[status] }}
         />
-        <span className="loggedUser-chat__username">{name}</span>
+        <div className="chat-info">
+          <span className="loggedUser-chat__username">{name}</span>
+          <span className="chat-info__last-message">
+            {lastMessage && lastMessage.chat.messages[0]?.text}
+          </span>
+        </div>
       </button>
     </li>
   )

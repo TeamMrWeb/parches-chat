@@ -1207,7 +1207,7 @@ html body #root .App ul {
 .chats .chats-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 .chats .add-friend {
   display: flex;
@@ -1275,9 +1275,19 @@ html body #root .App ul {
   border: 2px solid #8d4fc9;
   border-radius: 100px;
 }
-.loggedUser-chat .button-wrapper .loggedUser-chat__username {
+.loggedUser-chat .button-wrapper .chat-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+.loggedUser-chat .button-wrapper .chat-info .loggedUser-chat__username {
   font-size: 16px;
   color: #ffffff;
+}
+.loggedUser-chat .button-wrapper .chat-info .chat-info__last-message {
+  font-size: 14px;
+  color: #8e9297;
 }
 
 .group {

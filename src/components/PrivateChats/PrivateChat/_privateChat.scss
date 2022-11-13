@@ -24,9 +24,19 @@
       border: 2px solid $purpleColor;
       border-radius: 100px;
     }
-    .loggedUser-chat__username {
-      font-size: 16px;
-      color: $whiteColor;
+    .chat-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      .loggedUser-chat__username {
+        font-size: 16px;
+        color: $whiteColor;
+      }
+      .chat-info__last-message {
+        font-size: 14px;
+        color: $textGrayColor;
+      }
     }
   }
 }
