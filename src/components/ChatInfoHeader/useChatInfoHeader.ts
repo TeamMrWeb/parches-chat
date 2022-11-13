@@ -25,5 +25,12 @@ export const useChatInfoHeader = () => {
     }
   }, [chat])
 
-  return { showChat, chatData }
+  const expandChatIndexWrapper = () => {
+    const chatIndexWrapperElement = document.querySelector(".chat-index-wrapper")
+    chatIndexWrapperElement!.className = `${chatIndexWrapperElement!.classList[0]} expanded`
+    const chatContainerElement = document.querySelector(".chat-container")
+    chatContainerElement!.className = `${chatContainerElement!.classList[0]} disabled`
+  }
+
+  return { chatData, expandChatIndexWrapper }
 }

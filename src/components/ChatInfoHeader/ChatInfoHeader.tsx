@@ -1,5 +1,4 @@
 import { useShowSearchMessages } from "../../contexts/ShowSearchMessagesContext"
-import { useShowChat } from "../../contexts/ShowChatContext"
 import { useChatInfoHeader } from "./useChatInfoHeader"
 import userDefaultIcon from "../../assets/icons/user-default-icon.svg"
 import searchIcon from "../../assets/icons/search-icon.svg"
@@ -7,8 +6,7 @@ import backIcon from "../../assets/icons/back-icon.svg"
 import SearchMessages from "../SearchMessages/SearchMessages"
 
 export default function ChatInfoHeader() {
-  const { showChat, setShowChat } = useShowChat()
-  const { chatData } = useChatInfoHeader()
+  const { chatData, expandChatIndexWrapper } = useChatInfoHeader()
   const { showSearchMessages, setShowSearchMessages } = useShowSearchMessages()
 
   return (
@@ -17,7 +15,7 @@ export default function ChatInfoHeader() {
         className="header__back"
         src={backIcon}
         alt="Ícono de volver atrás"
-        onClick={() => setShowChat!(!showChat)}
+        onClick={() => expandChatIndexWrapper()}
       />
       <img
         className="header__image"
