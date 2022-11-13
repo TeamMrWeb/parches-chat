@@ -1,6 +1,7 @@
 import closeIcon from "../../assets/icons/close-icon.svg"
 import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
 import { ChatProps } from "../../ts/interfaces"
+import GroupMembers from "../GroupMembers/GroupMembers"
 import { useChatInfoSidebar } from "./useChatInfoSidebar"
 
 export default function ChatInfoSidebar({ chat }: { chat: ChatProps }) {
@@ -22,6 +23,7 @@ export default function ChatInfoSidebar({ chat }: { chat: ChatProps }) {
         <img className="avatar" src={defineChatAvatar(chat)} alt="Avatar" />
         <h3 className="chat-name">{defineChatName(chat)}</h3>
       </div>
+      {chat.isGroup ? <GroupMembers /> : null}
     </aside>
   )
 }

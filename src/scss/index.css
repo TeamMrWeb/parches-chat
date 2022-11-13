@@ -2009,15 +2009,11 @@ html body #root .App ul {
 }
 
 .group-members {
-  display: none;
-  width: 250px;
-  height: 100%;
-  background-color: #2a2c37;
+  width: 100%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   color: #ffffff;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 .group-members.expanded {
   display: inline-block;
@@ -2032,13 +2028,6 @@ html body #root .App ul {
   font-weight: 500;
 }
 
-@media screen and (max-width: 900px) {
-  .group-members.expanded {
-    position: fixed;
-    right: 0;
-    top: 0;
-  }
-}
 .members-list {
   display: flex;
   flex-direction: column;
@@ -2089,4 +2078,12 @@ html body #root .App ul {
   width: 50px;
   height: 50px;
   border-radius: 200px;
+}
+@media screen and (max-width: 900px) {
+  .chat-info-sidebar {
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
 }/*# sourceMappingURL=index.css.map */

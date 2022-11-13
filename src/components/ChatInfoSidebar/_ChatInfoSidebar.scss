@@ -37,3 +37,18 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .chat-info-sidebar {
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    &.expanded {
+      // display: inline-block;
+      // position: fixed;
+      // right: 0;
+      // top: 0;
+    }
+  }
+}

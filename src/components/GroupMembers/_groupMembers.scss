@@ -1,13 +1,7 @@
 .group-members {
-  display: none;
-  width: 250px;
-  height: 100%;
-  background-color: $secundaryColor;
+  width: 100%;
+  height: max-content;
   color: $whiteColor;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: scroll;
-  overflow-x: hidden;
   &.expanded {
     display: inline-block;
   }
@@ -20,16 +14,6 @@
         font-size: 12px;
         font-weight: 500;
       }
-    }
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .group-members {
-    &.expanded {
-      position: fixed;
-      right: 0;
-      top: 0;
     }
   }
 }

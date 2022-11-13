@@ -15,15 +15,11 @@ const membersStatus: MembersStatus = {
   "3": "Inactivos"
 }
 
-export default function GroupMembers({
-  groupMembersElement
-}: {
-  groupMembersElement: React.RefObject<HTMLDivElement>
-}) {
+export default function GroupMembers() {
   const { statusList, membersOfStatus } = useGroupMembers()
 
   return (
-    <section className="group-members" ref={groupMembersElement}>
+    <section className="group-members">
       <ul className="status-list">
         {statusList.map((status: any) => (
           <li key={status} className="status">
