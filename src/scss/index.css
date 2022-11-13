@@ -752,8 +752,8 @@ html body #root .App ul {
   gap: 20px;
 }
 .chat-header .right .tools .tool {
-  width: 30px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -764,6 +764,7 @@ html body #root .App ul {
 }
 .chat-header .right .tools .tool .tool__icon {
   filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
+  width: 100%;
 }
 
 @media screen and (max-width: 900px) {
@@ -2053,4 +2054,39 @@ html body #root .App ul {
   width: 35px;
   height: 35px;
   border-radius: 100px;
+}
+.chat-info-sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #2a2c37;
+  color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.chat-info-sidebar .chat-info-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.chat-info-sidebar .chat-info-sidebar-header .header__icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.chat-info-sidebar .chat-info-sidebar-header .header__icon:hover {
+  filter: invert(54%) sepia(70%) saturate(4588%) hue-rotate(282deg) brightness(94%) contrast(84%);
+}
+.chat-info-sidebar .avatar-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.chat-info-sidebar .avatar-section .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 200px;
 }/*# sourceMappingURL=index.css.map */

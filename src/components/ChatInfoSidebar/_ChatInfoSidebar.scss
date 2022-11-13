@@ -1,0 +1,39 @@
+.chat-info-sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: $secundaryColor;
+  color: $whiteColor;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .chat-info-sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .header__icon {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      &:hover {
+        filter: $pinkFilter;
+      }
+      .header__title {
+      }
+    }
+  }
+  .avatar-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 200px;
+    }
+    .chat-name {
+    }
+  }
+}

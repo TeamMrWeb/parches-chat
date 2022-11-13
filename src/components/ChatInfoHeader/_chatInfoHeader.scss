@@ -35,8 +35,8 @@
       align-items: center;
       gap: 20px;
       .tool {
-        width: 30px;
-        height: 30px;
+        width: 27px;
+        height: 27px;
         border: none;
         background-color: transparent;
         cursor: pointer;
@@ -48,6 +48,7 @@
         }
         .tool__icon {
           filter: $pinkFilter;
+          width: 100%;
         }
       }
     }

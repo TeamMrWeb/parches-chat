@@ -36,10 +36,13 @@ export const useChatInfoHeader = () => {
   }, [groupMembersElement])
 
   const toggleGroupMembers = () => {
+    closeEverything()
     if (groupMembersElement && groupMembersElement.classList[1] === "expanded")
       groupMembersElement.className = groupMembersElement.classList[0]
     else groupMembersElement?.classList.add("expanded")
   }
+
+  const closeEverything = () => {}
 
   return { chatData, expandChatIndexWrapper, toggleGroupMembers }
 }

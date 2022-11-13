@@ -3,12 +3,15 @@ import { useChatInfoHeader } from "./useChatInfoHeader"
 import userDefaultIcon from "../../assets/icons/user-default-icon.svg"
 import searchIcon from "../../assets/icons/search-icon.svg"
 import userGroupIcon from "../../assets/icons/user-group-icon.svg"
+import lateralColumnIcon from "../../assets/icons/lateral-column-icon.svg"
 import backIcon from "../../assets/icons/back-icon.svg"
 import SearchMessages from "../SearchMessages/SearchMessages"
+import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
 
 export default function ChatInfoHeader() {
   const { chatData, expandChatIndexWrapper, toggleGroupMembers } = useChatInfoHeader()
   const { showSearchMessages, setShowSearchMessages } = useShowSearchMessages()
+  const { showChatInfoSidebar, setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
 
   return (
     <section className="chat-header header">
@@ -34,6 +37,9 @@ export default function ChatInfoHeader() {
               <img className="tool__icon" src={userGroupIcon} alt="Ver miembros del grupo" />
             </button>
           ) : null}
+          <button className="tool" onClick={() => setShowChatInfoSidebar!(!showChatInfoSidebar)}>
+            <img className="tool__icon" src={lateralColumnIcon} alt="Más información del chat" />
+          </button>
         </div>
       </div>
       {showSearchMessages ? <SearchMessages /> : null}
