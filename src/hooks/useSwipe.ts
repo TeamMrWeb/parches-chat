@@ -31,6 +31,7 @@ export const useSwipe = (element: React.RefObject<HTMLDivElement>) => {
       } else if (!chatIndexWrapperExpanded && !groupMembersExpanded) {
         groupMembersElement?.classList.add("expanded")
         chatContainerElement?.classList.add("disabled")
+        chatIndexWrapperElement!.className = `${chatIndexWrapperElement!.classList[0]} disabled`
       }
     }
     if (isRightSwipe) {
@@ -39,9 +40,7 @@ export const useSwipe = (element: React.RefObject<HTMLDivElement>) => {
         chatContainerElement!.className = `${chatContainerElement!.classList[0]} disabled`
       } else if (groupMembersExpanded && !chatIndexWrapperExpanded) {
         groupMembersElement!.className = groupMembersElement.classList[0]
-        chatContainerElement!.className = `${chatContainerElement!.classList[0]} ${
-          chatContainerElement!.classList[1]
-        }`
+        chatContainerElement!.className = `${chatContainerElement!.classList[0]} expanded`
       }
     }
   }
