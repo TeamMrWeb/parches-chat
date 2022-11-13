@@ -1,15 +1,14 @@
+import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
 import { useShowSearchMessages } from "../../contexts/ShowSearchMessagesContext"
 import { useChatInfoHeader } from "./useChatInfoHeader"
+import SearchMessages from "../SearchMessages/SearchMessages"
+import lateralColumnIcon from "../../assets/icons/lateral-column-icon.svg"
 import userDefaultIcon from "../../assets/icons/user-default-icon.svg"
 import searchIcon from "../../assets/icons/search-icon.svg"
-import userGroupIcon from "../../assets/icons/user-group-icon.svg"
-import lateralColumnIcon from "../../assets/icons/lateral-column-icon.svg"
 import backIcon from "../../assets/icons/back-icon.svg"
-import SearchMessages from "../SearchMessages/SearchMessages"
-import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
 
 export default function ChatInfoHeader() {
-  const { chatData, expandChatIndexWrapper, toggleGroupMembers } = useChatInfoHeader()
+  const { chatData, expandChatIndexWrapper } = useChatInfoHeader()
   const { showSearchMessages, setShowSearchMessages } = useShowSearchMessages()
   const { showChatInfoSidebar, setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
 
@@ -32,11 +31,6 @@ export default function ChatInfoHeader() {
           <button className="tool" onClick={() => setShowSearchMessages!(!showSearchMessages)}>
             <img className="tool__icon" src={searchIcon} alt="Buscar mensajes" />
           </button>
-          {chatData?.isGroup ? (
-            <button className="tool" onClick={() => toggleGroupMembers()}>
-              <img className="tool__icon" src={userGroupIcon} alt="Ver miembros del grupo" />
-            </button>
-          ) : null}
           <button className="tool" onClick={() => setShowChatInfoSidebar!(!showChatInfoSidebar)}>
             <img className="tool__icon" src={lateralColumnIcon} alt="Más información del chat" />
           </button>

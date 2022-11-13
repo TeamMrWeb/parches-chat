@@ -6,7 +6,6 @@ export const useChatInfoHeader = () => {
   const [chatData, setChatData] = useState<ChatDataProps>()
   const chat = useSelector((state: RootState) => state.chat)
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
-  const groupMembersElement = document.querySelector(".group-members")
 
   useEffect(() => {
     if (Object.keys(chat).length === 0) return
@@ -31,18 +30,5 @@ export const useChatInfoHeader = () => {
     chatContainerElement!.className = `${chatContainerElement!.classList[0]} disabled`
   }
 
-  useEffect(() => {
-    groupMembersElement && toggleGroupMembers()
-  }, [groupMembersElement])
-
-  const toggleGroupMembers = () => {
-    closeEverything()
-    if (groupMembersElement && groupMembersElement.classList[1] === "expanded")
-      groupMembersElement.className = groupMembersElement.classList[0]
-    else groupMembersElement?.classList.add("expanded")
-  }
-
-  const closeEverything = () => {}
-
-  return { chatData, expandChatIndexWrapper, toggleGroupMembers }
+  return { chatData, expandChatIndexWrapper }
 }

@@ -2045,7 +2045,7 @@ html body #root .App ul {
   border-radius: 100px;
 }
 .chat-info-sidebar {
-  width: 250px;
+  min-width: 250px;
   height: 100%;
   background-color: #2a2c37;
   color: #ffffff;
