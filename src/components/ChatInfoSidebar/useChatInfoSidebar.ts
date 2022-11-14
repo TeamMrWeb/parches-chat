@@ -1,8 +1,12 @@
 import { useSelector } from "react-redux"
+import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
+import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
 import { ChatProps, RootState } from "../../ts/interfaces"
 
 export const useChatInfoSidebar = () => {
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
+  const { showChatInfoSidebar, setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
+  const { setShowChatContainer } = useShowChatContainerContext()
 
   const defineChatAvatar = (chat: ChatProps) =>
     chat.avatar
@@ -12,5 +16,10 @@ export const useChatInfoSidebar = () => {
   const defineChatName = (chat: ChatProps) =>
     chat.name ? chat.name : chat.users?.find(user => user.id !== loggedUser.id)?.username
 
-  return { defineChatAvatar, defineChatName }
+  const closeChatInfoSidebar = () => {
+    setShowChatInfoSidebar!(!showChatInfoSidebar)
+    setShowChatContainer!(true)
+  }
+
+  return { defineChatAvatar, defineChatName, closeChatInfoSidebar }
 }
