@@ -1,4 +1,3 @@
-import { useAddFriend } from "../AddFriend/useAddFriend"
 import CreateGroup from "../CreateGroup/CreateGroup"
 import FriendsResults from "../FriendsResults/FriendsResults"
 import SearchFriends from "../SearchFriends/SearchFriends"
@@ -9,7 +8,6 @@ export default function AddNewGroup({
 }: {
   setShowAddNewGroup: React.Dispatch<React.SetStateAction<boolean>>
 }) {
-  const { addFriendToLoggedUser } = useAddFriend()
   const {
     friends,
     loggedUser,

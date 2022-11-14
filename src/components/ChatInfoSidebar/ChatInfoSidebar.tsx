@@ -4,7 +4,8 @@ import GroupMembers from "../GroupMembers/GroupMembers"
 import { useChatInfoSidebar } from "./useChatInfoSidebar"
 
 export default function ChatInfoSidebar({ chat }: { chat: ChatProps }) {
-  const { defineChatAvatar, defineChatName, closeChatInfoSidebar } = useChatInfoSidebar()
+  const { defineChatAvatar, defineChatName, closeChatInfoSidebar, deleteFriend } =
+    useChatInfoSidebar()
 
   return (
     <aside className="chat-info-sidebar">
@@ -22,6 +23,11 @@ export default function ChatInfoSidebar({ chat }: { chat: ChatProps }) {
         <h3 className="chat-name">{defineChatName(chat)}</h3>
       </div>
       {chat.isGroup ? <GroupMembers /> : null}
+      <div className="danger-zone">
+        <button className="danger-zone__button" onClick={() => deleteFriend(chat)} disabled>
+          Eliminar amigo
+        </button>
+      </div>
     </aside>
   )
 }

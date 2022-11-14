@@ -36,6 +36,21 @@
     .chat-name {
     }
   }
+  .danger-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .danger-zone__button {
+      @include gradient-button;
+      border-radius: 10px;
+      background: #ff2949;
+      box-shadow: none;
+      &:hover {
+        background: $purpleColor;
+        box-shadow: none;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 900px) {
