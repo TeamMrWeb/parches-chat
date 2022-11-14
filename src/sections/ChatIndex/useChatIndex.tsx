@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { startLoaderSpinner } from "../../slicers/loaderSpinnerSlice"
 import { LOGGED_USER_MESSAGE_NOTIFICATION_SUSCRIPTION } from "../../graphql/subscriptions"

@@ -3,11 +3,12 @@ import { createContext, useState } from "react"
 
 interface showChatInfoSidebarContext {
   showChatInfoSidebar: boolean
-  setShowChatInfoSidebar?: (value: boolean) => void
+  setShowChatInfoSidebar: (value: boolean) => void
 }
 
 const ShowChatInfoSIdebarContext = createContext<showChatInfoSidebarContext>({
-  showChatInfoSidebar: false
+  showChatInfoSidebar: false,
+  setShowChatInfoSidebar: () => {}
 })
 
 const ShowChatInfoSidebarProvider = ({ children }: { children: React.ReactNode }) => {

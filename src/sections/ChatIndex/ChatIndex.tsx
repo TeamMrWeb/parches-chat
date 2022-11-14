@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { useSwipe } from "../../hooks/useSwipe"
 import { useChatIndex } from "./useChatIndex"
 import {

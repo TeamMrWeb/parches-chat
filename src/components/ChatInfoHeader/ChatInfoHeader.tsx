@@ -1,4 +1,3 @@
-import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
 import { useShowSearchMessages } from "../../contexts/ShowSearchMessagesContext"
 import { useChatInfoHeader } from "./useChatInfoHeader"
 import SearchMessages from "../SearchMessages/SearchMessages"
@@ -8,9 +7,8 @@ import searchIcon from "../../assets/icons/search-icon.svg"
 import backIcon from "../../assets/icons/back-icon.svg"
 
 export default function ChatInfoHeader() {
-  const { chatData, expandChatIndexWrapper } = useChatInfoHeader()
+  const { chatData, expandChatIndexWrapper, expandChatInfoSidebar } = useChatInfoHeader()
   const { showSearchMessages, setShowSearchMessages } = useShowSearchMessages()
-  const { showChatInfoSidebar, setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
 
   return (
     <section className="chat-header header">
@@ -28,10 +26,20 @@ export default function ChatInfoHeader() {
       <div className="right">
         <span className="header__username">{chatData?.name}</span>
         <div className="tools">
-          <button className="tool" onClick={() => setShowSearchMessages!(!showSearchMessages)}>
+          <button
+            className="tool"
+            onClick={() => {
+              setShowSearchMessages!(!showSearchMessages)
+            }}
+          >
             <img className="tool__icon" src={searchIcon} alt="Buscar mensajes" />
           </button>
-          <button className="tool" onClick={() => setShowChatInfoSidebar!(!showChatInfoSidebar)}>
+          <button
+            className="tool"
+            onClick={() => {
+              expandChatInfoSidebar()
+            }}
+          >
             <img className="tool__icon" src={lateralColumnIcon} alt="Más información del chat" />
           </button>
         </div>

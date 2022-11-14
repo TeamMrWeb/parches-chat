@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { useShowChatIndexWrapperContext } from "../../contexts/showChatIndexWrapperContext"
 import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
 import { ChatDataProps, RootState, UserProps } from "../../ts/interfaces"
+import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
 
 export const useChatInfoHeader = () => {
   const [chatData, setChatData] = useState<ChatDataProps>()
@@ -10,6 +11,7 @@ export const useChatInfoHeader = () => {
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
   const { setShowChatIndexWrapper } = useShowChatIndexWrapperContext()
   const { setShowChatContainer } = useShowChatContainerContext()
+  const { setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
 
   useEffect(() => {
     if (Object.keys(chat).length === 0) return
@@ -32,5 +34,12 @@ export const useChatInfoHeader = () => {
     setShowChatContainer!(false)
   }
 
-  return { chatData, expandChatIndexWrapper }
+  const expandChatInfoSidebar = () => {
+    setShowChatInfoSidebar(true)
+    if (window.innerWidth >= 900) return
+    setShowChatContainer && setShowChatContainer(false)
+    setShowChatIndexWrapper && setShowChatIndexWrapper(false)
+  }
+
+  return { chatData, expandChatIndexWrapper, expandChatInfoSidebar }
 }

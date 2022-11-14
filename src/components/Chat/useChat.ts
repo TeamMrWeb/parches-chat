@@ -7,8 +7,8 @@ import { useNotifications } from "../../hooks/useNotifications"
 import { setSuscriptionMessage } from "../../slicers/messagesSlice"
 import { NotificationProps, RootState, UserProps } from "../../ts/interfaces"
 import { useShowChatIndexWrapperContext } from "../../contexts/showChatIndexWrapperContext"
-import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
 import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
+import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
 
 export const useChat = () => {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ export const useChat = () => {
   const [showButton, setShowButton] = useState(false)
   const scrollBottom = useRef<HTMLDivElement>(null)
   const { setShowChatIndexWrapper } = useShowChatIndexWrapperContext()
-  const { setShowChatContainer } = useShowChatContainerContext()
+  const { showChatContainer, setShowChatContainer } = useShowChatContainerContext()
   const { showChatInfoSidebar, setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export const useChat = () => {
   }
 
   const focusOnChat = () => {
-    if (showChatInfoSidebar) return
+    if (showChatInfoSidebar || window.innerWidth >= 900 || showChatContainer) return
     setShowChatIndexWrapper!(false)
     setShowChatInfoSidebar!(false)
     setShowChatContainer!(true)

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
-import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
 import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
+import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
 import { ChatProps, RootState } from "../../ts/interfaces"
 
 export const useChatInfoSidebar = () => {

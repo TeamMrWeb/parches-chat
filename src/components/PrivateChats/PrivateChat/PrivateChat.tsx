@@ -1,6 +1,5 @@
 import { usePrivateChat } from "./usePrivateChat"
 import userDefaultIcon from "../../../assets/icons/user-default-icon.svg"
-import { useShowChatIndexWrapperContext } from "../../../contexts/showChatIndexWrapperContext"
 
 export default function PrivateChat({
   avatar,
@@ -15,19 +14,15 @@ export default function PrivateChat({
   setFirstAccess: (firstAccess: boolean) => void
   id: string
 }) {
-  const { setShowChat, getChatById, defineChatActive, borderColors, lastMessage } = usePrivateChat({
+  const { defineChatActive, borderColors, lastMessage, enterOnChat } = usePrivateChat({
     id
   })
-  const { setShowChatIndexWrapper } = useShowChatIndexWrapperContext()
 
   return (
     <li
       className={defineChatActive(id)}
       onClick={() => {
-        setFirstAccess(false),
-          setShowChat && setShowChat(true),
-          setShowChatIndexWrapper && setShowChatIndexWrapper(false),
-          getChatById(id)
+        enterOnChat(setFirstAccess)
       }}
     >
       <button className="button-wrapper">
