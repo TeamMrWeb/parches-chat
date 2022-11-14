@@ -9,15 +9,16 @@ import {
   PrivateChats,
   AddNewGroup
 } from "../../components"
+import { useShowChatIndexWrapperContext } from "../../contexts/showChatIndexWrapperContext"
 
 export default function ChatIndex() {
-  const chatElement = useRef<HTMLDivElement>(null)
   const [showQuickOptions, setShowQuickOptions] = useState(false)
   const [showAddFriend, setShowAddFriend] = useState(false)
   const [showAddNewGroup, setShowAddNewGroup] = useState(false)
   const { firstAccess, setFirstAccess, mobileBehaviour, desktopBehaviour, notMobile } =
-    useChatIndex(chatElement)
-  const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe(chatElement)
+    useChatIndex()
+  const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe()
+  const { showChatIndexWrapper } = useShowChatIndexWrapperContext()
 
   return (
     <section
@@ -26,7 +27,7 @@ export default function ChatIndex() {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="chat-index-wrapper">
+      <div className={`chat-index-wrapper ${!showChatIndexWrapper ? "disabled" : ""}`}>
         <Groups setShowAddNewGroup={setShowAddNewGroup} setFirstAccess={setFirstAccess} />
         <div className="sidebar">
           <PrivateChats

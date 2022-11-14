@@ -1,5 +1,6 @@
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { showChatIndexWrapperProvider } from "./contexts/showChatIndexWrapperContext"
 import { ShowChatInfoSidebarProvider } from "./contexts/ShowChatInfoSIdebarContext"
 import { ShowSearchMessagesProvider } from "./contexts/ShowSearchMessagesContext"
 import { ShowChatContainerProvider } from "./contexts/ShowChatContainerContext"
@@ -25,7 +26,8 @@ function App() {
           ShowChatProvider,
           ShowSearchMessagesProvider,
           ShowChatInfoSidebarProvider,
-          ShowChatContainerProvider
+          ShowChatContainerProvider,
+          showChatIndexWrapperProvider
         ]}
       >
         {alertMessage.visible && <AlertMessage />}

@@ -1,10 +1,15 @@
 import { useState } from "react"
+import { useShowChatIndexWrapperContext } from "../contexts/showChatIndexWrapperContext"
 import { useShowChatInfoSidebarContext } from "../contexts/ShowChatInfoSIdebarContext"
+import { useShowChatContainerContext } from "../contexts/ShowChatContainerContext"
 
-export const useSwipe = (element: React.RefObject<HTMLDivElement>) => {
+export const useSwipe = () => {
   const [touchStart, setTouchStart] = useState<null | number>(null)
   const [touchEnd, setTouchEnd] = useState<null | number>(null)
+  const { showChatIndexWrapper, setShowChatIndexWrapper } = useShowChatIndexWrapperContext()
   const { showChatInfoSidebar, setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
+  const { setShowChatContainer } = useShowChatContainerContext()
+
   const minSwipeDistance = 50
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -16,31 +21,27 @@ export const useSwipe = (element: React.RefObject<HTMLDivElement>) => {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return
-    const chatIndexWrapperElement = document.querySelector(".chat-index-wrapper")
-    const chatContainerElement = document.querySelector(".chat-container")
-    const chatIndexWrapperExpanded = chatIndexWrapperElement?.classList[1] === "expanded"
-
-    if (!element.current) return
     const distance = touchStart - touchEnd
     const isLeftSwipe = distance > minSwipeDistance
     const isRightSwipe = distance < -minSwipeDistance
+    if (!setShowChatIndexWrapper || !setShowChatContainer || !setShowChatInfoSidebar) return
     if (isLeftSwipe) {
-      if (chatIndexWrapperExpanded && !showChatInfoSidebar) {
-        chatIndexWrapperElement!.className = `${chatIndexWrapperElement!.classList[0]} disabled`
-        chatContainerElement!.className = `${chatContainerElement!.classList[0]} expanded`
-      } else if (!chatIndexWrapperExpanded && !showChatInfoSidebar) {
-        setShowChatInfoSidebar && setShowChatInfoSidebar(true)
-        chatContainerElement?.classList.add("disabled")
-        chatIndexWrapperElement!.className = `${chatIndexWrapperElement!.classList[0]} disabled`
+      if (showChatIndexWrapper && !showChatInfoSidebar) {
+        setShowChatIndexWrapper(false)
+        setShowChatContainer(true)
+      } else if (!showChatIndexWrapper && !showChatInfoSidebar) {
+        setShowChatInfoSidebar(true)
+        setShowChatContainer(false)
+        setShowChatIndexWrapper(false)
       }
     }
     if (isRightSwipe) {
-      if (!chatIndexWrapperExpanded && !showChatInfoSidebar) {
-        chatIndexWrapperElement!.className = `${chatIndexWrapperElement!.classList[0]} expanded`
-        chatContainerElement!.className = `${chatContainerElement!.classList[0]} disabled`
-      } else if (showChatInfoSidebar && !chatIndexWrapperExpanded) {
-        setShowChatInfoSidebar && setShowChatInfoSidebar(false)
-        chatContainerElement!.className = `${chatContainerElement!.classList[0]} expanded`
+      if (!showChatIndexWrapper && !showChatInfoSidebar) {
+        setShowChatIndexWrapper(true)
+        setShowChatContainer(false)
+      } else if (showChatInfoSidebar && !showChatIndexWrapper) {
+        setShowChatInfoSidebar(false)
+        setShowChatContainer(true)
       }
     }
   }

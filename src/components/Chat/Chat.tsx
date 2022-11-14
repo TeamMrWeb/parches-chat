@@ -1,15 +1,22 @@
-import { useChat } from "./useChat"
-import { ChatInput, Messages, ChatInfoHeader } from ".."
-import downArrowIcon from "../../assets/icons/down-arrow-icon.svg"
+import { useEffect } from "react"
 import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
+import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
+import { ChatInput, Messages, ChatInfoHeader } from ".."
 import ChatInfoSidebar from "../ChatInfoSidebar/ChatInfoSidebar"
+import { useChat } from "./useChat"
+import downArrowIcon from "../../assets/icons/down-arrow-icon.svg"
 
-export default function Chat({ chatElement }: { chatElement: React.RefObject<HTMLDivElement> }) {
+export default function Chat() {
   const { showButton, goDown, scrollBottom, chat } = useChat()
   const { showChatInfoSidebar } = useShowChatInfoSidebarContext()
+  const { showChatContainer } = useShowChatContainerContext()
+
+  useEffect(() => {
+    console.log({ showChatContainer })
+  }, [showChatContainer])
 
   return (
-    <div className="chat-container" ref={chatElement}>
+    <div className={`chat-container ${!showChatContainer ? "disabled" : ""}`}>
       <ChatInfoHeader />
       <div className="chat-wrapper">
         <div className="chat-content">
