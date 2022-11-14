@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { useShowChatIndexWrapperContext } from "../../contexts/showChatIndexWrapperContext"
+import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
 import { ChatDataProps, RootState, UserProps } from "../../ts/interfaces"
 
 export const useChatInfoHeader = () => {
   const [chatData, setChatData] = useState<ChatDataProps>()
   const chat = useSelector((state: RootState) => state.chat)
   const loggedUser = useSelector((state: RootState) => state.loggedUser)
+  const { setShowChatIndexWrapper } = useShowChatIndexWrapperContext()
+  const { setShowChatContainer } = useShowChatContainerContext()
 
   useEffect(() => {
     if (Object.keys(chat).length === 0) return
@@ -24,10 +28,8 @@ export const useChatInfoHeader = () => {
   }, [chat])
 
   const expandChatIndexWrapper = () => {
-    const chatIndexWrapperElement = document.querySelector(".chat-index-wrapper")
-    chatIndexWrapperElement!.className = `${chatIndexWrapperElement!.classList[0]} expanded`
-    const chatContainerElement = document.querySelector(".chat-container")
-    chatContainerElement!.className = `${chatContainerElement!.classList[0]} disabled`
+    setShowChatIndexWrapper!(true)
+    setShowChatContainer!(false)
   }
 
   return { chatData, expandChatIndexWrapper }
