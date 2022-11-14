@@ -60,3 +60,8 @@ export const CREATE_GROUP = gql`
     }
   }
 `
+export const DELETE_CHAT = gql`
+  mutation DELETE_CHAT($chatId: ID!) {
+    deleteChat(chatId: $chatId)
+  }
+`
