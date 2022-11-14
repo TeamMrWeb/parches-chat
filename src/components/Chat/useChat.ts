@@ -6,6 +6,9 @@ import { MESSAGES_SUBSCRIPTION } from "../../graphql/subscriptions"
 import { useNotifications } from "../../hooks/useNotifications"
 import { setSuscriptionMessage } from "../../slicers/messagesSlice"
 import { NotificationProps, RootState, UserProps } from "../../ts/interfaces"
+import { useShowChatIndexWrapperContext } from "../../contexts/showChatIndexWrapperContext"
+import { useShowChatContainerContext } from "../../contexts/ShowChatContainerContext"
+import { useShowChatInfoSidebarContext } from "../../contexts/ShowChatInfoSIdebarContext"
 
 export const useChat = () => {
   const navigate = useNavigate()
@@ -16,6 +19,9 @@ export const useChat = () => {
   const dispatch = useDispatch()
   const [showButton, setShowButton] = useState(false)
   const scrollBottom = useRef<HTMLDivElement>(null)
+  const { setShowChatIndexWrapper } = useShowChatIndexWrapperContext()
+  const { setShowChatContainer } = useShowChatContainerContext()
+  const { showChatInfoSidebar, setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
 
   useEffect(() => {
     const auth = localStorage.auth
@@ -56,5 +62,12 @@ export const useChat = () => {
     if (messagesSection) messagesSection.scrollTop = 0
   }
 
-  return { showButton, goDown, scrollBottom, chat }
+  const focusOnChat = () => {
+    if (showChatInfoSidebar) return
+    setShowChatIndexWrapper!(false)
+    setShowChatInfoSidebar!(false)
+    setShowChatContainer!(true)
+  }
+
+  return { showButton, goDown, scrollBottom, chat, focusOnChat }
 }
