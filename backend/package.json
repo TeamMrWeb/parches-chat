@@ -1,0 +1,56 @@
+{
+    "name": "parches-chat-backend",
+    "version": "0.2.1",
+    "description": "backend of parches chat application",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm i -force && node src/index.js",
+        "dev": "set NODE_ENV=development && nodemon src/index.js",
+        "test": "set NODE_ENV=test && set CLOUD=false && mocha ./test/**/*.test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TeamParches/parches-chat.git"
+    },
+    "keywords": [
+        "parches",
+        "parches-chat",
+        "parches-chat-backend"
+    ],
+    "author": "Manuel Cabral",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/TeamParches/parches-chat/issues"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "src/node_modules/"
+        ]
+    },
+    "homepage": "https://github.com/TeamParches/parches-chat#readme",
+    "dependencies": {
+        "cloudinary": "^1.32.0",
+        "compression": "^1.7.4",
+        "dotenv": "^16.0.1",
+        "express": "^4.18.1",
+        "express-fileupload": "^1.4.0",
+        "express-graphql": "^0.12.0",
+        "graphql": "^15.3.0",
+        "graphql-subscriptions": "^2.0.0",
+        "graphql-ws": "^5.10.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.5.3",
+        "multer": "^1.4.5-lts.1",
+        "nodemailer": "^6.7.8",
+        "ws": "^8.8.1"
+    },
+    "devDependencies": {
+        "chai": "^4.3.6",
+        "chai-http": "^4.3.0",
+        "cors": "^2.8.5",
+        "mocha": "^10.0.0",
+        "morgan": "^1.10.0",
+        "nodemon": "^2.0.19"
+    }
+}
