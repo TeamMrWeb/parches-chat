@@ -1,0 +1,42 @@
+.add-new-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 70px;
+  width: 100%;
+  height: 400px;
+  .add-new-group-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: $primaryColor;
+    .search-friends-section {
+      left: 0;
+      top: 0px;
+      bottom: 0;
+      width: 100%;
+      height: 400px;
+    }
+    .next-step {
+      @include gradient-button;
+      width: 100%;
+      height: 40px;
+      margin: 0;
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .add-new-group {
+    width: 100vw;
+    left: -70px;
+    z-index: 100;
+  }
+}

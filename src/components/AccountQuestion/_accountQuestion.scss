@@ -1,0 +1,14 @@
+.account-question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: clamp(10px, 14px, 5vmin);
+  .account-question__link {
+    text-decoration: none;
+    color: $pinkColor;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

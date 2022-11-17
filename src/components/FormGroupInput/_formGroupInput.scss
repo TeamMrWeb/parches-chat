@@ -1,0 +1,41 @@
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+  max-width: 300px;
+  color: $pinkColor;
+  .form__label {
+    @include fluid-type(font-size, 600px, 1200px, 12px, 14px);
+    color: $whiteColor;
+  }
+  .input-wrapper {
+    position: relative;
+    width: 100%;
+    .form__input {
+      height: 10vmin;
+      max-height: 30px;
+      border-radius: 10px;
+      border: none;
+      background-color: $secundaryColorHover;
+      color: $textGrayColor;
+      padding: 25px 0;
+      padding-left: 15px;
+      box-sizing: border-box;
+      width: 100%;
+      &:focus {
+        outline: 1px solid $pinkColor;
+      }
+    }
+    .form__eye-icon {
+      position: absolute;
+      right: 10px;
+      bottom: 15px;
+      width: 20px;
+      cursor: pointer;
+      filter: $purpleFilter;
+    }
+  }
+}

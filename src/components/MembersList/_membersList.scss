@@ -1,0 +1,18 @@
+.members-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .member {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: $whiteColor;
+    .member__avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 100px;
+    }
+    .member__username {
+    }
+  }
+}

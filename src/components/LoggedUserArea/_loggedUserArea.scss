@@ -1,0 +1,52 @@
+.logged-user-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: $primaryColorLight;
+  color: $whiteColor;
+  padding: 10px;
+  box-sizing: border-box;
+  .wrapper {
+    display: flex;
+    column-gap: 10px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.2);
+    }
+    .logged-user-area__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 80px;
+    }
+  }
+  .configuration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.2);
+    }
+    .configuration__icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .logged-user-area {
+    max-width: 250px;
+  }
+}

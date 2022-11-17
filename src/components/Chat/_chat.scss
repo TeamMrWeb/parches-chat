@@ -1,0 +1,71 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  transition: all 2s;
+  .chat-wrapper {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 55px);
+    .chat-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .go-down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: $secundaryColor;
+    transition: 0.5s all;
+    &:hover {
+      background-color: #3d404edf;
+    }
+    .go-down__image {
+      width: 40px;
+      height: 100%;
+    }
+  }
+}
+.chat {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  background-color: aqua;
+  position: relative;
+  z-index: 10;
+}
+
+@media screen and (max-width: 900px) {
+  .chat-container {
+    position: fixed;
+    filter: brightness(100%);
+    pointer-events: all;
+    transition: filter 0s;
+    &.disabled {
+      position: unset;
+      .chat-header {
+        filter: brightness(50%);
+        transition: filter 0s;
+        pointer-events: none;
+      }
+      .chat-wrapper {
+        .chat-content {
+          filter: brightness(50%);
+          transition: filter 0s;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

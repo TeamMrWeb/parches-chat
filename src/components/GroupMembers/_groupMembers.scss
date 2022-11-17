@@ -1,0 +1,19 @@
+.group-members {
+  width: 100%;
+  height: max-content;
+  color: $whiteColor;
+  &.expanded {
+    display: inline-block;
+  }
+  .status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .status {
+      .status__title {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+}

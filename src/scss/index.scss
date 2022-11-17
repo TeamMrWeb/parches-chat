@@ -1,0 +1,85 @@
+@import "./fonts";
+@import "./variables";
+
+html {
+  box-sizing: border-box;
+  height: 100vh;
+  &*,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100vh;
+    height: 100%;
+    width: 100%;
+    font-family: $fontFamily;
+    font-weight: 300;
+    font-size: 14px;
+    font-style: normal;
+    #root {
+      height: 100%;
+      .App {
+        position: relative;
+        height: 100%;
+        & * p,
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 750px) {
+  body {
+    overflow: hidden;
+    section {
+      overflow-y: scroll;
+    }
+  }
+}
+
+//sections
+@import "../sections/ChatIndex/chatIndex";
+@import "../sections/Register/register";
+@import "../sections/NotFound/notFound";
+@import "../sections/Login/login";
+@import "../sections/Home/home";
+@import "../sections/EmailVerification/emailVerification";
+
+//components
+@import "../components/ChatPreviewImage/chatPreviewImage";
+@import "../components/AccountQuestion/accountQuestion";
+@import "../components/FormGroupInput/formGroupInput";
+@import "../components/ViewRepository/viewRepository";
+@import "../components/ChatInfoHeader/chatInfoHeader";
+@import "../components/AlertMessage/alertMessage";
+@import "../components/Emojis/emojis";
+@import "../components/ChatInput/chatInput";
+@import "../components/Messages/messages";
+@import "../components/Message/message";
+@import "../components/Groups/groups";
+@import "../components/GoHome/goHome";
+@import "../components/Loader/loader";
+@import "../components/PrivateChats/privateChats";
+@import "../components/PrivateChats/PrivateChat/privateChat";
+@import "../components/Group/group";
+@import "../components/Chat/chat";
+@import "../components/Form/form";
+@import "../components/LoggedUserArea/loggedUserArea";
+@import "../components/UserQuickOptions/userQuickOptions";
+@import "../components/LoaderSpinner/loaderSpinner";
+@import "../components/AddNewGroup/addNewGroup";
+@import "../components/SearchFriends/searchFriends";
+@import "../components/FriendsResults/friendsResults";
+@import "../components/CreateGroup/createGroup";
+@import "../components/SearchMessages/searchMessages";
+@import "../components/GroupMembers/groupMembers";
+@import "../components/MembersList/membersList";
+@import "../components/ChatInfoSidebar/chatInfoSidebar";

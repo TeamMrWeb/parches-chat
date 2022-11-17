@@ -1,0 +1,78 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px !important;
+  height: 257px;
+  overflow-y: auto;
+  .results__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 5px;
+    box-sizing: border-box;
+    &:hover {
+      background-color: $secundaryColorHover;
+      .loggedUser-chat__username {
+        color: $whiteColor !important;
+      }
+    }
+    .left-side {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .results__avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 40px;
+      }
+    }
+    .toggler-wrapper {
+      display: block;
+      width: 45px;
+      height: 25px;
+      cursor: pointer;
+      position: relative;
+    }
+    .toggler-wrapper input[type="checkbox"] {
+      display: none;
+    }
+    .toggler-wrapper input[type="checkbox"]:checked + .toggler-slider {
+      background-color: $purpleColor;
+    }
+    .toggler-wrapper .toggler-slider {
+      background-color: $secundaryColorHover;
+      position: absolute;
+      border-radius: 100px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-transition: all 300ms ease;
+      transition: all 300ms ease;
+    }
+    .toggler-wrapper .toggler-knob {
+      position: absolute;
+      -webkit-transition: all 300ms ease;
+      transition: all 300ms ease;
+    }
+    .toggler-wrapper input[type="checkbox"]:checked + .toggler-slider .toggler-knob {
+      left: calc(100% - 18.75px);
+    }
+    .toggler-wrapper .toggler-knob {
+      width: 12.5px;
+      height: 12.5px;
+      top: 50%;
+      left: 6.25px;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background-color: $pinkColor;
+    }
+    .results__icon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}

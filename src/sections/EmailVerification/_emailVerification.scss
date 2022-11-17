@@ -1,0 +1,52 @@
+.email-verification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primaryColor;
+  width: 100%;
+  height: 100vh;
+  color: $whiteColor;
+  position: relative;
+  .email-verification-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    .email-verification__description {
+      text-align: center;
+    }
+    .button {
+      @include gradient-button;
+    }
+    .email-verification__cooldown {
+      margin: 20px !important;
+      span {
+        color: $pinkColor;
+      }
+    }
+  }
+  .login-link {
+    position: absolute;
+    bottom: 100px;
+    color: $whiteColor;
+    font-size: 20px;
+    transition: all 0.25s;
+    text-align: center;
+    &:hover {
+      color: $purpleColor;
+    }
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .email-verification {
+    .login-link {
+      bottom: 20px;
+    }
+  }
+}

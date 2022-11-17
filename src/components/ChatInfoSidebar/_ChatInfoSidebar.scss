@@ -1,0 +1,69 @@
+.chat-info-sidebar {
+  min-width: 250px;
+  height: 100%;
+  background-color: $secundaryColor;
+  color: $whiteColor;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .chat-info-sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .header__icon {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      &:hover {
+        filter: $pinkFilter;
+      }
+      .header__title {
+      }
+    }
+  }
+  .avatar-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 200px;
+    }
+    .chat-name {
+    }
+  }
+  .danger-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .danger-zone__button {
+      @include gradient-button;
+      border-radius: 10px;
+      background: #ff2949;
+      box-shadow: none;
+      &:hover {
+        background: $purpleColor;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .chat-info-sidebar {
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    &.expanded {
+      // display: inline-block;
+      // position: fixed;
+      // right: 0;
+      // top: 0;
+    }
+  }
+}
