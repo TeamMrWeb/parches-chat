@@ -1,5 +1,5 @@
 /**
- * @file Conatains accept friend request mutation.
+ * @file Contains accept friend request mutation.
  * @author Manuel Cabral
  * @version 0.0.1
  */
@@ -15,6 +15,13 @@ const args = {
 	},
 }
 
+/**
+ * Accept friend request
+ * @param {Object} _ - Unused parent object.
+ * @param {Object} args - Args passed to the query.
+ * @param {Object} context - The context object
+ * @returns {*} Accepted friend request.
+ */
 const resolve = async (_, args, context) => {
 	const { user } = context
 	let { userId } = args
