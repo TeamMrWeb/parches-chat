@@ -1305,7 +1305,7 @@ html body #root .App ul {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
+  gap: 0px;
 }
 .loggedUser-chat .button-wrapper .chat-info .loggedUser-chat__username {
   font-size: 16px;
@@ -1314,6 +1314,10 @@ html body #root .App ul {
 .loggedUser-chat .button-wrapper .chat-info .chat-info__last-message {
   font-size: 14px;
   color: #8e9297;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 160px;
 }
 
 .group {
