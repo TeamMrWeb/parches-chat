@@ -114,7 +114,10 @@ export interface LoaderProps {
 export interface MessageProps {
   id?: string
   text?: string
-  image?: string
+  image?: {
+    public_id: string
+    secure_url: string
+  }
   author?: {
     id: string
     __typename: string

@@ -1105,18 +1105,37 @@ html body #root .App ul {
   background-color: #333641;
   color: #ffffff;
   padding: 5px 10px;
-  padding-right: 60px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   position: relative;
   max-width: 30%;
   border-radius: 10px;
+  height: 100%;
 }
-.message-container .message .message__text {
+.message-container .message .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  width: 100%;
+  max-width: 500px;
+}
+.message-container .message .image-container .message__image {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.message-container .message .message-wrapper {
+  padding-right: 60px;
+}
+.message-container .message .message-wrapper .message__text {
   font-size: 16px;
+  height: 100%;
+  word-wrap: break-word;
+  width: 100%;
 }
-.message-container .message .message__hour {
+.message-container .message .message-wrapper .message__hour {
   font-size: 10px;
   color: #8e9297;
   position: absolute;

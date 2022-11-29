@@ -67,6 +67,7 @@ export default function Messages({
             <Message
               messageId={message.id!}
               messageText={message.text!}
+              messageImage={message.image!}
               messageCreatedAt={formatCreatedAtDate(message.createdAt!)}
               side={defineMessageSide(message.author!)}
               key={message.id}
