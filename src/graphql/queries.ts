@@ -66,6 +66,10 @@ export const messagesByChatId = gql`
       messages(limit: $limit, skip: $skip, orderBy: $orderBy) {
         id
         text
+        image {
+          public_id
+          secure_url
+        }
         createdAt
         author {
           id
