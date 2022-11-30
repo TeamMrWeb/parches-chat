@@ -25,7 +25,7 @@ export const useChatPreviewImage = (
       fetch(`${imageUploadUrl}${chatId}/${messageId}`, {
         method: "POST",
         headers: {
-          auth: localStorage.getItem("auth")!
+          auth: localStorage.getItem("accessToken")!
         },
         body: formData
       })

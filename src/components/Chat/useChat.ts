@@ -24,7 +24,7 @@ export const useChat = () => {
   const { showChatInfoSidebar, setShowChatInfoSidebar } = useShowChatInfoSidebarContext()
 
   useEffect(() => {
-    const auth = localStorage.auth
+    const auth = localStorage.accessToken
     !auth && navigate("/login")
   }, [])
 
