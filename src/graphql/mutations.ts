@@ -13,7 +13,10 @@ export const userRegister = gql`
 
 export const userLogin = gql`
   mutation LoginUser($email: String!, $password: String!, $authStrategy: String) {
-    login(email: $email, password: $password, authStrategy: $authStrategy)
+    login(email: $email, password: $password, authStrategy: $authStrategy) {
+      accessToken
+      refreshToken
+    }
   }
 `
 
@@ -63,5 +66,14 @@ export const CREATE_GROUP = gql`
 export const DELETE_CHAT = gql`
   mutation DELETE_CHAT($chatId: ID!) {
     deleteChat(chatId: $chatId)
+  }
+`
+
+export const REFRESH_TOKEN = gql`
+  mutation REFRESH_TOKEN {
+    refreshToken {
+      accessToken
+      refreshToken
+    }
   }
 `
