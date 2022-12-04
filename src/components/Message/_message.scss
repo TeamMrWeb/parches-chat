@@ -39,12 +39,12 @@
       }
     }
     .message-wrapper {
-      padding-right: 60px;
       .message__text {
         font-size: 16px;
         height: 100%;
         word-wrap: break-word;
         width: 100%;
+        padding-right: 60px;
       }
       .message__hour {
         font-size: 10px;

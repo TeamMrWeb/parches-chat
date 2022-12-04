@@ -1126,14 +1126,12 @@ html body #root .App ul {
   -o-object-fit: contain;
      object-fit: contain;
 }
-.message-container .message .message-wrapper {
-  padding-right: 60px;
-}
 .message-container .message .message-wrapper .message__text {
   font-size: 16px;
   height: 100%;
   word-wrap: break-word;
   width: 100%;
+  padding-right: 60px;
 }
 .message-container .message .message-wrapper .message__hour {
   font-size: 10px;
@@ -1345,6 +1343,7 @@ html body #root .App ul {
   width: 100vw;
   height: 100vh;
   transition: all 2s;
+  max-width: calc(100% - 320px);
 }
 .chat-container .chat-wrapper {
   display: flex;

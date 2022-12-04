@@ -14,11 +14,11 @@ export default function Message({
   return (
     <div className={`message-container ${side === "right" ? " right" : " left"}`} id={messageId}>
       <div className="message">
-        <div className="image-container">
-          {messageImage.secure_url ? (
+        {messageImage?.secure_url ? (
+          <div className="image-container">
             <img className="message__image" src={messageImage.secure_url} alt="Imágen" />
-          ) : null}
-        </div>
+          </div>
+        ) : null}
         <div className="message-wrapper">
           <span className="message__text">{messageText}</span>
           <span className="message__hour">{messageCreatedAt}</span>
