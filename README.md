@@ -33,7 +33,7 @@ npm run dev
 ## Variables de entorno 🏭
 La aplicación necesita utilizar ciertas variables de entorno. Para acceder a ellas siga estos pasos:
  - Crear un archivo **.env** en el root de la carpeta frontend
- - Copiar y pegar el contenido del archivo .env.example.txt dentro de **.env**
+ - Copiar y pegar las variables deseadas del archivo .env.example.txt dentro de **.env**
 
 > ***Aviso:*** Es necesario colocar estas variables para el correcto funcionamiento de la aplicación.
 
