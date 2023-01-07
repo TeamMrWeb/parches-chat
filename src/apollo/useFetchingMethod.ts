@@ -10,7 +10,10 @@ export const useFetchingMethod = (gqlType: any, setState?: any) => {
   const [lazyQueryMethod, { ...props }] = fetchingMethod(gqlType, {
     onCompleted: (data: any) => {
       if (!setState) return
-      setState.name === "actionCreator" || setState.name === "o"
+      setState.name === "actionCreator" ||
+      setState.name === "o" ||
+      setState.name === "p" ||
+      setState.name === "t"
         ? dispatch(setState(data))
         : setState(data)
     },
