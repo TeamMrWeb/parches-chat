@@ -12,6 +12,7 @@ export const useComunication = () => {
     operation.setContext(() => ({
       headers: {
         auth: localStorage.getItem("accessToken"),
+        refresh_token: localStorage.getItem("refreshToken"),
         ...operation.getContext().headers
       }
     }))

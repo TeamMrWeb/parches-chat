@@ -32,8 +32,10 @@ export const useSubmitForm = () => {
         setDisabled(false)
         if (type === "register") return navigate(`${redirecturl}/${email}`)
         if (type === "login") {
-          const token = res.data.login
-          localStorage.setItem("auth", token)
+          const accessToken = res.data.login.accessToken
+          const refreshToken = res.data.login.refreshToken
+          localStorage.setItem("accessToken", accessToken)
+          localStorage.setItem("refreshToken", refreshToken)
         }
         redirecturl && navigate(redirecturl)
       })
